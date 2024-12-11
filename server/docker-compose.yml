@@ -1,0 +1,38 @@
+services:
+  db:
+    image: mysql:5.7
+    container_name: jdc-wp-db
+    restart: always
+    environment:
+      MYSQL_DATABASE: jdc_db
+      MYSQL_USER: lejardindeschefs
+      MYSQL_PASSWORD: ${MYSQL_PASSWORD}
+      MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}
+    volumes:
+      - db_data:/var/lib/mysql
+    networks:
+      - wp-network
+
+  wordpress:
+    image: wordpress:latest
+    container_name: jdc-wp-app
+    depends_on:
+      - db
+    restart: always
+    ports:
+      - "8080:80"
+    environment:
+      WORDPRESS_DB_HOST: db:3306
+      WORDPRESS_DB_USER: lejardindeschefs
+      WORDPRESS_DB_PASSWORD: ${MYSQL_PASSWORD}
+      WORDPRESS_DB_NAME: jdc_db
+    volumes:
+      - ./wp-content:/var/www/html/wp-content
+    networks:
+      - wp-network
+
+networks:
+  wp-network:
+
+volumes:
+  db_data:
