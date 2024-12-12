@@ -28,6 +28,7 @@ services:
       WORDPRESS_DB_NAME: jdc_db
     volumes:
       - ./wp-content:/var/www/html/wp-content
+      - ./upload.ini:/usr/local/etc/php/conf.d/uploads.ini
     networks:
       - wp-network
 
