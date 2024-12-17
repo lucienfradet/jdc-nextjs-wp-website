@@ -1,5 +1,2 @@
-/server/.env
-/client/.env
-/client/.git/
-/client/.gitignore
-/server/db_data/
+/backend/.env
+/backend/db_data/
