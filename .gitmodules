@@ -1,3 +1,6 @@
 [submodule "client"]
 	path = client
 	url = git@github.com:lucienfradet/jdc-nextjs-wp-website-client.git
+[submodule "frontend"]
+	path = frontend
+	url = git@github.com:lucienfradet/jdc-nextjs-wp-website-client.git
