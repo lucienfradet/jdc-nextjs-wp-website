@@ -194,7 +194,9 @@ class MediaItemCreate {
 
 			/**
 			 * Require the file.php file from wp-admin. This file includes the
-			 * download_url and wp_handle_sideload methods
+			 * download_url and wp_handle_sideload methods.
+			 *
+			 * @phpstan-ignore requireOnce.fileNotFound
 			 */
 			require_once ABSPATH . 'wp-admin/includes/file.php';
 
@@ -230,7 +232,7 @@ class MediaItemCreate {
 				'type'     => ! empty( $input['fileType'] ) ? $input['fileType'] : wp_check_filetype( $temp_file ),
 				'tmp_name' => $temp_file,
 				'error'    => 0,
-				'size'     => filesize( $temp_file ),
+				'size'     => (int) filesize( $temp_file ),
 			];
 
 			/**
@@ -303,7 +305,9 @@ class MediaItemCreate {
 			}
 
 			/**
-			 * Check if the wp_generate_attachment_metadata method exists and include it if not
+			 * Check if the wp_generate_attachment_metadata method exists and include it if not.
+			 *
+			 * @phpstan-ignore requireOnce.fileNotFound
 			 */
 			require_once ABSPATH . 'wp-admin/includes/image.php';
 

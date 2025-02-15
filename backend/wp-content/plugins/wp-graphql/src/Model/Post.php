@@ -644,7 +644,11 @@ class Post extends Model {
 					return ! empty( $edit_last ) ? absint( $edit_last ) : null;
 				},
 				'editLock'                  => function () {
-					require_once ABSPATH . 'wp-admin/includes/post.php';
+					if ( ! function_exists( 'wp_check_post_lock' ) ) {
+						// @phpstan-ignore requireOnce.fileNotFound
+						require_once ABSPATH . 'wp-admin/includes/post.php';
+					}
+
 					if ( ! wp_check_post_lock( $this->data->ID ) ) {
 						return null;
 					}
@@ -695,7 +699,7 @@ class Post extends Model {
 					return ! empty( $uri ) ? str_ireplace( home_url(), '', $uri ) : null;
 				},
 				'commentCount'              => function () {
-					return ! empty( $this->data->comment_count ) ? absint( $this->data->comment_count ) : null;
+					return ! empty( $this->data->comment_count ) ? absint( $this->data->comment_count ) : 0;
 				},
 				'featuredImageId'           => function () {
 					return ! empty( $this->featuredImageDatabaseId ) ? Relay::toGlobalId( 'post', (string) $this->featuredImageDatabaseId ) : null;

@@ -98,7 +98,7 @@ class UserMutation {
 			/**
 			 * Filters all of the fields available for input
 			 *
-			 * @var array<string,array<string,mixed>> $input_fields
+			 * @param array<string,array<string,mixed>> $input_fields
 			 */
 			self::$input_fields = apply_filters( 'graphql_user_mutation_input_fields', $input_fields );
 		}
@@ -300,6 +300,7 @@ class UserMutation {
 		 * The function for this is only loaded on admin pages. See note: https://codex.wordpress.org/Function_Reference/get_editable_roles#Notes
 		 */
 		if ( ! function_exists( 'get_editable_roles' ) ) {
+			// @phpstan-ignore requireOnce.fileNotFound
 			require_once ABSPATH . 'wp-admin/includes/admin.php';
 		}
 

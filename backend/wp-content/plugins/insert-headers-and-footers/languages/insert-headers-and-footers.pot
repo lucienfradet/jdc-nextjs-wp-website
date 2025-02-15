@@ -1,15 +1,15 @@
-# Copyright (C) 2024 WPCode
+# Copyright (C) 2025 WPCode
 # This file is distributed under the GPLv2 or later.
 msgid ""
 msgstr ""
-"Project-Id-Version: WPCode Lite 2.2.4.1\n"
+"Project-Id-Version: WPCode Lite 2.2.5\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/insert-headers-and-footers\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2024-12-11T16:33:41+00:00\n"
+"POT-Creation-Date: 2025-01-07T09:37:23+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.5.0\n"
 "X-Domain: insert-headers-and-footers\n"
@@ -39,36 +39,42 @@ msgstr ""
 msgid "Your site already has WPCode Pro activated. If you want to switch to WPCode Lite, please first go to Plugins → Installed Plugins and deactivate WPCode. Then, you can activate WPCode Lite."
 msgstr ""
 
-#: includes/admin/admin-ajax-handlers.php:39
+#: includes/admin/admin-ajax-handlers.php:40
 #: includes/class-wpcode-snippet.php:477
 msgid "You are not allowed to change snippet status, please contact your webmaster."
 msgstr ""
 
 #. Translators: %2$s is the action that they were trying to perform, either activated or deactivated. %1$s is the error message why the action failed.
-#: includes/admin/admin-ajax-handlers.php:55
+#: includes/admin/admin-ajax-handlers.php:54
 msgid "Snippet not %2$s, the following error was encountered: %1$s"
 msgstr ""
 
-#: includes/admin/admin-ajax-handlers.php:57
+#: includes/admin/admin-ajax-handlers.php:56
 msgctxt "Snippet status change"
 msgid "activated"
 msgstr ""
 
-#: includes/admin/admin-ajax-handlers.php:57
+#: includes/admin/admin-ajax-handlers.php:56
 msgctxt "Snippet status change"
 msgid "deactivated"
 msgstr ""
 
+#: includes/admin/admin-ajax-handlers.php:113
+#: includes/admin/pages/class-wpcode-admin-page-code-snippets.php:215
+#: includes/admin/pages/class-wpcode-admin-page.php:941
+msgid "Search Snippets"
+msgstr ""
+
 #. Translators: this an auto-generated title for when a snippet is saved from the generator.
-#: includes/admin/admin-ajax-handlers.php:166
+#: includes/admin/admin-ajax-handlers.php:224
 msgid "Generated Snippet %s"
 msgstr ""
 
-#: includes/admin/admin-ajax-handlers.php:222
+#: includes/admin/admin-ajax-handlers.php:279
 msgid "Success! Your server can make SSL connections."
 msgstr ""
 
-#: includes/admin/admin-ajax-handlers.php:229
+#: includes/admin/admin-ajax-handlers.php:286
 msgid "There was an error and the connection failed. Please contact your web host with the technical details below."
 msgstr ""
 
@@ -103,6 +109,7 @@ msgstr ""
 
 #: includes/admin/admin-scripts.php:56
 #: includes/admin/admin-scripts.php:60
+#: includes/admin/pages/class-wpcode-admin-page-code-snippets.php:505
 #: includes/admin/pages/class-wpcode-admin-page-snippet-manager.php:1781
 #: includes/lite/class-wpcode-smart-tags-lite.php:22
 msgid "Upgrade to PRO"
@@ -584,7 +591,7 @@ msgstr ""
 
 #: includes/admin/pages/class-wpcode-admin-page-click.php:209
 #: includes/admin/pages/class-wpcode-admin-page-snippet-manager.php:547
-#: includes/admin/pages/class-wpcode-code-snippets-table.php:643
+#: includes/admin/pages/class-wpcode-code-snippets-table.php:677
 msgid "Code Type"
 msgstr ""
 
@@ -596,123 +603,138 @@ msgstr ""
 msgid "Confirm Snippet Installation"
 msgstr ""
 
-#: includes/admin/pages/class-wpcode-admin-page-code-snippets.php:216
-#: includes/admin/pages/class-wpcode-admin-page.php:941
-msgid "Search Snippets"
-msgstr ""
-
-#: includes/admin/pages/class-wpcode-admin-page-code-snippets.php:234
+#: includes/admin/pages/class-wpcode-admin-page-code-snippets.php:252
 #: includes/admin/pages/class-wpcode-admin-page.php:941
 msgid "All Snippets"
 msgstr ""
 
-#: includes/admin/pages/class-wpcode-admin-page-code-snippets.php:236
+#: includes/admin/pages/class-wpcode-admin-page-code-snippets.php:340
 #: includes/generator/class-wpcode-generator-post-type.php:231
 msgid "Add New"
 msgstr ""
 
 #. Translators: %d - Trashed snippets count.
-#: includes/admin/pages/class-wpcode-admin-page-code-snippets.php:253
+#: includes/admin/pages/class-wpcode-admin-page-code-snippets.php:358
 msgid "%d snippet was successfully moved to Trash."
 msgid_plural "%d snippets were successfully moved to Trash."
 msgstr[0] ""
 msgstr[1] ""
 
 #. translators: %d - Restored from trash snippets count.
-#: includes/admin/pages/class-wpcode-admin-page-code-snippets.php:261
+#: includes/admin/pages/class-wpcode-admin-page-code-snippets.php:366
 msgid "%d snippet was successfully restored."
 msgid_plural "%d snippet were successfully restored."
 msgstr[0] ""
 msgstr[1] ""
 
 #. translators: %d - Deleted snippets count.
-#: includes/admin/pages/class-wpcode-admin-page-code-snippets.php:269
+#: includes/admin/pages/class-wpcode-admin-page-code-snippets.php:374
 msgid "%d snippet was successfully permanently deleted."
 msgid_plural "%d snippets were successfully permanently deleted."
 msgstr[0] ""
 msgstr[1] ""
 
 #. translators: %d - Activated snippets count.
-#: includes/admin/pages/class-wpcode-admin-page-code-snippets.php:279
+#: includes/admin/pages/class-wpcode-admin-page-code-snippets.php:384
 msgid "%d snippet was successfully activated."
 msgid_plural "%d snippets were successfully activated."
 msgstr[0] ""
 msgstr[1] ""
 
 #. translators: %d - Failed to activate snippets count.
-#: includes/admin/pages/class-wpcode-admin-page-code-snippets.php:288
+#: includes/admin/pages/class-wpcode-admin-page-code-snippets.php:393
 msgid "%d snippet was not activated due to an error."
 msgid_plural "%d snippets were not activated due to errors."
 msgstr[0] ""
 msgstr[1] ""
 
 #. translators: %d - Deactivated snippets count.
-#: includes/admin/pages/class-wpcode-admin-page-code-snippets.php:297
+#: includes/admin/pages/class-wpcode-admin-page-code-snippets.php:402
 msgid "%d snippet was successfully deactivated."
 msgid_plural "%d snippets were successfully deactivated."
 msgstr[0] ""
 msgstr[1] ""
 
-#: includes/admin/pages/class-wpcode-admin-page-code-snippets.php:322
+#: includes/admin/pages/class-wpcode-admin-page-code-snippets.php:427
 #: includes/admin/pages/class-wpcode-admin-page-snippet-manager.php:2268
 msgid "Enable Error Logging"
 msgstr ""
 
-#: includes/admin/pages/class-wpcode-admin-page-code-snippets.php:334
+#: includes/admin/pages/class-wpcode-admin-page-code-snippets.php:439
 msgid "This view lists your snippets that threw errors. Some of the snippets may have also been automatically disabled due to potentially preventing you from accessing the admin."
 msgstr ""
 
-#: includes/admin/pages/class-wpcode-admin-page-code-snippets.php:336
+#: includes/admin/pages/class-wpcode-admin-page-code-snippets.php:441
 #: includes/admin/pages/class-wpcode-admin-page-snippet-manager.php:2359
 msgid "Learn More"
 msgstr ""
 
-#: includes/admin/pages/class-wpcode-admin-page-code-snippets.php:343
+#: includes/admin/pages/class-wpcode-admin-page-code-snippets.php:448
 msgid "In order to get more info about the errors please consider enabling error logging."
 msgstr ""
 
-#: includes/admin/pages/class-wpcode-admin-page-code-snippets.php:364
+#: includes/admin/pages/class-wpcode-admin-page-code-snippets.php:469
 msgid "Number of snippets per page:"
 msgstr ""
 
-#: includes/admin/pages/class-wpcode-admin-page-code-snippets.php:407
+#: includes/admin/pages/class-wpcode-admin-page-code-snippets.php:502
+#: includes/admin/pages/class-wpcode-admin-page-snippet-manager.php:1741
+msgid "Blocks snippets is a Pro Feature"
+msgstr ""
+
+#: includes/admin/pages/class-wpcode-admin-page-code-snippets.php:503
+#: includes/admin/pages/class-wpcode-admin-page-snippet-manager.php:1742
+msgid "Upgrade to PRO today and unlock building snippets using the Gutenberg Block Editor. Create templates using blocks and use the full power of WPCode to insert them in your site."
+msgstr ""
+
+#: includes/admin/pages/class-wpcode-admin-page-code-snippets.php:506
+#: includes/admin/pages/class-wpcode-admin-page-snippet-manager.php:1745
+msgid "SCSS snippets is a Pro Feature"
+msgstr ""
+
+#: includes/admin/pages/class-wpcode-admin-page-code-snippets.php:507
+#: includes/admin/pages/class-wpcode-admin-page-snippet-manager.php:1746
+msgid "Upgrade to PRO today and unlock editing snippets using SCSS code with optimized compiling directly in the WordPress admin."
+msgstr ""
+
+#: includes/admin/pages/class-wpcode-admin-page-code-snippets.php:532
 msgid "Order Snippets By"
 msgstr ""
 
-#: includes/admin/pages/class-wpcode-admin-page-code-snippets.php:409
+#: includes/admin/pages/class-wpcode-admin-page-code-snippets.php:534
 msgid "Order snippets by"
 msgstr ""
 
-#: includes/admin/pages/class-wpcode-admin-page-code-snippets.php:413
-#: includes/admin/pages/class-wpcode-code-snippets-table.php:636
+#: includes/admin/pages/class-wpcode-admin-page-code-snippets.php:538
+#: includes/admin/pages/class-wpcode-code-snippets-table.php:670
 #: includes/generator/class-wpcode-generator-post-status.php:128
 #: includes/generator/class-wpcode-generator-post-type.php:136
 #: includes/generator/class-wpcode-generator-sidebar.php:130
 msgid "Name"
 msgstr ""
 
-#: includes/admin/pages/class-wpcode-admin-page-code-snippets.php:414
-#: includes/admin/pages/class-wpcode-code-snippets-table.php:639
+#: includes/admin/pages/class-wpcode-admin-page-code-snippets.php:539
+#: includes/admin/pages/class-wpcode-code-snippets-table.php:673
 msgid "Created"
 msgstr ""
 
-#: includes/admin/pages/class-wpcode-admin-page-code-snippets.php:415
-#: includes/admin/pages/class-wpcode-code-snippets-table.php:640
+#: includes/admin/pages/class-wpcode-admin-page-code-snippets.php:540
+#: includes/admin/pages/class-wpcode-code-snippets-table.php:674
 msgid "Last Updated"
 msgstr ""
 
-#: includes/admin/pages/class-wpcode-admin-page-code-snippets.php:416
+#: includes/admin/pages/class-wpcode-admin-page-code-snippets.php:541
 #: includes/admin/pages/class-wpcode-admin-page-snippet-manager.php:1045
-#: includes/admin/pages/class-wpcode-code-snippets-table.php:644
+#: includes/admin/pages/class-wpcode-code-snippets-table.php:678
 #: includes/generator/class-wpcode-generator-hooks.php:1360
 msgid "Priority"
 msgstr ""
 
-#: includes/admin/pages/class-wpcode-admin-page-code-snippets.php:422
+#: includes/admin/pages/class-wpcode-admin-page-code-snippets.php:547
 msgid "Ascending"
 msgstr ""
 
-#: includes/admin/pages/class-wpcode-admin-page-code-snippets.php:423
+#: includes/admin/pages/class-wpcode-admin-page-code-snippets.php:548
 msgid "Descending"
 msgstr ""
 
@@ -1600,7 +1622,7 @@ msgid "Almost Done"
 msgstr ""
 
 #: includes/admin/pages/class-wpcode-admin-page-settings.php:432
-#: includes/admin/pages/class-wpcode-code-snippets-table.php:444
+#: includes/admin/pages/class-wpcode-code-snippets-table.php:462
 msgid "Activate"
 msgstr ""
 
@@ -1859,14 +1881,14 @@ msgid "Insert Method"
 msgstr ""
 
 #: includes/admin/pages/class-wpcode-admin-page-snippet-manager.php:610
-#: includes/admin/pages/class-wpcode-code-snippets-table.php:638
+#: includes/admin/pages/class-wpcode-code-snippets-table.php:672
 #: includes/lite/conditional-logic/class-wpcode-conditional-location.php:70
 msgid "Location"
 msgstr ""
 
 #: includes/admin/pages/class-wpcode-admin-page-snippet-manager.php:614
 #: includes/admin/pages/class-wpcode-admin-page-snippet-manager.php:672
-#: includes/admin/pages/class-wpcode-code-snippets-table.php:642
+#: includes/admin/pages/class-wpcode-code-snippets-table.php:676
 #: includes/class-wpcode-admin-bar-info.php:283
 msgid "Shortcode"
 msgstr ""
@@ -1983,13 +2005,13 @@ msgstr ""
 
 #: includes/admin/pages/class-wpcode-admin-page-snippet-manager.php:1195
 #: includes/admin/pages/class-wpcode-admin-page-tools.php:369
-#: includes/admin/pages/class-wpcode-code-snippets-table.php:966
+#: includes/admin/pages/class-wpcode-code-snippets-table.php:1044
 msgid "Active"
 msgstr ""
 
 #: includes/admin/pages/class-wpcode-admin-page-snippet-manager.php:1198
 #: includes/admin/pages/class-wpcode-admin-page-tools.php:370
-#: includes/admin/pages/class-wpcode-code-snippets-table.php:969
+#: includes/admin/pages/class-wpcode-code-snippets-table.php:1047
 msgid "Inactive"
 msgstr ""
 
@@ -2065,22 +2087,6 @@ msgstr ""
 
 #: includes/admin/pages/class-wpcode-admin-page-snippet-manager.php:1739
 msgid "Upgrade to PRO today and unlock powerful scheduling options to limit when your snippet is active on the site."
-msgstr ""
-
-#: includes/admin/pages/class-wpcode-admin-page-snippet-manager.php:1741
-msgid "Blocks snippets is a Pro Feature"
-msgstr ""
-
-#: includes/admin/pages/class-wpcode-admin-page-snippet-manager.php:1742
-msgid "Upgrade to PRO today and unlock building snippets using the Gutenberg Block Editor. Create templates using blocks and use the full power of WPCode to insert them in your site."
-msgstr ""
-
-#: includes/admin/pages/class-wpcode-admin-page-snippet-manager.php:1745
-msgid "SCSS snippets is a Pro Feature"
-msgstr ""
-
-#: includes/admin/pages/class-wpcode-admin-page-snippet-manager.php:1746
-msgid "Upgrade to PRO today and unlock editing snippets using SCSS code with optimized compiling directly in the WordPress admin."
 msgstr ""
 
 #: includes/admin/pages/class-wpcode-admin-page-snippet-manager.php:1749
@@ -2238,7 +2244,7 @@ msgid "This snippet first threw an error at %1$s on %2$s (%3$s ago)."
 msgstr ""
 
 #: includes/admin/pages/class-wpcode-admin-page-snippet-manager.php:2307
-#: includes/class-wpcode-snippet-execute.php:607
+#: includes/class-wpcode-snippet-execute.php:615
 msgid "Error message:"
 msgstr ""
 
@@ -2326,7 +2332,7 @@ msgid "Export Code Snippets"
 msgstr ""
 
 #: includes/admin/pages/class-wpcode-admin-page-tools.php:212
-#: includes/admin/pages/class-wpcode-code-snippets-table.php:647
+#: includes/admin/pages/class-wpcode-code-snippets-table.php:681
 #: includes/generator/class-wpcode-generator-post-status.php:111
 msgid "Status"
 msgstr ""
@@ -2336,7 +2342,7 @@ msgid "Code type"
 msgstr ""
 
 #: includes/admin/pages/class-wpcode-admin-page-tools.php:222
-#: includes/admin/pages/class-wpcode-code-snippets-table.php:641
+#: includes/admin/pages/class-wpcode-code-snippets-table.php:675
 msgid "Tags"
 msgstr ""
 
@@ -2374,7 +2380,7 @@ msgid "Available Snippets"
 msgstr ""
 
 #: includes/admin/pages/class-wpcode-admin-page-tools.php:287
-#: includes/admin/pages/class-wpcode-code-snippets-table.php:459
+#: includes/admin/pages/class-wpcode-code-snippets-table.php:477
 msgid "No snippets found."
 msgstr ""
 
@@ -2397,7 +2403,7 @@ msgid "Congrats, the import process has finished! We have successfully imported 
 msgstr ""
 
 #: includes/admin/pages/class-wpcode-admin-page-tools.php:368
-#: includes/admin/pages/class-wpcode-code-snippets-table.php:963
+#: includes/admin/pages/class-wpcode-code-snippets-table.php:1041
 msgid "All"
 msgstr ""
 
@@ -2440,7 +2446,7 @@ msgid "Snippets data cannot be imported."
 msgstr ""
 
 #: includes/admin/pages/class-wpcode-admin-page-tools.php:680
-#: includes/admin/pages/class-wpcode-code-snippets-table.php:382
+#: includes/admin/pages/class-wpcode-code-snippets-table.php:400
 msgid "Edit"
 msgstr ""
 
@@ -2490,7 +2496,7 @@ msgid "Search docs"
 msgstr ""
 
 #: includes/admin/pages/class-wpcode-admin-page.php:261
-#: includes/admin/pages/class-wpcode-code-snippets-table.php:868
+#: includes/admin/pages/class-wpcode-code-snippets-table.php:985
 msgid "Clear"
 msgstr ""
 
@@ -2599,85 +2605,85 @@ msgid "Connect your website with WPCode Library and get instant access to FREE c
 msgstr ""
 
 #. Translators: This is the format for displaying the date in the admin list, [date] at [time].
-#: includes/admin/pages/class-wpcode-code-snippets-table.php:127
-#: includes/admin/pages/class-wpcode-code-snippets-table.php:136
+#: includes/admin/pages/class-wpcode-code-snippets-table.php:145
+#: includes/admin/pages/class-wpcode-code-snippets-table.php:154
 msgid "%1$s at %2$s"
 msgstr ""
 
 #. Translators: The tag by which to filter the list of snippets in the admin.
-#: includes/admin/pages/class-wpcode-code-snippets-table.php:169
+#: includes/admin/pages/class-wpcode-code-snippets-table.php:187
 msgid "Filter snippets by tag: %s"
 msgstr ""
 
-#: includes/admin/pages/class-wpcode-code-snippets-table.php:229
+#: includes/admin/pages/class-wpcode-code-snippets-table.php:247
 msgid "Toggle Snippet Status"
 msgstr ""
 
 #. Translators: %1$s is the time since the snippet was deactivated, %2$s is the date and time of deactivation.
-#: includes/admin/pages/class-wpcode-code-snippets-table.php:241
+#: includes/admin/pages/class-wpcode-code-snippets-table.php:259
 msgid "This snippet was automatically deactivated because of a fatal error at %2$s on %3$s (%1$s ago)"
 msgstr ""
 
-#: includes/admin/pages/class-wpcode-code-snippets-table.php:249
+#: includes/admin/pages/class-wpcode-code-snippets-table.php:267
 msgid "This snippet threw an error, you can see more details when editing the snippet."
 msgstr ""
 
-#: includes/admin/pages/class-wpcode-code-snippets-table.php:300
-#: includes/admin/pages/class-wpcode-code-snippets-table.php:381
+#: includes/admin/pages/class-wpcode-code-snippets-table.php:318
+#: includes/admin/pages/class-wpcode-code-snippets-table.php:399
 msgid "Edit This Snippet"
 msgstr ""
 
 #. translators: %s: User display name
-#: includes/admin/pages/class-wpcode-code-snippets-table.php:312
+#: includes/admin/pages/class-wpcode-code-snippets-table.php:330
 msgid "%s is currently editing"
 msgstr ""
 
-#: includes/admin/pages/class-wpcode-code-snippets-table.php:354
+#: includes/admin/pages/class-wpcode-code-snippets-table.php:372
 msgid "Restore this snippet"
 msgstr ""
 
-#: includes/admin/pages/class-wpcode-code-snippets-table.php:355
-#: includes/admin/pages/class-wpcode-code-snippets-table.php:438
+#: includes/admin/pages/class-wpcode-code-snippets-table.php:373
+#: includes/admin/pages/class-wpcode-code-snippets-table.php:456
 msgid "Restore"
 msgstr ""
 
-#: includes/admin/pages/class-wpcode-code-snippets-table.php:371
+#: includes/admin/pages/class-wpcode-code-snippets-table.php:389
 msgid "Delete this snippet permanently"
 msgstr ""
 
-#: includes/admin/pages/class-wpcode-code-snippets-table.php:372
-#: includes/admin/pages/class-wpcode-code-snippets-table.php:439
+#: includes/admin/pages/class-wpcode-code-snippets-table.php:390
+#: includes/admin/pages/class-wpcode-code-snippets-table.php:457
 msgid "Delete Permanently"
 msgstr ""
 
-#: includes/admin/pages/class-wpcode-code-snippets-table.php:401
+#: includes/admin/pages/class-wpcode-code-snippets-table.php:419
 msgid "Move this snippet to trash"
 msgstr ""
 
-#: includes/admin/pages/class-wpcode-code-snippets-table.php:402
-#: includes/admin/pages/class-wpcode-code-snippets-table.php:443
-#: includes/admin/pages/class-wpcode-code-snippets-table.php:972
+#: includes/admin/pages/class-wpcode-code-snippets-table.php:420
+#: includes/admin/pages/class-wpcode-code-snippets-table.php:461
+#: includes/admin/pages/class-wpcode-code-snippets-table.php:1050
 msgid "Trash"
 msgstr ""
 
-#: includes/admin/pages/class-wpcode-code-snippets-table.php:421
+#: includes/admin/pages/class-wpcode-code-snippets-table.php:439
 msgid "Duplicate this snippet"
 msgstr ""
 
-#: includes/admin/pages/class-wpcode-code-snippets-table.php:422
+#: includes/admin/pages/class-wpcode-code-snippets-table.php:440
 msgid "Duplicate"
 msgstr ""
 
-#: includes/admin/pages/class-wpcode-code-snippets-table.php:445
+#: includes/admin/pages/class-wpcode-code-snippets-table.php:463
 msgid "Deactivate"
 msgstr ""
 
-#: includes/admin/pages/class-wpcode-code-snippets-table.php:635
+#: includes/admin/pages/class-wpcode-code-snippets-table.php:669
 #: includes/generator/class-wpcode-generator-query.php:298
 msgid "ID"
 msgstr ""
 
-#: includes/admin/pages/class-wpcode-code-snippets-table.php:637
+#: includes/admin/pages/class-wpcode-code-snippets-table.php:671
 #: includes/conditional-logic/class-wpcode-conditional-page.php:152
 #: includes/generator/class-wpcode-generator-post-type.php:378
 #: includes/generator/class-wpcode-generator-query.php:225
@@ -2685,33 +2691,23 @@ msgstr ""
 msgid "Author"
 msgstr ""
 
-#: includes/admin/pages/class-wpcode-code-snippets-table.php:847
-msgid "0 items"
-msgstr ""
+#: includes/admin/pages/class-wpcode-code-snippets-table.php:963
+msgid "%s item"
+msgid_plural "%s items"
+msgstr[0] ""
+msgstr[1] ""
 
-#: includes/admin/pages/class-wpcode-code-snippets-table.php:864
+#: includes/admin/pages/class-wpcode-code-snippets-table.php:981
 #: includes/generator/class-wpcode-generator-hooks.php:1337
 msgid "Filter"
 msgstr ""
 
-#: includes/admin/pages/class-wpcode-code-snippets-table.php:899
-msgid "Filter by code type"
-msgstr ""
-
-#: includes/admin/pages/class-wpcode-code-snippets-table.php:901
-msgid "All types"
-msgstr ""
-
-#: includes/admin/pages/class-wpcode-code-snippets-table.php:941
+#: includes/admin/pages/class-wpcode-code-snippets-table.php:1017
 msgid "Filter by location"
 msgstr ""
 
-#: includes/admin/pages/class-wpcode-code-snippets-table.php:943
+#: includes/admin/pages/class-wpcode-code-snippets-table.php:1019
 msgid "All locations"
-msgstr ""
-
-#: includes/admin/pages/class-wpcode-code-snippets-table.php:975
-msgid "Errors"
 msgstr ""
 
 #: includes/admin/pages/trait-wpcode-my-library-markup.php:230
@@ -3160,91 +3156,91 @@ msgstr ""
 msgid "Learn more about Smart Tags"
 msgstr ""
 
-#: includes/class-wpcode-snippet-execute.php:130
+#: includes/class-wpcode-snippet-execute.php:131
 msgid "HTML Snippet"
 msgstr ""
 
-#: includes/class-wpcode-snippet-execute.php:131
+#: includes/class-wpcode-snippet-execute.php:132
 msgid "Easily insert scripts from other sites or build custom elements using HTML."
 msgstr ""
 
-#: includes/class-wpcode-snippet-execute.php:136
+#: includes/class-wpcode-snippet-execute.php:138
 msgid "Text Snippet"
 msgstr ""
 
-#: includes/class-wpcode-snippet-execute.php:137
+#: includes/class-wpcode-snippet-execute.php:139
 msgid "Create reusable text snippets that you can visually format in a familiar editor."
 msgstr ""
 
-#: includes/class-wpcode-snippet-execute.php:141
+#: includes/class-wpcode-snippet-execute.php:144
 msgid "Blocks Snippet (PRO)"
 msgstr ""
 
-#: includes/class-wpcode-snippet-execute.php:143
+#: includes/class-wpcode-snippet-execute.php:146
 msgid "Use the Block Editor to create components that you can insert anywhere in your site."
 msgstr ""
 
-#: includes/class-wpcode-snippet-execute.php:147
+#: includes/class-wpcode-snippet-execute.php:151
 msgid "CSS Snippet"
 msgstr ""
 
-#: includes/class-wpcode-snippet-execute.php:148
+#: includes/class-wpcode-snippet-execute.php:152
 msgid "Write CSS styles directly in WPCode and easily customize how your website looks."
 msgstr ""
 
-#: includes/class-wpcode-snippet-execute.php:152
+#: includes/class-wpcode-snippet-execute.php:157
 msgid "SCSS Snippet (PRO)"
 msgstr ""
 
-#: includes/class-wpcode-snippet-execute.php:154
+#: includes/class-wpcode-snippet-execute.php:159
 msgid "Write SCSS styles directly in WPCode and easily customize how your website looks."
 msgstr ""
 
-#: includes/class-wpcode-snippet-execute.php:158
+#: includes/class-wpcode-snippet-execute.php:164
 msgid "JavaScript Snippet"
 msgstr ""
 
-#: includes/class-wpcode-snippet-execute.php:159
+#: includes/class-wpcode-snippet-execute.php:165
 msgid "Add custom JavaScript code to your site to add interactivity or integrate with other services."
 msgstr ""
 
-#: includes/class-wpcode-snippet-execute.php:163
+#: includes/class-wpcode-snippet-execute.php:170
 msgid "PHP Snippet"
 msgstr ""
 
-#: includes/class-wpcode-snippet-execute.php:164
+#: includes/class-wpcode-snippet-execute.php:171
 msgid "Extend or add functionality using PHP code with full control on where it's executed"
 msgstr ""
 
-#: includes/class-wpcode-snippet-execute.php:168
+#: includes/class-wpcode-snippet-execute.php:176
 msgid "Universal Snippet"
 msgstr ""
 
-#: includes/class-wpcode-snippet-execute.php:169
+#: includes/class-wpcode-snippet-execute.php:177
 msgid "Start writing HTML and add PHP code like you would in a .php file with Universal snippets."
 msgstr ""
 
-#: includes/class-wpcode-snippet-execute.php:557
+#: includes/class-wpcode-snippet-execute.php:565
 msgid "Snippet has not been activated due to an error."
 msgstr ""
 
-#: includes/class-wpcode-snippet-execute.php:561
+#: includes/class-wpcode-snippet-execute.php:569
 msgid "Please click the back button in the browser to update the snippet."
 msgstr ""
 
-#: includes/class-wpcode-snippet-execute.php:564
+#: includes/class-wpcode-snippet-execute.php:572
 msgid "WPCode has detected an error in one of the snippets which has now been automatically deactivated."
 msgstr ""
 
-#: includes/class-wpcode-snippet-execute.php:578
+#: includes/class-wpcode-snippet-execute.php:586
 msgid "View Snippets With Errors"
 msgstr ""
 
-#: includes/class-wpcode-snippet-execute.php:592
+#: includes/class-wpcode-snippet-execute.php:600
 msgid "View error logs"
 msgstr ""
 
-#: includes/class-wpcode-snippet-execute.php:601
+#: includes/class-wpcode-snippet-execute.php:609
 msgid "Enable error logging"
 msgstr ""
 
