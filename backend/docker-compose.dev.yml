@@ -1,0 +1,11 @@
+services:
+  jdc-orders-db:
+    ports:
+      - "3306:3306"  # Expose DB port to host
+  #
+  # nextjs:
+  #   build:
+  #     dockerfile: ../backend/Dockerfile.dev
+  #   environment:
+  #     - DATABASE_URL=mysql://${MYSQL_NEXTJS_USER}:${MYSQL_NEXTJS_PASSWORD}@localhost:3306/${MYSQL_NEXTJS_DATABASE}
+  #   network_mode: "host"

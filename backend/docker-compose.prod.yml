@@ -1,0 +1,22 @@
+services:
+  # nextjs:
+  #   build:
+  #     dockerfile: ../backend/Dockerfile.prod
+  #   environment:
+  #     - DATABASE_URL=mysql://${MYSQL_NEXTJS_USER}:${MYSQL_NEXTJS_PASSWORD}@jdc-orders-db:3306/${MYSQL_NEXTJS_DATABASE}
+  #   networks:
+  #     - jdc-network
+  nextjs:
+    build:
+      context: ../frontend/
+      dockerfile: ../backend/Dockerfile.prod
+    container_name: jdc-nextjs
+    restart: unless-stopped
+    ports:
+      - "3000:3000"
+    environment:
+      - DATABASE_URL=mysql://${MYSQL_NEXTJS_USER}:${MYSQL_NEXTJS_PASSWORD}@jdc-orders-db:3306/${MYSQL_NEXTJS_DATABASE}
+    depends_on:
+      - jdc-orders-db
+    networks:
+      - jdc-network
