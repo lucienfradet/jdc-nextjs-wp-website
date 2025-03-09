@@ -62,8 +62,15 @@ services:
     # No ports exposed to host - internal only
     volumes:
       - jdc-orders-data:/var/lib/mysql
+      - ./jdc-orders-db/my.cnf:/etc/mysql/conf.d/my.cnf
+      - ./jdc-orders-db/init:/docker-entrypoint-initdb.d
     networks:
       - jdc-network
+    healthcheck:
+      test: ["CMD", "mysqladmin", "ping", "-h", "localhost", "-u", "root", "-p${MYSQL_NEXTJS_ROOT_PASSWORD}"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
 
   # nextjs:
   #   build:
