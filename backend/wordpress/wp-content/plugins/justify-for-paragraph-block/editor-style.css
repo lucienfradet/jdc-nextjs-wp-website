@@ -1,0 +1,13 @@
+/**
+ * Justify for Paragraph Block - Styles
+ * 
+ * CSS styles for text justification in paragraph blocks
+ * 
+ * @package JustifyForParagraphBlock
+ * @since 1.0.0
+ */
+
+/* Apply text justification to paragraph blocks */
+.wp-block-paragraph.has-text-align-justify {
+    text-align: justify; /* Full justification of text */
+}

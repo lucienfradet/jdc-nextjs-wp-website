@@ -4,7 +4,7 @@ Tags: online store, ecommerce, shop, shopping cart, sell online
 Requires at least: 6.6
 Tested up to: 6.7
 Requires PHP: 7.4
-Stable tag: 9.6.1
+Stable tag: 9.7.0
 License: GPLv3
 License URI: https://www.gnu.org/licenses/gpl-3.0.html
 
@@ -169,11 +169,13 @@ WooCommerce comes with some sample data you can use to see how products look; im
 
 == Changelog ==
 
-= 9.6.2 2025-02-13 =
+= 9.7.1 2025-03-04 =
 
 **WooCommerce**
 
-* Fix - Return secondary color CSS variable to its original color [#55366](https://github.com/woocommerce/woocommerce/pull/55366)
+* Fix - Remove decodeEntities from the product name used on cart & checkout [#56048](https://github.com/woocommerce/woocommerce/pull/56048)
+* Fix - Improved shortcode cart and checkout coupon notices by appending elements instead of text. [#56047](https://github.com/woocommerce/woocommerce/pull/56047)
+* Update - Replaced concatenated string-based HTML elements in JS with createElement(). [#56047](https://github.com/woocommerce/woocommerce/pull/56047)
 
 
 [See changelog for all versions](https://raw.githubusercontent.com/woocommerce/woocommerce/trunk/changelog.txt).

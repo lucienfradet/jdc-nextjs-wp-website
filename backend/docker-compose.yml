@@ -28,10 +28,15 @@ services:
       WORDPRESS_DB_NAME: jdc_db
       WORDPRESS_HOME: ${WORDPRESS_HOME}
       WORDPRESS_SITEURL: ${WORDPRESS_SITEURL}
+      WORDPRESS_CONFIG_EXTRA: |
+        define('WP_ALTERNATE_HOST', 'jdc-wp-app');
+        define('ALTERNATE_WP_HTTP_HOST', 'jdc-wp-app');
     volumes:
       - ./wordpress/wp-content:/var/www/html/wp-content
       - ./wordpress/upload.ini:/usr/local/etc/php/conf.d/uploads.ini
       - ./wordpress/wp-config.php:/var/www/html/wp-config.php
+      - ./wordpress/cron-setup:/cron-setup
+    entrypoint: ["/cron-setup/entrypoint.sh"]
     networks:
       - wp-network
 
@@ -59,6 +64,7 @@ services:
       MYSQL_DATABASE: ${MYSQL_NEXTJS_DATABASE}
       MYSQL_USER: ${MYSQL_NEXTJS_USER}
       MYSQL_PASSWORD: ${MYSQL_NEXTJS_PASSWORD}
+      TZ: America/New_York
     # No ports exposed to host - internal only
     volumes:
       - jdc-orders-data:/var/lib/mysql

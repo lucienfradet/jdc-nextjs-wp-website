@@ -25,18 +25,18 @@
 
 // a helper function to lookup "env_FILE", "env", then fallback
 if (!function_exists('getenv_docker')) {
-	// https://github.com/docker-library/wordpress/issues/588 (WP-CLI will load this file 2x)
-	function getenv_docker($env, $default) {
-		if ($fileEnv = getenv($env . '_FILE')) {
-			return rtrim(file_get_contents($fileEnv), "\r\n");
-		}
-		else if (($val = getenv($env)) !== false) {
-			return $val;
-		}
-		else {
-			return $default;
-		}
-	}
+    // https://github.com/docker-library/wordpress/issues/588 (WP-CLI will load this file 2x)
+    function getenv_docker($env, $default) {
+        if ($fileEnv = getenv($env . '_FILE')) {
+            return rtrim(file_get_contents($fileEnv), "\r\n");
+        }
+        else if (($val = getenv($env)) !== false) {
+            return $val;
+        }
+        else {
+            return $default;
+        }
+    }
 }
 
 // ** Database settings - You can get this info from your web host ** //
@@ -116,25 +116,46 @@ $table_prefix = getenv_docker('WORDPRESS_TABLE_PREFIX', 'wp_');
 define( 'WP_DEBUG', !!getenv_docker('WORDPRESS_DEBUG', '') );
 
 /* Add any custom values between this line and the "stop editing" line. */
+define('WP_HOME', getenv('WORDPRESS_HOME') ?: 'http://127.0.0.1:8443');
+define('WP_SITEURL', getenv('WORDPRESS_SITEURL') ?: 'http://127.0.0.1:8443');
 
 // If we're behind a proxy server and using HTTPS, we need to alert WordPress of that fact
 // see also https://wordpress.org/support/article/administration-over-ssl/#using-a-reverse-proxy
 if (isset($_SERVER['HTTP_X_FORWARDED_PROTO']) && strpos($_SERVER['HTTP_X_FORWARDED_PROTO'], 'https') !== false) {
-	$_SERVER['HTTPS'] = 'on';
+    $_SERVER['HTTPS'] = 'on';
+    $_SERVER['SERVER_PORT'] = 443;
 }
 // (we include this by default because reverse proxying is extremely common in container environments)
 
 if ($configExtra = getenv_docker('WORDPRESS_CONFIG_EXTRA', '')) {
-	eval($configExtra);
+    eval($configExtra);
 }
 
-define('WP_HOME', getenv('WORDPRESS_HOME') ?: 'http://localhost:8080');
-define('WP_SITEURL', getenv('WORDPRESS_SITEURL') ?: 'http://localhost:8080');
+// Fix for the loopback issue - allows internal requests to use the external URL
+define('WP_ALTERNATE_HOST', 'jdc-wp-app'); // Add this to allow internal container name
+
+define('MAILPOET_SITE_ADDRESS', getenv('WORDPRESS_HOME') ?: 'http://127.0.0.1:8443');
+
+// Disable direct file editing for security in headless mode
+define('DISALLOW_FILE_EDIT', true);
+
+define('DISABLE_WP_CRON', true);
+
+// Increase cron timeout to avoid issues with complex cron tasks
+define('WP_CRON_LOCK_TIMEOUT', 120);
+
+// Add alternate ways for WordPress to reach itself
+define('WP_ALTERNATE_WP_CRON_DOMAIN', 'jdc-wp-app');
+
+// Set constants to help with loopback requests
+define('WP_HTTP_BLOCK_EXTERNAL', false);
+define('WP_ACCESSIBLE_HOSTS', '*.wordpress.org,*.w.org,*.wordpress.com,localhost,jdc-wp-app');
+
 /* That's all, stop editing! Happy publishing. */
 
 /** Absolute path to the WordPress directory. */
 if ( ! defined( 'ABSPATH' ) ) {
-	define( 'ABSPATH', __DIR__ . '/' );
+    define( 'ABSPATH', __DIR__ . '/' );
 }
 
 /** Sets up WordPress vars and included files. */

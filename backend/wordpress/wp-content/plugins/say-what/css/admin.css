@@ -1,0 +1,126 @@
+.wp-list-table .column-orig_string,
+.wp-list-table .column-replacement_string {
+    width: 26%;
+}
+
+.wp-list-table .column-domain,
+.wp-list-table .column-context {
+    width: 18%;
+}
+
+.wp-list-table .edit_links,
+.wp-list-table .delete_links {
+    width: 6%;
+}
+
+.saywhat_label_container {
+    margin: 1.5em 0 -0.5em 0;
+    font-weight: 600;
+    font-size: 110%;
+}
+
+.saywhat_label_container .dashicons {
+    text-decoration: none;
+}
+
+.saywhat-gopro {
+    float: right;
+    box-sizing: border-box;
+    padding: 1em 1em 0.5em 1em;
+    width: 45%;
+    background-color: #fff;
+    border: 1px solid #ccc;
+}
+
+.saywhat-gopro h1 {
+    text-align: center;
+}
+
+.swp-cpw {
+    width: 55%;
+    float: left;
+    box-sizing: border-box;
+    padding: 0 1em 0 0;
+    box-sizing: border-box;
+}
+
+
+.swp-cpw .swp-img-container {
+    width: 100%;
+    display:block;
+}
+
+.swp-cpw img {
+    width: 100%;
+}
+
+.swp-cpw .swp-intro-container {
+    display:block;
+}
+
+@media screen and (max-width: 782px) {
+    .swp-cpw .swp-img-container {
+        display: none;
+    }
+    .swp-cpw .swp-intro-container {
+        width: 100%;
+    }
+}
+
+.swp-intro {
+    font-weight: bold;
+    font-size: large;
+    text-align: center;
+}
+
+/** General button styles **/
+.swp-cpw .button, .saywhat-gopro .button {
+    font-weight: bold;
+    font-size: larger;
+    text-align: center;
+    display: block;
+    white-space: inherit;
+    margin: 4px;
+    color: #fff !important;
+    text-decoration: none;
+    padding: 8px 6px 10px 6px;
+    line-height: 1.5;
+}
+
+/** Tree button colours **/
+.swp-cpw .button {
+    background-color: #28c382;
+    border-color: #0c9e77;
+}
+.swp-cpw .button:hover, .swp-cpw .button:active, .swp-cpw .button:focus {
+    background-color: #0c9e77;
+    border-color: #0c9e77;
+}
+
+/** Upgrade button colours **/
+.saywhat-gopro .button {
+    background-color: #de8220;
+    border-color: #bb6d1b;
+}
+.saywhat-gopro .button:hover, .saywhat-gopro .button:active, .saywhat-gopro .button:focus {
+    background-color: #f6ab5c;
+    border-color: #de8220;
+}
+
+
+.swp-cpw .swp-content-container {
+    clear: both;
+    padding-top: 0.5em;
+}
+
+.saywhat-gopro h2 {
+    margin-top: 0;
+}
+
+.swp-upgrades-wrapper {
+    margin-top: -1.5em;
+}
+
+.swp-upgrades-wrapper hr {
+    margin-bottom: 2em;
+}

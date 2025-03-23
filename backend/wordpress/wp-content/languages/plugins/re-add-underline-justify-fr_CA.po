@@ -1,0 +1,61 @@
+# Translation of Plugins - Re-add text underline and justify - Stable (latest release) in French (Canada)
+# This file is distributed under the same license as the Plugins - Re-add text underline and justify - Stable (latest release) package.
+msgid ""
+msgstr ""
+"PO-Revision-Date: 2020-02-01 03:14:37+0000\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=n > 1;\n"
+"X-Generator: GlotPress/4.0.0-rc.1\n"
+"Language: fr_CA\n"
+"Project-Id-Version: Plugins - Re-add text underline and justify - Stable (latest release)\n"
+
+#. Description of the plugin
+#: re-add-underline-justify.php
+msgid "Re-adds the Editor text underline & justify buttons in the WYSIWYG removed in WordPress 4.7. Works with Classic Editor, ACF and Gutenberg."
+msgstr "Ajoute les boutons souligner & justifier dans l'éditeur de texte retirés depuis WordPress 4.7. Fonctionne avec Classic Editor, ACF et Gutenberg."
+
+#. Author URI of the plugin
+#: re-add-underline-justify.php
+msgid "https://www.b-website.com/"
+msgstr "https://www.b-website.com/"
+
+#: re-add-underline-justify.php:135
+msgid "Re-add justify only"
+msgstr "Ajouter uniquement le bouton justifier"
+
+#. Author of the plugin
+#: re-add-underline-justify.php
+msgid "Brice Capobianco"
+msgstr "Brice Capobianco"
+
+#. Plugin URI of the plugin
+#: re-add-underline-justify.php
+msgid "https://www.b-website.com/re-add-text-underline-and-justify"
+msgstr "https://www.b-website.com/re-add-text-underline-and-justify"
+
+#. Plugin Name of the plugin
+#: re-add-underline-justify.php
+msgid "Re-add text underline and justify"
+msgstr "Ajouter le texte souligné et jusitifé"
+
+#: re-add-underline-justify.php:133
+msgid "Without underline & justify buttons"
+msgstr "Ajouter les boutons souligner & justifier"
+
+#: re-add-underline-justify.php:134
+msgid "Default - Re-add underline & justify buttons"
+msgstr "Par défaut - sans les boutons souligner & justifier"
+
+#: re-add-underline-justify.php:102
+msgid "Editor style"
+msgstr "Style de l’éditeur"
+
+#: re-add-underline-justify.php:49
+msgid "Donate to this plugin &#187;"
+msgstr "Faire un don pour cette extension »"
+
+#: re-add-underline-justify.php:48
+msgid "More b*web Plugins"
+msgstr "Plus d’extensions b*web"

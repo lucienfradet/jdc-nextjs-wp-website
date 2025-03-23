@@ -27,7 +27,7 @@ DELETE FROM mysql.db WHERE Db='test' OR Db='test\\_%';
 GRANT ALL PRIVILEGES ON \`${MYSQL_DATABASE}\`.* TO '${MYSQL_USER}'@'%';
 
 -- Grant GLOBAL permissions required specifically for Prisma migrations
-GRANT CREATE, DROP, REFERENCES, ALTER ON *.* TO '${MYSQL_USER}'@'%';
+GRANT CREATE, DROP, REFERENCES, ALTER, INDEX ON *.* TO '${MYSQL_USER}'@'%';
 
 -- Remove privileges that the app doesn't need
 REVOKE SUPER, PROCESS, FILE, RELOAD, SHUTDOWN, REPLICATION CLIENT, REPLICATION SLAVE 
