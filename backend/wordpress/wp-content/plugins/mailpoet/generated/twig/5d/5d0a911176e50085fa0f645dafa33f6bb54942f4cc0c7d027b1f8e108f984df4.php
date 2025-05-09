@@ -371,23 +371,26 @@ class __TwigTemplate_8581a8ede6c645c86df82d14a0f9727da4ff92aa0bb85d1970f9d521978
   <script type=\"text/javascript\">
     DocsBotAI.init({
       id: \"TqTdebbGjJeUjrmBIFjh/kzFE5FBebBJiSJ2Tm0nR\",
-      // We want to redirect users to the proper page depending on their plan
-      supportCallback: function (event, history) {
+      options: {
         ";
-            // line 200
+            // line 199
             if (($context["has_premium_support"] ?? null)) {
-                // line 201
-                yield "          const mailpoet_redirect_support_link = 'https://www.mailpoet.com/support/premium/';
+                // line 200
+                yield "          supportLink: 'https://www.mailpoet.com/support/premium/',
         ";
             } else {
-                // line 203
-                yield "          const mailpoet_redirect_support_link = 'https://wordpress.org/support/plugin/mailpoet/';
+                // line 202
+                yield "          supportLink: 'https://wordpress.org/support/plugin/mailpoet/',
+          labels: {
+            getSupport: \"";
+                // line 204
+                yield $this->env->getRuntime('MailPoetVendor\Twig\Runtime\EscaperRuntime')->escape($this->env->getRuntime('MailPoetVendor\Twig\Runtime\EscaperRuntime')->escape($this->extensions['MailPoet\Twig\I18n']->translate("Get help in the forum", "mailpoet"), "js"), "html", null, true);
+                yield "\"
+          }
         ";
             }
-            // line 205
-            yield "        event.preventDefault(); // Prevent default behavior opening the url.
-        window.open(mailpoet_redirect_support_link, '_blank');
-      },
+            // line 207
+            yield "      },
     }).then(() => {
         // stopping propagation to avoid conflicts with other keydown events form WP.com
       function writingFixer (e) {
@@ -488,7 +491,7 @@ class __TwigTemplate_8581a8ede6c645c86df82d14a0f9727da4ff92aa0bb85d1970f9d521978
      */
     public function getDebugInfo()
     {
-        return array (  461 => 187,  454 => 32,  447 => 30,  441 => 33,  439 => 32,  436 => 31,  434 => 30,  417 => 15,  413 => 14,  406 => 11,  399 => 217,  385 => 205,  381 => 203,  377 => 201,  375 => 200,  367 => 194,  365 => 193,  362 => 192,  358 => 190,  356 => 189,  353 => 188,  351 => 187,  347 => 185,  345 => 113,  341 => 111,  335 => 109,  333 => 108,  328 => 106,  324 => 105,  320 => 104,  316 => 103,  312 => 102,  308 => 101,  304 => 100,  300 => 99,  296 => 98,  292 => 97,  288 => 96,  284 => 95,  280 => 94,  276 => 93,  272 => 92,  268 => 91,  264 => 90,  260 => 89,  256 => 88,  252 => 87,  248 => 86,  244 => 85,  240 => 84,  236 => 83,  232 => 82,  226 => 79,  222 => 78,  218 => 77,  213 => 75,  209 => 74,  205 => 73,  201 => 72,  197 => 71,  193 => 70,  189 => 69,  185 => 68,  181 => 67,  177 => 66,  173 => 65,  169 => 64,  165 => 63,  161 => 62,  157 => 61,  153 => 60,  149 => 59,  143 => 56,  139 => 55,  135 => 54,  131 => 53,  127 => 52,  123 => 51,  119 => 50,  115 => 49,  111 => 48,  107 => 47,  103 => 46,  99 => 45,  95 => 44,  91 => 43,  87 => 42,  83 => 41,  79 => 40,  75 => 39,  71 => 38,  67 => 37,  63 => 35,  61 => 14,  57 => 12,  55 => 11,  43 => 1,);
+        return array (  464 => 187,  457 => 32,  450 => 30,  444 => 33,  442 => 32,  439 => 31,  437 => 30,  420 => 15,  416 => 14,  409 => 11,  402 => 217,  390 => 207,  384 => 204,  380 => 202,  376 => 200,  374 => 199,  367 => 194,  365 => 193,  362 => 192,  358 => 190,  356 => 189,  353 => 188,  351 => 187,  347 => 185,  345 => 113,  341 => 111,  335 => 109,  333 => 108,  328 => 106,  324 => 105,  320 => 104,  316 => 103,  312 => 102,  308 => 101,  304 => 100,  300 => 99,  296 => 98,  292 => 97,  288 => 96,  284 => 95,  280 => 94,  276 => 93,  272 => 92,  268 => 91,  264 => 90,  260 => 89,  256 => 88,  252 => 87,  248 => 86,  244 => 85,  240 => 84,  236 => 83,  232 => 82,  226 => 79,  222 => 78,  218 => 77,  213 => 75,  209 => 74,  205 => 73,  201 => 72,  197 => 71,  193 => 70,  189 => 69,  185 => 68,  181 => 67,  177 => 66,  173 => 65,  169 => 64,  165 => 63,  161 => 62,  157 => 61,  153 => 60,  149 => 59,  143 => 56,  139 => 55,  135 => 54,  131 => 53,  127 => 52,  123 => 51,  119 => 50,  115 => 49,  111 => 48,  107 => 47,  103 => 46,  99 => 45,  95 => 44,  91 => 43,  87 => 42,  83 => 41,  79 => 40,  75 => 39,  71 => 38,  67 => 37,  63 => 35,  61 => 14,  57 => 12,  55 => 11,  43 => 1,);
     }
 
     public function getSourceContext()

@@ -15,9 +15,11 @@ use MailPoet\Automation\Engine\Data\StepValidationArgs;
 use MailPoet\Automation\Engine\Exceptions\NotFoundException;
 use MailPoet\Automation\Engine\Integration\Action;
 use MailPoet\Automation\Engine\Integration\ValidationException;
+use MailPoet\Automation\Engine\WordPress;
 use MailPoet\Automation\Integrations\MailPoet\Payloads\SegmentPayload;
 use MailPoet\Automation\Integrations\MailPoet\Payloads\SubscriberPayload;
 use MailPoet\Automation\Integrations\WooCommerce\Payloads\AbandonedCartPayload;
+use MailPoet\Automation\Integrations\WooCommerce\Payloads\OrderPayload;
 use MailPoet\Entities\NewsletterEntity;
 use MailPoet\Entities\NewsletterOptionEntity;
 use MailPoet\Entities\NewsletterOptionFieldEntity;
@@ -27,6 +29,7 @@ use MailPoet\InvalidStateException;
 use MailPoet\Newsletter\NewslettersRepository;
 use MailPoet\Newsletter\Options\NewsletterOptionFieldsRepository;
 use MailPoet\Newsletter\Options\NewsletterOptionsRepository;
+use MailPoet\Newsletter\Renderer\Blocks\DynamicProductsBlock;
 use MailPoet\Newsletter\Scheduler\AutomationEmailScheduler;
 use MailPoet\Segments\SegmentsRepository;
 use MailPoet\Settings\SettingsController;
@@ -101,6 +104,8 @@ class SendEmailAction implements Action {
 
   private NewsletterOptionFieldsRepository $newsletterOptionFieldsRepository;
 
+  private WordPress $wp;
+
   public function __construct(
     AutomationController $automationController,
     SettingsController $settings,
@@ -110,7 +115,8 @@ class SendEmailAction implements Action {
     SegmentsRepository $segmentsRepository,
     AutomationEmailScheduler $automationEmailScheduler,
     NewsletterOptionsRepository $newsletterOptionsRepository,
-    NewsletterOptionFieldsRepository $newsletterOptionFieldsRepository
+    NewsletterOptionFieldsRepository $newsletterOptionFieldsRepository,
+    WordPress $wp
   ) {
     $this->automationController = $automationController;
     $this->settings = $settings;
@@ -121,6 +127,7 @@ class SendEmailAction implements Action {
     $this->automationEmailScheduler = $automationEmailScheduler;
     $this->newsletterOptionsRepository = $newsletterOptionsRepository;
     $this->newsletterOptionFieldsRepository = $newsletterOptionFieldsRepository;
+    $this->wp = $wp;
   }
 
   public function getKey(): string {
@@ -351,7 +358,27 @@ class SendEmailAction implements Action {
       $meta[AbandonedCart::TASK_META_NAME] = $payload->getProductIds();
     }
 
-    return $meta;
+    if ($this->automationHasWooCommerceTrigger($args->getAutomation())) {
+      try {
+        // Handle Order payload - get product IDs and cross-sell IDs
+        $orderPayload = $args->getSinglePayloadByClass(OrderPayload::class);
+        $orderProductIds = $orderPayload->getProductIds();
+        $crossSellIds = $orderPayload->getCrossSellIds();
+
+        if (!empty($orderProductIds)) {
+          $meta[DynamicProductsBlock::ORDER_PRODUCTS_META_NAME] = array_unique($orderProductIds);
+        }
+
+        if (!empty($crossSellIds)) {
+          $meta[DynamicProductsBlock::ORDER_CROSS_SELL_PRODUCTS_META_NAME] = array_unique($crossSellIds);
+        }
+      } catch (NotFoundException $e) {
+        // No OrderPayload found, continue
+      }
+    }
+
+    // Allow premium features to modify meta data
+    return (array)$this->wp->applyFilters('mailpoet_automation_send_email_action_meta', $meta, $args);
   }
 
   private function getSubscriber(StepRunArgs $args): SubscriberEntity {

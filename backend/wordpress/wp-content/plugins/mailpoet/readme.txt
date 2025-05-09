@@ -1,9 +1,9 @@
 === MailPoet - Newsletters, Email Marketing, and Automation ===
 Contributors: mailpoet, woocommerce, automattic
 Tags: email marketing, post notification, woocommerce emails, email automation, newsletter
-Requires at least: 6.6
-Tested up to: 6.7
-Stable tag: 5.10.0
+Requires at least: 6.7
+Tested up to: 6.8
+Stable tag: 5.11.0
 Requires PHP: 7.4
 License: GPLv3
 License URI: https://www.gnu.org/licenses/gpl-3.0.html
@@ -222,7 +222,9 @@ Check our [Knowledge Base](https://kb.mailpoet.com) or contact us through our [s
 
 == Changelog ==
 
-= 5.10.0 - 2025-03-18 =
-* Added: "created via" field to order-based automations.
+= 5.11.0 - 2025-04-22 =
+* Added: Dynamic Products block in email editor. Useful in automations to render order products, cross-sells, abandoned cart content, or selected categories or tags;
+* Updated: minimum required WordPress version to 6.7 and tested up to version to 6.8;
+* Updated: minimum required WooCommerce version to 9.7.1 and tested up to version to 9.8.1.
 
 [See the changelog for all versions.](https://github.com/mailpoet/mailpoet/blob/trunk/mailpoet/changelog.txt)

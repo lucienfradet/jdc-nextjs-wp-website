@@ -309,7 +309,7 @@ class __TwigTemplate_a838e20a344c13456f38a89e45cd006dfbd7a3effc10476a46866ec2011
     <hr class=\"mailpoet_separator\" />
 
     <div class=\"mailpoet_form_field\">
-        <div class=\"mailpoet_form_field_title mailpoet_form_field_title_small\">";
+        <div class=\"mailpoet_form_field_title\">";
         // line 182
         yield $this->extensions['MailPoet\Twig\I18n']->translate("\"Buy now\" text");
         yield "</div>
@@ -347,7 +347,7 @@ class __TwigTemplate_a838e20a344c13456f38a89e45cd006dfbd7a3effc10476a46866ec2011
     <hr class=\"mailpoet_separator\" />
 
     <div class=\"mailpoet_form_field\">
-        <div class=\"mailpoet_form_field_title mailpoet_form_field_title_small mailpoet_form_field_title_inline\">";
+        <div class=\"mailpoet_form_field_title\">";
         // line 208
         yield $this->extensions['MailPoet\Twig\I18n']->translate("Show divider between products");
         yield "</div>
@@ -369,7 +369,7 @@ class __TwigTemplate_a838e20a344c13456f38a89e45cd006dfbd7a3effc10476a46866ec2011
         yield "
             </label>
         </div>
-        <div class=\"mailpoet_form_field_input_option\">
+        <div>
             <a href=\"javascript:;\" class=\"mailpoet_products_select_divider\">";
         // line 222
         yield $this->extensions['MailPoet\Twig\I18n']->translate("Select divider");

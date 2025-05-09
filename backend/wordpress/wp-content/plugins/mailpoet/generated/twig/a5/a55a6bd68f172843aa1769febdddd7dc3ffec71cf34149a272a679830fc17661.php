@@ -314,7 +314,7 @@ class __TwigTemplate_cd01f7185dd0d7e17c724aeebb70949dd844805e176c8702c46453d27d2
         yield "<br />
             </label>
         </div>
-        <div class=\"mailpoet_form_field_title mailpoet_form_field_title_small\">";
+        <div class=\"mailpoet_form_field_title\">";
         // line 184
         yield $this->extensions['MailPoet\Twig\I18n']->translate("Preceded by:");
         yield "</div>
@@ -355,7 +355,7 @@ class __TwigTemplate_cd01f7185dd0d7e17c724aeebb70949dd844805e176c8702c46453d27d2
         yield "
             </label>
         </div>
-        <div class=\"mailpoet_form_field_title mailpoet_form_field_title_small\">";
+        <div class=\"mailpoet_form_field_title\">";
         // line 210
         yield $this->extensions['MailPoet\Twig\I18n']->translate("Preceded by:");
         yield "</div>
@@ -367,7 +367,7 @@ class __TwigTemplate_cd01f7185dd0d7e17c724aeebb70949dd844805e176c8702c46453d27d2
     <hr class=\"mailpoet_separator\" />
 
     <div class=\"mailpoet_form_field\">
-        <div class=\"mailpoet_form_field_title mailpoet_form_field_title_small\">";
+        <div class=\"mailpoet_form_field_title\">";
         // line 219
         yield $this->extensions['MailPoet\Twig\I18n']->translate("\"Read more\" text");
         yield "</div>
@@ -407,7 +407,7 @@ class __TwigTemplate_cd01f7185dd0d7e17c724aeebb70949dd844805e176c8702c46453d27d2
 
 <div class=\"mailpoet_posts_non_title_list_options {{#ifCond model.displayType '==' 'titleOnly'}}{{#ifCond model.titleFormat '==' 'ul'}}mailpoet_hidden{{/ifCond}}{{/ifCond}}\">
     <div class=\"mailpoet_form_field\">
-        <div class=\"mailpoet_form_field_title mailpoet_form_field_title_small mailpoet_form_field_title_inline\">";
+        <div class=\"mailpoet_form_field_title\">";
         // line 247
         yield $this->extensions['MailPoet\Twig\I18n']->translate("Show divider between posts");
         yield "</div>
@@ -429,7 +429,7 @@ class __TwigTemplate_cd01f7185dd0d7e17c724aeebb70949dd844805e176c8702c46453d27d2
         yield "
             </label>
         </div>
-        <div class=\"mailpoet_form_field_input_option\">
+        <div>
             <a href=\"javascript:;\" class=\"mailpoet_posts_select_divider\">";
         // line 261
         yield $this->extensions['MailPoet\Twig\I18n']->translate("Select divider");

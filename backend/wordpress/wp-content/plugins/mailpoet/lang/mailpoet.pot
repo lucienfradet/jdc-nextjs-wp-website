@@ -2,14 +2,14 @@
 # This file is distributed under the same license as the MailPoet plugin.
 msgid ""
 msgstr ""
-"Project-Id-Version: MailPoet 5.10.0\n"
+"Project-Id-Version: MailPoet 5.11.0\n"
 "Report-Msgid-Bugs-To: http://support.mailpoet.com/\n"
 "Last-Translator: MailPoet i18n (https://www.transifex.com/organization/wysija)\n"
 "Language-Team: MailPoet i18n <https://www.transifex.com/organization/wysija>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2025-03-18T06:47:28+00:00\n"
+"POT-Creation-Date: 2025-04-22T22:15:06+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.10.0\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
@@ -41,6 +41,8 @@ msgstr ""
 #: views/newsletter/templates/blocks/automatedLatestContent/settings.hbs:281
 #: views/newsletter/templates/blocks/automatedLatestContentLayout/settings.hbs:126
 #: views/newsletter/templates/blocks/automatedLatestContentLayout/settings.hbs:313
+#: views/newsletter/templates/blocks/dynamicProducts/settings.hbs:150
+#: views/newsletter/templates/blocks/dynamicProducts/settings.hbs:289
 #: views/newsletter/templates/blocks/posts/settingsDisplayOptions.hbs:79
 #: views/newsletter/templates/blocks/posts/settingsDisplayOptions.hbs:251
 #: views/newsletter/templates/blocks/products/settingsDisplayOptions.hbs:73
@@ -67,6 +69,9 @@ msgstr ""
 #: views/newsletter/templates/blocks/automatedLatestContentLayout/settings.hbs:215
 #: views/newsletter/templates/blocks/automatedLatestContentLayout/settings.hbs:241
 #: views/newsletter/templates/blocks/automatedLatestContentLayout/settings.hbs:319
+#: views/newsletter/templates/blocks/dynamicProducts/settings.hbs:156
+#: views/newsletter/templates/blocks/dynamicProducts/settings.hbs:251
+#: views/newsletter/templates/blocks/dynamicProducts/settings.hbs:295
 #: views/newsletter/templates/blocks/posts/settingsDisplayOptions.hbs:85
 #: views/newsletter/templates/blocks/posts/settingsDisplayOptions.hbs:169
 #: views/newsletter/templates/blocks/posts/settingsDisplayOptions.hbs:195
@@ -302,6 +307,7 @@ msgstr ""
 #: views/newsletter/templates/blocks/container/settings.hbs:47
 #: views/newsletter/templates/blocks/coupon/settings.hbs:114
 #: views/newsletter/templates/blocks/divider/settings.hbs:37
+#: views/newsletter/templates/blocks/dynamicProducts/settings.hbs:306
 #: views/newsletter/templates/blocks/footer/settings.hbs:66
 #: views/newsletter/templates/blocks/header/settings.hbs:67
 #: views/newsletter/templates/blocks/image/settings.hbs:87
@@ -639,8 +645,8 @@ msgid "Select the list that you want to add"
 msgstr ""
 
 #: views/form/editor.html:164
-#: views/newsletter/editor.html:1080
-#: views/newsletter/editor.html:1081
+#: views/newsletter/editor.html:1102
+#: views/newsletter/editor.html:1103
 #: views/segments/translations.html:80
 #: views/segments/translations.html:121
 #: views/subscription/manage_subscription.html:9
@@ -1152,6 +1158,7 @@ msgstr ""
 #: views/newsletter/templates/blocks/automatedLatestContentLayout/settings.hbs:43
 #: views/newsletter/templates/blocks/container/settings.hbs:23
 #: views/newsletter/templates/blocks/coupon/settings.hbs:110
+#: views/newsletter/templates/blocks/dynamicProducts/settings.hbs:71
 #: views/newsletter/templates/blocks/posts/settings.hbs:7
 #: views/newsletter/templates/blocks/products/settings.hbs:7
 msgid "Display options"
@@ -1160,17 +1167,20 @@ msgstr ""
 #: views/newsletter/templates/blocks/abandonedCartContent/settingsDisplayOptions.hbs:5
 #: views/newsletter/templates/blocks/automatedLatestContent/settings.hbs:64
 #: views/newsletter/templates/blocks/automatedLatestContentLayout/settings.hbs:66
+#: views/newsletter/templates/blocks/dynamicProducts/settings.hbs:82
 #: views/newsletter/templates/blocks/posts/settingsDisplayOptions.hbs:17
 #: views/newsletter/templates/blocks/products/settingsDisplayOptions.hbs:5
 msgid "Title only"
 msgstr ""
 
 #: views/newsletter/templates/blocks/abandonedCartContent/settingsDisplayOptions.hbs:11
+#: views/newsletter/templates/blocks/dynamicProducts/settings.hbs:88
 #: views/newsletter/templates/blocks/products/settingsDisplayOptions.hbs:11
 msgid "Title and a short description"
 msgstr ""
 
 #: views/newsletter/templates/blocks/abandonedCartContent/settingsDisplayOptions.hbs:17
+#: views/newsletter/templates/blocks/dynamicProducts/settings.hbs:94
 #: views/newsletter/templates/blocks/products/settingsDisplayOptions.hbs:17
 msgid "Title and description"
 msgstr ""
@@ -1178,6 +1188,7 @@ msgstr ""
 #: views/newsletter/templates/blocks/abandonedCartContent/settingsDisplayOptions.hbs:25
 #: views/newsletter/templates/blocks/automatedLatestContent/settings.hbs:70
 #: views/newsletter/templates/blocks/automatedLatestContentLayout/settings.hbs:72
+#: views/newsletter/templates/blocks/dynamicProducts/settings.hbs:102
 #: views/newsletter/templates/blocks/posts/settingsDisplayOptions.hbs:25
 #: views/newsletter/templates/blocks/products/settingsDisplayOptions.hbs:25
 msgid "Title Format"
@@ -1186,6 +1197,7 @@ msgstr ""
 #: views/newsletter/templates/blocks/abandonedCartContent/settingsDisplayOptions.hbs:29
 #: views/newsletter/templates/blocks/automatedLatestContent/settings.hbs:74
 #: views/newsletter/templates/blocks/automatedLatestContentLayout/settings.hbs:76
+#: views/newsletter/templates/blocks/dynamicProducts/settings.hbs:106
 #: views/newsletter/templates/blocks/posts/settingsDisplayOptions.hbs:29
 #: views/newsletter/templates/blocks/products/settingsDisplayOptions.hbs:29
 #: views/newsletter/templates/components/sidebar/styles.hbs:72
@@ -1195,6 +1207,7 @@ msgstr ""
 #: views/newsletter/templates/blocks/abandonedCartContent/settingsDisplayOptions.hbs:35
 #: views/newsletter/templates/blocks/automatedLatestContent/settings.hbs:80
 #: views/newsletter/templates/blocks/automatedLatestContentLayout/settings.hbs:82
+#: views/newsletter/templates/blocks/dynamicProducts/settings.hbs:112
 #: views/newsletter/templates/blocks/posts/settingsDisplayOptions.hbs:35
 #: views/newsletter/templates/blocks/products/settingsDisplayOptions.hbs:35
 #: views/newsletter/templates/components/sidebar/styles.hbs:101
@@ -1204,6 +1217,7 @@ msgstr ""
 #: views/newsletter/templates/blocks/abandonedCartContent/settingsDisplayOptions.hbs:41
 #: views/newsletter/templates/blocks/automatedLatestContent/settings.hbs:86
 #: views/newsletter/templates/blocks/automatedLatestContentLayout/settings.hbs:88
+#: views/newsletter/templates/blocks/dynamicProducts/settings.hbs:118
 #: views/newsletter/templates/blocks/posts/settingsDisplayOptions.hbs:41
 #: views/newsletter/templates/blocks/products/settingsDisplayOptions.hbs:41
 #: views/newsletter/templates/components/sidebar/styles.hbs:130
@@ -1213,6 +1227,7 @@ msgstr ""
 #: views/newsletter/templates/blocks/abandonedCartContent/settingsDisplayOptions.hbs:47
 #: views/newsletter/templates/blocks/automatedLatestContent/settings.hbs:98
 #: views/newsletter/templates/blocks/automatedLatestContentLayout/settings.hbs:100
+#: views/newsletter/templates/blocks/dynamicProducts/settings.hbs:124
 #: views/newsletter/templates/blocks/posts/settingsDisplayOptions.hbs:53
 #: views/newsletter/templates/blocks/products/settingsDisplayOptions.hbs:47
 msgid "Title Alignment"
@@ -1225,6 +1240,8 @@ msgstr ""
 #: views/newsletter/templates/blocks/automatedLatestContentLayout/settings.hbs:168
 #: views/newsletter/templates/blocks/button/settings.hbs:27
 #: views/newsletter/templates/blocks/coupon/settings.hbs:11
+#: views/newsletter/templates/blocks/dynamicProducts/settings.hbs:128
+#: views/newsletter/templates/blocks/dynamicProducts/settings.hbs:193
 #: views/newsletter/templates/blocks/footer/settings.hbs:48
 #: views/newsletter/templates/blocks/header/settings.hbs:49
 #: views/newsletter/templates/blocks/image/settings.hbs:69
@@ -1240,6 +1257,7 @@ msgstr ""
 #: views/newsletter/templates/blocks/automatedLatestContentLayout/settings.hbs:110
 #: views/newsletter/templates/blocks/button/settings.hbs:33
 #: views/newsletter/templates/blocks/coupon/settings.hbs:17
+#: views/newsletter/templates/blocks/dynamicProducts/settings.hbs:134
 #: views/newsletter/templates/blocks/footer/settings.hbs:54
 #: views/newsletter/templates/blocks/header/settings.hbs:55
 #: views/newsletter/templates/blocks/image/settings.hbs:75
@@ -1255,6 +1273,8 @@ msgstr ""
 #: views/newsletter/templates/blocks/automatedLatestContentLayout/settings.hbs:174
 #: views/newsletter/templates/blocks/button/settings.hbs:39
 #: views/newsletter/templates/blocks/coupon/settings.hbs:23
+#: views/newsletter/templates/blocks/dynamicProducts/settings.hbs:140
+#: views/newsletter/templates/blocks/dynamicProducts/settings.hbs:199
 #: views/newsletter/templates/blocks/footer/settings.hbs:60
 #: views/newsletter/templates/blocks/header/settings.hbs:61
 #: views/newsletter/templates/blocks/image/settings.hbs:81
@@ -1266,12 +1286,14 @@ msgid "Right"
 msgstr ""
 
 #: views/newsletter/templates/blocks/abandonedCartContent/settingsDisplayOptions.hbs:106
+#: views/newsletter/templates/blocks/dynamicProducts/settings.hbs:183
 #: views/newsletter/templates/blocks/products/settingsDisplayOptions.hbs:106
 msgid "Product image position"
 msgstr ""
 
 #: views/newsletter/templates/blocks/abandonedCartContent/settingsDisplayOptions.hbs:110
 #: views/newsletter/templates/blocks/automatedLatestContentLayout/settings.hbs:162
+#: views/newsletter/templates/blocks/dynamicProducts/settings.hbs:187
 #: views/newsletter/templates/blocks/posts/settingsDisplayOptions.hbs:117
 #: views/newsletter/templates/blocks/products/settingsDisplayOptions.hbs:110
 msgid "Centered"
@@ -1279,6 +1301,7 @@ msgstr ""
 
 #: views/newsletter/templates/blocks/abandonedCartContent/settingsDisplayOptions.hbs:128
 #: views/newsletter/templates/blocks/automatedLatestContentLayout/settings.hbs:180
+#: views/newsletter/templates/blocks/dynamicProducts/settings.hbs:205
 #: views/newsletter/templates/blocks/posts/settingsDisplayOptions.hbs:135
 #: views/newsletter/templates/blocks/products/settingsDisplayOptions.hbs:128
 msgid "Alternate"
@@ -1287,6 +1310,7 @@ msgstr ""
 #: views/newsletter/templates/blocks/abandonedCartContent/settingsDisplayOptions.hbs:134
 #: views/newsletter/templates/blocks/automatedLatestContent/settings.hbs:154
 #: views/newsletter/templates/blocks/automatedLatestContentLayout/settings.hbs:186
+#: views/newsletter/templates/blocks/dynamicProducts/settings.hbs:211
 #: views/newsletter/templates/blocks/posts/settingsDisplayOptions.hbs:141
 #: views/newsletter/templates/blocks/products/settingsDisplayOptions.hbs:134
 msgid "None"
@@ -1295,6 +1319,7 @@ msgstr ""
 #: views/newsletter/templates/blocks/abandonedCartContent/settingsDisplayOptions.hbs:140
 #: views/newsletter/templates/blocks/automatedLatestContent/settings.hbs:161
 #: views/newsletter/templates/blocks/automatedLatestContentLayout/settings.hbs:193
+#: views/newsletter/templates/blocks/dynamicProducts/settings.hbs:217
 #: views/newsletter/templates/blocks/posts/settingsDisplayOptions.hbs:147
 #: views/newsletter/templates/blocks/products/settingsDisplayOptions.hbs:140
 msgid "Image width"
@@ -1303,6 +1328,7 @@ msgstr ""
 #: views/newsletter/templates/blocks/abandonedCartContent/settingsDisplayOptions.hbs:144
 #: views/newsletter/templates/blocks/automatedLatestContent/settings.hbs:165
 #: views/newsletter/templates/blocks/automatedLatestContentLayout/settings.hbs:197
+#: views/newsletter/templates/blocks/dynamicProducts/settings.hbs:221
 #: views/newsletter/templates/blocks/posts/settingsDisplayOptions.hbs:151
 #: views/newsletter/templates/blocks/products/settingsDisplayOptions.hbs:144
 msgid "Full width"
@@ -1311,12 +1337,14 @@ msgstr ""
 #: views/newsletter/templates/blocks/abandonedCartContent/settingsDisplayOptions.hbs:150
 #: views/newsletter/templates/blocks/automatedLatestContent/settings.hbs:171
 #: views/newsletter/templates/blocks/automatedLatestContentLayout/settings.hbs:203
+#: views/newsletter/templates/blocks/dynamicProducts/settings.hbs:227
 #: views/newsletter/templates/blocks/posts/settingsDisplayOptions.hbs:157
 #: views/newsletter/templates/blocks/products/settingsDisplayOptions.hbs:150
 msgid "Padded"
 msgstr ""
 
 #: views/newsletter/templates/blocks/abandonedCartContent/settingsDisplayOptions.hbs:158
+#: views/newsletter/templates/blocks/dynamicProducts/settings.hbs:235
 #: views/newsletter/templates/blocks/products/settingsDisplayOptions.hbs:158
 #: views/newsletter/templates/blocks/woocommerceContent/completed_order.hbs:19
 #: views/newsletter/templates/blocks/woocommerceContent/customer_note.hbs:21
@@ -1329,6 +1357,7 @@ msgstr ""
 #: views/newsletter/templates/blocks/automatedLatestContent/settings.hbs:221
 #: views/newsletter/templates/blocks/automatedLatestContentLayout/settings.hbs:227
 #: views/newsletter/templates/blocks/automatedLatestContentLayout/settings.hbs:253
+#: views/newsletter/templates/blocks/dynamicProducts/settings.hbs:239
 #: views/newsletter/templates/blocks/posts/settingsDisplayOptions.hbs:181
 #: views/newsletter/templates/blocks/posts/settingsDisplayOptions.hbs:207
 #: views/newsletter/templates/blocks/products/settingsDisplayOptions.hbs:162
@@ -1340,6 +1369,7 @@ msgstr ""
 #: views/newsletter/templates/blocks/automatedLatestContent/settings.hbs:215
 #: views/newsletter/templates/blocks/automatedLatestContentLayout/settings.hbs:221
 #: views/newsletter/templates/blocks/automatedLatestContentLayout/settings.hbs:247
+#: views/newsletter/templates/blocks/dynamicProducts/settings.hbs:245
 #: views/newsletter/templates/blocks/posts/settingsDisplayOptions.hbs:175
 #: views/newsletter/templates/blocks/posts/settingsDisplayOptions.hbs:201
 #: views/newsletter/templates/blocks/products/settingsDisplayOptions.hbs:168
@@ -1347,6 +1377,7 @@ msgid "Above text"
 msgstr ""
 
 #: views/newsletter/templates/blocks/abandonedCartContent/settingsDisplayOptions.hbs:182
+#: views/newsletter/templates/blocks/dynamicProducts/settings.hbs:285
 #: views/newsletter/templates/blocks/products/settingsDisplayOptions.hbs:208
 msgid "Show divider between products"
 msgstr ""
@@ -1354,30 +1385,35 @@ msgstr ""
 #: views/newsletter/templates/blocks/abandonedCartContent/settingsDisplayOptions.hbs:196
 #: views/newsletter/templates/blocks/automatedLatestContent/settings.hbs:291
 #: views/newsletter/templates/blocks/automatedLatestContentLayout/settings.hbs:323
+#: views/newsletter/templates/blocks/dynamicProducts/settings.hbs:299
 #: views/newsletter/templates/blocks/posts/settingsDisplayOptions.hbs:261
 #: views/newsletter/templates/blocks/products/settingsDisplayOptions.hbs:222
 msgid "Select divider"
 msgstr ""
 
 #: views/newsletter/templates/blocks/abandonedCartContent/settingsDisplayOptions.hbs:69
+#: views/newsletter/templates/blocks/dynamicProducts/settings.hbs:146
 #: views/newsletter/templates/blocks/products/settingsDisplayOptions.hbs:69
 msgctxt "Display the product title into a link"
 msgid "Make the product title into a link"
 msgstr ""
 
 #: views/newsletter/templates/blocks/abandonedCartContent/settingsDisplayOptions.hbs:87
+#: views/newsletter/templates/blocks/dynamicProducts/settings.hbs:164
 #: views/newsletter/templates/blocks/products/settingsDisplayOptions.hbs:87
 msgctxt "Setting in the email designer to position an ecommerce product title"
 msgid "Product title position"
 msgstr ""
 
 #: views/newsletter/templates/blocks/abandonedCartContent/settingsDisplayOptions.hbs:91
+#: views/newsletter/templates/blocks/dynamicProducts/settings.hbs:168
 #: views/newsletter/templates/blocks/products/settingsDisplayOptions.hbs:91
 msgctxt "Display the product title above the product block"
 msgid "Above the product"
 msgstr ""
 
 #: views/newsletter/templates/blocks/abandonedCartContent/settingsDisplayOptions.hbs:97
+#: views/newsletter/templates/blocks/dynamicProducts/settings.hbs:174
 #: views/newsletter/templates/blocks/products/settingsDisplayOptions.hbs:97
 msgctxt "Display the product title above the product description"
 msgid "Above the product description"
@@ -1395,6 +1431,7 @@ msgstr ""
 
 #: views/newsletter/templates/blocks/automatedLatestContent/settings.hbs:4
 #: views/newsletter/templates/blocks/automatedLatestContentLayout/settings.hbs:4
+#: views/newsletter/templates/blocks/dynamicProducts/settings.hbs:4
 msgid "Show max:"
 msgstr ""
 
@@ -1419,16 +1456,19 @@ msgstr ""
 
 #: views/newsletter/templates/blocks/automatedLatestContent/settings.hbs:26
 #: views/newsletter/templates/blocks/automatedLatestContentLayout/settings.hbs:26
+#: views/newsletter/templates/blocks/dynamicProducts/settings.hbs:53
 msgid "Include"
 msgstr ""
 
 #: views/newsletter/templates/blocks/automatedLatestContent/settings.hbs:32
 #: views/newsletter/templates/blocks/automatedLatestContentLayout/settings.hbs:32
+#: views/newsletter/templates/blocks/dynamicProducts/settings.hbs:59
 msgid "Exclude"
 msgstr ""
 
 #: views/newsletter/templates/blocks/automatedLatestContent/settings.hbs:45
 #: views/newsletter/templates/blocks/automatedLatestContentLayout/settings.hbs:45
+#: views/newsletter/templates/blocks/dynamicProducts/settings.hbs:73
 msgid "Hide display options"
 msgstr ""
 
@@ -1499,17 +1539,18 @@ msgstr ""
 #: views/newsletter/templates/blocks/automatedLatestContent/settings.hbs:237
 #: views/newsletter/templates/blocks/automatedLatestContentLayout/settings.hbs:269
 #: views/newsletter/templates/blocks/button/settings.hbs:14
+#: views/newsletter/templates/blocks/dynamicProducts/settings.hbs:263
 #: views/newsletter/templates/blocks/image/settings.hbs:4
 #: views/newsletter/templates/blocks/posts/settingsDisplayOptions.hbs:223
 #: views/newsletter/templates/blocks/products/settingsDisplayOptions.hbs:186
-#: views/newsletter/editor.html:1061
-#: views/newsletter/editor.html:1066
-#: views/newsletter/editor.html:1071
-#: views/newsletter/editor.html:1076
-#: views/newsletter/editor.html:1086
-#: views/newsletter/editor.html:1091
-#: views/newsletter/editor.html:1096
-#: views/newsletter/editor.html:1101
+#: views/newsletter/editor.html:1083
+#: views/newsletter/editor.html:1088
+#: views/newsletter/editor.html:1093
+#: views/newsletter/editor.html:1098
+#: views/newsletter/editor.html:1108
+#: views/newsletter/editor.html:1113
+#: views/newsletter/editor.html:1118
+#: views/newsletter/editor.html:1123
 #: lib/EmailEditor/Integrations/MailPoet/PersonalizationTagManager.php:76
 #: lib/EmailEditor/Integrations/MailPoet/PersonalizationTagManager.php:82
 #: lib/EmailEditor/Integrations/MailPoet/PersonalizationTagManager.php:88
@@ -1521,14 +1562,16 @@ msgstr ""
 #: views/newsletter/templates/blocks/automatedLatestContentLayout/settings.hbs:275
 #: views/newsletter/templates/blocks/button/settings.hbs:1
 #: views/newsletter/templates/blocks/button/widget.hbs:4
+#: views/newsletter/templates/blocks/dynamicProducts/settings.hbs:269
 #: views/newsletter/templates/blocks/posts/settingsDisplayOptions.hbs:229
 #: views/newsletter/templates/blocks/products/settingsDisplayOptions.hbs:192
-#: views/newsletter/editor.html:1250
+#: views/newsletter/editor.html:1272
 msgid "Button"
 msgstr ""
 
 #: views/newsletter/templates/blocks/automatedLatestContent/settings.hbs:252
 #: views/newsletter/templates/blocks/automatedLatestContentLayout/settings.hbs:284
+#: views/newsletter/templates/blocks/dynamicProducts/settings.hbs:278
 #: views/newsletter/templates/blocks/posts/settingsDisplayOptions.hbs:238
 #: views/newsletter/templates/blocks/products/settingsDisplayOptions.hbs:201
 msgid "Design a button"
@@ -1819,6 +1862,48 @@ msgstr ""
 msgid "Divider"
 msgstr ""
 
+#: views/newsletter/templates/blocks/dynamicProducts/block.hbs:4
+msgid "This is only a preview! Your subscribers will see your latest products."
+msgstr ""
+
+#: views/newsletter/templates/blocks/dynamicProducts/settings.hbs:1
+#: views/newsletter/templates/blocks/products/settings.hbs:1
+msgid "Product selection"
+msgstr ""
+
+#: views/newsletter/templates/blocks/dynamicProducts/settings.hbs:8
+#: views/newsletter/templates/blocks/products/widget.hbs:4
+#: lib/Automation/Integrations/WooCommerce/Fields/OrderFieldsFactory.php:270
+#: assets/dist/js/commons.js:9
+#: assets/dist/js/newsletter_editor.js:2
+msgid "Products"
+msgstr ""
+
+#: views/newsletter/templates/blocks/dynamicProducts/settings.hbs:18
+msgid "Order products"
+msgstr ""
+
+#: views/newsletter/templates/blocks/dynamicProducts/settings.hbs:24
+msgid "Cross-sell products"
+msgstr ""
+
+#: views/newsletter/templates/blocks/dynamicProducts/settings.hbs:30
+msgid "Abandoned cart products"
+msgstr ""
+
+#: views/newsletter/templates/blocks/dynamicProducts/settings.hbs:36
+msgid "Selected products"
+msgstr ""
+
+#: views/newsletter/templates/blocks/dynamicProducts/settings.hbs:259
+#: views/newsletter/templates/blocks/products/settingsDisplayOptions.hbs:182
+msgid "\"Buy now\" text"
+msgstr ""
+
+#: views/newsletter/templates/blocks/dynamicProducts/widget.hbs:4
+msgid "Dynamic Products"
+msgstr ""
+
 #: views/newsletter/templates/blocks/footer/settings.hbs:1
 #: views/newsletter/templates/blocks/footer/widget.hbs:4
 msgid "Footer"
@@ -1924,23 +2009,8 @@ msgstr ""
 msgid "No posts available"
 msgstr ""
 
-#: views/newsletter/templates/blocks/products/settings.hbs:1
-msgid "Product selection"
-msgstr ""
-
-#: views/newsletter/templates/blocks/products/settingsDisplayOptions.hbs:182
-msgid "\"Buy now\" text"
-msgstr ""
-
 #: views/newsletter/templates/blocks/products/settingsSelectionEmpty.hbs:1
 msgid "No products available"
-msgstr ""
-
-#: views/newsletter/templates/blocks/products/widget.hbs:4
-#: lib/Automation/Integrations/WooCommerce/Fields/OrderFieldsFactory.php:270
-#: assets/dist/js/commons.js:9
-#: assets/dist/js/newsletter_editor.js:2
-msgid "Products"
 msgstr ""
 
 #: views/newsletter/templates/blocks/social/settings.hbs:1
@@ -2440,22 +2510,22 @@ msgstr ""
 msgid "Template name"
 msgstr ""
 
-#: views/newsletter/editor.html:356
+#: views/newsletter/editor.html:368
 #: lib/Config/Menu.php:255
 msgid "Newsletter Editor"
 msgstr ""
 
-#: views/newsletter/editor.html:1075
+#: views/newsletter/editor.html:1097
 msgid "Website"
 msgstr ""
 
-#: views/newsletter/editor.html:1100
+#: views/newsletter/editor.html:1122
 msgid "Custom"
 msgstr ""
 
-#: views/newsletter/editor.html:1151
-#: views/newsletter/editor.html:1206
-#: views/newsletter/editor.html:1335
+#: views/newsletter/editor.html:1173
+#: views/newsletter/editor.html:1228
+#: views/newsletter/editor.html:1412
 #: lib/Config/PopulatorData/Templates/KidsClothing.php:1282
 #: lib/Config/PopulatorData/Templates/KidsClothing.php:1342
 #: lib/Config/PopulatorData/Templates/KidsClothing.php:1463
@@ -2463,20 +2533,20 @@ msgstr ""
 msgid "Author:"
 msgstr ""
 
-#: views/newsletter/editor.html:1153
-#: views/newsletter/editor.html:1208
-#: views/newsletter/editor.html:1337
+#: views/newsletter/editor.html:1175
+#: views/newsletter/editor.html:1230
+#: views/newsletter/editor.html:1414
 #: lib/Config/PopulatorData/Templates/KidsClothing.php:1285
 #: lib/Config/PopulatorData/Templates/PostNotificationsBlank1Column.php:169
 msgid "Categories:"
 msgstr ""
 
-#: views/newsletter/editor.html:1155
-#: views/newsletter/editor.html:1157
-#: views/newsletter/editor.html:1210
-#: views/newsletter/editor.html:1212
-#: views/newsletter/editor.html:1339
-#: views/newsletter/editor.html:1341
+#: views/newsletter/editor.html:1177
+#: views/newsletter/editor.html:1179
+#: views/newsletter/editor.html:1232
+#: views/newsletter/editor.html:1234
+#: views/newsletter/editor.html:1416
+#: views/newsletter/editor.html:1418
 #: lib/Config/PopulatorData/Templates/KidsClothing.php:1327
 #: lib/Config/PopulatorData/Templates/KidsClothing.php:1330
 #: lib/Config/PopulatorData/Templates/KidsClothing.php:1387
@@ -2487,7 +2557,7 @@ msgstr ""
 msgid "Read more"
 msgstr ""
 
-#: views/newsletter/editor.html:1292
+#: views/newsletter/editor.html:1369
 #: lib/Config/PopulatorData/Templates/AppWelcome.php:319
 #: lib/Config/PopulatorData/Templates/Avocado.php:654
 #: lib/Config/PopulatorData/Templates/Avocado.php:863
@@ -2624,7 +2694,7 @@ msgstr ""
 msgid "Unsubscribe"
 msgstr ""
 
-#: views/newsletter/editor.html:1292
+#: views/newsletter/editor.html:1369
 #: lib/Config/PopulatorData/Templates/ConfirmInterestBeforeDeactivation.php:163
 #: lib/EmailEditor/Integrations/MailPoet/Templates/Library/Newsletter.php:76
 #: lib/Newsletter/Shortcodes/ShortcodesHelper.php:102
@@ -2632,7 +2702,7 @@ msgstr ""
 msgid "Manage subscription"
 msgstr ""
 
-#: views/newsletter/editor.html:1292
+#: views/newsletter/editor.html:1369
 #: lib/Config/PopulatorData/Templates/Avocado.php:654
 #: lib/Config/PopulatorData/Templates/Avocado.php:863
 #: lib/Config/PopulatorData/Templates/Birds.php:1349
@@ -2753,23 +2823,23 @@ msgstr ""
 msgid "Add your postal address here!"
 msgstr ""
 
-#: views/newsletter/editor.html:1312
+#: views/newsletter/editor.html:1389
 msgid "An image of..."
 msgstr ""
 
-#: views/newsletter/editor.html:1448
+#: views/newsletter/editor.html:1525
 msgid "Facebook"
 msgstr ""
 
-#: views/newsletter/editor.html:1459
+#: views/newsletter/editor.html:1536
 msgid "Twitter"
 msgstr ""
 
-#: views/newsletter/editor.html:1472
+#: views/newsletter/editor.html:1549
 msgid "Edit this to insert text."
 msgstr ""
 
-#: views/newsletter/editor.html:1475
+#: views/newsletter/editor.html:1552
 #: lib/Config/PopulatorData/Templates/Avocado.php:999
 #: lib/Config/PopulatorData/Templates/Birds.php:209
 #: lib/Config/PopulatorData/Templates/Birds.php:1730
@@ -2865,8 +2935,8 @@ msgstr ""
 msgid "View this in your browser."
 msgstr ""
 
-#: views/newsletter/editor.html:1392
-#: views/newsletter/editor.html:1394
+#: views/newsletter/editor.html:1469
+#: views/newsletter/editor.html:1471
 msgctxt "Text of a button which links to an ecommerce product page"
 msgid "Buy now"
 msgstr ""
@@ -2950,6 +3020,7 @@ msgstr ""
 #: views/segments/translations.html:15
 #: views/subscribers/importExport/import.html:118
 #: views/subscribers/subscribers.html:55
+#: views/subscription/admin_user_status_field.html:12
 #: lib/Automation/Integrations/MailPoet/Fields/SubscriberFieldsFactory.php:112
 #: lib/Subscribers/SubscriberListingRepository.php:232
 #: lib/Subscription/ManageSubscriptionFormRenderer.php:180
@@ -2967,6 +3038,7 @@ msgstr ""
 #: views/segments/translations.html:17
 #: views/subscribers/importExport/import.html:119
 #: views/subscribers/subscribers.html:56
+#: views/subscription/admin_user_status_field.html:23
 #: lib/Automation/Integrations/MailPoet/Fields/SubscriberFieldsFactory.php:120
 #: lib/Subscribers/SubscriberListingRepository.php:242
 #: lib/Subscription/ManageSubscriptionFormRenderer.php:188
@@ -4697,6 +4769,14 @@ msgctxt "Table column label for count of subscriber actions"
 msgid "Count"
 msgstr ""
 
+#: views/subscription/admin_user_status_field.html:6
+msgid "MailPoet Subscriber Status"
+msgstr ""
+
+#: views/subscription/admin_user_status_field.html:17
+msgid "Unconfirmed (will receive a confirmation email)"
+msgstr ""
+
 #: views/subscription/confirm_unsubscribe.html:3
 msgid "Simply click on this link to stop receiving emails from us."
 msgstr ""
@@ -5660,6 +5740,10 @@ msgstr ""
 msgid "Today"
 msgstr ""
 
+#: views/layout.html:204
+msgid "Get help in the forum"
+msgstr ""
+
 #: views/layout.html:120
 #: assets/dist/js/commons.js:9
 msgctxt "In the last step, before sending a newsletter. URL: ?page=mailpoet-newsletters#/send/2"
@@ -5898,7 +5982,7 @@ msgid "Activate MailPoet Sending Service"
 msgstr ""
 
 #: views/settings_translations.html:2
-#: lib/Config/Hooks.php:579
+#: lib/Config/Hooks.php:586
 #: lib/Config/Menu.php:428
 #: lib/Config/Menu.php:429
 #: assets/dist/js/admin.js:2
@@ -8399,77 +8483,77 @@ msgid "matches regex"
 msgstr ""
 
 #. translators: automation action title
-#: lib/Automation/Integrations/MailPoet/Actions/SendEmailAction.php:129
-#: lib/Automation/Integrations/MailPoet/Actions/SendEmailAction.php:142
+#: lib/Automation/Integrations/MailPoet/Actions/SendEmailAction.php:136
+#: lib/Automation/Integrations/MailPoet/Actions/SendEmailAction.php:149
 #: assets/dist/js/commons.js:9
 msgid "Send email"
 msgstr ""
 
-#: lib/Automation/Integrations/MailPoet/Actions/SendEmailAction.php:143
+#: lib/Automation/Integrations/MailPoet/Actions/SendEmailAction.php:150
 #: assets/dist/js/admin.js:2
 #: assets/dist/js/commons.js:9
 #: assets/dist/js/email_editor_integration/email_editor_integration.js:1
 msgid "Subject"
 msgstr ""
 
-#: lib/Automation/Integrations/MailPoet/Actions/SendEmailAction.php:170
+#: lib/Automation/Integrations/MailPoet/Actions/SendEmailAction.php:177
 msgid "Cannot send the email because it was not found. Please, go to the automation editor and update the email contents."
 msgstr ""
 
-#: lib/Automation/Integrations/MailPoet/Actions/SendEmailAction.php:174
+#: lib/Automation/Integrations/MailPoet/Actions/SendEmailAction.php:181
 msgid "Automation email not found."
 msgstr ""
 
 #. translators: %s is the ID of email.
-#: lib/Automation/Integrations/MailPoet/Actions/SendEmailAction.php:179
-#: lib/Automation/Integrations/MailPoet/Actions/SendEmailAction.php:508
+#: lib/Automation/Integrations/MailPoet/Actions/SendEmailAction.php:186
+#: lib/Automation/Integrations/MailPoet/Actions/SendEmailAction.php:535
 msgid "Automation email with ID '%s' not found."
 msgstr ""
 
 #. translators: %s is the subscriber's status.
-#: lib/Automation/Integrations/MailPoet/Actions/SendEmailAction.php:195
-#: lib/Automation/Integrations/MailPoet/Actions/SendEmailAction.php:267
+#: lib/Automation/Integrations/MailPoet/Actions/SendEmailAction.php:202
+#: lib/Automation/Integrations/MailPoet/Actions/SendEmailAction.php:274
 msgid "Cannot send the email because the subscriber's status is '%s'."
 msgstr ""
 
-#: lib/Automation/Integrations/MailPoet/Actions/SendEmailAction.php:244
+#: lib/Automation/Integrations/MailPoet/Actions/SendEmailAction.php:251
 msgid "Could not create sending task."
 msgstr ""
 
 #. translators: %s is the type of $data.
-#: lib/Automation/Integrations/MailPoet/Actions/SendEmailAction.php:286
+#: lib/Automation/Integrations/MailPoet/Actions/SendEmailAction.php:293
 msgid "Invalid automation step data. Array expected, got: %s"
 msgstr ""
 
 #. translators: %s is the type of $runId.
-#: lib/Automation/Integrations/MailPoet/Actions/SendEmailAction.php:294
+#: lib/Automation/Integrations/MailPoet/Actions/SendEmailAction.php:301
 msgid "Invalid automation step data. Expected 'run_id' to be an integer, got: %s"
 msgstr ""
 
 #. translators: %s is the type of $runId.
-#: lib/Automation/Integrations/MailPoet/Actions/SendEmailAction.php:302
+#: lib/Automation/Integrations/MailPoet/Actions/SendEmailAction.php:309
 msgid "Invalid automation step data. Expected 'step_id' to be a string, got: %s"
 msgstr ""
 
-#: lib/Automation/Integrations/MailPoet/Actions/SendEmailAction.php:312
+#: lib/Automation/Integrations/MailPoet/Actions/SendEmailAction.php:319
 msgid "Email failed to schedule."
 msgstr ""
 
 #. translators: %s is the error message.
-#: lib/Automation/Integrations/MailPoet/Actions/SendEmailAction.php:319
+#: lib/Automation/Integrations/MailPoet/Actions/SendEmailAction.php:326
 msgid "Email failed to send. Error: %s"
 msgstr ""
 
-#: lib/Automation/Integrations/MailPoet/Actions/SendEmailAction.php:328
+#: lib/Automation/Integrations/MailPoet/Actions/SendEmailAction.php:335
 msgid "Email sending process timed out."
 msgstr ""
 
-#: lib/Automation/Integrations/MailPoet/Actions/SendEmailAction.php:382
+#: lib/Automation/Integrations/MailPoet/Actions/SendEmailAction.php:409
 msgid "Cannot send the email because the list was not found."
 msgstr ""
 
 #. translators: %s is the name of the list.
-#: lib/Automation/Integrations/MailPoet/Actions/SendEmailAction.php:385
+#: lib/Automation/Integrations/MailPoet/Actions/SendEmailAction.php:412
 msgid "Cannot send the email because the subscriber is not subscribed to the '%s' list."
 msgstr ""
 
@@ -9236,11 +9320,11 @@ msgstr ""
 msgid "MailPoet version update is in progress, please refresh the page in a minute."
 msgstr ""
 
-#: lib/Config/Hooks.php:563
+#: lib/Config/Hooks.php:570
 msgid "Give feedback"
 msgstr ""
 
-#: lib/Config/Hooks.php:579
+#: lib/Config/Hooks.php:586
 msgid "View MailPoet settings"
 msgstr ""
 
@@ -11370,7 +11454,7 @@ msgstr ""
 msgid "Filter \"mailpoet_mailer_smtp_instance\" must return an instance of PHPMailer."
 msgstr ""
 
-#: lib/Newsletter/Editor/PostContentManager.php:150
+#: lib/Newsletter/Editor/PostContentManager.php:159
 msgid "Click here to view media."
 msgstr ""
 
@@ -11876,6 +11960,10 @@ msgstr ""
 
 #: lib/Subscribers/SubscriberSubscribeController.php:271
 msgid "Please specify a valid form ID."
+msgstr ""
+
+#: lib/Subscription/AdminUserSubscription.php:170
+msgid "Failed to send confirmation email for admin-created user"
 msgstr ""
 
 #: lib/Subscription/Comment.php:47
@@ -14523,7 +14611,7 @@ msgstr ""
 
 #: assets/dist/js/automation_editor.js:1
 #: assets/dist/js/commons.js:9
-msgid "Editing an active automation is temporarily unavailable. We are working on introducing this functionality."
+msgid "Editing an active automation is currently unavailable."
 msgstr ""
 
 #: assets/dist/js/automation_templates.js:1
@@ -16440,11 +16528,6 @@ msgstr ""
 
 #: assets/dist/js/email-editor/email_editor.js:13
 msgid "Close sidebar"
-msgstr ""
-
-#: assets/dist/js/email-editor/email_editor.js:13
-#: assets/dist/js/email-editor/email_editor.js:19
-msgid "No title"
 msgstr ""
 
 #: assets/dist/js/email-editor/email_editor.js:13

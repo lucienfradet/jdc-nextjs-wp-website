@@ -9,6 +9,7 @@ use MailPoet\Entities\NewsletterEntity;
 use MailPoet\Entities\SendingQueueEntity;
 use MailPoet\Newsletter\Renderer\Blocks\AbandonedCartContent;
 use MailPoet\Newsletter\Renderer\Blocks\AutomatedLatestContentBlock;
+use MailPoet\Newsletter\Renderer\Blocks\DynamicProductsBlock;
 use MailPoet\WooCommerce\CouponPreProcessor;
 use MailPoet\WooCommerce\TransactionalEmails\ContentPreprocessor;
 
@@ -34,16 +35,21 @@ class Preprocessor {
   /*** @var CouponPreProcessor */
   private $couponPreProcessor;
 
+  /** @var DynamicProductsBlock */
+  private $dynamicProductsBlock;
+
   public function __construct(
     AbandonedCartContent $abandonedCartContent,
     AutomatedLatestContentBlock $automatedLatestContent,
     ContentPreprocessor $wooCommerceContentPreprocessor,
-    CouponPreProcessor $couponPreProcessor
+    CouponPreProcessor $couponPreProcessor,
+    DynamicProductsBlock $dynamicProductsBlock
   ) {
     $this->abandonedCartContent = $abandonedCartContent;
     $this->automatedLatestContent = $automatedLatestContent;
     $this->wooCommerceContentPreprocessor = $wooCommerceContentPreprocessor;
     $this->couponPreProcessor = $couponPreProcessor;
+    $this->dynamicProductsBlock = $dynamicProductsBlock;
   }
 
   /**
@@ -83,6 +89,8 @@ class Preprocessor {
         return $this->abandonedCartContent->render($newsletter, $block, $preview, $sendingQueue);
       case 'automatedLatestContentLayout':
         return $this->automatedLatestContent->render($newsletter, $block);
+      case 'dynamicProducts':
+        return $this->dynamicProductsBlock->render($newsletter, $block, $preview, $sendingQueue);
       case 'woocommerceHeading':
         return $this->wooCommerceContentPreprocessor->preprocessHeader();
       case 'woocommerceContent':

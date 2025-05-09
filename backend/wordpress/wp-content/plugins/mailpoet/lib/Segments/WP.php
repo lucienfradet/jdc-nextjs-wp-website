@@ -11,6 +11,7 @@ use MailPoet\Doctrine\WPDB\Connection;
 use MailPoet\Entities\SegmentEntity;
 use MailPoet\Entities\SubscriberEntity;
 use MailPoet\Entities\SubscriberSegmentEntity;
+use MailPoet\Logging\LoggerFactory;
 use MailPoet\Newsletter\Scheduler\WelcomeScheduler;
 use MailPoet\Services\Validator;
 use MailPoet\Settings\SettingsController;
@@ -100,6 +101,9 @@ class WP {
       return;
     }
     $this->handleCreatingOrUpdatingSubscriber($currentFilter, $wpUser, $subscriber, $oldWpUserData);
+
+    // In WP::synchronizeUser, after the subscriber is created
+    $this->wp->doAction('mailpoet_user_registered', $wpUserId, $subscriber);
   }
 
   private function deleteSubscriber(SubscriberEntity $subscriber): void {
@@ -148,7 +152,7 @@ class WP {
     if (!is_null($subscriber)) {
       $data['id'] = $subscriber->getId();
       unset($data['status']); // don't override status for existing users
-      unset($data['source']); // don't override status for existing users
+      unset($data['source']); // don't override source for existing users
     }
 
     $addingNewUserToDisabledWPSegment = $wpSegment->getDeletedAt() !== null && $currentFilter === 'user_register';
@@ -165,6 +169,20 @@ class WP {
     if ($addingNewUserToDisabledWPSegment && !$otherActiveSegments && !$isWooCustomer) {
       $data['deleted_at'] = Carbon::now()->millisecond(0);
       $data['status'] = SubscriberEntity::STATUS_UNCONFIRMED;
+    }
+
+    // Apply filter to allow modifying subscriber data before save
+    $data = $this->wp->applyFilters('mailpoet_subscriber_data_before_save', $data);
+
+    // Ensure data is an array
+    if (!is_array($data)) {
+      // If the filter returned a non-array, log it and use the original data
+      $logger = LoggerFactory::getInstance()->getLogger();
+      $logger->error(
+        'Filter mailpoet_subscriber_data_before_save returned non-array data.',
+        ['data_type' => gettype($data)]
+      );
+      return;
     }
 
     try {
@@ -228,8 +246,16 @@ class WP {
 
     $subscriber->setWpUserId($data['wp_user_id']);
     $subscriber->setEmail($data['email']);
-    $subscriber->setFirstName($data['first_name']);
-    $subscriber->setLastName($data['last_name']);
+
+    // Only set first_name if it's present in the data array
+    if (isset($data['first_name'])) {
+      $subscriber->setFirstName($data['first_name']);
+    }
+
+    // Only set last_name if it's present in the data array
+    if (isset($data['last_name'])) {
+      $subscriber->setLastName($data['last_name']);
+    }
 
     if (isset($data['status'])) {
       $subscriber->setStatus($data['status']);

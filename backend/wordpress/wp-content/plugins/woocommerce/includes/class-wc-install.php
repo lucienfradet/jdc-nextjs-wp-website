@@ -274,6 +274,9 @@ class WC_Install {
 		'9.6.1' => array(
 			'wc_update_961_migrate_default_email_base_color',
 		),
+		'9.8.0' => array(
+			'wc_update_980_remove_order_attribution_install_banner_dismissed_option',
+		),
 	);
 
 	/**
@@ -305,6 +308,9 @@ class WC_Install {
 		add_action( 'init', array( __CLASS__, 'manual_database_update' ), 20 );
 		add_action( 'woocommerce_newly_installed', array( __CLASS__, 'maybe_enable_hpos' ), 20 );
 		add_action( 'woocommerce_newly_installed', array( __CLASS__, 'add_coming_soon_option' ), 20 );
+		add_action( 'woocommerce_newly_installed', array( __CLASS__, 'enable_email_improvements' ), 20 );
+		add_action( 'woocommerce_newly_installed', array( __CLASS__, 'enable_new_payments_settings_page' ), 20 );
+		add_action( 'woocommerce_updated', array( __CLASS__, 'maybe_enable_new_payments_settings_page' ), 20 );
 		add_action( 'admin_init', array( __CLASS__, 'wc_admin_db_update_notice' ) );
 		add_action( 'admin_init', array( __CLASS__, 'add_admin_note_after_page_created' ) );
 		add_action( 'woocommerce_run_update_callback', array( __CLASS__, 'run_update_callback' ) );
@@ -1014,6 +1020,67 @@ class WC_Install {
 	}
 
 	/**
+	 * Enable email improvements by default for new shops.
+	 *
+	 * @since 9.8.0
+	 */
+	public static function enable_email_improvements() {
+		update_option( 'woocommerce_feature_email_improvements_enabled', 'yes' );
+		update_option( 'woocommerce_email_improvements_default_enabled', 'yes' );
+		update_option( 'woocommerce_email_auto_sync_with_theme', 'yes' );
+		update_option( 'woocommerce_email_improvements_first_enabled_at', gmdate( 'Y-m-d H:i:s' ) );
+		update_option( 'woocommerce_email_improvements_last_enabled_at', gmdate( 'Y-m-d H:i:s' ) );
+		update_option( 'woocommerce_email_improvements_enabled_count', 1 );
+	}
+
+	/**
+	 * Enable the new Payments Settings page by default for new shops.
+	 *
+	 * @since 9.8.2
+	 */
+	public static function enable_new_payments_settings_page() {
+		update_option( 'woocommerce_feature_reactify-classic-payments-settings_enabled', 'yes' );
+	}
+
+	/**
+	 * Enable the new Payments Settings page by default for existing shops, under certain circumstances.
+	 *
+	 * @since 9.8.2
+	 */
+	public static function maybe_enable_new_payments_settings_page() {
+		$option_name = 'woocommerce_feature_reactify-classic-payments-settings_enabled';
+
+		// First, migrate the WCAdmin feature flag to the new feature flag.
+		// If there is a value saved for the old feature flag, we will respect it.
+		$wc_admin_helper_features = get_option( 'wc_admin_helper_feature_values', array() );
+		foreach ( $wc_admin_helper_features as $feature => $value ) {
+			if ( 'reactify-classic-payments-settings' === $feature ) {
+				update_option( $option_name, filter_var( $value, FILTER_VALIDATE_BOOLEAN ) ? 'yes' : 'no' );
+
+				// Remove the old feature flag value to avoid further migrations.
+				unset( $wc_admin_helper_features[ $feature ] );
+				update_option( 'wc_admin_helper_feature_values', $wc_admin_helper_features );
+				return;
+			}
+		}
+
+		$wc_initial_installed_version = get_option( \WC_Install::INITIAL_INSTALLED_VERSION, '0.0.0' );
+		// If the WooCommerce installed version is 9.7+, we enable it.
+		if ( version_compare( $wc_initial_installed_version, '9.7.0', '>=' ) ) {
+			update_option( $option_name, 'yes' );
+		} else {
+			// For stores created pre-9.7, we check 9.7 experiment group first.
+			$experiment_transient = get_transient( 'abtest_variation_woocommerce_payment_settings_2025_v1' );
+			if ( 'treatment' === $experiment_transient ) {
+				// If the user is in the experiment treatment group and he didn't interact with the WCAdmin feature flag
+				// we will enable it by default.
+				update_option( $option_name, 'yes' );
+				delete_transient( 'abtest_variation_woocommerce_payment_settings_2025_v1' );
+			}
+		}
+	}
+
+	/**
 	 * Checks whether HPOS should be enabled for new shops.
 	 *
 	 * @return bool
@@ -1082,6 +1149,7 @@ class WC_Install {
 			'wc-admin-set-up-additional-payment-types',
 			'wc-admin-deactivate-plugin',
 			'wc-admin-complete-store-details',
+			'wc-admin-choosing-a-theme',
 		);
 
 		/**
@@ -2591,7 +2659,7 @@ $hpos_table_schema;
 <p>If you are approved, then your refund will be processed, and a credit will automatically be applied to your credit card or original method of payment, within a certain amount of days.</p>
 <!-- /wp:paragraph -->
 
-<!-- wp:heading -->
+<!-- wp:heading {"level":3} -->
 <h3 class="wp-block-heading">Late or missing refunds</h3>
 <!-- /wp:heading -->
 
@@ -2611,7 +2679,7 @@ $hpos_table_schema;
 <p>If you’ve done all of this and you still have not received your refund yet, please contact us at {email address}.</p>
 <!-- /wp:paragraph -->
 
-<!-- wp:heading -->
+<!-- wp:heading {"level":3} -->
 <h3 class="wp-block-heading">Sale items</h3>
 <!-- /wp:heading -->
 

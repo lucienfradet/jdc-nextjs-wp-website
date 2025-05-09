@@ -1,6 +1,6 @@
 msgid ""
 msgstr ""
-"PO-Revision-Date: 2025-03-18 06:43:34+0000\n"
+"PO-Revision-Date: 2025-04-22 11:21:57+0000\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -9,13 +9,57 @@ msgstr ""
 "Language: fr_CA\n"
 "Project-Id-Version: MailPoet - MailPoet\n"
 
+#: lib/Subscription/AdminUserSubscription.php:170
+msgid "Failed to send confirmation email for admin-created user"
+msgstr ""
+
+#: views/layout.html:204
+msgid "Get help in the forum"
+msgstr ""
+
+#: views/subscription/admin_user_status_field.html:17
+msgid "Unconfirmed (will receive a confirmation email)"
+msgstr ""
+
+#: views/subscription/admin_user_status_field.html:6
+msgid "MailPoet Subscriber Status"
+msgstr ""
+
+#: lib/Automation/Integrations/WooCommerce/Fields/OrderFieldsFactory.php:422
+msgid "Checkout Draft"
+msgstr "Brouillon de commande"
+
+#: lib/Automation/Integrations/WooCommerce/Fields/OrderFieldsFactory.php:421
+msgid "POS"
+msgstr "POS"
+
+#: lib/Automation/Integrations/WooCommerce/Fields/OrderFieldsFactory.php:419
+msgid "Webhook"
+msgstr "Crochet web"
+
+#: lib/Automation/Integrations/WooCommerce/Fields/OrderFieldsFactory.php:418
+msgid "REST API"
+msgstr "REST API"
+
+#: lib/Automation/Integrations/WooCommerce/Fields/OrderFieldsFactory.php:417
+msgid "Admin"
+msgstr "Admin"
+
+#: lib/Automation/Integrations/WooCommerce/Fields/OrderFieldsFactory.php:416
+msgid "Checkout"
+msgstr "Caisse"
+
+#: lib/Automation/Integrations/WooCommerce/Fields/OrderFieldsFactory.php:158
+msgid "Created via"
+msgstr "Créé via"
+
 #: views/newsletter/templates/blocks/woocommerceContentImproved/processing_order.hbs:109
 msgid "Thanks for using %s!"
-msgstr ""
+msgstr "Merci d’utiliser %s !"
 
 #: views/newsletter/templates/blocks/woocommerceContentImproved/processing_order.hbs:11
 msgid "We’ve received your order and will let you know when it’s on its way to you!"
-msgstr ""
+msgstr "Nous avons bien reçu votre commande et nous vous informerons lorsqu’elle sera expédiée !"
 
 #: views/newsletter/templates/blocks/woocommerceContentImproved/new_account.hbs:15
 msgid "My account"
@@ -23,7 +67,7 @@ msgstr "Mon compte"
 
 #: views/newsletter/templates/blocks/woocommerceContentImproved/new_account.hbs:14
 msgid "You can access your account area to view orders, change your password, and more via the link below:"
-msgstr ""
+msgstr "Vous pouvez accéder à votre espace pour consulter vos commandes, modifier votre mot de passe, etc., via le lien ci-dessous :"
 
 #: views/newsletter/templates/blocks/woocommerceContentImproved/new_account.hbs:12
 msgid "Username:"
@@ -31,21 +75,21 @@ msgstr "Identifiant&nbsp;:"
 
 #: views/newsletter/templates/blocks/woocommerceContentImproved/new_account.hbs:10
 msgid "Thanks for creating an account on %s. Here’s a copy of your user details."
-msgstr ""
+msgstr "Merci d’avoir créé un compte sur %s. Voici une copie de vos identifiants."
 
 #: views/newsletter/templates/blocks/woocommerceContentImproved/completed_order.hbs:90
 #: views/newsletter/templates/blocks/woocommerceContentImproved/customer_note.hbs:14
 #: views/newsletter/templates/blocks/woocommerceContentImproved/customer_note.hbs:90
 #: views/newsletter/templates/blocks/woocommerceContentImproved/processing_order.hbs:86
 msgid "It can be multiple lines. If there’s no note, this section is hidden."
-msgstr ""
+msgstr "Cela peut faire plusieurs lignes. S’il n’y a pas de note, cette section est masquée."
 
 #: views/newsletter/templates/blocks/woocommerceContentImproved/completed_order.hbs:88
 #: views/newsletter/templates/blocks/woocommerceContentImproved/customer_note.hbs:13
 #: views/newsletter/templates/blocks/woocommerceContentImproved/customer_note.hbs:88
 #: views/newsletter/templates/blocks/woocommerceContentImproved/processing_order.hbs:84
 msgid "This is a customer note. Customers can add a note to their order on checkout."
-msgstr ""
+msgstr "Ceci est une note du client ou de la cliente. Elle peut être ajoutée lors de la validation de la commande."
 
 #: views/newsletter/templates/blocks/woocommerceContentImproved/completed_order.hbs:83
 #: views/newsletter/templates/blocks/woocommerceContentImproved/customer_note.hbs:83
@@ -87,19 +131,19 @@ msgstr "Rouge"
 #: views/newsletter/templates/blocks/woocommerceContentImproved/customer_note.hbs:47
 #: views/newsletter/templates/blocks/woocommerceContentImproved/processing_order.hbs:43
 msgid "Color:"
-msgstr ""
+msgstr "Couleur :"
 
 #: views/newsletter/templates/blocks/woocommerceContentImproved/completed_order.hbs:46
 #: views/newsletter/templates/blocks/woocommerceContentImproved/customer_note.hbs:46
 #: views/newsletter/templates/blocks/woocommerceContentImproved/processing_order.hbs:42
 msgid "Dummy Product Variation"
-msgstr ""
+msgstr "Variation de produit fictive"
 
 #: views/newsletter/templates/blocks/woocommerceContentImproved/completed_order.hbs:28
 #: views/newsletter/templates/blocks/woocommerceContentImproved/customer_note.hbs:30
 #: views/newsletter/templates/blocks/woocommerceContentImproved/processing_order.hbs:26
 msgid "Dummy Product"
-msgstr ""
+msgstr "Produit fictif"
 
 #: views/newsletter/templates/blocks/woocommerceContentImproved/completed_order.hbs:15
 #: views/newsletter/templates/blocks/woocommerceContentImproved/customer_note.hbs:19
@@ -115,11 +159,11 @@ msgstr "Résumé de la commande"
 #: views/newsletter/templates/blocks/woocommerceContentImproved/completed_order.hbs:12
 #: views/newsletter/templates/blocks/woocommerceContentImproved/processing_order.hbs:12
 msgid "Here’s a reminder of what you’ve ordered:"
-msgstr ""
+msgstr "Voici un rappel de ce que vous avez commandé :"
 
 #: views/newsletter/templates/blocks/woocommerceContentImproved/completed_order.hbs:11
 msgid "We’ve successfully processed your order, and it’s on its way to you."
-msgstr ""
+msgstr "Nous avons bien traité votre commande et elle est en route."
 
 #. translators: automation trigger title
 #: lib/Automation/Integrations/WooCommerce/Triggers/BuysFromATagTrigger.php:24
@@ -555,23 +599,23 @@ msgstr "Une mise en page en une colonne est idéale pour un contenu simplifié e
 msgid "2 column layout"
 msgstr "Mise en page en 2 colonnes"
 
-#: lib/Automation/Integrations/MailPoet/Templates/TemplatesFactory.php:312
-#: lib/Automation/Integrations/MailPoet/Templates/TemplatesFactory.php:313
-#: lib/Automation/Integrations/MailPoet/Templates/TemplatesFactory.php:345
-#: lib/Automation/Integrations/MailPoet/Templates/TemplatesFactory.php:346
-#: lib/Automation/Integrations/MailPoet/Templates/TemplatesFactory.php:378
-#: lib/Automation/Integrations/MailPoet/Templates/TemplatesFactory.php:379
+#: lib/Automation/Integrations/MailPoet/Templates/TemplatesFactory.php:318
+#: lib/Automation/Integrations/MailPoet/Templates/TemplatesFactory.php:319
+#: lib/Automation/Integrations/MailPoet/Templates/TemplatesFactory.php:351
+#: lib/Automation/Integrations/MailPoet/Templates/TemplatesFactory.php:352
+#: lib/Automation/Integrations/MailPoet/Templates/TemplatesFactory.php:384
+#: lib/Automation/Integrations/MailPoet/Templates/TemplatesFactory.php:385
 msgid "Important information about your order"
 msgstr "Informations importantes concernant votre commande"
 
-#: lib/Automation/Integrations/MailPoet/Templates/TemplatesFactory.php:330
-#: lib/Automation/Integrations/MailPoet/Templates/TemplatesFactory.php:337
+#: lib/Automation/Integrations/MailPoet/Templates/TemplatesFactory.php:336
+#: lib/Automation/Integrations/MailPoet/Templates/TemplatesFactory.php:343
 msgid "Purchased a product with a tag"
 msgstr "A acheté un produit avec une étiquette"
 
-#: lib/Automation/Integrations/MailPoet/Templates/TemplatesFactory.php:298
-#: lib/Automation/Integrations/MailPoet/Templates/TemplatesFactory.php:331
-#: lib/Automation/Integrations/MailPoet/Templates/TemplatesFactory.php:364
+#: lib/Automation/Integrations/MailPoet/Templates/TemplatesFactory.php:304
+#: lib/Automation/Integrations/MailPoet/Templates/TemplatesFactory.php:337
+#: lib/Automation/Integrations/MailPoet/Templates/TemplatesFactory.php:370
 msgid "Share care instructions or simply thank the customer for making an order."
 msgstr "Partagez les instructions d‘utilisation ou remerciez simplement le ou la cliente d‘avoir passé une commande."
 
@@ -834,16 +878,16 @@ msgstr "Total du panier"
 msgid "WooCommerce abandoned cart"
 msgstr "Panier abandonné WooCommerce"
 
-#: lib/Automation/Integrations/MailPoet/Templates/TemplatesFactory.php:258
+#: lib/Automation/Integrations/MailPoet/Templates/TemplatesFactory.php:264
 msgid "Looks like you forgot something"
 msgstr "On dirait que vous avez oublié quelque chose"
 
-#: lib/Automation/Integrations/MailPoet/Templates/TemplatesFactory.php:223
+#: lib/Automation/Integrations/MailPoet/Templates/TemplatesFactory.php:229
 msgid "Rekindle the relationship with past customers by reminding them of their favorite products and showcasing what’s new, encouraging a return to your brand."
 msgstr "Ravivez la relation avec vos anciens clients et clientes en leur rappelant leurs produits préférés et en présentant les nouveautés, ce qui les incitera à revenir vers votre marque."
 
-#: lib/Automation/Integrations/MailPoet/Templates/TemplatesFactory.php:222
-#: lib/Automation/Integrations/MailPoet/Templates/TemplatesFactory.php:229
+#: lib/Automation/Integrations/MailPoet/Templates/TemplatesFactory.php:228
+#: lib/Automation/Integrations/MailPoet/Templates/TemplatesFactory.php:235
 msgid "Win-back customers"
 msgstr "Reconquérir les clients/clientes"
 
@@ -1196,7 +1240,7 @@ msgstr "Le ou la cliente achète dans une catégorie"
 msgid "Customer buys a product"
 msgstr "Le ou la cliente achète un produit"
 
-#: lib/Automation/Integrations/MailPoet/Templates/TemplatesFactory.php:257
+#: lib/Automation/Integrations/MailPoet/Templates/TemplatesFactory.php:263
 msgid "Abandoned cart"
 msgstr "Panier abandonné"
 
@@ -1217,6 +1261,10 @@ msgstr "12 (m)"
 #: lib/API/JSON/v1/SubscriberStats.php:71
 msgid "30(d)"
 msgstr "30 (j)"
+
+#: lib/Automation/Integrations/WooCommerce/Fields/OrderFieldsFactory.php:420
+msgid "Subscription"
+msgstr "Abonnement"
 
 #: views/segments/translations.html:190
 msgid "Search coupon codes"
@@ -1395,31 +1443,31 @@ msgstr "Vous trouverez ci-dessous une liste des cookies susceptibles d’être g
 msgid "Automation Analytics"
 msgstr "Statistiques de l’automatisation"
 
-#: lib/Automation/Integrations/WooCommerce/Fields/OrderFieldsFactory.php:224
+#: lib/Automation/Integrations/WooCommerce/Fields/OrderFieldsFactory.php:235
 msgid "Categories"
 msgstr "Catégories"
 
-#: lib/Automation/Integrations/WooCommerce/Fields/OrderFieldsFactory.php:215
+#: lib/Automation/Integrations/WooCommerce/Fields/OrderFieldsFactory.php:226
 msgid "Is first order"
 msgstr "Est la première commande"
 
-#: lib/Automation/Integrations/WooCommerce/Fields/OrderFieldsFactory.php:204
+#: lib/Automation/Integrations/WooCommerce/Fields/OrderFieldsFactory.php:215
 msgid "Used coupons"
 msgstr "Codes promos utilisés"
 
-#: lib/Automation/Integrations/WooCommerce/Fields/OrderFieldsFactory.php:196
+#: lib/Automation/Integrations/WooCommerce/Fields/OrderFieldsFactory.php:207
 msgid "Total"
 msgstr "Total"
 
-#: lib/Automation/Integrations/WooCommerce/Fields/OrderFieldsFactory.php:174
+#: lib/Automation/Integrations/WooCommerce/Fields/OrderFieldsFactory.php:185
 msgid "Payment method"
 msgstr "Méthode de paiement"
 
-#: lib/Automation/Integrations/WooCommerce/Fields/OrderFieldsFactory.php:166
+#: lib/Automation/Integrations/WooCommerce/Fields/OrderFieldsFactory.php:177
 msgid "Customer provided note"
 msgstr "Note fournie par le client"
 
-#: lib/Automation/Integrations/WooCommerce/Fields/OrderFieldsFactory.php:158
+#: lib/Automation/Integrations/WooCommerce/Fields/OrderFieldsFactory.php:169
 msgid "Paid date"
 msgstr "Date de paiement"
 
@@ -1427,24 +1475,24 @@ msgstr "Date de paiement"
 msgid "Created date"
 msgstr "Date de création"
 
-#: lib/Automation/Integrations/MailPoet/Templates/TemplatesFactory.php:276
+#: lib/Automation/Integrations/MailPoet/Templates/TemplatesFactory.php:282
 msgid "Encourage your potential customers to finalize their purchase when they have added items to their cart but haven’t finished the order yet. Offer a coupon code as a last resort to convert them to customers."
 msgstr "Encouragez vos clients potentiels à finaliser leur achat lorsqu’ils ont ajouté des articles à leur panier mais n’ont pas encore terminé leur commande. Proposez un code de réduction en dernier recours pour les convertir en clients."
 
-#: lib/Automation/Integrations/MailPoet/Templates/TemplatesFactory.php:275
-#: lib/Automation/Integrations/MailPoet/Templates/TemplatesFactory.php:282
+#: lib/Automation/Integrations/MailPoet/Templates/TemplatesFactory.php:281
+#: lib/Automation/Integrations/MailPoet/Templates/TemplatesFactory.php:288
 msgid "Abandoned cart campaign"
 msgstr "Campagne de paniers abandonnés"
 
-#: lib/Automation/Integrations/MailPoet/Templates/TemplatesFactory.php:245
+#: lib/Automation/Integrations/MailPoet/Templates/TemplatesFactory.php:251
 msgid "Nudge your shoppers to complete the purchase after they have added a product to the cart but haven’t completed the order."
 msgstr "Incitez vos clients et clientes à terminer leur achat lorsqu’ils ont ajouté un produit à leur panier mais n’ont pas terminé leur commande."
 
-#: lib/Automation/Integrations/MailPoet/Templates/TemplatesFactory.php:180
+#: lib/Automation/Integrations/MailPoet/Templates/TemplatesFactory.php:186
 msgid "Thank You for Choosing Us!"
 msgstr "Merci de nous avoir choisi !"
 
-#: lib/Automation/Integrations/MailPoet/Templates/TemplatesFactory.php:179
+#: lib/Automation/Integrations/MailPoet/Templates/TemplatesFactory.php:185
 msgid "Thank you"
 msgstr "Merci"
 
@@ -2592,62 +2640,62 @@ msgstr "Pour masquer une liste à partir de la page Gérer l’abonnement, allez
 msgid "Show this list on the \"Manage Subscription\" page"
 msgstr "Afficher cette liste sur la page « Gérer l’abonnement »"
 
-#: lib/Automation/Integrations/MailPoet/Templates/TemplatesFactory.php:244
-#: lib/Automation/Integrations/MailPoet/Templates/TemplatesFactory.php:251
+#: lib/Automation/Integrations/MailPoet/Templates/TemplatesFactory.php:250
+#: lib/Automation/Integrations/MailPoet/Templates/TemplatesFactory.php:257
 msgid "Abandoned cart reminder"
 msgstr "Rappel de panier abandonné"
 
-#: lib/Automation/Integrations/MailPoet/Templates/TemplatesFactory.php:200
-#: lib/Automation/Integrations/MailPoet/Templates/TemplatesFactory.php:207
+#: lib/Automation/Integrations/MailPoet/Templates/TemplatesFactory.php:206
+#: lib/Automation/Integrations/MailPoet/Templates/TemplatesFactory.php:213
 msgid "Thank loyal customers"
 msgstr "Remerciez les clients fidèles"
 
-#: lib/Automation/Integrations/MailPoet/Templates/TemplatesFactory.php:201
+#: lib/Automation/Integrations/MailPoet/Templates/TemplatesFactory.php:207
 msgid "These are your most important customers. Make them feel special by sending a thank you note for supporting your brand."
 msgstr "Ce sont vos clients les plus importants. Faites en sorte qu’ils se sentent spéciaux en leur envoyant une note de remerciement pour avoir soutenu votre marque."
 
-#: lib/Automation/Integrations/MailPoet/Templates/TemplatesFactory.php:153
-#: lib/Automation/Integrations/MailPoet/Templates/TemplatesFactory.php:160
+#: lib/Automation/Integrations/MailPoet/Templates/TemplatesFactory.php:159
+#: lib/Automation/Integrations/MailPoet/Templates/TemplatesFactory.php:166
 msgid "Celebrate first-time buyers"
 msgstr "Célébrez les premiers acheteurs"
 
-#: lib/Automation/Integrations/MailPoet/Templates/TemplatesFactory.php:154
+#: lib/Automation/Integrations/MailPoet/Templates/TemplatesFactory.php:160
 msgid "Welcome your first-time customers by sending an email with a special offer for their next purchase. Make them feel appreciated within your brand."
 msgstr "Accueillez vos premiers clients et clientes en leur envoyant un e-mail contenant une offre spéciale pour leur prochain achat. Faites en sorte qu’ils ou elles se sentent apprécié•es au sein de votre marque."
 
-#: lib/Automation/Integrations/MailPoet/Templates/TemplatesFactory.php:131
-#: lib/Automation/Integrations/MailPoet/Templates/TemplatesFactory.php:138
+#: lib/Automation/Integrations/MailPoet/Templates/TemplatesFactory.php:137
+#: lib/Automation/Integrations/MailPoet/Templates/TemplatesFactory.php:144
 msgid "Welcome series for new WordPress users"
 msgstr "Séries de bienvenue pour les nouveaux comptes WordPress"
 
-#: lib/Automation/Integrations/MailPoet/Templates/TemplatesFactory.php:132
+#: lib/Automation/Integrations/MailPoet/Templates/TemplatesFactory.php:138
 msgid "Welcome new WordPress users to your site. Send an email immediately after a WordPress user registers. Send a follow-up email two days later with more in-depth information."
 msgstr "Accueillez les nouveaux comptes WordPress sur votre site. Envoyez un e-mail immédiatement après l’inscription d’un compte WordPress. Envoyez un e-mail de suivi deux jours plus tard avec des informations plus approfondies."
 
-#: lib/Automation/Integrations/MailPoet/Templates/TemplatesFactory.php:109
-#: lib/Automation/Integrations/MailPoet/Templates/TemplatesFactory.php:116
+#: lib/Automation/Integrations/MailPoet/Templates/TemplatesFactory.php:115
+#: lib/Automation/Integrations/MailPoet/Templates/TemplatesFactory.php:122
 msgid "Welcome series for new subscribers"
 msgstr "Séries de bienvenue pour les nouveaux abonnés"
 
-#: lib/Automation/Integrations/MailPoet/Templates/TemplatesFactory.php:110
+#: lib/Automation/Integrations/MailPoet/Templates/TemplatesFactory.php:116
 msgid "Welcome new subscribers and start building a relationship with them. Send an email immediately after someone subscribes to your list to introduce your brand and a follow-up two days later to keep the conversation going."
 msgstr "Accueillez les nouveaux abonnés et commencez à établir une relation avec eux. Envoyez un e-mail immédiatement après qu’une personne s’inscrit à votre liste pour présenter votre marque et un suivi deux jours plus tard pour poursuivre la conversation."
 
-#: lib/Automation/Integrations/MailPoet/Templates/TemplatesFactory.php:80
-#: lib/Automation/Integrations/MailPoet/Templates/TemplatesFactory.php:87
+#: lib/Automation/Integrations/MailPoet/Templates/TemplatesFactory.php:86
+#: lib/Automation/Integrations/MailPoet/Templates/TemplatesFactory.php:93
 msgid "Welcome new WordPress users"
 msgstr "Bienvenue aux nouveaux comptes WordPress"
 
-#: lib/Automation/Integrations/MailPoet/Templates/TemplatesFactory.php:81
+#: lib/Automation/Integrations/MailPoet/Templates/TemplatesFactory.php:87
 msgid "Send a welcome email when a new WordPress user registers to your website. Optionally, you can choose to send this email after a specified period."
 msgstr "Envoyez un e-mail de bienvenue lorsqu’un nouveau compte WordPress s’inscrit sur votre site. En option, vous pouvez choisir d’envoyer cet e-mail après une période déterminée."
 
-#: lib/Automation/Integrations/MailPoet/Templates/TemplatesFactory.php:51
-#: lib/Automation/Integrations/MailPoet/Templates/TemplatesFactory.php:58
+#: lib/Automation/Integrations/MailPoet/Templates/TemplatesFactory.php:57
+#: lib/Automation/Integrations/MailPoet/Templates/TemplatesFactory.php:64
 msgid "Welcome new subscribers"
 msgstr "Bienvenue aux nouveaux abonnés"
 
-#: lib/Automation/Integrations/MailPoet/Templates/TemplatesFactory.php:52
+#: lib/Automation/Integrations/MailPoet/Templates/TemplatesFactory.php:58
 msgid "Send a welcome email when someone subscribes to your list. Optionally, you can choose to send this email after a specified period."
 msgstr "Envoyez un e-mail de bienvenue lorsqu’une personne s’inscrit à votre liste. En option, vous pouvez choisir d’envoyer cet e-mail après une période déterminée."
 
@@ -2695,7 +2743,7 @@ msgstr "Titre du site"
 msgid "Site"
 msgstr "Site"
 
-#: lib/Config/Hooks.php:563
+#: lib/Config/Hooks.php:570
 msgid "Give feedback"
 msgstr "Donner des commentaires"
 
@@ -3243,7 +3291,7 @@ msgstr "Tous les mots-clés"
 msgid "Failed to add subscriber: %s"
 msgstr "Échec de l’ajout de l‘abonné : %s"
 
-#: lib/Config/Hooks.php:579
+#: lib/Config/Hooks.php:586
 msgid "View MailPoet settings"
 msgstr "Voir les réglages de MailPoet"
 
@@ -3263,7 +3311,7 @@ msgstr "Ajouter une étiquette"
 
 #: views/subscribers/subscribers.html:146
 #: lib/Automation/Integrations/MailPoet/Fields/SubscriberFieldsFactory.php:210
-#: lib/Automation/Integrations/WooCommerce/Fields/OrderFieldsFactory.php:242
+#: lib/Automation/Integrations/WooCommerce/Fields/OrderFieldsFactory.php:253
 msgid "Tags"
 msgstr "Mots-clés"
 
@@ -3454,8 +3502,8 @@ msgstr "En savoir plus"
 msgid "Search countries"
 msgstr "Rechercher des pays"
 
-#: lib/Automation/Integrations/MailPoet/Templates/TemplatesFactory.php:363
-#: lib/Automation/Integrations/MailPoet/Templates/TemplatesFactory.php:370
+#: lib/Automation/Integrations/MailPoet/Templates/TemplatesFactory.php:369
+#: lib/Automation/Integrations/MailPoet/Templates/TemplatesFactory.php:376
 msgid "Purchased in a category"
 msgstr "A acheté dans une catégorie"
 
@@ -3495,8 +3543,8 @@ msgstr "Choisissez l’équilibre entre la confidentialité des abonné⋅es et 
 msgid "Engagement analytics tracking"
 msgstr "Suivi analytique de l’engagement"
 
-#: lib/Automation/Integrations/MailPoet/Templates/TemplatesFactory.php:297
-#: lib/Automation/Integrations/MailPoet/Templates/TemplatesFactory.php:304
+#: lib/Automation/Integrations/MailPoet/Templates/TemplatesFactory.php:303
+#: lib/Automation/Integrations/MailPoet/Templates/TemplatesFactory.php:310
 msgid "Purchased a product"
 msgstr "A acheté un produit"
 
@@ -6986,7 +7034,7 @@ msgid "Select icons"
 msgstr "Sélectionner des icônes"
 
 #: views/newsletter/templates/blocks/products/widget.hbs:4
-#: lib/Automation/Integrations/WooCommerce/Fields/OrderFieldsFactory.php:259
+#: lib/Automation/Integrations/WooCommerce/Fields/OrderFieldsFactory.php:270
 msgid "Products"
 msgstr "Produits"
 
@@ -8804,6 +8852,7 @@ msgstr "Inactif"
 #: views/segments/translations.html:17
 #: views/subscribers/importExport/import.html:119
 #: views/subscribers/subscribers.html:56
+#: views/subscription/admin_user_status_field.html:23
 #: lib/Automation/Integrations/MailPoet/Fields/SubscriberFieldsFactory.php:120
 #: lib/Subscribers/SubscriberListingRepository.php:242
 #: lib/Subscription/ManageSubscriptionFormRenderer.php:188
@@ -8819,6 +8868,7 @@ msgstr "Non confirmé"
 #: views/segments/translations.html:15
 #: views/subscribers/importExport/import.html:118
 #: views/subscribers/subscribers.html:55
+#: views/subscription/admin_user_status_field.html:12
 #: lib/Automation/Integrations/MailPoet/Fields/SubscriberFieldsFactory.php:112
 #: lib/Subscribers/SubscriberListingRepository.php:232
 #: lib/Subscription/ManageSubscriptionFormRenderer.php:180
@@ -8878,7 +8928,7 @@ msgstr "IP de l'abonné"
 #: views/subscribers/subscribers.html:53 views/subscribers/subscribers.html:72
 #: views/forms.html:49 views/help.html:47
 #: lib/Automation/Integrations/MailPoet/Fields/SubscriberFieldsFactory.php:104
-#: lib/Automation/Integrations/WooCommerce/Fields/OrderFieldsFactory.php:185
+#: lib/Automation/Integrations/WooCommerce/Fields/OrderFieldsFactory.php:196
 #: lib/Subscribers/ImportExport/PersonalDataExporters/SubscriberExporter.php:75
 #: lib/Subscription/ManageSubscriptionFormRenderer.php:176
 msgid "Status"
@@ -10976,7 +11026,7 @@ msgstr "Assistant de configuration"
 msgid "Help"
 msgstr "Aide"
 
-#: views/settings_translations.html:2 lib/Config/Hooks.php:579
+#: views/settings_translations.html:2 lib/Config/Hooks.php:586
 msgid "Settings"
 msgstr "Réglages"
 

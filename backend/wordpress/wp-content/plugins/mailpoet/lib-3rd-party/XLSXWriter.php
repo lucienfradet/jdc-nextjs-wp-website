@@ -447,7 +447,7 @@ class XLSXWriter
   }
   //------------------------------------------------------------------
   public static function xmlspecialchars($val) {
-    return str_replace("'", "&#39;", htmlspecialchars($val));
+    return str_replace("'", "&#39;", htmlspecialchars($val, ENT_QUOTES | ENT_SUBSTITUTE | ENT_HTML401));
   }
   //------------------------------------------------------------------
   public static function array_first_key(array $arr) {

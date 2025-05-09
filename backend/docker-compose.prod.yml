@@ -20,3 +20,10 @@ services:
       - jdc-orders-db
     networks:
       - jdc-network
+
+  cron:
+    depends_on:
+      - nextjs
+    environment:
+      - CRON_SECRET_KEY=${CRON_SECRET_KEY}
+      - NEXTJS_URL=http://nextjs:3000

@@ -2,6 +2,11 @@ services:
   jdc-orders-db:
     ports:
       - "3306:3306"  # Expose DB port to host
+
+  cron:
+    environment:
+      - CRON_SECRET_KEY=${CRON_SECRET_KEY}
+      - NEXTJS_URL=${NEXTJS_URL_DEV}
   #
   # nextjs:
   #   build:

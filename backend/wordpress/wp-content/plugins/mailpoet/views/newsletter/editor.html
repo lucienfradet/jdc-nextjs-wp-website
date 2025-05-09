@@ -30,6 +30,18 @@
     'newsletter/templates/blocks/automatedLatestContentLayout/settings.hbs'
   ) %>
   <%= partial(
+    'newsletter_editor_template_dynamic_products_block',
+    'newsletter/templates/blocks/dynamicProducts/block.hbs'
+  ) %>
+  <%= partial(
+    'newsletter_editor_template_dynamic_products_widget',
+    'newsletter/templates/blocks/dynamicProducts/widget.hbs'
+  ) %>
+  <%= partial(
+    'newsletter_editor_template_dynamic_products_settings',
+    'newsletter/templates/blocks/dynamicProducts/settings.hbs'
+  ) %>
+  <%= partial(
     'newsletter_editor_template_button_block',
     'newsletter/templates/blocks/button/block.hbs'
   ) %>
@@ -697,6 +709,16 @@
       couponBlockSettings: Handlebars.compile(
         jQuery('#newsletter_editor_template_coupon_settings').html()
       ),
+
+      dynamicProductsBlock: Handlebars.compile(
+        jQuery('#newsletter_editor_template_dynamic_products_block').html()
+      ),
+      dynamicProductsInsertion: Handlebars.compile(
+        jQuery('#newsletter_editor_template_dynamic_products_widget').html()
+      ),
+      dynamicProductsBlockSettings: Handlebars.compile(
+        jQuery('#newsletter_editor_template_dynamic_products_settings').html()
+      ),
     };
 
     var currentUserEmail = '<%= current_wp_user.user_email %>';
@@ -1287,6 +1309,61 @@
               borderColor: '#aaaaaa',
             },
           },
+        },
+        dynamicProducts: {
+          amount: '10',
+          withLayout: true,
+          contentType: 'product',
+          terms: [], // List of category and tag objects
+          inclusionType: 'include', // 'include'|'exclude'
+          displayType: 'excerpt', // 'excerpt'|'full'|'titleOnly'
+          titleFormat: 'h1', // 'h1'|'h2'|'h3'
+          titleAlignment: 'left', // 'left'|'center'|'right'
+          titleIsLink: false, // false|true
+          imageFullWidth: false, // true|false
+          titlePosition: 'abovePost', // 'abovePost'|'aboveExcerpt'
+          featuredImagePosition: 'left', // 'centered'|'right'|'left'|'alternate'|'none'
+          pricePosition: 'below', // 'hidden'|'above'|'below'
+          readMoreType: 'link', // 'link'|'button'
+          readMoreText: 'Buy now',
+          readMoreButton: {
+            text: 'Buy now',
+            url: '[postLink]',
+            context: 'dynamicProducts.readMoreButton',
+            styles: {
+              block: {
+                backgroundColor: '#2ea1cd',
+                borderColor: '#0074a2',
+                borderWidth: '1px',
+                borderRadius: '5px',
+                borderStyle: 'solid',
+                width: '180px',
+                lineHeight: '40px',
+                fontColor: '#ffffff',
+                fontFamily: 'Verdana',
+                fontSize: '18px',
+                fontWeight: 'normal',
+                textAlign: 'center',
+              }
+            }
+          },
+          sortBy: 'newest', // 'newest'|'oldest',
+          showDivider: true, // true|false
+          dynamicProductsType: 'selected', // 'cross-sell'|'order'|'selected'|'cart'
+          divider: {
+            context: 'dynamicProducts.divider',
+            styles: {
+              block: {
+                backgroundColor: 'transparent',
+                padding: '13px',
+                borderStyle: 'solid',
+                borderWidth: '3px',
+                borderColor: '#aaaaaa',
+              },
+            },
+          },
+          backgroundColor: '#ffffff',
+          backgroundColorAlternate: '#eeeeee',
         },
         footer: {
           text: '<p><a href="[link:subscription_unsubscribe_url]"><%= __('Unsubscribe') %></a> | <a href="[link:subscription_manage_url]"><%= __('Manage subscription') %></a><br /><%= __('Add your postal address here!') %></p>',

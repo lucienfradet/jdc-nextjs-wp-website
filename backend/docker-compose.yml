@@ -78,6 +78,16 @@ services:
       timeout: 5s
       retries: 5
 
+  cron:
+    image: alpine:latest
+    container_name: jdc-cron
+    restart: unless-stopped
+    volumes:
+      - ./cron/entrypoint.sh:/entrypoint.sh
+    command: /entrypoint.sh
+    networks:
+      - jdc-network
+
   # nextjs:
   #   build:
   #     context: ../frontend/

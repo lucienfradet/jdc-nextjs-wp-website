@@ -339,7 +339,7 @@ class __TwigTemplate_ee165e5b4f8563d8513127bab042c7a2b7959b76320c0c8e57a68effec7
         yield "<br />
                 </label>
             </div>
-            <div class=\"mailpoet_form_field_title mailpoet_form_field_title_small\">";
+            <div class=\"mailpoet_form_field_title\">";
         // line 198
         yield $this->extensions['MailPoet\Twig\I18n']->translate("Preceded by:");
         yield "</div>
@@ -380,7 +380,7 @@ class __TwigTemplate_ee165e5b4f8563d8513127bab042c7a2b7959b76320c0c8e57a68effec7
         yield "
                 </label>
             </div>
-            <div class=\"mailpoet_form_field_title mailpoet_form_field_title_small\">";
+            <div class=\"mailpoet_form_field_title\">";
         // line 224
         yield $this->extensions['MailPoet\Twig\I18n']->translate("Preceded by:");
         yield "</div>
@@ -392,7 +392,7 @@ class __TwigTemplate_ee165e5b4f8563d8513127bab042c7a2b7959b76320c0c8e57a68effec7
         <hr class=\"mailpoet_separator\" />
 
         <div class=\"mailpoet_form_field\">
-            <div class=\"mailpoet_form_field_title mailpoet_form_field_title_small\">";
+            <div class=\"mailpoet_form_field_title\">";
         // line 233
         yield $this->extensions['MailPoet\Twig\I18n']->translate("\"Read more\" text");
         yield "</div>
@@ -431,7 +431,7 @@ class __TwigTemplate_ee165e5b4f8563d8513127bab042c7a2b7959b76320c0c8e57a68effec7
     </div>
 
     <div class=\"mailpoet_form_field\">
-        <div class=\"mailpoet_form_field_title mailpoet_form_field_title_small\">";
+        <div class=\"mailpoet_form_field_title\">";
         // line 260
         yield $this->extensions['MailPoet\Twig\I18n']->translate("Sort by");
         yield "</div>
@@ -457,7 +457,7 @@ class __TwigTemplate_ee165e5b4f8563d8513127bab042c7a2b7959b76320c0c8e57a68effec7
 
     <div class=\"mailpoet_automated_latest_content_non_title_list_options {{#ifCond model.displayType '==' 'titleOnly'}}{{#ifCond model.titleFormat '==' 'ul'}}mailpoet_hidden{{/ifCond}}{{/ifCond}}\">
         <div class=\"mailpoet_form_field\">
-            <div class=\"mailpoet_form_field_title mailpoet_form_field_title_small\">";
+            <div class=\"mailpoet_form_field_title\">";
         // line 277
         yield $this->extensions['MailPoet\Twig\I18n']->translate("Show divider between posts");
         yield "</div>
