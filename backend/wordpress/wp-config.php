@@ -133,6 +133,7 @@ if ($configExtra = getenv_docker('WORDPRESS_CONFIG_EXTRA', '')) {
 
 // Fix for the loopback issue - allows internal requests to use the external URL
 define('WP_ALTERNATE_HOST', 'jdc-wp-app'); // Add this to allow internal container name
+define('ALTERNATE_WP_HTTP_HOST', 'jdc-wp-app');
 
 define('MAILPOET_SITE_ADDRESS', getenv('WORDPRESS_HOME') ?: 'http://127.0.0.1:8443');
 

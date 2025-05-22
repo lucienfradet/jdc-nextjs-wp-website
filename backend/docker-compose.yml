@@ -35,10 +35,6 @@ services:
       WORDPRESS_DB_NAME: jdc_db
       WORDPRESS_HOME: ${WORDPRESS_HOME}
       WORDPRESS_SITEURL: ${WORDPRESS_SITEURL}
-      WORDPRESS_CONFIG_EXTRA: |
-        define('WP_ALTERNATE_HOST', 'jdc-wp-app');
-        define('ALTERNATE_WP_HTTP_HOST', 'jdc-wp-app');
-        define('WP_SITEURL', '${WORDPRESS_SITEURL}');
     volumes:
       - ./wordpress/wp-content:/var/www/html/wp-content
       - ./wordpress/upload.ini:/usr/local/etc/php/conf.d/uploads.ini
