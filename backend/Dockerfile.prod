@@ -39,9 +39,6 @@ COPY --from=builder /app/prisma ./prisma
 COPY --from=builder /app/node_modules/.prisma ./node_modules/.prisma
 COPY --from=builder /app/node_modules/@prisma ./node_modules/@prisma
 
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
 # Install only Prisma CLI for migrations (production dependencies)
 RUN npm install prisma@latest --only=production
 
