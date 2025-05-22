@@ -38,9 +38,9 @@ services:
       WORDPRESS_CONFIG_EXTRA: |
         define('WP_ALTERNATE_HOST', 'jdc-wp-app');
         define('ALTERNATE_WP_HTTP_HOST', 'jdc-wp-app');
-        define('FORCE_SSL_ADMIN', true);
-        if (isset($_SERVER['HTTP_X_FORWARDED_PROTO']) && $_SERVER['HTTP_X_FORWARDED_PROTO'] === 'https') {
-            $_SERVER['HTTPS'] = 'on';
+        define('WP_SITEURL', '${WORDPRESS_SITEURL}');
+        if (isset($$_SERVER['HTTP_X_FORWARDED_PROTO']) && $$_SERVER['HTTP_X_FORWARDED_PROTO'] === 'https') {
+          $$_SERVER['HTTPS'] = 'on';
         }
     volumes:
       - ./wordpress/wp-content:/var/www/html/wp-content
