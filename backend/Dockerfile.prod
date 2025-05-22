@@ -40,9 +40,12 @@ COPY --from=builder /app/node_modules/.prisma ./node_modules/.prisma
 COPY --from=builder /app/node_modules/@prisma ./node_modules/@prisma
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 # Install only Prisma CLI for migrations (production dependencies)
 RUN npm install prisma@latest --only=production
 
+=======
+>>>>>>> 8aa6000358ddf6939135cb23fc01ceb21f881b20
 =======
 >>>>>>> 8aa6000358ddf6939135cb23fc01ceb21f881b20
 USER nextjs
