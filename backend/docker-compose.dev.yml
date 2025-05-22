@@ -1,4 +1,19 @@
 services:
+    nginx:
+    image: nginx:latest
+    container_name: jdc-nginx
+    restart: always
+    depends_on:
+      - wordpress
+    ports:
+      - "8443:443"
+      - "8081:80"
+    volumes:
+      - ./nginx/nginx.conf:/etc/nginx/nginx.conf
+      - ./nginx/certs:/etc/nginx/certs
+    networks:
+      - wp-network
+
   jdc-orders-db:
     ports:
       - "3306:3306"  # Expose DB port to host

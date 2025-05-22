@@ -1,4 +1,5 @@
 services:
+  # WordPress MySQL Database
   db:
     image: mysql:5.7
     container_name: jdc-wp-db
@@ -12,13 +13,19 @@ services:
       - db_data:/var/lib/mysql
     networks:
       - wp-network
+    healthcheck:
+      test: ["CMD", "mysqladmin", "ping", "-h", "localhost", "-u", "root", "-p${MYSQL_WORDPRESS_ROOT_PASSWORD}"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
 
+  # WordPress Application
   wordpress:
     image: wordpress:latest
     container_name: jdc-wp-app
     depends_on:
       - db
-    restart: always
+    restart: unless-stopped
     ports:
       - "8080:80"
     environment:
@@ -31,6 +38,10 @@ services:
       WORDPRESS_CONFIG_EXTRA: |
         define('WP_ALTERNATE_HOST', 'jdc-wp-app');
         define('ALTERNATE_WP_HTTP_HOST', 'jdc-wp-app');
+        define('FORCE_SSL_ADMIN', true);
+        if (isset($_SERVER['HTTP_X_FORWARDED_PROTO']) && $_SERVER['HTTP_X_FORWARDED_PROTO'] === 'https') {
+            $_SERVER['HTTPS'] = 'on';
+        }
     volumes:
       - ./wordpress/wp-content:/var/www/html/wp-content
       - ./wordpress/upload.ini:/usr/local/etc/php/conf.d/uploads.ini
@@ -40,21 +51,7 @@ services:
     networks:
       - wp-network
 
-  nginx:
-    image: nginx:latest
-    container_name: jdc-nginx
-    restart: always
-    depends_on:
-      - wordpress
-    ports:
-      - "8443:443"
-      - "8081:80"
-    volumes:
-      - ./nginx/nginx.conf:/etc/nginx/nginx.conf
-      - ./nginx/certs:/etc/nginx/certs
-    networks:
-      - wp-network
-
+  # Orders Database (MySQL 8.0)
   jdc-orders-db:
     image: mysql:8.0
     container_name: jdc-orders-db
@@ -65,7 +62,6 @@ services:
       MYSQL_USER: ${MYSQL_NEXTJS_USER}
       MYSQL_PASSWORD: ${MYSQL_NEXTJS_PASSWORD}
       TZ: America/New_York
-    # No ports exposed to host - internal only
     volumes:
       - jdc-orders-data:/var/lib/mysql
       - ./jdc-orders-db/my.cnf:/etc/mysql/conf.d/my.cnf
@@ -78,21 +74,7 @@ services:
       timeout: 5s
       retries: 5
 
-  cron:
-    image: alpine:latest
-    container_name: jdc-cron
-    restart: unless-stopped
-    volumes:
-      - ./cron/entrypoint.sh:/entrypoint.sh
-    command: /entrypoint.sh
-    networks:
-      - jdc-network
-    logging:
-      driver: "json-file"
-      options:
-        max-size: "10m"
-        max-file: "3"
-
+  # Redis Cache
   redis:
     image: redis:7-alpine
     container_name: jdc-redis
@@ -110,19 +92,27 @@ services:
       timeout: 5s
       retries: 5
 
-  # nextjs:
-  #   build:
-  #     context: ../frontend/
-  #   container_name: jdc-nextjs
-  #   restart: unless-stopped
-  #   ports:
-  #     - "3000:3000"
-  #   depends_on:
-  #     - jdc-orders-db
+  # Cron Service for Next.js cleanup tasks
+  cron:
+    image: alpine:latest
+    container_name: jdc-cron
+    restart: unless-stopped
+    volumes:
+      - ./cron/entrypoint.sh:/entrypoint.sh
+    command: /entrypoint.sh
+    networks:
+      - jdc-network
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "10m"
+        max-file: "3"
 
 networks:
   wp-network:
+    driver: bridge
   jdc-network:
+    driver: bridge
 
 volumes:
   db_data:
