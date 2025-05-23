@@ -73,12 +73,6 @@ class __TwigTemplate_176225ef6518abb3a235b9f1785c332f068c4c798b602f397b3f290225c
 </div>
 
 ";
-        // line 18
-        yield $this->extensions['MailPoet\Twig\I18n']->localize(["pageTitle" => $this->extensions['MailPoet\Twig\I18n']->translate("Logs")]);
-        // line 20
-        yield "
-
-";
         return; yield '';
     }
 
@@ -103,7 +97,7 @@ class __TwigTemplate_176225ef6518abb3a235b9f1785c332f068c4c798b602f397b3f290225c
      */
     public function getDebugInfo()
     {
-        return array (  76 => 20,  74 => 18,  69 => 15,  65 => 13,  60 => 12,  51 => 4,  47 => 3,  36 => 1,);
+        return array (  69 => 15,  65 => 13,  60 => 12,  51 => 4,  47 => 3,  36 => 1,);
     }
 
     public function getSourceContext()

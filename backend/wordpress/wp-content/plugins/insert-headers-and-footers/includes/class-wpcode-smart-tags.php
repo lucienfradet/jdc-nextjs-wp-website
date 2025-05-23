@@ -179,23 +179,37 @@ class WPCode_Smart_Tags {
 	 * Smart tags picker markup with a target id where the selected smart tag will be inserted.
 	 *
 	 * @param string $target The id of the textarea where the smart tag will be inserted.
+	 * @param array  $predefined_tags Optional array of predefined tags to show.
 	 *
 	 * @return void
 	 */
-	public function smart_tags_picker( $target = '' ) {
+	public function smart_tags_picker( $target = '', $predefined_tags = array() ) {
 		$tags        = $this->get_tags();
 		$unavailable = ! empty( $this->upgrade_notice_data() ) ? ' wpcode-smart-tags-unavailable' : '';
 		?>
 		<div class="wpcode-smart-tags <?php echo esc_attr( $unavailable ); ?>">
-			<button class="wpcode-smart-tags-toggle" type="button">
-				<?php wpcode_icon( 'tags', 20, 16, '0 0 20 16' ); ?>
-				<span class="wpcode-text-default">
-					<?php esc_html_e( 'Show Smart Tags', 'insert-headers-and-footers' ); ?>
+				<?php
+				// Render predefined smart tags if any are set.
+				if ( ! empty( $predefined_tags ) ) {
+					foreach ( $predefined_tags as $tag ) {
+						$tag_code = $this->get_tag_code( $tag );
+						?>
+						<button type="button" class="wpcode-insert-smart-tag" data-tag="<?php echo esc_attr( $tag_code ); ?>" data-target="<?php echo esc_attr( $target ); ?>">
+							<code><?php echo esc_html( $tag_code ); ?></code>
+						</button>
+						<?php
+					}
+				}
+				?>
+				<button class="wpcode-smart-tags-toggle" type="button">
+					<?php wpcode_icon( 'tags', 20, 16, '0 0 20 16' ); ?>
+					<span class="wpcode-text-default">
+						<?php esc_html_e( 'Show Smart Tags', 'insert-headers-and-footers' ); ?>
 					</span>
-				<span class="wpcode-text-active">
-					<?php esc_html_e( 'Hide Smart Tags', 'insert-headers-and-footers' ); ?>
+					<span class="wpcode-text-active">
+						<?php esc_html_e( 'Hide Smart Tags', 'insert-headers-and-footers' ); ?>
 					</span>
-			</button>
+				</button>
 			<div class="wpcode-smart-tags-dropdown" data-target="<?php echo esc_attr( $target ); ?>" <?php $this->upgrade_data_attributes(); ?>>
 				<?php
 				foreach ( $tags as $tag_category ) {

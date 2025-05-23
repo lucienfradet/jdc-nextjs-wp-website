@@ -4,7 +4,7 @@ Tags: online store, ecommerce, shop, shopping cart, sell online
 Requires at least: 6.6
 Tested up to: 6.8
 Requires PHP: 7.4
-Stable tag: 9.8.1
+Stable tag: 9.8.4
 License: GPLv3
 License URI: https://www.gnu.org/licenses/gpl-3.0.html
 
@@ -169,19 +169,26 @@ WooCommerce comes with some sample data you can use to see how products look; im
 
 == Changelog ==
 
-= 9.8.2 2025-04-22 =
+= 9.8.5 2025-05-12 =
 
 **WooCommerce**
 
-* Fix - Fix coming soon breaks other page [#57216](https://github.com/woocommerce/woocommerce/pull/57216)
-* Fix - Fix deprecated function WCAdminHelper::is_store_page() used [#57169](https://github.com/woocommerce/woocommerce/pull/57169)
-* Fix - Fix implicitly nullable parameters deprecation warnings in PluginsHelper and CheckoutSchema [#57212](https://github.com/woocommerce/woocommerce/pull/57212)
-* Fix - Fix issue in which client side validation in checkout didn't work. [#57278](https://github.com/woocommerce/woocommerce/pull/57278)
-* Fix - Fix undefined variable warning when saving billing address. [#57189](https://github.com/woocommerce/woocommerce/pull/57189)
-* Fix - Fix wc admin scripts loading on unrelated WP admin pages [#57186](https://github.com/woocommerce/woocommerce/pull/57186)
-* Fix - Store API - Move cart init and validation back within checkout route to avoid loading early. [#57255](https://github.com/woocommerce/woocommerce/pull/57255)
-* Update - Merge legacy cart and block based cart shipping calculation methods to ensure shipping calculations happen only when a full address has been provided. [#57176](https://github.com/woocommerce/woocommerce/pull/57176)
-* Fix - Restore default margin in Product Collection block navigation links. [#57275](https://github.com/woocommerce/woocommerce/pull/57275)
+* Fix - Address PHP 8.4 deprecation warnings. [#57864](https://github.com/woocommerce/woocommerce/pull/57864)
+* Fix - Allow other protocols such as S3 for file paths in CSV importer [#57465](https://github.com/woocommerce/woocommerce/pull/57465)
+* Fix - Apply reactify-payments-settings class to the page body when the feature is active. [#57618](https://github.com/woocommerce/woocommerce/pull/57618)
+* Fix - Fix backward compatibility for individual gateway settings pages/sections to display notices and sections with the new Reactified Payments Settings page. [#57618](https://github.com/woocommerce/woocommerce/pull/57618)
+* Fix - Prevent PHP notice in transient cleanup. [#57679](https://github.com/woocommerce/woocommerce/pull/57679)
+* Fix - Prevent shipping rates remaining hidden when checkout fields filtered to be optional are not filled on classic checkout. [#57674](https://github.com/woocommerce/woocommerce/pull/57674)
+* Fix - PTK Pattern: improve guard [#57847](https://github.com/woocommerce/woocommerce/pull/57847)
+* Fix - Remove the section navigation for the offline payment methods settings pages. [#57748](https://github.com/woocommerce/woocommerce/pull/57748)
+* Add - Use wc_back_header function for tertiary+ level pages in WooCommerce settings. [#57618](https://github.com/woocommerce/woocommerce/pull/57618)
+* Update - Allow WooPayments to take over Payments menu item only if WooPayments is fully onboarded. [#57618](https://github.com/woocommerce/woocommerce/pull/57618)
+* Update - Improve WooPayments incentive handling. [#57618](https://github.com/woocommerce/woocommerce/pull/57618)
+* Update - Update popover interaction from hover to click [#57618](https://github.com/woocommerce/woocommerce/pull/57618)
+* Update - Update the payments extensions official badge icon. [#57714](https://github.com/woocommerce/woocommerce/pull/57714)
+* Dev - E2E tests: enhance shipping zones test [#56786](https://github.com/woocommerce/woocommerce/pull/56786)
+* Tweak - The new Payments Settings page is now enabled by default for all stores, new and existing. [#57614](https://github.com/woocommerce/woocommerce/pull/57614)
+* Tweak - Update recurring payments icon on the new settings page. [#57618](https://github.com/woocommerce/woocommerce/pull/57618)
 
 
 [See changelog for all versions](https://raw.githubusercontent.com/woocommerce/woocommerce/trunk/changelog.txt).

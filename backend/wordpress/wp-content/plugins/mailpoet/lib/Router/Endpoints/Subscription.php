@@ -57,15 +57,15 @@ class Subscription {
 
   public function confirmUnsubscribe($data) {
     $enableUnsubscribeConfirmation = $this->wp->applyFilters('mailpoet_unsubscribe_confirmation_enabled', true);
-    if ($this->request->isPost()) {
-      $this->applyOneClickUnsubscribeStrategy($data);
+    if ($this->isPostRequest()) {
+      $this->performUnsubscribe($data, StatisticsUnsubscribeEntity::METHOD_ONE_CLICK);
       exit;
     }
 
     if ($enableUnsubscribeConfirmation) {
       $this->initSubscriptionPage(UserSubscription\Pages::ACTION_CONFIRM_UNSUBSCRIBE, $data);
     } else {
-      $this->unsubscribe($data);
+      $this->performUnsubscribe($data, StatisticsUnsubscribeEntity::METHOD_LINK);
     }
   }
 
@@ -74,12 +74,22 @@ class Subscription {
   }
 
   public function unsubscribe($data) {
-    if ($this->request->isPost()) {
-      $this->applyOneClickUnsubscribeStrategy($data);
-      exit;
+    if ($this->isPostRequest()) {
+      if ($this->request->getStringParam('type') === 'confirmation') {
+        // POST from confirmation page
+        $this->performUnsubscribe($data, StatisticsUnsubscribeEntity::METHOD_LINK);
+      } else {
+        // POST from one click unsubscribe
+        $this->performUnsubscribe($data, StatisticsUnsubscribeEntity::METHOD_ONE_CLICK);
+        exit;
+      }
     } else {
-      $subscription = $this->initSubscriptionPage(UserSubscription\Pages::ACTION_UNSUBSCRIBE, $data);
-      $subscription->unsubscribe(StatisticsUnsubscribeEntity::METHOD_LINK);
+      // For GET requests, we render the confirmUnsubscribe page, unless it is preview request of successful unsubscribe
+      if (isset($data['preview']) && $data['preview'] && !isset($data['token'])) {
+        $this->performUnsubscribe($data, StatisticsUnsubscribeEntity::METHOD_LINK);
+      } else {
+        $this->confirmUnsubscribe($data);
+      }
     }
   }
 
@@ -91,8 +101,20 @@ class Subscription {
     return $this->subscriptionPages->init($action, $data, true, true);
   }
 
-  private function applyOneClickUnsubscribeStrategy($data): void {
+  private function performUnsubscribe($data, string $method): void {
     $subscription = $this->initSubscriptionPage(UserSubscription\Pages::ACTION_UNSUBSCRIBE, $data);
-    $subscription->unsubscribe(StatisticsUnsubscribeEntity::METHOD_ONE_CLICK);
+    $subscription->unsubscribe($method);
+  }
+
+  private function isPostRequest(): bool {
+    if ($this->request->isPost()) {
+      return true;
+    }
+    // For tracking redirects we store original method in the query string
+    $requestMethod = $this->request->getStringParam('request_method');
+    if (!$requestMethod) {
+      return false;
+    }
+    return strtoupper($requestMethod) === 'POST';
   }
 }

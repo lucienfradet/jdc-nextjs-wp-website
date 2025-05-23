@@ -52,29 +52,40 @@ class __TwigTemplate_d397b2a974f636a1e1c9b326eb2ccfd5695d20d9e10469f6f7ff8efdcee
         $macros = $this->macros;
         // line 4
         yield "<div id=\"mailpoet_subscribers_export\" class=\"wrap\">
-  <h1 class=\"mailpoet-h1 mailpoet-title\">
-    <span>";
-        // line 6
-        yield $this->extensions['MailPoet\Twig\I18n']->translate("Export");
-        yield "</span>
-    <a class=\"mailpoet-button button button-secondary button-small\" href=\"?page=mailpoet-subscribers#/\">";
+  <div class=\"mailpoet-top-bar\">
+    <a href=\"?page=mailpoet-subscribers#/\" role=\"button\" class=\"mailpoet-top-bar-logo\" title=\"Back to section root\" tabindex=\"0\">
+      <img src=\"";
         // line 7
-        yield $this->extensions['MailPoet\Twig\I18n']->translate("Back to Subscribers");
-        yield "</a>
-  </h1>
+        yield $this->extensions['MailPoet\Twig\Assets']->generateCdnUrl("logo-orange.svg");
+        yield "\" alt=\"MailPoet logo\" />
+    </a>
+    <style>#wpbody-content { padding-top: 64px; } .wrap { margin-top: 20px; }</style>
+  </div>
+
+  <div class=\"mailpoet-page-header\">
+    <div class=\"mailpoet-back-button\">
+      <a href=\"?page=mailpoet-subscribers#/\" aria-label=\"Navigate to the lists page\" class=\"components-button is-small has-icon\">
+        <svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 24 24\" width=\"24\" height=\"24\" aria-hidden=\"true\" focusable=\"false\"><path d=\"M14.6 7l-1.2-1L8 12l5.4 6 1.2-1-4.6-5z\"></path></svg>
+      </a>
+    </div>
+    <h1 class=\"wp-heading-inline\">";
+        // line 18
+        yield $this->extensions['MailPoet\Twig\I18n']->translate("Export subscribers");
+        yield "</h1>
+  </div>
   ";
-        // line 9
+        // line 20
         if (MailPoetVendor\Twig\Extension\CoreExtension::testEmpty(($context["segments"] ?? null))) {
-            // line 10
+            // line 21
             yield "  <div class=\"error\">
     <p>";
-            // line 11
+            // line 22
             yield $this->extensions['MailPoet\Twig\I18n']->translate("Yikes! Couldn't find any subscribers");
             yield "</p>
   </div>
   ";
         }
-        // line 14
+        // line 25
         yield "  <div id=\"mailpoet-export\" class=\"mailpoet-tab-content\">
     <!-- Template data -->
   </div>
@@ -85,13 +96,13 @@ class __TwigTemplate_d397b2a974f636a1e1c9b326eb2ccfd5695d20d9e10469f6f7ff8efdcee
   </div>
   <div class=\"mailpoet-settings-grid\">
     ";
-        // line 23
+        // line 34
         if ( !MailPoetVendor\Twig\Extension\CoreExtension::testEmpty(($context["segments"] ?? null))) {
-            // line 24
+            // line 35
             yield "      <div class=\"mailpoet-settings-label\">
         <label for=\"export_lists\">
           ";
-            // line 26
+            // line 37
             yield $this->extensions['MailPoet\Twig\I18n']->translate("Pick one or multiple lists");
             yield "
         </label>
@@ -99,25 +110,25 @@ class __TwigTemplate_d397b2a974f636a1e1c9b326eb2ccfd5695d20d9e10469f6f7ff8efdcee
       <div class=\"mailpoet-settings-inputs\">
         <div class=\"mailpoet-form-select mailpoet-form-input\">
           <select id=\"export_lists\" data-placeholder=\"";
-            // line 31
+            // line 42
             yield $this->extensions['MailPoet\Twig\I18n']->translateWithContext("Select", "Verb");
             yield "\" multiple=\"multiple\"></select>
         </div>
       </div>
     ";
         }
-        // line 35
+        // line 46
         yield "
     <div class=\"mailpoet-settings-label\">
       <label for=\"export_columns\">
         ";
-        // line 38
+        // line 49
         yield $this->extensions['MailPoet\Twig\I18n']->translate("List of fields to export");
         yield "
         <p class=\"description\">
-          <a href=\"https://kb.mailpoet.com/article/245-what-is-global-status\" target=\"_blank\">
+          <a href=\"https://kb.mailpoet.com/article/245-what-is-the-subscriber-global-status\" target=\"_blank\">
             ";
-        // line 41
+        // line 52
         yield $this->extensions['MailPoet\Twig\I18n']->translateWithContext("Read about the Global status.", "Link to a documentation page in the knowledge base about what is the subscriber global status");
         yield "
           </a>
@@ -127,7 +138,7 @@ class __TwigTemplate_d397b2a974f636a1e1c9b326eb2ccfd5695d20d9e10469f6f7ff8efdcee
     <div class=\"mailpoet-settings-inputs\">
       <div class=\"mailpoet-form-select mailpoet-form-input\">
         <select id=\"export_columns\" data-placeholder=\"";
-        // line 48
+        // line 59
         yield $this->extensions['MailPoet\Twig\I18n']->translateWithContext("Select", "Verb");
         yield "\" multiple=\"multiple\"></select>
       </div>
@@ -135,7 +146,7 @@ class __TwigTemplate_d397b2a974f636a1e1c9b326eb2ccfd5695d20d9e10469f6f7ff8efdcee
 
     <div class=\"mailpoet-settings-label\">
       ";
-        // line 53
+        // line 64
         yield $this->extensions['MailPoet\Twig\I18n']->translate("Format");
         yield "
     </div>
@@ -146,19 +157,19 @@ class __TwigTemplate_d397b2a974f636a1e1c9b326eb2ccfd5695d20d9e10469f6f7ff8efdcee
           <span class=\"mailpoet-form-radio-control\"></span>
         </label>
         <label for=\"export-format-csv\">";
-        // line 61
+        // line 72
         yield $this->extensions['MailPoet\Twig\I18n']->translate("CSV file");
         yield "</label>
       </div>
       <div class=\"mailpoet-settings-inputs-row";
-        // line 63
+        // line 74
         if ( !($context["zipExtensionLoaded"] ?? null)) {
             yield " mailpoet-disabled";
         }
         yield "\">
         <label class=\"mailpoet-form-radio\">
           <input type=\"radio\" name=\"option_format\" id=\"export-format-xlsx\" value=\"xlsx\"";
-        // line 65
+        // line 76
         if ( !($context["zipExtensionLoaded"] ?? null)) {
             yield " disabled";
         }
@@ -166,29 +177,29 @@ class __TwigTemplate_d397b2a974f636a1e1c9b326eb2ccfd5695d20d9e10469f6f7ff8efdcee
           <span class=\"mailpoet-form-radio-control\"></span>
         </label>
         <label for=\"export-format-xlsx\">";
-        // line 68
+        // line 79
         yield $this->extensions['MailPoet\Twig\I18n']->translate("Excel file");
         yield "</label>
       </div>
       ";
-        // line 70
+        // line 81
         if ( !($context["zipExtensionLoaded"] ?? null)) {
-            // line 71
+            // line 82
             yield "        <div class=\"inline notice notice-warning\">
           <p>";
-            // line 72
+            // line 83
             yield $this->extensions['MailPoet\Twig\I18n']->translate(MailPoet\Util\Helpers::replaceLinkTags("ZIP extension is required to create Excel files. Please refer to the [link]official PHP ZIP installation guide[/link] or contact your hosting provider’s technical support for instructions on how to install and load the ZIP extension.", "http://php.net/manual/en/zip.installation.php"));
             yield "</p>
         </div>
       ";
         }
-        // line 75
+        // line 86
         yield "    </div>
 
     <div class=\"mailpoet-settings-save\">
         <a href=\"javascript:;\" class=\"mailpoet-button mailpoet-disabled button-primary\" id=\"mailpoet-export-button\">
           ";
-        // line 79
+        // line 90
         yield $this->extensions['MailPoet\Twig\I18n']->translate("Export");
         yield "
         </a>
@@ -199,11 +210,11 @@ class __TwigTemplate_d397b2a974f636a1e1c9b326eb2ccfd5695d20d9e10469f6f7ff8efdcee
 <script type=\"text/javascript\">
   var
     segments = JSON.parse(\"";
-        // line 87
+        // line 98
         yield $this->env->getRuntime('MailPoetVendor\Twig\Runtime\EscaperRuntime')->escape($this->env->getRuntime('MailPoetVendor\Twig\Runtime\EscaperRuntime')->escape(($context["segments"] ?? null), "js"), "html", null, true);
         yield "\"),
     subscriberFieldsSelect2 = JSON.parse(\"";
-        // line 88
+        // line 99
         yield $this->env->getRuntime('MailPoetVendor\Twig\Runtime\EscaperRuntime')->escape($this->env->getRuntime('MailPoetVendor\Twig\Runtime\EscaperRuntime')->escape(($context["subscriberFieldsSelect2"] ?? null), "js"), "html", null, true);
         yield "\"),
     exportData = {
@@ -212,9 +223,9 @@ class __TwigTemplate_d397b2a974f636a1e1c9b326eb2ccfd5695d20d9e10469f6f7ff8efdcee
 </script>
 
 ";
-        // line 94
+        // line 105
         yield $this->extensions['MailPoet\Twig\I18n']->localize(["serverError" => $this->extensions['MailPoet\Twig\I18n']->translate("Server error:"), "exportMessage" => $this->extensions['MailPoet\Twig\I18n']->translate("%1\$s subscribers were exported. Get the exported file [link]here[/link].")]);
-        // line 97
+        // line 108
         yield "
 ";
         return; yield '';
@@ -241,7 +252,7 @@ class __TwigTemplate_d397b2a974f636a1e1c9b326eb2ccfd5695d20d9e10469f6f7ff8efdcee
      */
     public function getDebugInfo()
     {
-        return array (  215 => 97,  213 => 94,  204 => 88,  200 => 87,  189 => 79,  183 => 75,  177 => 72,  174 => 71,  172 => 70,  167 => 68,  159 => 65,  152 => 63,  147 => 61,  136 => 53,  128 => 48,  118 => 41,  112 => 38,  107 => 35,  100 => 31,  92 => 26,  88 => 24,  86 => 23,  75 => 14,  69 => 11,  66 => 10,  64 => 9,  59 => 7,  55 => 6,  51 => 4,  47 => 3,  36 => 1,);
+        return array (  226 => 108,  224 => 105,  215 => 99,  211 => 98,  200 => 90,  194 => 86,  188 => 83,  185 => 82,  183 => 81,  178 => 79,  170 => 76,  163 => 74,  158 => 72,  147 => 64,  139 => 59,  129 => 52,  123 => 49,  118 => 46,  111 => 42,  103 => 37,  99 => 35,  97 => 34,  86 => 25,  80 => 22,  77 => 21,  75 => 20,  70 => 18,  56 => 7,  51 => 4,  47 => 3,  36 => 1,);
     }
 
     public function getSourceContext()

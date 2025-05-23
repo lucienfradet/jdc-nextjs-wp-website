@@ -486,6 +486,7 @@ class FreeCachedContainer extends Container
             'MailPoet\\Statistics\\StatisticsOpensRepository' => 'getStatisticsOpensRepositoryService',
             'MailPoet\\Statistics\\StatisticsUnsubscribesRepository' => 'getStatisticsUnsubscribesRepositoryService',
             'MailPoet\\Statistics\\StatisticsWooCommercePurchasesRepository' => 'getStatisticsWooCommercePurchasesRepositoryService',
+            'MailPoet\\Statistics\\Track\\Clicks' => 'getClicksService',
             'MailPoet\\Statistics\\Track\\Opens' => 'getOpensService',
             'MailPoet\\Statistics\\Track\\PageViewCookie' => 'getPageViewCookieService',
             'MailPoet\\Statistics\\Track\\SubscriberActivityTracker' => 'getSubscriberActivityTrackerService',
@@ -636,7 +637,6 @@ class FreeCachedContainer extends Container
             'MailPoet\\Referrals\\ReferralDetector' => true,
             'MailPoet\\Router\\Router' => true,
             'MailPoet\\Settings\\UserFlagsController' => true,
-            'MailPoet\\Statistics\\Track\\Clicks' => true,
             'MailPoet\\Statistics\\Track\\WooCommercePurchases' => true,
             'MailPoet\\Subscribers\\InactiveSubscribersController' => true,
             'MailPoet\\Subscribers\\SubscribersEmailCountsController' => true,
@@ -1329,7 +1329,7 @@ class FreeCachedContainer extends Container
      */
     protected function getUpgradeService()
     {
-        return $this->services['MailPoet\\AdminPages\\Pages\\Upgrade'] = new \MailPoet\AdminPages\Pages\Upgrade(($this->services['MailPoet\\AdminPages\\PageRenderer'] ?? $this->getPageRendererService()), ($this->services['MailPoet\\WP\\Functions'] ?? ($this->services['MailPoet\\WP\\Functions'] = new \MailPoet\WP\Functions())), ($this->services['MailPoet\\Util\\License\\Features\\CapabilitiesManager'] ?? $this->getCapabilitiesManagerService()));
+        return $this->services['MailPoet\\AdminPages\\Pages\\Upgrade'] = new \MailPoet\AdminPages\Pages\Upgrade(($this->services['MailPoet\\AdminPages\\PageRenderer'] ?? $this->getPageRendererService()), ($this->services['MailPoet\\WP\\Functions'] ?? ($this->services['MailPoet\\WP\\Functions'] = new \MailPoet\WP\Functions())));
     }
 
     /**
@@ -4692,10 +4692,7 @@ class FreeCachedContainer extends Container
      */
     protected function getTrackService()
     {
-        $a = ($this->services['MailPoet\\Statistics\\Track\\Opens'] ?? $this->getOpensService());
-        $b = ($this->services['MailPoet\\Subscribers\\SubscribersRepository'] ?? $this->getSubscribersRepositoryService());
-
-        return $this->services['MailPoet\\Router\\Endpoints\\Track'] = new \MailPoet\Router\Endpoints\Track(new \MailPoet\Statistics\Track\Clicks(($this->services['MailPoet\\Util\\Cookies'] ?? ($this->services['MailPoet\\Util\\Cookies'] = new \MailPoet\Util\Cookies())), ($this->services['MailPoet\\Statistics\\Track\\SubscriberCookie'] ?? $this->getSubscriberCookieService()), ($this->services['MailPoet\\Newsletter\\Shortcodes\\Shortcodes'] ?? $this->getShortcodes2Service()), $a, ($this->services['MailPoet\\Statistics\\StatisticsClicksRepository'] ?? $this->getStatisticsClicksRepositoryService()), ($this->services['MailPoet\\Statistics\\UserAgentsRepository'] ?? $this->getUserAgentsRepositoryService()), ($this->services['MailPoet\\Newsletter\\Shortcodes\\Categories\\Link'] ?? $this->getLink2Service()), $b, ($this->services['MailPoet\\Settings\\TrackingConfig'] ?? $this->getTrackingConfigService())), $a, ($this->services['MailPoet\\Newsletter\\Sending\\SendingQueuesRepository'] ?? $this->getSendingQueuesRepositoryService()), $b, ($this->services['MailPoet\\Newsletter\\NewslettersRepository'] ?? $this->getNewslettersRepositoryService()), ($this->services['MailPoet\\Cron\\Workers\\StatsNotifications\\NewsletterLinkRepository'] ?? $this->getNewsletterLinkRepositoryService()), ($this->services['MailPoet\\Subscribers\\LinkTokens'] ?? $this->getLinkTokensService()), ($this->services['MailPoet\\Newsletter\\Links\\Links'] ?? $this->getLinks2Service()));
+        return $this->services['MailPoet\\Router\\Endpoints\\Track'] = new \MailPoet\Router\Endpoints\Track(($this->services['MailPoet\\Statistics\\Track\\Clicks'] ?? $this->getClicksService()), ($this->services['MailPoet\\Statistics\\Track\\Opens'] ?? $this->getOpensService()), ($this->services['MailPoet\\Newsletter\\Sending\\SendingQueuesRepository'] ?? $this->getSendingQueuesRepositoryService()), ($this->services['MailPoet\\Subscribers\\SubscribersRepository'] ?? $this->getSubscribersRepositoryService()), ($this->services['MailPoet\\Newsletter\\NewslettersRepository'] ?? $this->getNewslettersRepositoryService()), ($this->services['MailPoet\\Cron\\Workers\\StatsNotifications\\NewsletterLinkRepository'] ?? $this->getNewsletterLinkRepositoryService()), ($this->services['MailPoet\\Subscribers\\LinkTokens'] ?? $this->getLinkTokensService()), ($this->services['MailPoet\\Newsletter\\Links\\Links'] ?? $this->getLinks2Service()));
     }
 
     /**
@@ -5406,6 +5403,16 @@ class FreeCachedContainer extends Container
     protected function getStatisticsWooCommercePurchasesRepositoryService()
     {
         return $this->services['MailPoet\\Statistics\\StatisticsWooCommercePurchasesRepository'] = new \MailPoet\Statistics\StatisticsWooCommercePurchasesRepository(($this->services['MailPoetVendor\\Doctrine\\ORM\\EntityManager'] ?? $this->getEntityManagerService()), ($this->services['MailPoet\\WooCommerce\\Helper'] ?? $this->getHelperService()));
+    }
+
+    /**
+     * Gets the public 'MailPoet\Statistics\Track\Clicks' shared autowired service.
+     *
+     * @return \MailPoet\Statistics\Track\Clicks
+     */
+    protected function getClicksService()
+    {
+        return $this->services['MailPoet\\Statistics\\Track\\Clicks'] = new \MailPoet\Statistics\Track\Clicks(($this->services['MailPoet\\Util\\Cookies'] ?? ($this->services['MailPoet\\Util\\Cookies'] = new \MailPoet\Util\Cookies())), ($this->services['MailPoet\\Statistics\\Track\\SubscriberCookie'] ?? $this->getSubscriberCookieService()), ($this->services['MailPoet\\Newsletter\\Shortcodes\\Shortcodes'] ?? $this->getShortcodes2Service()), ($this->services['MailPoet\\Statistics\\Track\\Opens'] ?? $this->getOpensService()), ($this->services['MailPoet\\Statistics\\StatisticsClicksRepository'] ?? $this->getStatisticsClicksRepositoryService()), ($this->services['MailPoet\\Statistics\\UserAgentsRepository'] ?? $this->getUserAgentsRepositoryService()), ($this->services['MailPoet\\Newsletter\\Shortcodes\\Categories\\Link'] ?? $this->getLink2Service()), ($this->services['MailPoet\\Subscribers\\SubscribersRepository'] ?? $this->getSubscribersRepositoryService()), ($this->services['MailPoet\\Settings\\TrackingConfig'] ?? $this->getTrackingConfigService()), ($this->services['MailPoet\\Util\\Request'] ?? ($this->services['MailPoet\\Util\\Request'] = new \MailPoet\Util\Request())));
     }
 
     /**

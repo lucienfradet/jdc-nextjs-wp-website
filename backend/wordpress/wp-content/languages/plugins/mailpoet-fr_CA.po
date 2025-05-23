@@ -1,6 +1,6 @@
 msgid ""
 msgstr ""
-"PO-Revision-Date: 2025-04-22 11:21:57+0000\n"
+"PO-Revision-Date: 2025-05-19 12:20:35+0000\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -9,11 +9,43 @@ msgstr ""
 "Language: fr_CA\n"
 "Project-Id-Version: MailPoet - MailPoet\n"
 
+#: views/subscribers/importExport/import.html:22
+msgid "Import subscribers"
+msgstr "Importation d'abonnés"
+
+#: views/subscribers/importExport/export.html:22
+msgid "Export subscribers"
+msgstr ""
+
+#: views/newsletter/templates/blocks/dynamicProducts/widget.hbs:4
+msgid "Dynamic Products"
+msgstr ""
+
+#: views/newsletter/templates/blocks/dynamicProducts/settings.hbs:36
+msgid "Selected products"
+msgstr ""
+
+#: views/newsletter/templates/blocks/dynamicProducts/settings.hbs:30
+msgid "Abandoned cart products"
+msgstr ""
+
+#: views/newsletter/templates/blocks/dynamicProducts/settings.hbs:24
+msgid "Cross-sell products"
+msgstr ""
+
+#: views/newsletter/templates/blocks/dynamicProducts/settings.hbs:18
+msgid "Order products"
+msgstr ""
+
+#: views/newsletter/templates/blocks/dynamicProducts/block.hbs:4
+msgid "This is only a preview! Your subscribers will see your latest products."
+msgstr ""
+
 #: lib/Subscription/AdminUserSubscription.php:170
 msgid "Failed to send confirmation email for admin-created user"
 msgstr ""
 
-#: views/layout.html:204
+#: views/layout.html:184
 msgid "Get help in the forum"
 msgstr ""
 
@@ -388,15 +420,15 @@ msgstr "CAPTCHA invalide. Veuillez réessayer."
 msgid "For a limited time, save 40% when you switch to (or upgrade) an annual plan — no coupon needed. Offer ends at 3 pm UTC, December 3, 2024."
 msgstr "Pour une durée limitée, économisez jusqu‘à 40 % en passant à une offre annuelle ou en la mettant à niveau - aucun code promo n‘est nécessaire. L‘offre prend fin à 15 heures UTC, le 3 décembre 2024."
 
-#: views/form/editor.html:111
+#: views/form/editor.html:106
 msgid "When needed, use [link]PHP[/link] or an [link]iFrame[/link] HTML element."
 msgstr "Si nécessaire, utilisez [link]PHP[/link] ou un élément HTML [link]iFrame[/link]."
 
-#: views/form/editor.html:110
+#: views/form/editor.html:105
 msgid "You can also use a block on any page or post, or this shortcode if you prefer [shortcode]."
 msgstr "Vous pouvez également utiliser un bloc sur n‘importe quelle page ou article, ou ce code court si vous préférez [shortcode]."
 
-#: views/form/editor.html:109
+#: views/form/editor.html:104
 msgid "You can add this form to your site using the [link]site editor[/link] (new tab)."
 msgstr "Vous pouvez ajouter ce formulaire à votre site en utilisant l‘[link]éditeur de site[/link] (nouvel onglet)."
 
@@ -424,53 +456,53 @@ msgid "Some of the MailPoet plugin’s tables are not using the InnoDB engine (%
 msgstr "Certaines tables de l‘extension MailPoet n‘utilisent pas le moteur InnoDB (%s). Cela peut entraîner des problèmes de performance et de compatibilité. Veuillez vous assurer que toutes les tables MailPoet sont converties pour utiliser le moteur InnoDB. Pour plus d‘informations, consultez [link]ce guide[/link]."
 
 #. translators: %s is the name of the list.
-#: lib/Automation/Integrations/MailPoet/Actions/SendEmailAction.php:385
+#: lib/Automation/Integrations/MailPoet/Actions/SendEmailAction.php:412
 msgid "Cannot send the email because the subscriber is not subscribed to the '%s' list."
 msgstr "Impossible d‘envoyer l‘e-mail car l‘abonné·e ne l‘est à la liste « %s »."
 
-#: lib/Automation/Integrations/MailPoet/Actions/SendEmailAction.php:382
+#: lib/Automation/Integrations/MailPoet/Actions/SendEmailAction.php:409
 msgid "Cannot send the email because the list was not found."
 msgstr "Impossible d‘envoyer l‘e-mail car la liste est introuvable."
 
-#: lib/Automation/Integrations/MailPoet/Actions/SendEmailAction.php:328
+#: lib/Automation/Integrations/MailPoet/Actions/SendEmailAction.php:335
 msgid "Email sending process timed out."
 msgstr "La durée d‘envoi de l‘e-mail a été dépassée."
 
 #. translators: %s is the error message.
-#: lib/Automation/Integrations/MailPoet/Actions/SendEmailAction.php:319
+#: lib/Automation/Integrations/MailPoet/Actions/SendEmailAction.php:326
 msgid "Email failed to send. Error: %s"
 msgstr "Échec de l‘envoi de l‘e-mail. Erreur : %s"
 
-#: lib/Automation/Integrations/MailPoet/Actions/SendEmailAction.php:312
+#: lib/Automation/Integrations/MailPoet/Actions/SendEmailAction.php:319
 msgid "Email failed to schedule."
 msgstr "Échec de la planification de l‘e-mail."
 
 #. translators: %s is the type of $runId.
-#: lib/Automation/Integrations/MailPoet/Actions/SendEmailAction.php:302
+#: lib/Automation/Integrations/MailPoet/Actions/SendEmailAction.php:309
 msgid "Invalid automation step data. Expected 'step_id' to be a string, got: %s"
 msgstr "Données d‘étape d‘automatisation invalides. Attendu que 'step_id' soit une chaine, obtenu : %s"
 
 #. translators: %s is the type of $runId.
-#: lib/Automation/Integrations/MailPoet/Actions/SendEmailAction.php:294
+#: lib/Automation/Integrations/MailPoet/Actions/SendEmailAction.php:301
 msgid "Invalid automation step data. Expected 'run_id' to be an integer, got: %s"
 msgstr "Données d‘étape d‘automatisation invalides. Attendu que 'run_id' soit un entier, obtenu : %s"
 
 #. translators: %s is the type of $data.
-#: lib/Automation/Integrations/MailPoet/Actions/SendEmailAction.php:286
+#: lib/Automation/Integrations/MailPoet/Actions/SendEmailAction.php:293
 msgid "Invalid automation step data. Array expected, got: %s"
 msgstr "Données d‘étape d‘automatisation invalides. Tableau attendu, obtenu : %s"
 
-#: lib/Automation/Integrations/MailPoet/Actions/SendEmailAction.php:244
+#: lib/Automation/Integrations/MailPoet/Actions/SendEmailAction.php:251
 msgid "Could not create sending task."
 msgstr "Impossible de créer la tâche d‘envoi."
 
 #. translators: %s is the subscriber's status.
-#: lib/Automation/Integrations/MailPoet/Actions/SendEmailAction.php:195
-#: lib/Automation/Integrations/MailPoet/Actions/SendEmailAction.php:267
+#: lib/Automation/Integrations/MailPoet/Actions/SendEmailAction.php:202
+#: lib/Automation/Integrations/MailPoet/Actions/SendEmailAction.php:274
 msgid "Cannot send the email because the subscriber's status is '%s'."
 msgstr "Impossible d'envoyer l'e-mail car l‘état de l'abonnement est « %s »."
 
-#: lib/Automation/Integrations/MailPoet/Actions/SendEmailAction.php:170
+#: lib/Automation/Integrations/MailPoet/Actions/SendEmailAction.php:177
 msgid "Cannot send the email because it was not found. Please, go to the automation editor and update the email contents."
 msgstr "Impossible d‘envoyer l‘e-mail car il est introuvable. Veuillez vous rendre dans l‘éditeur d‘automatisation et mettre à jour le contenu de l‘e-mail."
 
@@ -554,7 +586,7 @@ msgstr "Tâches d‘envoi planifiées"
 msgid "Total cancelled tasks"
 msgstr "Total des tâches annulées"
 
-#: views/layout.html:163
+#: views/layout.html:160
 msgid "There is an issue with the connection to the MailPoet Sending Service"
 msgstr "Il y a un problème avec la connexion au service d‘envoi MailPoet."
 
@@ -570,15 +602,15 @@ msgstr "Le cron intégré à WordPress est désactivé avec la constante DISABLE
 msgid "The plugin has encountered an unexpected error. Please reload the page. If that does not help, [link]re-install the MailPoet Plugin.[/link]"
 msgstr "L‘extension a fait face à une erreur inattendue. Veuillez recharger la page. Si cela ne vous aide pas, [link]réinstallez l‘extension MailPoet[/link]."
 
-#: views/layout.html:157
+#: views/layout.html:154
 msgid "There is an issue with the MailPoet task scheduler"
 msgstr "Il y a un problème avec le planificateur de tâches de MailPoet"
 
-#: views/layout.html:155
+#: views/layout.html:152
 msgid "Upgrade the plan"
 msgstr "Mettre à niveau l‘offre"
 
-#: views/layout.html:153
+#: views/layout.html:150
 msgid "You are not allowed to use the MailPoet sending service with your current API key. Kindly upgrate to a [link]MailPoet sending plan[/link] or switch your [link]sending method[/link]."
 msgstr "Vous n‘avez pas l‘autorisation d‘utiliser le service d‘envoi MailPoet avec votre clé d‘API actuelle. Veuillez passer à une [link]offre d‘envoi MailPoet[/link] ou changer de [link]méthode d‘envoi[/link]."
 
@@ -909,11 +941,11 @@ msgstr "Améliorez les taux d‘envoi des e-mails"
 msgid "Email violates Sender Domain requirements. Please authenticate the sender domain."
 msgstr "L‘e-mail ne respecte pas les prérequis du domaine d‘expédition. Veuillez authentifier le domaine d‘expédition."
 
-#: views/segments/translations.html:59
+#: views/segments/translations.html:37
 msgid "Subscribers may see this name when managing their subscriptions."
 msgstr "Les abonnés/abonnées peuvent voir ce nom lorsqu‘ils gèrent leurs abonnements."
 
-#: views/segments/translations.html:58
+#: views/segments/translations.html:36
 msgid "Public list name"
 msgstr "Nom de la liste publique"
 
@@ -1048,7 +1080,7 @@ msgstr "Commande terminée"
 msgid "Order cancelled"
 msgstr "Commande annulée"
 
-#: views/subscribers/importExport/import.html:116
+#: views/subscribers/importExport/import.html:132
 msgctxt "Text in button"
 msgid "I cleaned my list"
 msgstr "J‘ai nettoyé ma liste"
@@ -1266,95 +1298,95 @@ msgstr "30 (j)"
 msgid "Subscription"
 msgstr "Abonnement"
 
-#: views/segments/translations.html:190
+#: views/segments/translations.html:155
 msgid "Search coupon codes"
 msgstr "Rechercher des codes promo"
 
-#: views/segments/translations.html:185
+#: views/segments/translations.html:150
 msgid "reviews"
 msgstr "avis"
 
-#: views/segments/translations.html:174
+#: views/segments/translations.html:139
 msgid "5 star"
 msgstr "5 étoiles"
 
-#: views/segments/translations.html:173
+#: views/segments/translations.html:138
 msgid "4 star"
 msgstr "4 étoiles"
 
-#: views/segments/translations.html:172
+#: views/segments/translations.html:137
 msgid "3 star"
 msgstr "3 étoiles"
 
-#: views/segments/translations.html:171
+#: views/segments/translations.html:136
 msgid "2 star"
 msgstr "2 étoiles"
 
-#: views/segments/translations.html:170
+#: views/segments/translations.html:135
 msgid "1 star"
 msgstr "1 étoile"
 
-#: views/segments/translations.html:169
+#: views/segments/translations.html:134
 msgid "any"
 msgstr "tout"
 
-#: views/layout.html:133
+#: views/layout.html:130
 msgid "Act now to ensure seamless service to your growing audience."
 msgstr "Agissez dès maintenant pour garantir un service sans faille à votre audience toujours plus nombreuse."
 
-#: views/layout.html:132
+#: views/layout.html:129
 msgid "To continue using MailPoet without interruption, it’s time to upgrade your plan."
 msgstr "Pour continuer à utiliser MailPoet sans interruption, il est temps de mettre à jour votre offre."
 
-#: views/layout.html:129
+#: views/layout.html:126
 msgid "Congratulations, you now have more subscribers than your plan’s limit!"
 msgstr "Félicitations, vous avez maintenant plus d’abonnements que la limite de votre offre !"
 
-#: views/layout.html:128
+#: views/layout.html:125
 msgid "Congratulations on reaching over [subscribersLimit] subscribers!"
 msgstr "Félicitations pour avoir dépassé les [subscribersLimit] abonnements !"
 
-#: views/layout.html:127
+#: views/layout.html:124
 msgid "Action required: Upgrade your plan!"
 msgstr "Action nécessaire : Mettez votre offre à jour !"
 
-#: views/layout.html:126
+#: views/layout.html:123
 msgid "Action required: Upgrade your plan for more than [subscribersLimit] subscribers!"
 msgstr "Action nécessaire : Mettez à niveau votre offre pour plus de [subscribersLimit] abonnements !"
 
-#: views/segments/translations.html:140
+#: views/segments/translations.html:106
 msgid "over all time"
 msgstr "depuis toujours"
 
-#: views/segments/translations.html:128
+#: views/segments/translations.html:94
 msgid "Last sending date"
 msgstr "Dernière date d’envoi"
 
-#: views/segments/translations.html:127
+#: views/segments/translations.html:93
 msgid "Last purchase date"
 msgstr "Date du dernier achat"
 
-#: views/segments/translations.html:126
+#: views/segments/translations.html:92
 msgid "Last page view date"
 msgstr "Date de la dernière vue de page"
 
-#: views/segments/translations.html:125
+#: views/segments/translations.html:91
 msgid "Last open date"
 msgstr "Dernière date d’ouverture"
 
-#: views/segments/translations.html:124
+#: views/segments/translations.html:90
 msgid "Last engagement date"
 msgstr "Dernière date d’engagement"
 
-#: views/segments/translations.html:123
+#: views/segments/translations.html:89
 msgid "Last click date"
 msgstr "Date du dernier clic"
 
-#: views/segments/translations.html:136
+#: views/segments/translations.html:102
 msgid "on or after"
 msgstr "le ou après"
 
-#: views/segments/translations.html:134
+#: views/segments/translations.html:100
 msgid "on or before"
 msgstr "le ou avant"
 
@@ -1367,55 +1399,39 @@ msgstr "Nombre de listes par page"
 msgid "This tag does not exist."
 msgstr "Cette étiquette n’existe pas."
 
-#: views/subscribers/subscribers.html:151
-msgid "Remove tag..."
-msgstr "Retirer l’étiquette…"
-
-#: views/subscribers/subscribers.html:150
-msgid "Add tag..."
-msgstr "Ajouter une étiquette…"
-
-#: views/subscribers/subscribers.html:149
-msgid "Tag <strong>%1$s</strong> was removed from %2$d subscribers."
-msgstr "L’étiquette <strong>%1$s</strong> a été supprimée pour %2$d abonnés."
-
-#: views/subscribers/subscribers.html:148
-msgid "Tag <strong>%1$s</strong> was added to %2$d subscribers."
-msgstr "L’étiquette <strong>%1$s</strong> a été ajoutée pour %2$d abonnés."
-
-#: views/segments/translations.html:167
+#: views/segments/translations.html:132
 msgid "Search automations"
 msgstr "Rechercher des automatisations"
 
-#: views/segments/translations.html:166
+#: views/segments/translations.html:131
 msgid "exited automation"
 msgstr "automatisation terminée"
 
-#: views/segments/translations.html:165
+#: views/segments/translations.html:130
 msgid "entered automation"
 msgstr "entré dans l’automatisation"
 
-#: views/form/editor.html:135
+#: views/form/editor.html:130
 msgid "Select specific categories"
 msgstr "Sélectionnez des catégories spécifiques"
 
-#: views/form/editor.html:134
+#: views/form/editor.html:129
 msgid "Select specific tags"
 msgstr "Sélectionnez des étiquettes spécifiques"
 
-#: views/form/editor.html:133
+#: views/form/editor.html:128
 msgid "Display on all post/product tag archives"
 msgstr "Afficher dans toutes les archives des étiquettes des publications/produits"
 
-#: views/form/editor.html:131
+#: views/form/editor.html:126
 msgid "Display on all post/product category archives"
 msgstr "Afficher dans toutes les archives des publications/catégories de produits"
 
-#: views/form/editor.html:91
+#: views/form/editor.html:87
 msgid "Display on the homepage"
 msgstr "Afficher sur la page d’accueil"
 
-#: views/segments/translations.html:192
+#: views/segments/translations.html:157
 msgid "Search shipping methods"
 msgstr "Rechercher des méthodes d’expédition"
 
@@ -1734,7 +1750,7 @@ msgstr "Méthode d’envoi :"
 msgid "This section shows details of MailPoet"
 msgstr "Cette section affiche les détails de MailPoet"
 
-#: views/segments/translations.html:191
+#: views/segments/translations.html:156
 msgid "Search payment methods"
 msgstr "Rechercher des moyens de paiement"
 
@@ -1755,31 +1771,31 @@ msgstr "Le code promo sera généré automatiquement lorsque cette campagne sera
 msgid "Duplicating of segment failed: %s"
 msgstr "La duplication du segment a échoué : %s"
 
-#: views/segments/translations.html:158
+#: views/segments/translations.html:123
 msgid "Search forms"
 msgstr "Rechercher des formulaires"
 
-#: views/segments/translations.html:148
+#: views/segments/translations.html:113
 msgid "subscribed via form"
 msgstr "inscrit via le formulaire"
 
-#: views/segments/translations.html:118
+#: views/segments/translations.html:84
 msgid "does not end with"
 msgstr "ne se termine pas avec"
 
-#: views/segments/translations.html:116
+#: views/segments/translations.html:82
 msgid "does not start with"
 msgstr "ne commence pas avec"
 
-#: views/layout.html:143
+#: views/layout.html:140
 msgid "Refresh monthly email limit"
 msgstr "Actualiser la limite mensuelle d’e-mails"
 
-#: views/layout.html:141
+#: views/layout.html:138
 msgid "You have sent more emails this month than your MailPoet plan includes, and sending has been temporarily paused."
 msgstr "Vous avez envoyé plus d’e-mails ce mois-ci que ne le prévoit votre offre MailPoet, et l’envoi a été temporairement interrompu."
 
-#: views/layout.html:139
+#: views/layout.html:136
 msgid "Congratulations, you sent a lot of emails this month!"
 msgstr "Félicitations, vous avez envoyé beaucoup d’e-mails ce mois-ci !"
 
@@ -1815,7 +1831,7 @@ msgstr "après"
 msgid "before"
 msgstr "avant"
 
-#: views/subscribers/importExport/export.html:41
+#: views/subscribers/importExport/export.html:56
 msgctxt "Link to a documentation page in the knowledge base about what is the subscriber global status"
 msgid "Read about the Global status."
 msgstr "En savoir plus sur l’état global."
@@ -1878,37 +1894,37 @@ msgstr "est n’importe lequel de"
 msgid "matches regex"
 msgstr "correspondances regex"
 
-#: views/segments/translations.html:133
+#: views/segments/translations.html:99
 #: lib/Automation/Integrations/Core/Filters/StringFilter.php:36
 msgid "is not blank"
 msgstr "n’est pas vide"
 
-#: views/segments/translations.html:132
+#: views/segments/translations.html:98
 #: lib/Automation/Integrations/Core/Filters/StringFilter.php:35
 msgid "is blank"
 msgstr "est vide"
 
-#: views/segments/translations.html:117
+#: views/segments/translations.html:83
 #: lib/Automation/Integrations/Core/Filters/StringFilter.php:34
 msgid "ends with"
 msgstr "se termine par"
 
-#: views/segments/translations.html:115
+#: views/segments/translations.html:81
 #: lib/Automation/Integrations/Core/Filters/StringFilter.php:33
 msgid "starts with"
 msgstr "commence par"
 
-#: views/segments/translations.html:106
+#: views/segments/translations.html:72
 #: lib/Automation/Integrations/Core/Filters/StringFilter.php:32
 msgid "does not contain"
 msgstr "ne contient pas"
 
-#: views/segments/translations.html:114
+#: views/segments/translations.html:80
 #: lib/Automation/Integrations/Core/Filters/StringFilter.php:30
 msgid "is not"
 msgstr "n’est pas"
 
-#: views/segments/translations.html:113
+#: views/segments/translations.html:79
 #: lib/Automation/Integrations/Core/Filters/BooleanFilter.php:20
 #: lib/Automation/Integrations/Core/Filters/StringFilter.php:29
 msgid "is"
@@ -1946,16 +1962,16 @@ msgstr "Le champ avec la clé « %s » n‘a pas été trouvé."
 msgid "Email with type 'automation' or 'automation_transactional' expected, '%s' given."
 msgstr "E-mail de type « automatisation » ou « transactionnel » est attendu, « %s » donné."
 
-#: views/segments/translations.html:144
+#: views/segments/translations.html:109
 msgctxt "Subscriber engagement score"
 msgid "engagement score"
 msgstr "score d’engagement"
 
-#: views/layout.html:136
+#: views/layout.html:133
 msgid "Refresh subscriber limit"
 msgstr "Actualiser la limite d’abonnements"
 
-#: views/layout.html:134
+#: views/layout.html:131
 msgid "Alternatively, [link]check how to manage your subscribers[/link] to keep your numbers below your plan’s limit."
 msgstr "Sinon, [link]vérifiez comment gérer vos abonnements[/link] pour les maintenir en dessous de la limite de votre offre."
 
@@ -1997,11 +2013,11 @@ msgstr "Client WooCommerce"
 msgid "This step can not be used with the selected trigger."
 msgstr "Cette étape ne peut pas être utilisée avec le déclencheur sélectionné."
 
-#: views/segments/translations.html:179
+#: views/segments/translations.html:144
 msgid "less than or equal"
 msgstr "inférieure ou égale à"
 
-#: views/segments/translations.html:177
+#: views/segments/translations.html:142
 msgid "more than or equal"
 msgstr "supérieure ou égale à"
 
@@ -2023,7 +2039,7 @@ msgstr "minute(s)"
 msgid "This subscriber is already unsubscribed."
 msgstr "Cet abonné est déjà désabonné."
 
-#: views/subscribers/subscribers.html:68
+#: views/subscribers/subscribers.html:42
 msgid "Unsubscribed at %1$d, via the MP API."
 msgstr "Désabonnement à %1$d, par l‘API MP."
 
@@ -2171,10 +2187,6 @@ msgstr "Statistiques détaillées"
 msgid "Accelerate your growth with our Business plan"
 msgstr "Accélérez votre croissance avec notre offre Business"
 
-#: views/forms.html:87
-msgid "Form settings of \"%1$s\" form are corrupted. Please [link]reconfigure the form in the editor[/link]."
-msgstr "Les réglages du formulaire « %1$s » sont corrompus. Veuillez [link]reconfigurer le formulaire dans l’éditeur[/link]."
-
 #: lib/Captcha/CaptchaFormRenderer.php:197
 msgid "CAPTCHA"
 msgstr "CAPTCHA"
@@ -2317,7 +2329,7 @@ msgstr "Le réglage n’existe pas."
 msgid "You have not specified any setting to be deleted."
 msgstr "Vous n’avez pas spécifié de réglage à supprimer."
 
-#: views/segments/translations.html:62
+#: views/segments/translations.html:40
 msgid "List visibility"
 msgstr "Visibilité de la liste"
 
@@ -2636,7 +2648,7 @@ msgstr "Accueil "
 msgid "To hide a list from the Manage Subscription page, go to [link]Lists[/link] and edit the one you want to hide."
 msgstr "Pour masquer une liste à partir de la page Gérer l’abonnement, allez dans [link]Listes[/link] et modifiez celle que vous voulez masquer."
 
-#: views/segments/translations.html:63
+#: views/segments/translations.html:41
 msgid "Show this list on the \"Manage Subscription\" page"
 msgstr "Afficher cette liste sur la page « Gérer l’abonnement »"
 
@@ -2869,7 +2881,7 @@ msgstr "Éditeur d’automatisation"
 msgid "Experimental Features"
 msgstr "Fonctionnalités expérimentales"
 
-#: lib/Automation/Integrations/MailPoet/Actions/SendEmailAction.php:174
+#: lib/Automation/Integrations/MailPoet/Actions/SendEmailAction.php:181
 msgid "Automation email not found."
 msgstr "L’e-mail d’automatisation n’a pas été trouvé."
 
@@ -2956,7 +2968,7 @@ msgctxt "block title"
 msgid "MailPoet Marketing Opt-in"
 msgstr "Accord commercial MailPoet"
 
-#: views/segments/translations.html:164 lib/Config/Menu.php:503
+#: views/segments/translations.html:129 lib/Config/Menu.php:503
 msgid "Automations"
 msgstr "Automatisations"
 
@@ -2966,8 +2978,8 @@ msgid "WordPress user registers"
 msgstr "Le compte WordPress s’inscrit"
 
 #. translators: %s is the ID of email.
-#: lib/Automation/Integrations/MailPoet/Actions/SendEmailAction.php:179
-#: lib/Automation/Integrations/MailPoet/Actions/SendEmailAction.php:508
+#: lib/Automation/Integrations/MailPoet/Actions/SendEmailAction.php:186
+#: lib/Automation/Integrations/MailPoet/Actions/SendEmailAction.php:535
 msgid "Automation email with ID '%s' not found."
 msgstr "L‘e-mail d’automatisation avec l’ID « %s » n‘a pas été trouvé."
 
@@ -3022,10 +3034,6 @@ msgstr "Créez et envoyez des bulletins d’information, des notifications de pu
 #: mailpoet.php
 msgid "https://www.mailpoet.com"
 msgstr "https://www.mailpoet.com"
-
-#: views/form/editor.html:213
-msgid "Add New Tag"
-msgstr "Ajouter un nouveau mot-clé"
 
 #. translators: automation trigger title
 #: lib/Automation/Integrations/MailPoet/Triggers/SomeoneSubscribesTrigger.php:44
@@ -3082,11 +3090,11 @@ msgstr "Plusieurs objets avec la clé « %1$s » ont été trouvés pour l‘e
 msgid "Subject data for subject with key '%1$s' not found for automation run with ID '%2$d'."
 msgstr "Les données du sujet avec la clé « %1$s » n’ont pas été trouvées pour l‘exécution de l‘automatisation avec l’ID « %2$d »."
 
-#: views/subscribers/importExport/import.html:128
+#: views/subscribers/importExport/import.html:144
 msgid "Pick a tag or create a new one to assign to these subscribers."
 msgstr "Choisissez une étiquette ou créez-en une nouvelle pour l’attribuer à ces abonnés."
 
-#: views/subscribers/importExport/import.html:127
+#: views/subscribers/importExport/import.html:143
 msgid "Assign tags"
 msgstr "Assigner des étiquettes"
 
@@ -3109,21 +3117,21 @@ msgstr "Impossible de se désabonner de la liste avec l’ID « %d »."
 msgid "Failed to save subscriber custom fields: %s"
 msgstr "Échec de l’enregistrement des champs personnalisés de l’abonné : %s"
 
-#: views/layout.html:145
+#: views/layout.html:142
 msgid "To help your audience and MailPoet authenticate you as the domain owner, please add the following DNS records to your domain’s DNS and click “Verify the DNS records”. Please note that it may take up to 24 hours for DNS changes to propagate after you make the change. [link]Read the guide[/link]."
 msgstr "Pour aider votre public et MailPoet à vous authentifier en tant que propriétaire du domaine, veuillez ajouter les enregistrements DNS suivants au DNS de votre domaine et cliquez sur « Vérifier les enregistrements DNS ». Veuillez noter que les changements de DNS peuvent prendre jusqu’à 24 heures pour se propager après que vous ayez effectué le changement. [link]Lire le guide[/link]."
 
-#: views/form/editor.html:207
+#: views/form/editor.html:202
 msgctxt "A label for the error message color"
 msgid "Error"
 msgstr "Erreur"
 
-#: views/form/editor.html:206
+#: views/form/editor.html:201
 msgctxt "A label for the success message color"
 msgid "Success"
 msgstr "Succès"
 
-#: views/form/editor.html:204
+#: views/form/editor.html:199
 msgctxt "Settings in the divider block"
 msgid "Background"
 msgstr "Arrière-plan"
@@ -3299,25 +3307,25 @@ msgstr "Voir les réglages de MailPoet"
 msgid "Automation structure modification not supported."
 msgstr "La modification de la structure de l‘automatisation n’est pas prise en charge."
 
-#: views/segments/translations.html:156
+#: views/segments/translations.html:121
 msgctxt "Subscriber tag"
 msgid "tag"
 msgstr "étiquette"
 
-#: views/subscribers/importExport/import.html:129
-#: views/subscribers/subscribers.html:147
+#: views/form/editor.html:207 views/subscribers/importExport/import.html:145
+#: views/subscribers/subscribers.html:118
 msgid "Add new tag"
 msgstr "Ajouter une étiquette"
 
-#: views/subscribers/subscribers.html:146
+#: views/subscribers/subscribers.html:117
 #: lib/Automation/Integrations/MailPoet/Fields/SubscriberFieldsFactory.php:210
 #: lib/Automation/Integrations/WooCommerce/Fields/OrderFieldsFactory.php:253
 msgid "Tags"
 msgstr "Mots-clés"
 
 #. translators: automation action title
-#: lib/Automation/Integrations/MailPoet/Actions/SendEmailAction.php:129
-#: lib/Automation/Integrations/MailPoet/Actions/SendEmailAction.php:142
+#: lib/Automation/Integrations/MailPoet/Actions/SendEmailAction.php:136
+#: lib/Automation/Integrations/MailPoet/Actions/SendEmailAction.php:149
 msgid "Send email"
 msgstr "Envoyer un courriel"
 
@@ -3372,34 +3380,34 @@ msgstr "Non traité"
 msgid "Failed"
 msgstr "Échec"
 
-#: views/layout.html:142
+#: views/layout.html:139
 msgid "To continue sending with MailPoet Sending Service please [link]upgrade your plan[/link], or wait until sending is automatically resumed on <b>[date]</b>."
 msgstr "Pour continuer à envoyer avec le service d’envoi MailPoet, veuillez [link]mettre à niveau votre offre[/link], ou attendre la reprise automatique des envois le <b>[date]</b>."
 
-#: views/layout.html:140
+#: views/layout.html:137
 msgid "You have sent more emails this month than your MailPoet plan includes ([emailVolumeLimit]), and sending has been temporarily paused."
 msgstr "Vous avez envoyé plus d’e-mails ce mois-ci que ce que votre offre MailPoet inclut ([emailVolumeLimit]), et l’envoi a été temporairement interrompu."
 
-#: views/layout.html:138
+#: views/layout.html:135
 msgid "Congratulations, you sent more than [emailVolumeLimit] emails this month!"
 msgstr "Félicitations, vous avez envoyé plus de [emailVolumeLimit] e-mails ce mois-ci !"
 
-#: views/form/editor.html:103
+#: views/form/editor.html:98
 msgctxt "times selection should be in the end \"7 days\""
 msgid "%1s days"
 msgstr "%1s jours"
 
-#: views/form/editor.html:102
+#: views/form/editor.html:97
 msgctxt "times selection should be in the end \"1 day\""
 msgid "1 day"
 msgstr "1 jour"
 
-#: views/form/editor.html:101
+#: views/form/editor.html:96
 msgctxt "times selection"
 msgid "Always"
 msgstr "Toujours"
 
-#: views/form/editor.html:100
+#: views/form/editor.html:95
 msgctxt "Label on a selection of different times"
 msgid "Show form every"
 msgstr "Afficher les formulaires tou(te)s les"
@@ -3409,20 +3417,20 @@ msgstr "Afficher les formulaires tou(te)s les"
 msgid "You have sent more emails this month than your MailPoet plan includes, and sending has been temporarily paused. To continue sending with MailPoet Sending Service please [link]upgrade your plan[/link], or wait until sending is automatically resumed on %1$s."
 msgstr "Vous avez envoyé plus d’e-mails ce mois-ci que ce que votre offre MailPoet ne le prévoit, et l’envoi a été temporairement interrompu. Pour continuer à envoyer avec le service d’envoi MailPoet, veuillez [link]mettre à jour votre offre[/link], ou attendez que l’envoi reprenne automatiquement le %1$s."
 
-#: views/segments/translations.html:217 views/subscribers/subscribers.html:121
+#: views/segments/translations.html:182 views/subscribers/subscribers.html:92
 msgid "Upgrade"
 msgstr "Option payante"
 
-#: views/segments/translations.html:222 views/subscribers/subscribers.html:127
+#: views/segments/translations.html:187 views/subscribers/subscribers.html:98
 msgid "Upgrade your plan"
 msgstr "Mettez votre offre à niveau"
 
-#: views/segments/translations.html:218 views/subscribers/subscribers.html:123
+#: views/segments/translations.html:183 views/subscribers/subscribers.html:94
 #: lib/Util/Notices/PremiumFeaturesAvailableNotice.php:54
 msgid "Your current MailPoet plan includes advanced features, but they require the MailPoet Premium plugin to be installed and activated."
 msgstr "Votre offre MailPoet actuelle comprend des fonctionnalités avancées, mais elles nécessitent l’installation et l’activation de l’extension MailPoet Premium."
 
-#: views/layout.html:164
+#: views/layout.html:161
 msgid "Currently, your installation can not reach the sending service. If you want to use our service please consult our [link]knowledge base article[/link] for troubleshooting tips."
 msgstr "Actuellement, votre installation ne peut pas accéder au service d’envoi. Si vous souhaitez utiliser notre service, veuillez consulter notre [link]article de la base de connaissances[/link] pour obtenir des conseils de dépannage."
 
@@ -3463,42 +3471,42 @@ msgstr "cliqués"
 msgid "After 12 months (default)"
 msgstr "Après 12 mois (par défaut)"
 
-#: views/segments/translations.html:151
+#: views/segments/translations.html:116
 msgctxt "Dynamic segment creation: User selects this to use any WooCommerce Memberships filters"
 msgid "WooCommerce Memberships"
 msgstr "WooCommerce Memberships"
 
-#: views/segments/translations.html:152
+#: views/segments/translations.html:117
 msgid "Search membership plans"
 msgstr "Rechercher des plans d’adhésion"
 
-#: views/segments/translations.html:92
+#: views/segments/translations.html:58
 msgid "Email not sent yet!"
 msgstr "L’e-mail n’a pas encore été envoyé !"
 
-#: views/segments/translations.html:91
+#: views/segments/translations.html:57
 msgid "All links"
 msgstr "Tous les liens"
 
-#: views/segments/translations.html:137
+#: views/segments/translations.html:103
 msgctxt "Meaning: \"Subscriber subscribed on a date other than the given date\""
 msgid "not on"
 msgstr "non le"
 
-#: views/segments/translations.html:135
+#: views/segments/translations.html:101
 msgctxt "Meaning: \"Subscriber subscribed on a given date\""
 msgid "on"
 msgstr "le"
 
-#: views/segments/translations.html:216
+#: views/segments/translations.html:181
 msgid "Your current MailPoet plan does not support advanced segments with multiple conditions. Upgrade to the MailPoet Business plan to more precisely target your emails based on how people engage with your business. [link]Learn more.[/link]"
 msgstr "Votre offre MailPoet actuel ne prend pas en charge les segments avancés avec plusieurs conditions. Mettez à niveau vers l‘offre MailPoet Business pour cibler plus précisément vos e-mails en fonction de la façon dont les gens s'engagent dans votre entreprise. [link]En savoir plus.[/link]"
 
-#: views/segments/translations.html:198
+#: views/segments/translations.html:163
 msgid "Learn more."
 msgstr "En savoir plus"
 
-#: views/segments/translations.html:189
+#: views/segments/translations.html:154
 msgid "Search countries"
 msgstr "Rechercher des pays"
 
@@ -3507,11 +3515,11 @@ msgstr "Rechercher des pays"
 msgid "Purchased in a category"
 msgstr "A acheté dans une catégorie"
 
-#: views/segments/translations.html:94
+#: views/segments/translations.html:60
 msgid "Search user roles"
 msgstr "Rechercher des rôles utilisateurs"
 
-#: views/segments/translations.html:93
+#: views/segments/translations.html:59
 msgid "Search emails"
 msgstr "Rechercher des e-mails"
 
@@ -3548,15 +3556,15 @@ msgstr "Suivi analytique de l’engagement"
 msgid "Purchased a product"
 msgstr "A acheté un produit"
 
-#: views/segments/translations.html:155
+#: views/segments/translations.html:120
 msgid "Search lists"
 msgstr "Rechercher des listes"
 
-#: views/segments/translations.html:147
+#: views/segments/translations.html:112
 msgid "subscribed to list"
 msgstr "abonné⋅e à la liste"
 
-#: views/segments/translations.html:33
+#: views/segments/translations.html:25
 msgid "Synchronization of the \"%1$s\" list started. It can take several minutes to finish."
 msgstr "La synchronisation de la liste « %1$s » a commencé. Elle peut prendre plusieurs minutes pour se terminer."
 
@@ -3568,33 +3576,33 @@ msgstr "Le suivi de l'ouverture et du clic des e-mails est désormais activé. V
 msgid "Please select a type for the comparison."
 msgstr "Veuillez sélectionner un type pour la comparaison."
 
-#: views/segments/translations.html:146
+#: views/segments/translations.html:111
 msgctxt "The result will be \"higher than 20 %\""
 msgid "{condition} {score} %"
 msgstr "{condition} {score} %"
 
-#: views/segments/translations.html:145
+#: views/segments/translations.html:110
 msgctxt "Placeholder for input: subscriber engagement score"
 msgid "score"
 msgstr "score"
 
-#: views/segments/translations.html:112
+#: views/segments/translations.html:78
 msgid "not unknown"
 msgstr "connu"
 
-#: views/segments/translations.html:111
+#: views/segments/translations.html:77
 msgid "unknown"
 msgstr "inconnu"
 
-#: views/segments/translations.html:104
+#: views/segments/translations.html:70
 msgid "not equals"
 msgstr "non égal à"
 
-#: views/segments/translations.html:102
+#: views/segments/translations.html:68
 msgid "lower than"
 msgstr "inférieur à"
 
-#: views/segments/translations.html:101
+#: views/segments/translations.html:67
 msgid "higher than"
 msgstr "supérieur à"
 
@@ -3650,7 +3658,7 @@ msgstr ""
 msgid "Confirm interest before deactivation"
 msgstr "Confirmer l’intérêt avant la désactivation"
 
-#: views/form/editor.html:212
+#: views/form/editor.html:206
 msgid "Please save the form first!"
 msgstr "Veuillez enregistrer le formulaire d’abord !"
 
@@ -3686,19 +3694,15 @@ msgstr "Merci de nous le faire savoir !"
 msgid "Re-engagement emails are disabled because open and click tracking is disabled in MailPoet → Settings → Advanced."
 msgstr "Les e-mails de réengagement sont désactivés parce que le suivi des ouvertures et des clics est désactivé dans MailPoet → Réglages → Avancé."
 
-#: views/subscribers/importExport/import.html:115
+#: views/subscribers/importExport/import.html:131
 msgctxt "CTA button label"
 msgid "How can I clean my list?"
 msgstr "Comment puis-je nettoyer ma liste ?"
 
-#: views/segments/translations.html:220 views/subscribers/subscribers.html:125
+#: views/segments/translations.html:185 views/subscribers/subscribers.html:96
 #: lib/Util/Notices/PremiumFeaturesAvailableNotice.php:62
 msgid "Activate MailPoet Premium plugin"
 msgstr "Activer l’extension MailPoet Premium"
-
-#: views/layout.html:122
-msgid "Failed to resume sending because the email address is unauthorized. Please authorize it and try again."
-msgstr "La reprise de l’envoi a échoué car l'adresse e-mail n’est pas autorisée. Veuillez l’autoriser et réessayer."
 
 #: lib/Util/Notices/UnauthorizedEmailNotice.php:74
 msgid "Use a different email address"
@@ -3720,17 +3724,17 @@ msgstr "Le CAPTCHA intégré protège vos formulaires d'abonnement contre les ro
 msgid "Addresses in names are not permitted, please add your name instead."
 msgstr "Les adresses dans les noms ne sont pas autorisées, veuillez ajouter votre nom à la place."
 
-#: views/subscribers/subscribers.html:35
+#: views/subscribers/subscribers.html:22
 msgctxt "when was the last time the subscriber engaged with the website?"
 msgid "never"
 msgstr "jamais"
 
-#: views/subscribers/subscribers.html:103
+#: views/subscribers/subscribers.html:77
 msgctxt "Percentage of newsletters that were opened by a machine"
 msgid "Machine-opened"
 msgstr "Ouvert par machine"
 
-#: views/segments/translations.html:214
+#: views/segments/translations.html:179
 msgid "Due to email privacy protections, some opens may not be tracked. Consider using a different engagement metric."
 msgstr "En raison de la protection de la confidentialité des e-mails, certaines ouvertures peuvent ne pas faire l’objet d’un suivi. Envisagez d’utiliser une autre mesure d'engagement."
 
@@ -3764,7 +3768,7 @@ msgid_plural "List cannot be deleted because it’s used for %1$s forms"
 msgstr[0] "La liste ne peut pas être supprimée car elle est utilisée pour le formulaire %1$s"
 msgstr[1] "La liste ne peut pas être supprimée car elle est utilisée pour les formulaires %1$s"
 
-#: views/layout.html:152
+#: views/layout.html:149
 msgid "Your [link]API key[/link] to send with MailPoet is invalid."
 msgstr "Votre [link]clé d’API[/link] pour envoyer avec MailPoet n’est pas valide !"
 
@@ -3784,87 +3788,87 @@ msgctxt "success message after saving subscription settings"
 msgid "Your preferences have been saved."
 msgstr "Vos préférences ont été enregistrées."
 
-#: views/subscription/confirm_unsubscribe.html:5
+#: views/subscription/confirm_unsubscribe.html:7
 msgctxt "Text in unsubscribe link"
 msgid "Yes, unsubscribe me"
 msgstr "Oui, désabonnez-moi"
 
-#: views/subscribers/subscribers.html:130
+#: views/subscribers/subscribers.html:101
 msgctxt "Table column label for count of subscriber actions"
 msgid "Count"
 msgstr "Nombre"
 
-#: views/subscribers/subscribers.html:129
+#: views/subscribers/subscribers.html:100
 msgctxt "Table column label for date when subscriber action happened"
 msgid "Action on"
 msgstr "Action le"
 
-#: views/subscribers/subscribers.html:128
+#: views/subscribers/subscribers.html:99
 msgctxt "Table column label for subscriber actions e.g. email open, link clicked"
 msgid "Action"
 msgstr "Action"
 
-#: views/subscribers/subscribers.html:100
+#: views/subscribers/subscribers.html:74
 msgctxt "This is a heading for the subscribers statistics page example: \"Stats: mailpoet@example.com\""
 msgid "Stats: %s"
 msgstr "Stats : %s"
 
-#: views/subscribers/subscribers.html:91
+#: views/subscribers/subscribers.html:65
 msgctxt "This is an action on the subscribers page"
 msgid "Unsubscribe"
 msgstr "Se désabonner"
 
-#: views/subscribers/importExport/import.html:121
+#: views/subscribers/importExport/import.html:137
 msgctxt "This is a value in a select box for \"Set new subscribers’ status to\""
 msgid "Don’t update"
 msgstr "Ne pas mettre à jour"
 
-#: views/subscribers/importExport/import.html:117
+#: views/subscribers/importExport/import.html:133
 msgctxt "Text in a link"
 msgid "Got it, I’ll proceed to import"
 msgstr "J’ai compris, je vais lancer l’importation"
 
-#: views/subscribers/importExport/import.html:95
+#: views/subscribers/importExport/import.html:111
 msgctxt " Verb"
 msgid "Select"
 msgstr "Sélectionner"
 
-#: views/subscribers/importExport/import.html:80
+#: views/subscribers/importExport/import.html:96
 msgctxt "Question for users importing their list"
 msgid "When did you last send an email to this list?"
 msgstr "Quand avez-vous envoyé un e-mail pour la dernière fois à cette liste ?"
 
-#: views/subscribers/importExport/import.html:79
+#: views/subscribers/importExport/import.html:95
 msgctxt "Button to visit a support article"
 msgid "How to ask your contacts to join your list"
 msgstr "Comment demander à vos contacts de rejoindre votre liste"
 
-#: views/subscribers/importExport/import.html:78
+#: views/subscribers/importExport/import.html:94
 msgctxt "Paragraph warning what happens if user imports his contacts and sends with MailPoet"
 msgid "If you send with MailPoet, we will detect if you import subscribers without their explicit consent and suspend your account."
 msgstr "Si vous envoyez avec MailPoet, nous détecterons si vous importez des abonné·es sans leur consentement explicite et suspendrons votre compte."
 
-#: views/subscribers/importExport/import.html:77
+#: views/subscribers/importExport/import.html:93
 msgctxt "Paragraph explaining the user what to do when importing his contacts."
 msgid "You will need to ask your contacts to join your list instead of importing them. This is a standard practice to ensure good email deliverability."
 msgstr "Vous devrez demander à vos contacts de rejoindre votre liste au lieu de les importer. Il s’agit d’une pratique classique pour assurer une bonne délivrabilité des e-mails."
 
-#: views/subscribers/importExport/import.html:76
+#: views/subscribers/importExport/import.html:92
 msgctxt "User choice to import his address book contacts"
 msgid "Contacts from my address book"
 msgstr "Contacts de mon carnet d’adresses"
 
-#: views/subscribers/importExport/import.html:75
+#: views/subscribers/importExport/import.html:91
 msgctxt "User choice to import an existing email list"
 msgid "Existing list"
 msgstr "Liste existante"
 
-#: views/subscribers/importExport/import.html:74
+#: views/subscribers/importExport/import.html:90
 msgctxt "Question for importing subscribers into MailPoet"
 msgid "Are you importing an existing list or contacts from your address book?"
 msgstr "Importez-vous une liste existante ou des contacts de votre carnet d’adresses ?"
 
-#: views/subscribers/importExport/import.html:35
+#: views/subscribers/importExport/import.html:51
 msgctxt "Error message when importing addresses like postmaster@domain.com"
 msgid "%1$s [link]role-based addresses[/link] are not permitted: %2$s"
 msgstr "%1$s [link]Les adresses basées sur les rôles[/link] ne sont pas autorisées : %2$s"
@@ -3949,75 +3953,50 @@ msgctxt "Unsubscribe pages customization link"
 msgid "[link]Learn more about customizing these pages.[/link]"
 msgstr "[link]Pour en savoir plus sur la personnalisation de ces pages.[/link]"
 
-#: views/segments/translations.html:193
+#: views/segments/translations.html:158
 msgctxt "Dynamic segment creation: User selects this to use any woocommerce filters"
 msgid "WooCommerce"
 msgstr "WooCommerce"
 
-#: views/segments/translations.html:183
+#: views/segments/translations.html:148
 msgctxt "Appears together with `days` when creating a new WooCommerce segment based on the number of orders."
 msgid "in the last"
 msgstr "dans le dernier"
 
-#: views/segments/translations.html:182
+#: views/segments/translations.html:147
 msgctxt "Appears together with `inTheLast` when creating a new WooCommerce segment based on the number of orders."
 msgid "days"
 msgstr "jours"
 
-#: views/segments/translations.html:153
+#: views/segments/translations.html:118
 msgctxt "Dynamic segment creation: User selects this to use any WooCommerce Subscriptions filters"
 msgid "WooCommerce Subscriptions"
 msgstr "WooCommerce Subscriptions"
 
-#: views/segments/translations.html:139
+#: views/segments/translations.html:105
 msgctxt "Meaning: \"Subscriber subscribed not in the last 3 days\""
 msgid "not in the last"
 msgstr "non dans le dernier"
 
-#: views/segments/translations.html:138
+#: views/segments/translations.html:104
 msgctxt "Meaning: \"Subscriber subscribed in the last 3 days\""
 msgid "in the last"
 msgstr "dans le dernier"
 
-#: views/segments/translations.html:98
+#: views/segments/translations.html:64
 msgctxt "The result will be \"in the last 5 days\""
 msgid "{timeframe} {days} days"
 msgstr "dans les {timeframe} {days} derniers jours"
 
-#: views/segments/translations.html:97
+#: views/segments/translations.html:63
 msgctxt "The result will be \"more than 20 opens\""
 msgid "{condition} {opens} opens"
 msgstr "{condition} {opens} ouverts"
 
-#: views/segments/translations.html:89
-msgctxt "Page X of Y"
-msgid "of"
-msgstr "de"
-
-#: views/segments/translations.html:69
+#: views/segments/translations.html:43
 msgctxt "number of subscribers in the plugin"
 msgid "%s MailPoet subscribers"
 msgstr "%s abonnements MailPoet"
-
-#: views/segments/translations.html:66 views/subscribers/subscribers.html:47
-msgctxt "number of subscribers in a sending plan"
-msgid "%s subscribers in your plan"
-msgstr "%s abonnements dans votre offre"
-
-#: views/segments/translations.html:65 views/subscribers/subscribers.html:46
-msgctxt "count / total subscribers"
-msgid "%1$d / %2$d"
-msgstr "%1$d / %2$d"
-
-#: views/layout.html:169
-msgctxt "Button, after clicking it we will enable transactional emails"
-msgid "Enable"
-msgstr "Activer"
-
-#: views/layout.html:168
-msgctxt "This is a link that leads to more information about transactional emails"
-msgid "Read more."
-msgstr "Lire la suite."
 
 #: views/newsletter/templates/components/newsletterPreview.hbs:2
 msgctxt "Open email preview in new tab"
@@ -4098,30 +4077,34 @@ msgid "Title position"
 msgstr "Position du titre"
 
 #: views/newsletter/templates/blocks/abandonedCartContent/settingsDisplayOptions.hbs:97
+#: views/newsletter/templates/blocks/dynamicProducts/settings.hbs:174
 #: views/newsletter/templates/blocks/products/settingsDisplayOptions.hbs:97
 msgctxt "Display the product title above the product description"
 msgid "Above the product description"
 msgstr "Au-dessus de la description du produit"
 
 #: views/newsletter/templates/blocks/abandonedCartContent/settingsDisplayOptions.hbs:91
+#: views/newsletter/templates/blocks/dynamicProducts/settings.hbs:168
 #: views/newsletter/templates/blocks/products/settingsDisplayOptions.hbs:91
 msgctxt "Display the product title above the product block"
 msgid "Above the product"
 msgstr "Au-dessus du produit"
 
 #: views/newsletter/templates/blocks/abandonedCartContent/settingsDisplayOptions.hbs:87
+#: views/newsletter/templates/blocks/dynamicProducts/settings.hbs:164
 #: views/newsletter/templates/blocks/products/settingsDisplayOptions.hbs:87
 msgctxt "Setting in the email designer to position an ecommerce product title"
 msgid "Product title position"
 msgstr "Position du titre du produit"
 
 #: views/newsletter/templates/blocks/abandonedCartContent/settingsDisplayOptions.hbs:69
+#: views/newsletter/templates/blocks/dynamicProducts/settings.hbs:146
 #: views/newsletter/templates/blocks/products/settingsDisplayOptions.hbs:69
 msgctxt "Display the product title into a link"
 msgid "Make the product title into a link"
 msgstr "Faire du titre du produit un lien"
 
-#: views/newsletter/editor.html:1392 views/newsletter/editor.html:1394
+#: views/newsletter/editor.html:1469 views/newsletter/editor.html:1471
 msgctxt "Text of a button which links to an ecommerce product page"
 msgid "Buy now"
 msgstr "Acheter maintenant"
@@ -4221,9 +4204,9 @@ msgctxt "A label in a status table e.g. Last updated: 2018-10-18 18:50"
 msgid "Last updated"
 msgstr "Dernière mise à jour"
 
-#: views/subscribers/importExport/export.html:31
-#: views/subscribers/importExport/export.html:48
-#: views/subscribers/importExport/import.html:107
+#: views/subscribers/importExport/export.html:46
+#: views/subscribers/importExport/export.html:63
+#: views/subscribers/importExport/import.html:123
 msgctxt "Verb"
 msgid "Select"
 msgstr "Sélectionner"
@@ -4238,246 +4221,221 @@ msgctxt "Desktop browser preview mode"
 msgid "Desktop"
 msgstr "Ordinateur"
 
-#: views/form/editor.html:205
+#: views/form/editor.html:200
 msgctxt "heading above the settings"
 msgid "Message Color"
 msgstr "Couleur du message d’erreur"
 
-#: views/form/editor.html:203
+#: views/form/editor.html:198
 msgctxt "Settings in the divider block"
 msgid "Divider Width"
 msgstr "Largeur du séparateur"
 
-#: views/form/editor.html:202
+#: views/form/editor.html:197
 msgctxt "Settings in the divider block"
 msgid "Divider Height"
 msgstr "Hauteur du séparateur"
 
-#: views/form/editor.html:201
+#: views/form/editor.html:196
 msgctxt "Setting in the divider block"
 msgid "Dotted"
 msgstr "Pointillés"
 
-#: views/form/editor.html:200
+#: views/form/editor.html:195
 msgctxt "Setting in the divider block"
 msgid "Dashed"
 msgstr "Tirets"
 
-#: views/form/editor.html:199
+#: views/form/editor.html:194
 msgctxt "Setting in the divider block"
 msgid "Solid"
 msgstr "Plein"
 
-#: views/form/editor.html:198
+#: views/form/editor.html:193
 msgctxt "Settings in the divider block (solid, dotted, …)"
 msgid "Divider Style"
 msgstr "Style du séparateur"
 
-#: views/form/editor.html:197
+#: views/form/editor.html:192
 msgctxt "How a background image will be rendered: scale, fit or tile"
 msgid "Tile"
 msgstr "Carré"
 
-#: views/form/editor.html:196
+#: views/form/editor.html:191
 msgctxt "How a background image will be rendered: scale, fit or tile"
 msgid "Fit"
 msgstr "Forme"
 
-#: views/form/editor.html:195
+#: views/form/editor.html:190
 msgctxt "How a background image will be rendered: scale, fit or tile"
 msgid "Scale"
 msgstr "Échelle"
 
-#: views/form/editor.html:194
+#: views/form/editor.html:189
 msgctxt "Settings in the spacer block"
 msgid "Enable Divider"
 msgstr "Activer le séparateur"
 
-#: views/form/editor.html:193
+#: views/form/editor.html:188
 msgctxt "Settings in the spacer block"
 msgid "Height"
 msgstr "Hauteur"
 
-#: views/form/editor.html:192
+#: views/form/editor.html:187
 msgctxt "Heading in the font selection list for a list of custom fonts"
 msgid "Custom fonts"
 msgstr "Polices personnalisées"
 
-#: views/form/editor.html:191
+#: views/form/editor.html:186
 msgctxt "Heading in the font selection list: Arial, Times, ..."
 msgid "Standard fonts"
 msgstr "Polices classiques"
 
-#: views/form/editor.html:184
+#: views/form/editor.html:179
 msgctxt "Label for form field for custom input type"
 msgid "Select a field type"
 msgstr "Sélectionner un type de champ"
 
-#: views/form/editor.html:183
+#: views/form/editor.html:178
 msgctxt "Label for form field for custom input name"
 msgid "Field name"
 msgstr "Nom du champ"
 
-#: views/form/editor.html:182
+#: views/form/editor.html:177
 msgctxt "Label on form submit button."
 msgid "Create"
 msgstr "Créer"
 
-#: views/form/editor.html:177
+#: views/form/editor.html:172
 msgctxt "Textarea label"
 msgid "Custom text"
 msgstr "Texte personnalisé"
 
-#: views/form/editor.html:173
+#: views/form/editor.html:168
 msgctxt "The name of the block in the editor"
 msgid "Divider / Spacer"
 msgstr "Séparateur / Espaceur"
 
-#: views/form/editor.html:172
+#: views/form/editor.html:167
 msgctxt "Settings - if label should be displayed"
 msgid "Display label"
 msgstr "Afficher le libellé"
 
-#: views/form/editor.html:170
+#: views/form/editor.html:165
 msgctxt "settings for a label of an input"
 msgid "Label"
 msgstr "Libellé"
 
-#: views/form/editor.html:168
+#: views/form/editor.html:163
 msgctxt "a default value for a subscription form button"
 msgid "Subscribe!"
 msgstr "Je m’abonne !"
 
-#: views/form/editor.html:147
+#: views/form/editor.html:142
 msgctxt "Number of rows in textarea"
 msgid "5 lines"
 msgstr "5 lignes"
 
-#: views/form/editor.html:146
+#: views/form/editor.html:141
 msgctxt "Number of rows in textarea"
 msgid "4 lines"
 msgstr "4 lignes"
 
-#: views/form/editor.html:145
+#: views/form/editor.html:140
 msgctxt "Number of rows in textarea"
 msgid "3 lines"
 msgstr "3 lignes"
 
-#: views/form/editor.html:144
+#: views/form/editor.html:139
 msgctxt "Number of rows in textarea"
 msgid "2 lines"
 msgstr "2 lignes"
 
-#: views/form/editor.html:143
+#: views/form/editor.html:138
 msgctxt "Number of rows in textarea"
 msgid "1 line"
 msgstr "1 ligne"
 
-#: views/form/editor.html:129
+#: views/form/editor.html:124
 msgctxt "It is a placeholder in the select box - verb"
 msgid "Select"
 msgstr "Sélectionner"
 
 #: views/form/templatesLegacy/settings/field_form.hbs:37
-#: views/form/editor.html:128
+#: views/form/editor.html:123
 msgctxt "Form input type"
 msgid "Select"
 msgstr "Sélectionner"
 
-#: views/form/editor.html:122
+#: views/form/editor.html:117
 msgctxt "Text on the delete button"
 msgid "Delete this custom field"
 msgstr "Supprimer ce champ personnalisé"
 
-#: views/form/editor.html:121
+#: views/form/editor.html:116
 msgctxt "Text on the save button"
 msgid "Update custom field"
 msgstr "Mettre à jour le champ personnalisé"
 
-#: views/form/editor.html:107
+#: views/form/editor.html:102
 msgctxt "Value in a selectbox with a list of animations"
 msgid "No Animation"
 msgstr "Aucune animation"
 
-#: views/form/editor.html:105
+#: views/form/editor.html:100
 msgctxt "Label in the form placement section (Other form placements)"
 msgid "Shortcode & other"
 msgstr "Code court et autres"
 
-#: views/form/editor.html:104
+#: views/form/editor.html:99
 msgctxt "Text on a button to save and close a form"
 msgid "Close"
 msgstr "Fermer"
 
-#: views/form/editor.html:99
+#: views/form/editor.html:94
 msgctxt "times selection should be in the end \"30 sec\""
 msgid "%1s sec"
 msgstr "%1s secondes"
 
-#: views/form/editor.html:98
+#: views/form/editor.html:93
 msgctxt "Placement of a slide in  form, on the left or right side of the page"
 msgid "right"
 msgstr "droite"
 
-#: views/form/editor.html:97
+#: views/form/editor.html:92
 msgctxt "Placement of a slide in form, on the left or right side of the page"
 msgid "left"
 msgstr "gauche"
 
-#: views/form/editor.html:96
+#: views/form/editor.html:91
 msgctxt "Placement of a fixed bar form, on top of the page or on the bottom"
 msgid "bottom"
 msgstr "bas"
 
-#: views/form/editor.html:95
+#: views/form/editor.html:90
 msgctxt "Placement of a fixed bar form, on top of the page or on the bottom"
 msgid "top"
 msgstr "haut"
 
-#: views/form/editor.html:94
+#: views/form/editor.html:89
 msgctxt "Placement of a fixed bar form, on top of the page or on the bottom"
 msgid "Position"
 msgstr "Position"
 
-#: views/form/editor.html:93
+#: views/form/editor.html:88
 msgctxt "Label on a selection of different times"
 msgid "Display with a delay of"
 msgstr "Afficher avec un délai de"
 
-#: views/form/editor.html:92 views/forms.html:86
-msgctxt "Placement of the form using theme widget"
-msgid "Others (widget)"
-msgstr "Autre (widget)"
-
-#: views/form/editor.html:90
+#: views/form/editor.html:86
 msgctxt "This is a text on a switch if a form should be displayed bellow all posts"
 msgid "Display on all posts/products"
 msgstr "Afficher sur tous les articles / produits"
 
-#: views/form/editor.html:89
+#: views/form/editor.html:85
 msgctxt "This is a text on a switch if a form should be displayed bellow all pages"
 msgid "Display on all pages"
 msgstr "Afficher sur toutes les pages"
-
-#: views/form/editor.html:87 views/forms.html:82
-msgctxt "This is a text on a widget that leads to settings for form placement"
-msgid "Below pages"
-msgstr "En dessous des pages"
-
-#: views/form/editor.html:82 views/forms.html:85
-msgctxt "This is a text on a widget that leads to settings for form placement - form type is pop-up, it will be displayed on page in a small modal window"
-msgid "Pop-up"
-msgstr "Fenêtre contextuelle"
-
-#: views/form/editor.html:80 views/forms.html:84
-msgctxt "This is a text on a widget that leads to settings for form placement - form type is slide in"
-msgid "Slide–in"
-msgstr "Glissant"
-
-#: views/form/editor.html:78 views/forms.html:83
-msgctxt "This is a text on a widget that leads to settings for form placement - form type is fixed bar"
-msgid "Fixed bar"
-msgstr "Barre fixe"
 
 #: views/form/editor.html:73
 msgctxt "A label for a select box"
@@ -4606,7 +4564,7 @@ msgctxt "Subject of an email confirming that MailPoet Sending Service works"
 msgid "Sending with MailPoet works!"
 msgstr "L’envoi avec MailPoet fonctionne !"
 
-#: views/form/editor.html:211 views/forms.html:64 lib/Form/Widget.php:156
+#: lib/Form/Widget.php:156
 msgctxt "fallback for forms without a name in a form list"
 msgid "no name"
 msgstr "aucun nom"
@@ -5367,412 +5325,323 @@ msgstr "Le segment « %1$s » ne peut pas être supprimé car il est utilisé 
 msgid "Email address"
 msgstr "Adresse e-mail"
 
-#: views/subscription/confirm_unsubscribe.html:3
+#: views/subscription/confirm_unsubscribe.html:5
 msgid "Simply click on this link to stop receiving emails from us."
 msgstr "Cliquez simplement sur ce lien pour arrêter de recevoir des e-mails de notre part."
 
-#: views/subscribers/subscribers.html:142
+#: views/subscribers/subscribers.html:113
 msgid "Read 20% or fewer of sent emails"
 msgstr "Lecture de 20% ou moins des e-mails envoyés"
 
-#: views/subscribers/subscribers.html:139
+#: views/subscribers/subscribers.html:110
 msgid "Read between 20 and 50% of sent emails"
 msgstr "Lecture entre 20 et 50% des e-mails envoyés"
 
-#: views/subscribers/subscribers.html:136
+#: views/subscribers/subscribers.html:107
 msgid "Read 50% or more of sent emails"
 msgstr "Lecture de 50% ou plus des e-mails envoyés"
 
-#: views/subscribers/subscribers.html:112
-msgid "Add New"
-msgstr "Ajouter"
-
-#: views/subscribers/subscribers.html:108
+#: views/subscribers/subscribers.html:82
 msgid "Need to add new fields, like a telephone number or street address? You can add custom fields by editing the subscription form on the Forms page."
 msgstr "Besoin d’ajouter de nouveaux champs comme un numéro de téléphone ou une adresse postale ? Vous pouvez ajouter des champs personnalisés en modifiant le formulaire d’abonnement sur la page des formulaires."
 
-#: views/subscribers/subscribers.html:106
+#: views/subscribers/subscribers.html:80
 msgid "Not opened"
 msgstr "Non ouvert"
 
-#: views/subscribers/subscribers.html:105
+#: views/subscribers/subscribers.html:79
 msgid "Clicked"
 msgstr "Cliqués"
 
-#: views/subscribers/subscribers.html:101
+#: views/subscribers/subscribers.html:75
 msgid "Sent email"
 msgstr "E-mail envoyé"
 
-#: views/subscribers/subscribers.html:98
+#: views/subscribers/subscribers.html:72
 msgid "This subscriber is a registered WordPress user. [link]Edit their profile[/link] to change their email."
 msgstr "Cet abonné est un compte WordPress enregistré. [link]Modifiez son profil[/link] pour changer son e-mail."
 
-#: views/subscribers/subscribers.html:96
+#: views/subscribers/subscribers.html:70
 msgid "Lists to which the subscriber was subscribed."
 msgstr "Listes auxquelles l’abonné à été abonné."
 
-#: views/subscribers/subscribers.html:95
-msgid "1 confirmation email has been sent."
-msgstr "1 e-mail de confirmation a été envoyé."
-
-#: views/subscribers/subscribers.html:94
-msgid "Resend confirmation email"
-msgstr "Renvoyer le courriel de confirmation"
-
-#: views/subscribers/subscribers.html:93
-msgid "%1$d subscribers were removed from all lists."
-msgstr "%1$d abonnements ont été retirés de toutes les listes."
-
-#: views/subscribers/subscribers.html:92
-msgid "This action will unsubscribe %s subscribers from all lists. This action cannot be undone. Are you sure, you want to continue?"
-msgstr "Cette action va désabonner %s abonné·es de toutes les listes. Cette action ne peut pas être annulée. Confirmez-vous vouloir continuer ?"
-
-#: views/subscribers/subscribers.html:90
-msgid "Remove from all lists"
-msgstr "Retirer de toutes les listes"
-
-#: views/subscribers/subscribers.html:89
+#: views/subscribers/subscribers.html:63
 msgid "%1$d subscribers were removed from list <strong>%2$s</strong>"
 msgstr "%1$d abonnements ont été retirés de la liste <strong>%2$s</strong>"
 
-#: views/subscribers/subscribers.html:88
-msgid "Remove from list..."
-msgstr "Retirer de la liste..."
-
-#: views/subscribers/subscribers.html:87
-msgid "%1$d subscribers were added to list <strong>%2$s</strong>."
-msgstr "%1$d abonnements ont été déplacés dans la liste <strong>%2$s</strong>"
-
-#: views/subscribers/subscribers.html:86
-msgid "Add to list..."
-msgstr "Ajouter à la liste..."
-
-#: views/subscribers/subscribers.html:85
+#: views/subscribers/subscribers.html:59
 msgid "%1$d subscribers were moved to list <strong>%2$s</strong>"
 msgstr "%1$d abonnements ont été déplacés dans la liste <strong>%2$s</strong>"
 
-#: views/subscribers/subscribers.html:84
-msgid "Move to list..."
-msgstr "Déplacer dans la liste..."
-
-#: views/subscribers/subscribers.html:83
-msgid "%1$d subscribers have been restored from the trash."
-msgstr "%1$d abonnements ont été restaurés depuis la corbeille."
-
-#: views/subscribers/subscribers.html:82
-msgid "1 subscriber has been restored from the trash."
-msgstr "1 abonné a été restauré depuis la corbeille."
-
-#: views/subscribers/subscribers.html:81
-msgid "%1$d subscribers were permanently deleted."
-msgstr "%1$d abonnements ont été définitivement supprimés."
-
-#: views/subscribers/subscribers.html:80
-msgid "1 subscriber was permanently deleted."
-msgstr "1 abonné a été définitivement supprimé."
-
-#: views/subscribers/subscribers.html:79
-msgid "%1$d subscribers were moved to the trash."
-msgstr "%1$d abonnements ont été déplacés dans la corbeille."
-
-#: views/subscribers/subscribers.html:78
-msgid "1 subscriber was moved to the trash."
-msgstr "1 abonné a été déplacé dans la corbeille."
-
-#: views/subscribers/subscribers.html:75
-msgid "Subscribed on"
-msgstr "Abonné le"
-
-#: views/subscribers/subscribers.html:74
-msgid "Score"
-msgstr "Score"
-
-#: views/subscribers/subscribers.html:69
+#: views/subscribers/subscribers.html:43
 msgid "Unsubscribed at %1$d, for an unknown reason."
 msgstr "Désabonnement à %1$d, pour une raison inconnue."
 
-#: views/subscribers/subscribers.html:67
+#: views/subscribers/subscribers.html:41
 msgid "Unsubscribed at %1$d, by admin \"%2$d\"."
 msgstr "Désabonnement à %1$d, par admin « %2$d »."
 
-#: views/subscribers/subscribers.html:66
+#: views/subscribers/subscribers.html:40
 msgid "Unsubscribed at %1$d, using the “Manage my Subscription” page."
 msgstr "Désabonnement à %1$d, en utilisant la page « Gérer mon abonnement »."
 
-#: views/subscribers/subscribers.html:65
+#: views/subscribers/subscribers.html:39
 msgid "Unsubscribed at %1$d, from newsletter [link]."
 msgstr "Désabonnement à %1$d de la newsletter [link]."
 
-#: views/subscribers/subscribers.html:63
+#: views/subscribers/subscribers.html:37
 msgid "This subscriber will receive Welcome Emails if any are active for your lists."
 msgstr "Cet abonné recevra les courriels de bienvenue s’ils sont actifs pour vos listes."
 
-#: views/subscribers/subscribers.html:62
+#: views/subscribers/subscribers.html:36
 msgid "Subscriber was added successfully!"
 msgstr "L’abonné a bien été ajouté !"
 
-#: views/subscribers/subscribers.html:61
+#: views/subscribers/subscribers.html:35
 msgid "Subscriber was updated successfully!"
 msgstr "L’abonné a bien été mis à jour !"
 
-#: views/subscribers/subscribers.html:60
+#: views/subscribers/subscribers.html:34
 msgid "Unsubscribed on %1$s"
 msgstr "Désabonné·e le %1$s"
 
-#: views/subscribers/subscribers.html:21
-msgid "%d subscribers were permanently deleted."
-msgstr "%d abonnés ont été définitivement supprimés."
-
-#: views/subscribers/subscribers.html:20
-msgid "Get premium version!"
-msgstr "Acheter la version Premium !"
-
-#: views/subscribers/subscribers.html:19
-msgid "Email addresses that are invalid or don't exist anymore are called \"bounced addresses\". It's a good practice not to send emails to bounced addresses to keep a good reputation with spam filters. Send your emails with MailPoet and we'll automatically ensure to keep a list of bounced addresses without any setup."
-msgstr "Les adresses e-mails qui sont non valides ou qui n’existent plus sont appelés « adresses de rebond ». C'est une bonne pratique de ne pas envoyer d’e-mails à des adresses de rebond pour garder une bonne réputation avec les filtres anti-spam. Envoyez vos e-mails avec MailPoet et nous veillerons automatiquement à conserver une liste d'adresses de rebond sans aucune configuration."
-
-#: views/subscribers/subscribers.html:18
-msgid "No subscribers were found."
-msgstr "Aucun abonné n’a été trouvé."
-
-#: views/subscribers/subscribers.html:17
-msgid "Loading subscribers..."
-msgstr "Chargement des abonnés..."
-
-#: views/subscribers/importExport/import.html:126
+#: views/subscribers/importExport/import.html:142
 msgid "Update existing subscribers’ status to"
 msgstr "Mettre à jour l’état des abonnés existants en"
 
-#: views/subscribers/importExport/import.html:125
+#: views/subscribers/importExport/import.html:141
 msgid "Are you importing subscribers from another marketing service provider? You may need to separately import the list of bad or previously unsubscribed addresses to avoid contacting them. [link]See how to import a suppression list.[/link]"
 msgstr "Vous importez des abonné⋅es d’un autre fournisseur de services de marketing ? Vous devrez peut-être importer séparément la liste des mauvaises adresses ou des adresses précédemment désabonnées pour éviter de les contacter. [link]Voir comment importer une liste de suppression.[/link]"
 
-#: views/subscribers/importExport/import.html:124
+#: views/subscribers/importExport/import.html:140
 msgid "Congratulations, you’ve imported your subscribers!"
 msgstr "Félicitations, vous avez importé vos abonné⋅es !"
 
-#: views/subscribers/importExport/import.html:123
+#: views/subscribers/importExport/import.html:139
 msgid "Choose “Subscribed” only if you have explicit consent to send them bulk or marketing emails. [link]Why is consent important?[/link]"
 msgstr "Choisissez « Abonné⋅e » uniquement si vous avez le consentement explicite d’envoyer des e-mails groupés ou commerciaux. [link]Pourquoi le consentement est-il important ?[/link]"
 
-#: views/subscribers/importExport/import.html:122
+#: views/subscribers/importExport/import.html:138
 msgid "Set new subscribers’ status to"
 msgstr "Régler l’état des nouveaux abonnements sur"
 
-#: views/subscribers/importExport/import.html:114
+#: views/subscribers/importExport/import.html:130
 msgid "Lists can have up to 20% of invalid addresses after a year because people change jobs and stop using their addresses. If you send with MailPoet, we will pause your sending and ask you to clean your list if we detect over 10% of invalid addresses."
 msgstr "Les listes peuvent contenir jusqu'à 20% d’adresses non valides après un an parce que les gens changent d’emploi et cessent d’utiliser leur adresse. Si vous envoyez avec MailPoet, nous mettrons votre envoi en pause et vous demanderons de nettoyer votre liste si nous détectons plus de 10% d’adresses non valides."
 
-#: views/subscribers/importExport/import.html:113
+#: views/subscribers/importExport/import.html:129
 msgid "We highly recommend cleaning your lists before importing them to MailPoet."
 msgstr "Nous vous recommandons vivement de nettoyer vos listes avant de les importer dans MailPoet."
 
-#: views/subscribers/importExport/import.html:112
+#: views/subscribers/importExport/import.html:128
 msgid "How would you like to import subscribers?"
 msgstr "Comment voulez-vous importer vos abonnés&nbsp;?"
 
-#: views/subscribers/importExport/import.html:111
+#: views/subscribers/importExport/import.html:127
 msgid "This file needs to be formatted in a CSV style (comma-separated-values.) Look at some [link]examples on our support site[/link]."
 msgstr "Ce fichier doit être au format CSV (séparé par des virgules). Consultez quelques [link]exemples sur notre site de support[/link]."
 
-#: views/subscribers/importExport/import.html:110
+#: views/subscribers/importExport/import.html:126
 msgid "Copy and paste your subscribers from Excel/Spreadsheets"
 msgstr "Copiez et collez vos abonnés depuis Excel/Feuille de calcul"
 
-#: views/subscribers/importExport/import.html:108
+#: views/subscribers/importExport/import.html:124
 msgid "Match data"
 msgstr "Correspondance des champs"
 
-#: views/subscribers/importExport/import.html:106
+#: views/subscribers/importExport/import.html:122
 msgid "Select list(s)"
 msgstr "Sélectionner une ou plusieurs listes"
 
-#: views/subscribers/importExport/import.html:104
+#: views/subscribers/importExport/import.html:120
 msgid "Find your Mailchimp API key in our [link]documentation[/link]."
 msgstr "Retrouvez votre clé d’API Mailchimp dans notre [link]documentation[/link]."
 
-#: views/subscribers/importExport/import.html:103
+#: views/subscribers/importExport/import.html:119
 msgid "Enter your Mailchimp API key"
 msgstr "Saisissez votre clé API MailChimp"
 
-#: views/subscribers/importExport/import.html:102
+#: views/subscribers/importExport/import.html:118
 msgid "Import from Mailchimp"
 msgstr "Importer depuis MailChimp"
 
-#: views/subscribers/importExport/import.html:101
+#: views/subscribers/importExport/import.html:117
 msgid "Upload a file"
 msgstr "Importer un fichier"
 
-#: views/subscribers/importExport/import.html:100
+#: views/subscribers/importExport/import.html:116
 msgid " To add subscribers to a mailing segment, [link]create a list[/link]."
 msgstr "Pour ajouter des abonné·es à un segment de mailing, [link]créez une liste[/link]."
 
-#: views/subscribers/importExport/import.html:97
+#: views/subscribers/importExport/import.html:113
 msgid "Update existing subscribers’ information, like first name, last name, etc."
 msgstr "Mettre à jour les informations des abonnés existants, comme le prénom, le nom de famille, etc."
 
-#: views/subscribers/importExport/import.html:96
+#: views/subscribers/importExport/import.html:112
 msgid "Create a new list"
 msgstr "Créer un nouvelle liste"
 
-#: views/subscribers/importExport/import.html:94
+#: views/subscribers/importExport/import.html:110
 msgid "Pick the list that you want to import these subscribers to."
 msgstr "Choisissez la liste dans laquelle vous voulez importer ces abonnés."
 
-#: views/subscribers/importExport/import.html:93
+#: views/subscribers/importExport/import.html:109
 msgid "Pick one or more list(s)"
 msgstr "Choisissez une ou plusieurs listes"
 
-#: views/subscribers/importExport/import.html:92
+#: views/subscribers/importExport/import.html:108
 msgid "Paste the data into a text box"
 msgstr "Coller les données dans une boîte de texte"
 
-#: views/subscribers/importExport/import.html:90
+#: views/segments/translations.html:26
+msgid "View subscribers"
+msgstr "Afficher les abonnés"
+
+#: views/subscribers/importExport/import.html:106
 msgid "Import again"
 msgstr "Importer à nouveau"
 
-#: views/subscribers/importExport/import.html:89
+#: views/subscribers/importExport/import.html:105
 msgid " See video guide"
 msgstr "Voir le guide vidéo"
 
-#: views/subscribers/importExport/import.html:87
+#: views/subscribers/importExport/import.html:103
 msgid "Next step"
 msgstr "Étape suivante"
 
-#: views/subscribers/importExport/import.html:86
+#: views/subscribers/importExport/import.html:102
 msgid "Previous step"
 msgstr "Étape précédente"
 
-#: views/subscribers/importExport/import.html:84
+#: views/subscribers/importExport/import.html:100
 msgid "Within the last 3 months"
 msgstr "Durant les 3 derniers mois"
 
-#: views/subscribers/importExport/import.html:83
+#: views/subscribers/importExport/import.html:99
 msgid "Within the last year"
 msgstr "Durant l’année passée"
 
-#: views/subscribers/importExport/import.html:82
+#: views/subscribers/importExport/import.html:98
 msgid "Between 1 and 2 years ago"
 msgstr "Il y a entre 1 et 2 ans"
 
-#: views/subscribers/importExport/import.html:81
+#: views/subscribers/importExport/import.html:97
 msgid "Over 2 years ago"
 msgstr "Il y a plus de 2 ans"
 
-#: views/subscribers/importExport/import.html:73
+#: views/subscribers/importExport/import.html:89
 msgid "Read the support article."
 msgstr "Lire l’article de support (en anglais)."
 
-#: views/subscribers/importExport/import.html:72
+#: views/subscribers/importExport/import.html:88
 msgid "Note: Imported subscribers will not receive any Welcome Emails"
 msgstr "Note : Les abonnés importés ne recevront aucun courriel de bienvenue."
 
-#: views/subscribers/importExport/import.html:71
+#: views/subscribers/importExport/import.html:87
 msgid "No subscribers were added or updated."
 msgstr "Aucun nouvel abonné n’a été ajouté ou mis à jour."
 
-#: views/subscribers/importExport/import.html:70
+#: views/subscribers/importExport/import.html:86
 msgid "%1$s existing subscribers were updated and added to %2$s."
 msgstr "%1$s abonnés existants ont été mis à jour et ajoutés à %2$s."
 
-#: views/subscribers/importExport/import.html:69
+#: views/subscribers/importExport/import.html:85
 msgid "%1$s subscribers added to %2$s."
 msgstr "%1$s abonnés ont été ajoutés à %2$s."
 
-#: views/subscribers/importExport/import.html:68
+#: views/subscribers/importExport/import.html:84
 msgid "Custom field could not be created"
 msgstr "Le champ personnalisé n’a pas pu être créé"
 
-#: views/subscribers/importExport/import.html:67
+#: views/subscribers/importExport/import.html:83
 msgid "One of the fields contains an invalid email. Please fix before continuing."
 msgstr "Un de ces champs contient un courriel non valide. Veuillez le corriger avant de continuer."
 
-#: views/subscribers/importExport/import.html:66
+#: views/subscribers/importExport/import.html:82
 msgid "Error adding a new list:"
 msgstr "Erreur d’ajout de la nouvelle liste :"
 
-#: views/subscribers/importExport/import.html:65
+#: views/subscribers/importExport/import.html:81
 msgid "One of the fields contains an invalid date. Please fix before continuing."
 msgstr "Un de ces champs contient une date non valide. Veuillez le corriger avant de continuer."
 
-#: views/subscribers/importExport/import.html:64
+#: views/subscribers/importExport/import.html:80
 msgid "Error matching date"
 msgstr "Erreur de correspondance de date"
 
-#: views/subscribers/importExport/import.html:63
+#: views/subscribers/importExport/import.html:79
 msgid "AM"
 msgstr "AM"
 
-#: views/subscribers/importExport/import.html:62
+#: views/subscribers/importExport/import.html:78
 msgid "PM"
 msgstr "PM"
 
-#: views/subscribers/importExport/import.html:61
+#: views/subscribers/importExport/import.html:77
 msgid "Verify that the date in blue matches the original date."
 msgstr "Vérifiez que la date en bleu correspond à la date d’origine."
 
-#: views/subscribers/importExport/import.html:60
+#: views/subscribers/importExport/import.html:76
 msgid "First row date cannot be empty."
 msgstr "La première ligne de date ne peut pas être vide."
 
-#: views/subscribers/importExport/import.html:59
+#: views/subscribers/importExport/import.html:75
 msgid "Do not match as a 'date field' if most of the rows for that field return the same error."
 msgstr "Ne correspond pas à un « champ de date » si la plupart des lignes de ce champ retournent la même erreur."
 
-#: views/subscribers/importExport/import.html:46
+#: views/subscribers/importExport/import.html:62
 msgid "One of the fields contains an invalid email. Please fix it before continuing."
 msgstr "Un de ces champs contient un courriel non valide. Veuillez le corriger avant de continuer."
 
-#: views/subscribers/importExport/import.html:45
+#: views/subscribers/importExport/import.html:61
 msgid "Confirm that this field corresponds to the selected field."
 msgstr "Confirmez que ce champ correspond au champ sélectionné."
 
-#: views/subscribers/importExport/import.html:44
+#: views/subscribers/importExport/import.html:60
 msgid "The selected value is already matched to another field."
 msgstr "La valeur sélectionnée correspond déjà à un autre champ."
 
-#: views/subscribers/importExport/import.html:41
+#: views/subscribers/importExport/import.html:57
 msgid "Add new field"
 msgstr "Ajouter un nouveau champ"
 
-#: views/subscribers/importExport/import.html:40
-#: views/subscribers/importExport/import.html:42
+#: views/subscribers/importExport/import.html:56
 msgid "Add new list"
 msgstr "Ajouter une nouvelle liste"
 
-#: views/subscribers/importExport/import.html:37
+#: views/subscribers/importExport/import.html:53
 msgid "Hide details"
 msgstr "Masquer les détails"
 
-#: views/subscribers/importExport/import.html:36
+#: views/subscribers/importExport/import.html:52
 msgid "%1$s emails appear more than once in your file: %2$s"
 msgstr "%1$s courriels apparaissent plus d’une fois dans votre fichier : %2$s."
 
-#: views/subscribers/importExport/import.html:34
+#: views/subscribers/importExport/import.html:50
 msgid "%1$s emails are not valid: %2$s"
 msgstr "%1$s courriels ne sont pas valides : %2$s"
 
-#: views/subscribers/importExport/import.html:33
+#: views/subscribers/importExport/import.html:49
 msgid "%1$s records had issues and were skipped."
 msgstr "%1$s enregistrements avaient des erreurs et ont été ignorés."
 
-#: views/subscribers/importExport/import.html:32
+#: views/subscribers/importExport/import.html:48
 msgid "No valid records were found. This file needs to be formatted in a CSV style (comma-separated). Look at some [link]examples on our support site.[/link]"
 msgstr "Aucun enregistrement valide n’a été trouvé. Ce fichier doit être au format CSV (séparé par des virgules). Consultez quelques [link]exemples sur notre site de support[/link]."
 
-#: views/subscribers/importExport/import.html:31
+#: views/subscribers/importExport/import.html:47
 msgid "Your data could not be processed. Please make sure it is in the correct format."
 msgstr "Vos données ne peuvent pas être traitées. Veuillez vous assurer qu’elles sont au bon format."
 
-#: views/subscribers/importExport/import.html:30
+#: views/subscribers/importExport/import.html:46
 msgid "Your CSV is over %s and is too big to process. Please split the file into two or more sections."
 msgstr "Votre fichier CSV dépasse les %s et il est trop volumineux pour être traité correctement. Veuillez le découper en deux, ou plus si nécessaire."
 
-#: views/subscribers/importExport/import.html:29
+#: views/subscribers/importExport/import.html:45
 msgid "Only comma-separated (CSV) file formats are supported."
 msgstr "Seuls les fichiers au format CSV (séparé par des virgules) sont pris en charge."
 
-#: views/subscribers/importExport/import.html:26
+#: views/subscribers/importExport/import.html:42
 msgid "No active lists found"
 msgstr "Aucune liste active trouvée"
 
@@ -5780,47 +5649,42 @@ msgstr "Aucune liste active trouvée"
 msgid "This file needs to be formatted in a CSV style (comma-separated-values). Look at some [link]examples on our support site[/link]."
 msgstr "Ce fichier doit être au format CSV (séparé par des virgules). Consultez quelques [link]exemples sur notre site de support[/link]."
 
-#: views/subscribers/importExport/export.html:96
+#: views/subscribers/importExport/export.html:111
 msgid "%1$s subscribers were exported. Get the exported file [link]here[/link]."
 msgstr "%1$s abonnés ont été exportés. Récupérez le fichier d’exportation [link]ici[/link]."
 
-#: views/subscribers/importExport/export.html:95
-#: views/subscribers/importExport/import.html:27
+#: views/subscribers/importExport/export.html:110
+#: views/subscribers/importExport/import.html:43
 msgid "Server error:"
 msgstr "Erreur serveur :"
 
-#: views/subscribers/importExport/export.html:72
+#: views/subscribers/importExport/export.html:87
 msgid "ZIP extension is required to create Excel files. Please refer to the [link]official PHP ZIP installation guide[/link] or contact your hosting provider’s technical support for instructions on how to install and load the ZIP extension."
 msgstr "L’extension ZIP est nécessaire pour créer des fichiers Excel. Veuillez vous référer au [link]guide d’installation officiel PHP ZIP[/link] ou contacter le support technique de votre hébergeur pour des instructions sur la façon d’installer et de charger l’extension ZIP."
 
-#: views/subscribers/importExport/export.html:68
+#: views/subscribers/importExport/export.html:83
 msgid "Excel file"
 msgstr "Fichier Excel"
 
-#: views/subscribers/importExport/export.html:61
+#: views/subscribers/importExport/export.html:76
 msgid "CSV file"
 msgstr "Fichier CSV"
 
-#: views/subscribers/importExport/export.html:53
+#: views/subscribers/importExport/export.html:68
 msgid "Format"
 msgstr "Format"
 
-#: views/subscribers/importExport/export.html:38
+#: views/subscribers/importExport/export.html:53
 msgid "List of fields to export"
 msgstr "Liste des champs à exporter"
 
-#: views/subscribers/importExport/export.html:26
+#: views/subscribers/importExport/export.html:41
 msgid "Pick one or multiple lists"
 msgstr "Choisissez une ou plusieurs listes"
 
-#: views/subscribers/importExport/export.html:11
+#: views/subscribers/importExport/export.html:26
 msgid "Yikes! Couldn't find any subscribers"
 msgstr "Aïe ! Impossible de trouver un seul abonné"
-
-#: views/subscribers/importExport/export.html:7
-#: views/subscribers/importExport/import.html:7
-msgid "Back to Subscribers"
-msgstr "Retour aux abonnés"
 
 #: views/settings_translations.html:225
 msgid "or Cancel"
@@ -6070,12 +5934,12 @@ msgstr "Abonner tous mes anciens clients à cette liste car ils ont acceptés de
 msgid "Subscribe old WooCommerce customers"
 msgstr "Abonnez les anciens clients WooCommerce"
 
-#: views/segments/translations.html:219 views/subscribers/subscribers.html:124
+#: views/segments/translations.html:184 views/subscribers/subscribers.html:95
 #: lib/Util/Notices/PremiumFeaturesAvailableNotice.php:58
 msgid "Download MailPoet Premium plugin"
 msgstr "Télécharger l’extension MailPoet Premium"
 
-#: views/subscribers/importExport/import.html:105
+#: views/subscribers/importExport/import.html:121
 #: views/settings_translations.html:151
 msgid "Verify"
 msgstr "Vérifier"
@@ -6414,236 +6278,212 @@ msgstr "Confirmation d’abonnement"
 msgid "Basics"
 msgstr "Essentiels"
 
-#: views/segments/translations.html:212 views/subscribers/subscribers.html:143
+#: views/subscribers/subscribers.html:116
+msgid "Recalculate now"
+msgstr "Recalculer maintenant"
+
+#: views/segments/translations.html:177 views/subscribers/subscribers.html:114
 #: views/homepage.html:83
 msgid "Average percent of emails subscribers read in the last year"
 msgstr "Pourcentage moyen d’e-mails lus par les abonné•es au cours de l’année écoulée"
 
-#: views/segments/translations.html:211 views/homepage.html:82
+#: views/segments/translations.html:176 views/homepage.html:82
 msgid "20% or fewer"
 msgstr "20% ou moins"
 
-#: views/segments/translations.html:209 views/subscribers/subscribers.html:140
+#: views/segments/translations.html:174 views/subscribers/subscribers.html:111
 #: views/homepage.html:80
 msgid "Low"
 msgstr "Faible"
 
-#: views/segments/translations.html:208 views/homepage.html:79
+#: views/segments/translations.html:173 views/homepage.html:79
 msgid "between 20 and 50%"
 msgstr "entre 20% et 50%"
 
-#: views/segments/translations.html:205 views/homepage.html:76
+#: views/segments/translations.html:170 views/homepage.html:76
 msgid "50% or more"
 msgstr "50% ou plus"
 
-#: views/segments/translations.html:202 views/subscribers/subscribers.html:133
+#: views/segments/translations.html:167 views/subscribers/subscribers.html:104
 #: views/homepage.html:73
 msgid "Fewer than 3 emails sent"
 msgstr "Moins de 3 e-mails envoyés"
 
-#: views/segments/translations.html:201 views/subscribers/subscribers.html:132
+#: views/segments/translations.html:166 views/subscribers/subscribers.html:103
 #: views/homepage.html:72
 msgid "Not enough data."
 msgstr "Pas assez de données."
 
-#: views/segments/translations.html:197
+#: views/segments/translations.html:162
 msgid "This segment has %1$d subscribers."
 msgstr "Ce segment a %1$d abonnements"
 
-#: views/segments/translations.html:196
+#: views/segments/translations.html:161
 msgid "It's taking longer than usual to generate the segment, which may be due to a complex configuration. Try using fewer or simpler conditions."
 msgstr "La génération du segment prend plus de temps que d’habitude, ce qui peut être dû à une configuration complexe. Essayez d'utiliser des conditions moins nombreuses ou plus simples."
 
-#: views/segments/translations.html:195
+#: views/segments/translations.html:160
 msgid "Calculating segment size…"
 msgstr "Calcul de la taille du segment..."
 
-#: views/segments/translations.html:187
+#: views/segments/translations.html:152
 msgid "Search categories"
 msgstr "Rechercher des catégories"
 
-#: views/segments/translations.html:186
+#: views/segments/translations.html:151
 msgid "amount"
 msgstr "montant"
 
-#: views/segments/translations.html:184
+#: views/segments/translations.html:149
 msgid "orders"
 msgstr "commandes"
 
-#: views/segments/translations.html:154
+#: views/segments/translations.html:119
 msgid "Search subscriptions"
 msgstr "Rechercher des abonnements"
 
-#: views/segments/translations.html:150
+#: views/segments/translations.html:115
 msgid "MailPoet custom field"
 msgstr "Champ personnalisé MailPoet"
 
-#: views/segments/translations.html:149
+#: views/segments/translations.html:114
 msgid "WordPress user role"
 msgstr "Compte WordPress"
 
-#: views/segments/translations.html:143
+#: views/segments/translations.html:108
 msgid "subscribed date"
 msgstr "date d’abonnement"
 
-#: views/segments/translations.html:108
+#: views/segments/translations.html:74
 msgid "Select value"
 msgstr "Sélectionner une valeur"
 
-#: views/segments/translations.html:107
+#: views/segments/translations.html:73
 msgid "value"
 msgstr "valeur"
 
-#: views/segments/translations.html:105
+#: views/segments/translations.html:71
 #: lib/Automation/Integrations/Core/Filters/StringFilter.php:31
 msgid "contains"
 msgstr "contient"
 
-#: views/segments/translations.html:103
+#: views/segments/translations.html:69
 #: lib/Automation/Integrations/Core/Filters/NumberFilter.php:29
 msgid "equals"
 msgstr "égal"
 
-#: views/segments/translations.html:100 views/segments/translations.html:178
+#: views/segments/translations.html:66 views/segments/translations.html:143
 #: lib/Automation/Integrations/Core/Filters/NumberFilter.php:32
 msgid "less than"
 msgstr "moins que"
 
-#: views/segments/translations.html:99 views/segments/translations.html:176
+#: views/segments/translations.html:65 views/segments/translations.html:141
 msgid "more than"
 msgstr "plus que"
 
-#: views/segments/translations.html:181
+#: views/segments/translations.html:146
 msgid "days"
 msgstr "jours"
 
-#: views/segments/translations.html:96
+#: views/segments/translations.html:62
 msgid "opens"
 msgstr "ouvertures"
 
-#: views/segments/translations.html:95
+#: views/segments/translations.html:61
 msgid "Select custom field"
 msgstr "Sélectionner un champ personnalisé"
 
-#: views/segments/translations.html:81
+#: views/segments/translations.html:55
 msgid "Loading data…"
 msgstr "Chargement des données…"
 
-#: views/segments/translations.html:77
+#: views/segments/translations.html:51
 msgid "Segment successfully added!"
 msgstr "Segment ajouté avec succès !"
 
-#: views/segments/translations.html:76
+#: views/segments/translations.html:50
 msgid "Segment successfully updated!"
 msgstr "Segment mis à jour !"
 
-#: views/segments/translations.html:73
+#: views/segments/translations.html:47
 #: lib/Automation/Integrations/MailPoet/Fields/SubscriberFieldsFactory.php:233
 msgid "Segments"
 msgstr "Segments"
 
-#: views/segments/translations.html:71
+#: views/segments/translations.html:45
 msgid "This is the total of all subscribers excluding all WordPress users."
 msgstr "Il s’agit du total de tous les abonnés excluant tous les utilisateurs WordPress."
 
-#: views/segments/translations.html:70
+#: views/segments/translations.html:44
 msgid "This is the total of all subscribers including %1$d WordPress users. To exclude WordPress users, please purchase one of our premium plans."
 msgstr "Il s'agit du total de tous les abonné•es incluant les %1$d comptes de WordPress. Pour exclure les comptes de WordPress, veuillez acheter l’une de nos offres premium."
 
-#: views/segments/translations.html:67 views/subscribers/subscribers.html:48
-msgid "This is the total of subscribed, unconfirmed and inactive subscribers we count when you are sending with MailPoet Sending Service. The count excludes unsubscribed and bounced (invalid) email addresses."
-msgstr "Ceci est le total des abonnés, abonnés non confirmés et inactifs que nous comptabilisons lorsque vous envoyez avec le service d’envoi de MailPoet. Le nombre n’inclut pas les adresses e-mails désabonnées et de rebond (non valides)."
-
-#: views/segments/translations.html:57 views/segments/translations.html:75
+#: views/segments/translations.html:35 views/segments/translations.html:49
 msgid "This text box is for your own use and is never shown to your subscribers."
 msgstr "Cette boîte de texte est pour votre usage personnel et ne sera jamais affichée à vos abonnés."
 
-#: views/segments/translations.html:46 views/homepage.html:70
+#: views/segments/translations.html:33 views/homepage.html:70
 msgid "List score"
 msgstr "Score de liste"
 
-#: views/segments/translations.html:36
-msgid "New Segment"
-msgstr "Nouveau segment"
-
-#: views/segments/translations.html:35
-msgid "New List"
-msgstr "Nouvelle liste"
-
-#: views/segments/translations.html:34
-msgid "View Subscribers"
-msgstr "Voir les abonnés"
-
-#: views/segments/translations.html:32
+#: views/segments/translations.html:24
 msgid "List \"%1$s\" has been synchronized."
 msgstr "La liste « %1$s » a été synchronisée."
 
-#: views/segments/translations.html:30
+#: views/segments/translations.html:22
 msgid "Force Sync"
 msgstr "Forcer la synchro"
 
-#: views/segments/translations.html:28
+#: views/segments/translations.html:20
 msgid "List \"%1$s\" has been duplicated."
 msgstr "La liste « %1$s » a été dupliquée."
 
-#: views/segments/translations.html:26
+#: views/segments/translations.html:18
 msgid "%1$d lists have been restored from the Trash."
 msgstr "%1$d listes ont été restaurées depuis la corbeille."
 
-#: views/segments/translations.html:25
+#: views/segments/translations.html:17
 msgid "1 list has been restored from the Trash."
 msgstr "1 liste a été restaurée depuis la corbeille."
 
-#: views/segments/translations.html:24
+#: views/segments/translations.html:16
 msgid "%1$d lists were permanently deleted. Note that deleting a list does not delete its subscribers."
 msgstr "%1$d listes ont été supprimées définitivement. Notez que la suppression d’une liste ne supprime pas ses abonnements."
 
-#: views/segments/translations.html:23
+#: views/segments/translations.html:15
 msgid "1 list was permanently deleted. Note that deleting a list does not delete its subscribers."
 msgstr "1 liste a été effacée de façon permanente. Notez que d'effacer une liste n'efface pas ses abonnés."
 
-#: views/segments/translations.html:22
+#: views/segments/translations.html:14
 msgid "%1$d lists were moved to the trash. Note that deleting a list does not delete its subscribers."
 msgstr "%1$d listes ont été déplacées dans la corbeille. Notez que la suppression d’une liste ne supprime pas ses abonnements."
 
-#: views/segments/translations.html:21
+#: views/segments/translations.html:13
 msgid "1 list was moved to the trash. Note that deleting a list does not delete its subscribers."
 msgstr "1 liste a été déplacée dans la poubelle. Notez que d'effacer une liste n'efface pas ses abonnés."
 
-#: views/segments/translations.html:13
+#: views/segments/translations.html:5
 msgid "List successfully added!"
 msgstr "La liste a bien été ajoutée !"
 
-#: views/segments/translations.html:12
+#: views/segments/translations.html:4
 msgid "List successfully updated!"
 msgstr "La liste a bien été mise à jour !"
 
-#: views/segments/translations.html:11
+#: views/segments/translations.html:3
 #: views/subscribers/importExport/import/step_data_manipulation.html:20
 msgid "Description"
 msgstr "Description"
-
-#: views/segments/translations.html:6
-msgid "%d lists were permanently deleted."
-msgstr "%$1d listes ont été définitivement supprimées."
-
-#: views/segments/translations.html:5
-msgid "No lists found"
-msgstr "Aucune liste trouvée"
-
-#: views/segments/translations.html:4
-msgid "Loading lists..."
-msgstr "Chargement des listes..."
 
 #: views/upgrade.html:144
 msgid "Image rooster crowing"
 msgstr "Image d’un coq chantant"
 
-#: views/subscribers/subscribers.html:107
+#: views/subscribers/subscribers.html:81
 msgid "Tip:"
 msgstr "Conseil :"
 
-#: views/layout.html:114 views/layout.html:181 views/upgrade.html:9
+#: views/layout.html:114 views/upgrade.html:9 views/upgrade_tiers.html:9
 msgid "Back to section root"
 msgstr "Retour à la section racine"
 
@@ -6663,29 +6503,21 @@ msgstr "[link]Mettre à jour MailPoet[/link] pour voir les dernières modificati
 msgid "What’s new"
 msgstr "Quoi de neuf"
 
-#: views/layout.html:167
-msgid "All of your WordPress and WooCommerce emails are sent with your hosting company, unless you have an SMTP plugin. Would you like such emails to be delivered with MailPoet’s active sending method for better deliverability?"
-msgstr "Tous vos e-mails WordPress et WooCommerce sont envoyés avec votre hébergeur, sauf si vous disposez d’une extension SMTP. Souhaitez-vous que ces e-mails soient envoyés avec la méthode d’envoi active de MailPoet pour une meilleure délivrabilité ?"
-
-#: views/layout.html:166
-msgid "Good news! MailPoet can now send your website’s emails too"
-msgstr "Bonne nouvelle ! MailPoet peut aussi désormais envoyer les e-mails de votre site web"
-
 #: lib/AutomaticEmails/WooCommerce/Events/FirstPurchase.php:85
 #: lib/AutomaticEmails/WooCommerce/Events/PurchasedInCategory.php:61
 #: lib/AutomaticEmails/WooCommerce/Events/PurchasedProduct.php:82
 msgid "immediately"
 msgstr "immédiatement"
 
-#: views/segments/translations.html:221 views/subscribers/subscribers.html:120
+#: views/segments/translations.html:186 views/subscribers/subscribers.html:91
 msgid "Congratulations, you now have [subscribersCount] subscribers! Your plan is limited to [subscribersLimit] subscribers. You need to upgrade now to be able to continue using MailPoet."
 msgstr "Félicitations, vous avez maintenant [subscribersCount] abonnés ! Votre offre est limitée à [subscribersLimit] abonnés. Vous devez effectuer une mise à jour maintenant pour pouvoir continuer à utiliser MailPoet."
 
-#: views/subscribers/subscribers.html:119
+#: views/subscribers/subscribers.html:90
 msgid "Congratulations, you now have [subscribersCount] subscribers! Our free version is limited to [subscribersLimit] subscribers. You need to upgrade now to be able to continue using MailPoet."
 msgstr "Félicitations, vous avez maintenant [subscribersCount] abonnés ! Notre version gratuite est limitée à [subscribersLimit] abonnés. Vous devez effectuer une mise à jour maintenant pour pouvoir continuer à utiliser MailPoet."
 
-#: views/subscribers/subscribers.html:118
+#: views/subscribers/subscribers.html:89
 msgid "Upgrade required"
 msgstr "Mise à jour nécessaire"
 
@@ -6703,43 +6535,35 @@ msgstr "Envoyez une infolettre avec des images, des boutons, des séparateurs et
 msgid "Learn more"
 msgstr "En savoir plus"
 
-#: views/segments/translations.html:210 views/subscribers/subscribers.html:141
+#: views/segments/translations.html:175 views/subscribers/subscribers.html:112
 msgid "Something to improve."
 msgstr "Quelque chose à améliorer."
 
-#: views/segments/translations.html:207 views/subscribers/subscribers.html:138
+#: views/segments/translations.html:172 views/subscribers/subscribers.html:109
 msgid "Good stuff."
 msgstr "Bien joué."
 
-#: views/segments/translations.html:206 views/subscribers/subscribers.html:137
+#: views/segments/translations.html:171 views/subscribers/subscribers.html:108
 #: views/homepage.html:77 lib/Twig/Functions.php:342
 msgid "Good"
 msgstr "Bon"
 
-#: views/segments/translations.html:203 views/subscribers/subscribers.html:134
+#: views/segments/translations.html:168 views/subscribers/subscribers.html:105
 #: views/homepage.html:74 lib/Twig/Functions.php:340
 msgid "Excellent"
 msgstr "Excellent"
 
-#: views/segments/translations.html:20 views/subscribers/subscribers.html:76
+#: views/segments/translations.html:12 views/subscribers/subscribers.html:50
 msgid "Created on"
 msgstr "Date de création"
 
-#: views/subscribers/subscribers.html:99
-msgid "Statistics"
-msgstr "Statistiques"
-
-#: lib/Automation/Integrations/MailPoet/Actions/SendEmailAction.php:143
+#: lib/Automation/Integrations/MailPoet/Actions/SendEmailAction.php:150
 msgid "Subject"
 msgstr "Sujet"
 
-#: views/segments/translations.html:52 views/segments/translations.html:88
-msgid "Current page"
-msgstr "Page actuelle"
-
-#: views/subscribers/importExport/import.html:38
-#: views/subscribers/importExport/import.html:109
-#: views/subscribers/subscribers.html:33
+#: views/subscribers/importExport/import.html:54
+#: views/subscribers/importExport/import.html:125
+#: views/subscribers/subscribers.html:20
 msgid "Show more details"
 msgstr "Afficher plus de détails"
 
@@ -7033,6 +6857,7 @@ msgstr "Ajouter un autre réseau social"
 msgid "Select icons"
 msgstr "Sélectionner des icônes"
 
+#: views/newsletter/templates/blocks/dynamicProducts/settings.hbs:8
 #: views/newsletter/templates/blocks/products/widget.hbs:4
 #: lib/Automation/Integrations/WooCommerce/Fields/OrderFieldsFactory.php:270
 msgid "Products"
@@ -7042,10 +6867,12 @@ msgstr "Produits"
 msgid "No products available"
 msgstr "Aucun produit disponible"
 
+#: views/newsletter/templates/blocks/dynamicProducts/settings.hbs:259
 #: views/newsletter/templates/blocks/products/settingsDisplayOptions.hbs:182
 msgid "\"Buy now\" text"
 msgstr "Texte « Acheter maintenant »"
 
+#: views/newsletter/templates/blocks/dynamicProducts/settings.hbs:1
 #: views/newsletter/templates/blocks/products/settings.hbs:1
 msgid "Product selection"
 msgstr "Sélection de produit"
@@ -7356,6 +7183,7 @@ msgstr "Trier par"
 
 #: views/newsletter/templates/blocks/automatedLatestContent/settings.hbs:252
 #: views/newsletter/templates/blocks/automatedLatestContentLayout/settings.hbs:284
+#: views/newsletter/templates/blocks/dynamicProducts/settings.hbs:278
 #: views/newsletter/templates/blocks/posts/settingsDisplayOptions.hbs:238
 #: views/newsletter/templates/blocks/products/settingsDisplayOptions.hbs:201
 msgid "Design a button"
@@ -7427,16 +7255,19 @@ msgstr "Extrait"
 
 #: views/newsletter/templates/blocks/automatedLatestContent/settings.hbs:45
 #: views/newsletter/templates/blocks/automatedLatestContentLayout/settings.hbs:45
+#: views/newsletter/templates/blocks/dynamicProducts/settings.hbs:73
 msgid "Hide display options"
 msgstr "Masquer les options d’affichage"
 
 #: views/newsletter/templates/blocks/automatedLatestContent/settings.hbs:32
 #: views/newsletter/templates/blocks/automatedLatestContentLayout/settings.hbs:32
+#: views/newsletter/templates/blocks/dynamicProducts/settings.hbs:59
 msgid "Exclude"
 msgstr "Exclure"
 
 #: views/newsletter/templates/blocks/automatedLatestContent/settings.hbs:26
 #: views/newsletter/templates/blocks/automatedLatestContentLayout/settings.hbs:26
+#: views/newsletter/templates/blocks/dynamicProducts/settings.hbs:53
 msgid "Include"
 msgstr "Inclure"
 
@@ -7461,6 +7292,7 @@ msgstr "Articles"
 
 #: views/newsletter/templates/blocks/automatedLatestContent/settings.hbs:4
 #: views/newsletter/templates/blocks/automatedLatestContentLayout/settings.hbs:4
+#: views/newsletter/templates/blocks/dynamicProducts/settings.hbs:4
 msgid "Show max:"
 msgstr "Afficher max:"
 
@@ -7477,12 +7309,14 @@ msgstr "Contenu de panier abandonné"
 #: views/newsletter/templates/blocks/abandonedCartContent/settingsDisplayOptions.hbs:196
 #: views/newsletter/templates/blocks/automatedLatestContent/settings.hbs:291
 #: views/newsletter/templates/blocks/automatedLatestContentLayout/settings.hbs:323
+#: views/newsletter/templates/blocks/dynamicProducts/settings.hbs:299
 #: views/newsletter/templates/blocks/posts/settingsDisplayOptions.hbs:261
 #: views/newsletter/templates/blocks/products/settingsDisplayOptions.hbs:222
 msgid "Select divider"
 msgstr "Sélectionner le séparateur"
 
 #: views/newsletter/templates/blocks/abandonedCartContent/settingsDisplayOptions.hbs:182
+#: views/newsletter/templates/blocks/dynamicProducts/settings.hbs:285
 #: views/newsletter/templates/blocks/products/settingsDisplayOptions.hbs:208
 msgid "Show divider between products"
 msgstr "Afficher les séparateurs entre les produits"
@@ -7492,6 +7326,7 @@ msgstr "Afficher les séparateurs entre les produits"
 #: views/newsletter/templates/blocks/automatedLatestContent/settings.hbs:215
 #: views/newsletter/templates/blocks/automatedLatestContentLayout/settings.hbs:221
 #: views/newsletter/templates/blocks/automatedLatestContentLayout/settings.hbs:247
+#: views/newsletter/templates/blocks/dynamicProducts/settings.hbs:245
 #: views/newsletter/templates/blocks/posts/settingsDisplayOptions.hbs:175
 #: views/newsletter/templates/blocks/posts/settingsDisplayOptions.hbs:201
 #: views/newsletter/templates/blocks/products/settingsDisplayOptions.hbs:168
@@ -7503,6 +7338,7 @@ msgstr "Au-dessus du texte"
 #: views/newsletter/templates/blocks/automatedLatestContent/settings.hbs:221
 #: views/newsletter/templates/blocks/automatedLatestContentLayout/settings.hbs:227
 #: views/newsletter/templates/blocks/automatedLatestContentLayout/settings.hbs:253
+#: views/newsletter/templates/blocks/dynamicProducts/settings.hbs:239
 #: views/newsletter/templates/blocks/posts/settingsDisplayOptions.hbs:181
 #: views/newsletter/templates/blocks/posts/settingsDisplayOptions.hbs:207
 #: views/newsletter/templates/blocks/products/settingsDisplayOptions.hbs:162
@@ -7510,6 +7346,7 @@ msgid "Below text"
 msgstr "Sous le texte"
 
 #: views/newsletter/templates/blocks/abandonedCartContent/settingsDisplayOptions.hbs:158
+#: views/newsletter/templates/blocks/dynamicProducts/settings.hbs:235
 #: views/newsletter/templates/blocks/products/settingsDisplayOptions.hbs:158
 #: views/newsletter/templates/blocks/woocommerceContent/completed_order.hbs:19
 #: views/newsletter/templates/blocks/woocommerceContent/customer_note.hbs:21
@@ -7520,6 +7357,7 @@ msgstr "Prix"
 #: views/newsletter/templates/blocks/abandonedCartContent/settingsDisplayOptions.hbs:150
 #: views/newsletter/templates/blocks/automatedLatestContent/settings.hbs:171
 #: views/newsletter/templates/blocks/automatedLatestContentLayout/settings.hbs:203
+#: views/newsletter/templates/blocks/dynamicProducts/settings.hbs:227
 #: views/newsletter/templates/blocks/posts/settingsDisplayOptions.hbs:157
 #: views/newsletter/templates/blocks/products/settingsDisplayOptions.hbs:150
 msgid "Padded"
@@ -7528,6 +7366,7 @@ msgstr "Retrait"
 #: views/newsletter/templates/blocks/abandonedCartContent/settingsDisplayOptions.hbs:144
 #: views/newsletter/templates/blocks/automatedLatestContent/settings.hbs:165
 #: views/newsletter/templates/blocks/automatedLatestContentLayout/settings.hbs:197
+#: views/newsletter/templates/blocks/dynamicProducts/settings.hbs:221
 #: views/newsletter/templates/blocks/posts/settingsDisplayOptions.hbs:151
 #: views/newsletter/templates/blocks/products/settingsDisplayOptions.hbs:144
 msgid "Full width"
@@ -7536,6 +7375,7 @@ msgstr "Pleine largeur"
 #: views/newsletter/templates/blocks/abandonedCartContent/settingsDisplayOptions.hbs:140
 #: views/newsletter/templates/blocks/automatedLatestContent/settings.hbs:161
 #: views/newsletter/templates/blocks/automatedLatestContentLayout/settings.hbs:193
+#: views/newsletter/templates/blocks/dynamicProducts/settings.hbs:217
 #: views/newsletter/templates/blocks/posts/settingsDisplayOptions.hbs:147
 #: views/newsletter/templates/blocks/products/settingsDisplayOptions.hbs:140
 msgid "Image width"
@@ -7544,6 +7384,7 @@ msgstr "Largeur de l’image"
 #: views/newsletter/templates/blocks/abandonedCartContent/settingsDisplayOptions.hbs:134
 #: views/newsletter/templates/blocks/automatedLatestContent/settings.hbs:154
 #: views/newsletter/templates/blocks/automatedLatestContentLayout/settings.hbs:186
+#: views/newsletter/templates/blocks/dynamicProducts/settings.hbs:211
 #: views/newsletter/templates/blocks/posts/settingsDisplayOptions.hbs:141
 #: views/newsletter/templates/blocks/products/settingsDisplayOptions.hbs:134
 msgid "None"
@@ -7551,6 +7392,7 @@ msgstr "Aucune"
 
 #: views/newsletter/templates/blocks/abandonedCartContent/settingsDisplayOptions.hbs:128
 #: views/newsletter/templates/blocks/automatedLatestContentLayout/settings.hbs:180
+#: views/newsletter/templates/blocks/dynamicProducts/settings.hbs:205
 #: views/newsletter/templates/blocks/posts/settingsDisplayOptions.hbs:135
 #: views/newsletter/templates/blocks/products/settingsDisplayOptions.hbs:128
 msgid "Alternate"
@@ -7558,12 +7400,14 @@ msgstr "Alternatif"
 
 #: views/newsletter/templates/blocks/abandonedCartContent/settingsDisplayOptions.hbs:110
 #: views/newsletter/templates/blocks/automatedLatestContentLayout/settings.hbs:162
+#: views/newsletter/templates/blocks/dynamicProducts/settings.hbs:187
 #: views/newsletter/templates/blocks/posts/settingsDisplayOptions.hbs:117
 #: views/newsletter/templates/blocks/products/settingsDisplayOptions.hbs:110
 msgid "Centered"
 msgstr "Centré"
 
 #: views/newsletter/templates/blocks/abandonedCartContent/settingsDisplayOptions.hbs:106
+#: views/newsletter/templates/blocks/dynamicProducts/settings.hbs:183
 #: views/newsletter/templates/blocks/products/settingsDisplayOptions.hbs:106
 msgid "Product image position"
 msgstr "Position de l’image du produit"
@@ -7575,6 +7419,8 @@ msgstr "Position de l’image du produit"
 #: views/newsletter/templates/blocks/automatedLatestContentLayout/settings.hbs:174
 #: views/newsletter/templates/blocks/button/settings.hbs:39
 #: views/newsletter/templates/blocks/coupon/settings.hbs:23
+#: views/newsletter/templates/blocks/dynamicProducts/settings.hbs:140
+#: views/newsletter/templates/blocks/dynamicProducts/settings.hbs:199
 #: views/newsletter/templates/blocks/footer/settings.hbs:60
 #: views/newsletter/templates/blocks/header/settings.hbs:61
 #: views/newsletter/templates/blocks/image/settings.hbs:81
@@ -7590,6 +7436,7 @@ msgstr "À droite"
 #: views/newsletter/templates/blocks/automatedLatestContentLayout/settings.hbs:110
 #: views/newsletter/templates/blocks/button/settings.hbs:33
 #: views/newsletter/templates/blocks/coupon/settings.hbs:17
+#: views/newsletter/templates/blocks/dynamicProducts/settings.hbs:134
 #: views/newsletter/templates/blocks/footer/settings.hbs:54
 #: views/newsletter/templates/blocks/header/settings.hbs:55
 #: views/newsletter/templates/blocks/image/settings.hbs:75
@@ -7605,6 +7452,8 @@ msgstr "Centré"
 #: views/newsletter/templates/blocks/automatedLatestContentLayout/settings.hbs:168
 #: views/newsletter/templates/blocks/button/settings.hbs:27
 #: views/newsletter/templates/blocks/coupon/settings.hbs:11
+#: views/newsletter/templates/blocks/dynamicProducts/settings.hbs:128
+#: views/newsletter/templates/blocks/dynamicProducts/settings.hbs:193
 #: views/newsletter/templates/blocks/footer/settings.hbs:48
 #: views/newsletter/templates/blocks/header/settings.hbs:49
 #: views/newsletter/templates/blocks/image/settings.hbs:69
@@ -7618,6 +7467,7 @@ msgstr "À gauche"
 #: views/newsletter/templates/blocks/abandonedCartContent/settingsDisplayOptions.hbs:47
 #: views/newsletter/templates/blocks/automatedLatestContent/settings.hbs:98
 #: views/newsletter/templates/blocks/automatedLatestContentLayout/settings.hbs:100
+#: views/newsletter/templates/blocks/dynamicProducts/settings.hbs:124
 #: views/newsletter/templates/blocks/posts/settingsDisplayOptions.hbs:53
 #: views/newsletter/templates/blocks/products/settingsDisplayOptions.hbs:47
 msgid "Title Alignment"
@@ -7626,6 +7476,7 @@ msgstr "Alignement du titre"
 #: views/newsletter/templates/blocks/abandonedCartContent/settingsDisplayOptions.hbs:41
 #: views/newsletter/templates/blocks/automatedLatestContent/settings.hbs:86
 #: views/newsletter/templates/blocks/automatedLatestContentLayout/settings.hbs:88
+#: views/newsletter/templates/blocks/dynamicProducts/settings.hbs:118
 #: views/newsletter/templates/blocks/posts/settingsDisplayOptions.hbs:41
 #: views/newsletter/templates/blocks/products/settingsDisplayOptions.hbs:41
 #: views/newsletter/templates/components/sidebar/styles.hbs:130
@@ -7635,6 +7486,7 @@ msgstr "Titre 3"
 #: views/newsletter/templates/blocks/abandonedCartContent/settingsDisplayOptions.hbs:35
 #: views/newsletter/templates/blocks/automatedLatestContent/settings.hbs:80
 #: views/newsletter/templates/blocks/automatedLatestContentLayout/settings.hbs:82
+#: views/newsletter/templates/blocks/dynamicProducts/settings.hbs:112
 #: views/newsletter/templates/blocks/posts/settingsDisplayOptions.hbs:35
 #: views/newsletter/templates/blocks/products/settingsDisplayOptions.hbs:35
 #: views/newsletter/templates/components/sidebar/styles.hbs:101
@@ -7644,6 +7496,7 @@ msgstr "Titre 2"
 #: views/newsletter/templates/blocks/abandonedCartContent/settingsDisplayOptions.hbs:29
 #: views/newsletter/templates/blocks/automatedLatestContent/settings.hbs:74
 #: views/newsletter/templates/blocks/automatedLatestContentLayout/settings.hbs:76
+#: views/newsletter/templates/blocks/dynamicProducts/settings.hbs:106
 #: views/newsletter/templates/blocks/posts/settingsDisplayOptions.hbs:29
 #: views/newsletter/templates/blocks/products/settingsDisplayOptions.hbs:29
 #: views/newsletter/templates/components/sidebar/styles.hbs:72
@@ -7653,17 +7506,20 @@ msgstr "Titre 1"
 #: views/newsletter/templates/blocks/abandonedCartContent/settingsDisplayOptions.hbs:25
 #: views/newsletter/templates/blocks/automatedLatestContent/settings.hbs:70
 #: views/newsletter/templates/blocks/automatedLatestContentLayout/settings.hbs:72
+#: views/newsletter/templates/blocks/dynamicProducts/settings.hbs:102
 #: views/newsletter/templates/blocks/posts/settingsDisplayOptions.hbs:25
 #: views/newsletter/templates/blocks/products/settingsDisplayOptions.hbs:25
 msgid "Title Format"
 msgstr "Format du titre"
 
 #: views/newsletter/templates/blocks/abandonedCartContent/settingsDisplayOptions.hbs:17
+#: views/newsletter/templates/blocks/dynamicProducts/settings.hbs:94
 #: views/newsletter/templates/blocks/products/settingsDisplayOptions.hbs:17
 msgid "Title and description"
 msgstr "Titre et description"
 
 #: views/newsletter/templates/blocks/abandonedCartContent/settingsDisplayOptions.hbs:11
+#: views/newsletter/templates/blocks/dynamicProducts/settings.hbs:88
 #: views/newsletter/templates/blocks/products/settingsDisplayOptions.hbs:11
 msgid "Title and a short description"
 msgstr "Titre et une courte description"
@@ -7671,6 +7527,7 @@ msgstr "Titre et une courte description"
 #: views/newsletter/templates/blocks/abandonedCartContent/settingsDisplayOptions.hbs:5
 #: views/newsletter/templates/blocks/automatedLatestContent/settings.hbs:64
 #: views/newsletter/templates/blocks/automatedLatestContentLayout/settings.hbs:66
+#: views/newsletter/templates/blocks/dynamicProducts/settings.hbs:82
 #: views/newsletter/templates/blocks/posts/settingsDisplayOptions.hbs:17
 #: views/newsletter/templates/blocks/products/settingsDisplayOptions.hbs:5
 msgid "Title only"
@@ -7681,6 +7538,7 @@ msgstr "Titre uniquement"
 #: views/newsletter/templates/blocks/automatedLatestContentLayout/settings.hbs:43
 #: views/newsletter/templates/blocks/container/settings.hbs:23
 #: views/newsletter/templates/blocks/coupon/settings.hbs:110
+#: views/newsletter/templates/blocks/dynamicProducts/settings.hbs:71
 #: views/newsletter/templates/blocks/posts/settings.hbs:7
 #: views/newsletter/templates/blocks/products/settings.hbs:7
 msgid "Display options"
@@ -7690,19 +7548,19 @@ msgstr "Afficher les options"
 msgid "This is only a preview! Your customers will see the product(s) they left in their shopping cart."
 msgstr "Ceci n’est qu’un aperçu ! Vos clients verront le(s) produit(s) qu’ils ont laissé dans leur panier."
 
-#: views/newsletter/editor.html:1472
+#: views/newsletter/editor.html:1549
 msgid "Edit this to insert text."
 msgstr "Modifiez ceci pour insérer votre texte."
 
-#: views/newsletter/editor.html:1459
+#: views/newsletter/editor.html:1536
 msgid "Twitter"
 msgstr "Twitter"
 
-#: views/newsletter/editor.html:1448
+#: views/newsletter/editor.html:1525
 msgid "Facebook"
 msgstr "Facebook"
 
-#: views/newsletter/editor.html:1312
+#: views/newsletter/editor.html:1389
 msgid "An image of..."
 msgstr "Une image de..."
 
@@ -7710,37 +7568,39 @@ msgstr "Une image de..."
 #: views/newsletter/templates/blocks/automatedLatestContentLayout/settings.hbs:275
 #: views/newsletter/templates/blocks/button/settings.hbs:1
 #: views/newsletter/templates/blocks/button/widget.hbs:4
+#: views/newsletter/templates/blocks/dynamicProducts/settings.hbs:269
 #: views/newsletter/templates/blocks/posts/settingsDisplayOptions.hbs:229
 #: views/newsletter/templates/blocks/products/settingsDisplayOptions.hbs:192
-#: views/newsletter/editor.html:1250
+#: views/newsletter/editor.html:1272
 msgid "Button"
 msgstr "Bouton"
 
-#: views/newsletter/editor.html:1100
+#: views/newsletter/editor.html:1122
 msgid "Custom"
 msgstr "Personnalisé"
 
-#: views/newsletter/editor.html:1075
+#: views/newsletter/editor.html:1097
 msgid "Website"
 msgstr "Site Web"
 
 #: views/newsletter/templates/blocks/automatedLatestContent/settings.hbs:237
 #: views/newsletter/templates/blocks/automatedLatestContentLayout/settings.hbs:269
 #: views/newsletter/templates/blocks/button/settings.hbs:14
+#: views/newsletter/templates/blocks/dynamicProducts/settings.hbs:263
 #: views/newsletter/templates/blocks/image/settings.hbs:4
 #: views/newsletter/templates/blocks/posts/settingsDisplayOptions.hbs:223
 #: views/newsletter/templates/blocks/products/settingsDisplayOptions.hbs:186
-#: views/newsletter/editor.html:1061 views/newsletter/editor.html:1066
-#: views/newsletter/editor.html:1071 views/newsletter/editor.html:1076
-#: views/newsletter/editor.html:1086 views/newsletter/editor.html:1091
-#: views/newsletter/editor.html:1096 views/newsletter/editor.html:1101
+#: views/newsletter/editor.html:1083 views/newsletter/editor.html:1088
+#: views/newsletter/editor.html:1093 views/newsletter/editor.html:1098
+#: views/newsletter/editor.html:1108 views/newsletter/editor.html:1113
+#: views/newsletter/editor.html:1118 views/newsletter/editor.html:1123
 #: lib/EmailEditor/Integrations/MailPoet/PersonalizationTagManager.php:76
 #: lib/EmailEditor/Integrations/MailPoet/PersonalizationTagManager.php:82
 #: lib/EmailEditor/Integrations/MailPoet/PersonalizationTagManager.php:88
 msgid "Link"
 msgstr "Lien"
 
-#: views/logs.html:19 lib/Config/Menu.php:492
+#: lib/Config/Menu.php:492
 msgid "Logs"
 msgstr "Journaux"
 
@@ -7827,19 +7687,19 @@ msgstr "Cette valeur ne semble pas être valide."
 msgid "Close"
 msgstr "Fermer"
 
-#: views/subscribers/subscribers.html:122 views/layout.html:135
+#: views/subscribers/subscribers.html:93 views/layout.html:132
 msgid "Upgrade Now"
 msgstr "Mettre à niveau maintenant"
 
-#: views/layout.html:131
+#: views/layout.html:128
 msgid "Your plan is limited to [subscribersLimit] subscribers."
 msgstr "Votre offre est limitée à [subscribersLimit] abonnements."
 
-#: views/layout.html:130
+#: views/layout.html:127
 msgid "Our free version is limited to [subscribersLimit] subscribers."
 msgstr "Notre version gratuite est limitée à [subscribersLimit] abonnements."
 
-#: views/layout.html:123
+#: views/layout.html:120
 msgid "Dismiss this notice."
 msgstr "Ignorer cette notification."
 
@@ -7926,15 +7786,15 @@ msgstr "Visitez notre base de connaissances pour plus d’articles"
 msgid "Click on one of these categories below to find more information:"
 msgstr "Cliquez sur une des catégories ci-dessous pour trouver plus d’informations :"
 
-#: views/layout.html:160
+#: views/layout.html:157
 msgid "Please consult our [link]knowledge base article[/link] for troubleshooting tips."
 msgstr "Veuillez consulter notre [link]article de base de connaissances[/link] pour obtenir des conseils de dépannage."
 
-#: views/layout.html:159
+#: views/layout.html:156
 msgid "Connection unsuccessful."
 msgstr "Échec de la connexion."
 
-#: views/layout.html:158
+#: views/layout.html:155
 msgid "Connection successful."
 msgstr "Connexion réussie."
 
@@ -7946,7 +7806,7 @@ msgstr "Planificateur de tâches"
 msgid "For the plugin to work, it must be able to establish connection with the task scheduler and the key activation/MailPoet Sending Service."
 msgstr "Pour que l’extension fonctionne, elle doit pouvoir établir une connexion avec le planificateur de tâches et la clé d’activation/service d’envoi MailPoet."
 
-#: views/layout.html:161
+#: views/layout.html:158
 msgid "For the plugin to work, it must be able to establish connection with the task scheduler."
 msgstr "Pour que l’extension fonctionne, elle doit pouvoir établir une connexion avec le planificateur de tâches."
 
@@ -7966,163 +7826,22 @@ msgstr "Info système"
 msgid "Knowledge Base"
 msgstr "Base de connaissances"
 
-#: views/forms.html:81
-msgid "New Form"
-msgstr "Nouveau formulaire"
-
-#: views/segments/translations.html:39 views/subscribers/subscribers.html:31
+#: views/segments/translations.html:30 views/subscribers/subscribers.html:19
 msgid "Move to trash"
 msgstr "Déplacer dans la corbeille"
 
-#: views/forms.html:78
-msgid "Form \"%1$s\" has been duplicated."
-msgstr "Le formulaire « %1$s » a été dupliqué."
-
 #: views/newsletter/templates/blocks/base/toolsGeneric.hbs:26
-#: views/segments/translations.html:27 views/forms.html:77
 msgid "Duplicate"
 msgstr "Dupliquer"
 
-#: views/segments/translations.html:37 views/subscribers/subscribers.html:28
+#: views/segments/translations.html:28 views/subscribers/subscribers.html:17
 msgid "Edit"
 msgstr "Modifier"
 
-#: views/forms.html:75
-msgid "%1$d forms have been restored from the trash."
-msgstr "%1$d formulaires ont été restaurés depuis la corbeille."
-
-#: views/forms.html:74
-msgid "1 form has been restored from the trash."
-msgstr "1 formulaire a été restauré depuis la corbeille."
-
-#: views/forms.html:73
-msgid "%1$d forms were permanently deleted."
-msgstr "%1$d formulaires ont été définitivement supprimés."
-
-#: views/forms.html:72
-msgid "1 form was permanently deleted."
-msgstr "1 formulaire a été définitivement supprimé."
-
-#: views/forms.html:71
-msgid "%1$d forms were moved to the trash."
-msgstr "%1$d formulaires ont été déplacés dans la corbeille."
-
-#: views/forms.html:70
-msgid "1 form was moved to the trash."
-msgstr "1 formulaire a été déplacé dans la corbeille."
-
-#: views/forms.html:69
-msgid "Modified date"
-msgstr "Date de modification"
-
-#: views/forms.html:68
-msgid "Sign-ups"
-msgstr "Inscriptions"
-
-#: views/forms.html:67
-msgid "User choice:"
-msgstr "Choix de l’utilisateur :"
-
-#: views/segments/translations.html:78 views/forms.html:66
-msgid "Type"
-msgstr "Type"
-
-#: views/segments/translations.html:10
+#: views/segments/translations.html:2
 #: views/subscribers/importExport/import/step_data_manipulation.html:7
 msgid "Name"
 msgstr "Nom"
-
-#: views/segments/translations.html:55 views/segments/translations.html:83
-#: views/subscribers/subscribers.html:44 views/forms.html:61
-msgid "%1$d items"
-msgstr "%1$d éléments"
-
-#: views/segments/translations.html:54 views/segments/translations.html:82
-#: views/subscribers/subscribers.html:43 views/forms.html:60
-msgid "1 item"
-msgstr "1 élément"
-
-#: views/segments/translations.html:53 views/subscribers/subscribers.html:42
-msgid "of"
-msgstr "de"
-
-#: views/subscribers/subscribers.html:41 views/forms.html:58
-msgid "Current Page"
-msgstr "Page actuelle"
-
-#: views/segments/translations.html:51 views/segments/translations.html:87
-#: views/subscribers/subscribers.html:40 views/forms.html:57
-msgid "Last page"
-msgstr "Dernière page"
-
-#: views/segments/translations.html:50 views/segments/translations.html:86
-#: views/subscribers/subscribers.html:39 views/forms.html:56
-msgid "Next page"
-msgstr "Page suivante"
-
-#: views/segments/translations.html:49 views/segments/translations.html:85
-#: views/subscribers/subscribers.html:38 views/forms.html:55
-msgid "First page"
-msgstr "Première page"
-
-#: views/segments/translations.html:48 views/segments/translations.html:84
-#: views/subscribers/subscribers.html:37 views/forms.html:54
-msgid "Previous page"
-msgstr "Page précédente"
-
-#: views/forms.html:52
-msgid "Your Form is now activated!"
-msgstr "Votre formulaire est maintenant activé !"
-
-#: views/forms.html:51
-msgid "Not Active"
-msgstr "Désactivé"
-
-#: views/subscribers/subscribers.html:32 views/forms.html:47
-msgid "Delete Permanently"
-msgstr "Supprimer définitivement"
-
-#: views/segments/translations.html:42 views/subscribers/subscribers.html:29
-msgid "Restore"
-msgstr "Restaurer"
-
-#: views/segments/translations.html:41 views/subscribers/subscribers.html:27
-msgid "Select All"
-msgstr "Tout sélectionner"
-
-#: views/segments/translations.html:40 views/subscribers/subscribers.html:26
-msgid "Empty Trash"
-msgstr "Vider la corbeille"
-
-#: views/subscribers/subscribers.html:25 views/forms.html:43
-msgid "Filter"
-msgstr "Filtrer"
-
-#: views/segments/translations.html:9 views/subscribers/subscribers.html:24
-#: views/forms.html:42
-msgid "Apply"
-msgstr "Appliquer"
-
-#: views/segments/translations.html:8 views/subscribers/subscribers.html:23
-#: views/forms.html:41
-msgid "Bulk Actions"
-msgstr "Actions groupées"
-
-#: views/segments/translations.html:7 views/subscribers/subscribers.html:22
-msgid "Select bulk action"
-msgstr "Sélectionner une action groupée"
-
-#: views/forms.html:39
-msgid "%d forms permanently deleted."
-msgstr "%d formulaires définitivement supprimés."
-
-#: views/forms.html:38
-msgid "No forms were found. Why not create a new one?"
-msgstr "Aucun formulaire trouvé. Pourquoi ne pas en créer un ?"
-
-#: views/forms.html:37
-msgid "Loading forms..."
-msgstr "Chargement des formulaires..."
 
 #: views/form/templatesLegacy/settings/field_form.hbs:61
 #: views/form/templatesLegacy/settings/submit.hbs:2
@@ -8133,6 +7852,7 @@ msgstr "Chargement des formulaires..."
 #: views/newsletter/templates/blocks/container/settings.hbs:47
 #: views/newsletter/templates/blocks/coupon/settings.hbs:114
 #: views/newsletter/templates/blocks/divider/settings.hbs:37
+#: views/newsletter/templates/blocks/dynamicProducts/settings.hbs:306
 #: views/newsletter/templates/blocks/footer/settings.hbs:66
 #: views/newsletter/templates/blocks/header/settings.hbs:67
 #: views/newsletter/templates/blocks/image/settings.hbs:87
@@ -8141,11 +7861,6 @@ msgstr "Chargement des formulaires..."
 #: views/subscribers/importExport/import/step_data_manipulation.html:29
 msgid "Done"
 msgstr "Terminé"
-
-#: views/segments/translations.html:3 views/segments/translations.html:142
-#: views/subscribers/subscribers.html:16 views/forms.html:36
-msgid "Search"
-msgstr "Rechercher"
 
 #: views/forms.html:9
 msgid "<strong>Tip:</strong> check out [link]this list[/link] of form plugins that integrate with MailPoet."
@@ -8212,11 +7927,13 @@ msgstr "Nombre de lignes :"
 #: views/newsletter/templates/blocks/automatedLatestContent/settings.hbs:281
 #: views/newsletter/templates/blocks/automatedLatestContentLayout/settings.hbs:126
 #: views/newsletter/templates/blocks/automatedLatestContentLayout/settings.hbs:313
+#: views/newsletter/templates/blocks/dynamicProducts/settings.hbs:150
+#: views/newsletter/templates/blocks/dynamicProducts/settings.hbs:289
 #: views/newsletter/templates/blocks/posts/settingsDisplayOptions.hbs:79
 #: views/newsletter/templates/blocks/posts/settingsDisplayOptions.hbs:251
 #: views/newsletter/templates/blocks/products/settingsDisplayOptions.hbs:73
 #: views/newsletter/templates/blocks/products/settingsDisplayOptions.hbs:212
-#: views/subscribers/importExport/import.html:98
+#: views/subscribers/importExport/import.html:114
 msgid "Yes"
 msgstr "Oui"
 
@@ -8228,257 +7945,257 @@ msgstr "Présélectionner la date d’aujourd'hui :"
 msgid "An error occurred, make sure you have filled all the required fields."
 msgstr "Une erreur s’est produite, veuillez vous assurer que vous avez rempli tous les champs nécessaires."
 
-#: views/form/editor.html:210
+#: views/form/editor.html:205
 msgid "A video tour of the form editor"
 msgstr "Une visite vidéo de l’éditeur de formulaires"
 
-#: views/form/editor.html:209
+#: views/form/editor.html:204
 msgid "Close Button Style"
 msgstr "Style du bouton de fermeture"
 
-#: views/form/editor.html:208
+#: views/form/editor.html:203
 msgid "Psssst. We try our best to show you what the widget might look like, but better check the final result on your website."
 msgstr "Psssst. Nous faisons de notre mieux pour vous montrer à quoi pourrait ressembler le widget, mais il vaut mieux vérifier le résultat final sur votre site web."
 
-#: views/form/editor.html:190
+#: views/form/editor.html:185
 msgid "Theme’s default fonts"
 msgstr "Les polices par défaut du thème"
 
-#: views/form/editor.html:189
+#: views/form/editor.html:184
 msgid "Font Family"
 msgstr "Famille de polices"
 
-#: views/form/editor.html:188
+#: views/form/editor.html:183
 msgid "Form Preview"
 msgstr "Prévisualiser le formulaire"
 
-#: views/form/editor.html:187
+#: views/form/editor.html:182
 msgid "This is what the error message looks like."
 msgstr "Voici à quoi ressemble le message d’erreur."
 
-#: views/form/editor.html:186
+#: views/form/editor.html:181
 msgid "This is what the success message looks like."
 msgstr "Voici à quoi ressemble le message de confirmation."
 
-#: views/form/editor.html:185
+#: views/form/editor.html:180
 msgid "The custom field [name] already exists. Please choose another name."
 msgstr "Le champ personnalisé [name] existe déjà. Veuillez choisir un autre nom."
 
-#: views/form/editor.html:181
+#: views/form/editor.html:176
 msgid "New Custom Field."
 msgstr "Nouveau champ personnalisé."
 
-#: views/form/editor.html:180
+#: views/form/editor.html:175
 msgid "Create a new custom field for your subscribers."
 msgstr "Créer un nouveau champ personnalisé pour vos abonné·es."
 
-#: views/form/editor.html:179
+#: views/form/editor.html:174
 msgid "Create Custom Field"
 msgstr "Créer un champ personnalisé"
 
-#: views/form/templatesLegacy/settings/field.hbs:61 views/form/editor.html:178
+#: views/form/templatesLegacy/settings/field.hbs:61 views/form/editor.html:173
 msgid "Automatically add paragraphs"
 msgstr "Créer automatiquement les paragraphes"
 
-#: views/form/editor.html:176
+#: views/form/editor.html:171
 msgid "Subscribe to our newsletter and join [mailpoet_subscribers_count] other subscribers."
 msgstr "Abonnez-vous à notre infolettre et rejoignez les [mailpoet_subscribers_count] autres abonnés."
 
-#: views/form/editor.html:175
+#: views/form/editor.html:170
 msgid "Display custom text or HTML code in your form."
 msgstr "Affichez du texte personnalisé ou du code HTML dans votre formulaire."
 
-#: views/form/editor.html:174
+#: views/form/editor.html:169
 msgid "Custom HTML"
 msgstr "HTML personnalisé"
 
-#: views/form/editor.html:171
+#: views/form/editor.html:166
 msgid "Display label within input"
 msgstr "Afficher le libellé dans l’entrée"
 
-#: views/form/editor.html:169
+#: views/form/editor.html:164
 msgid "Email input or submit is missing. Try reloading the form editor."
 msgstr "L’entrée d’e-mail ou d’envoi est manquante. Essayez de recharger l’éditeur de formulaire."
 
-#: views/form/editor.html:167
+#: views/form/editor.html:162
 msgid "Button used to submit the form."
 msgstr "Bouton utilisé pour envoyer le formulaire."
 
-#: views/form/editor.html:166
+#: views/form/editor.html:161
 msgid "Submit button"
 msgstr "Bouton d’envoi"
 
-#: views/form/editor.html:165
+#: views/form/editor.html:160
 msgid "Input field used to catch subscribers’ email addresses."
 msgstr "Champ d‘entrée utilisé pour récupérer les adresses e-mails des abonné·es."
 
-#: views/form/editor.html:163
+#: views/form/editor.html:158
 msgid "Select the list that you want to add"
 msgstr "Sélectionner la liste que vous voulez ajouter"
 
-#: views/form/editor.html:162 views/subscribers/importExport/import.html:39
+#: views/form/editor.html:157 views/subscribers/importExport/import.html:55
 msgid "Please select at least one list"
 msgstr "Veuillez sélectionner au moins une liste"
 
-#: views/form/editor.html:161
+#: views/form/editor.html:156
 msgid "Select list(s):"
 msgstr "Sélectionner une ou plusieurs listes :"
 
-#: views/form/editor.html:160
+#: views/form/editor.html:155
 msgid "Allow your subscribers to select which list(s) they want to subscribe to."
 msgstr "Autoriser vos abonné•es à sélectionner sur quelle(s) liste(s) s’abonner."
 
-#: views/form/editor.html:159
+#: views/form/editor.html:154
 msgid "List selection"
 msgstr "Sélection de liste"
 
-#: views/form/editor.html:158
+#: views/form/editor.html:153
 msgid "Input field used to catch subscribers’ last names."
 msgstr "Champ d‘entrée utilisé pour récupérer les noms de famille des abonné·es."
 
-#: views/form/editor.html:156
+#: views/form/editor.html:151
 msgid "Input field used to catch subscribers’ first names."
 msgstr "Champ d’entrée utilisé pour récupérer les prénoms des abonné·es."
 
-#: views/form/editor.html:154
+#: views/form/editor.html:149
 msgid "Mandatory field"
 msgstr "Champ obligatoire"
 
-#: views/form/templatesLegacy/settings/values.hbs:4 views/form/editor.html:153
+#: views/form/templatesLegacy/settings/values.hbs:4 views/form/editor.html:148
 msgid "Add item"
 msgstr "Ajouter un élément"
 
 #: views/form/templatesLegacy/settings/validate.hbs:21
-#: views/form/editor.html:152
+#: views/form/editor.html:147
 msgid "Phone number, (+,-,#,(,) and spaces allowed)"
 msgstr "Numéro de téléphone, (+,-,#,(,) et espaces autorisés)"
 
 #: views/form/templatesLegacy/settings/validate.hbs:16
-#: views/form/editor.html:151
+#: views/form/editor.html:146
 msgid "Alphanumerical"
 msgstr "Alphanumérique"
 
 #: views/form/templatesLegacy/settings/validate.hbs:11
-#: views/form/editor.html:150
+#: views/form/editor.html:145
 msgid "Numbers only"
 msgstr "Uniquement des chiffres"
 
 #: views/form/templatesLegacy/settings/validate.hbs:6
-#: views/form/editor.html:149
+#: views/form/editor.html:144
 msgid "Nothing"
 msgstr "Rien"
 
-#: views/form/editor.html:148
+#: views/form/editor.html:143
 msgid "Validate for"
 msgstr "Valider pour"
 
-#: views/form/editor.html:139
+#: views/form/editor.html:134
 msgid "Preselect today’s date"
 msgstr "Présélectionner la date d’aujourd'hui"
 
 #: views/form/templatesLegacy/settings/date_formats.hbs:9
-#: views/form/editor.html:138
+#: views/form/editor.html:133
 msgid "Order"
 msgstr "Ordre"
 
 #: views/form/templatesLegacy/settings/date_types.hbs:2
-#: views/form/editor.html:137
+#: views/form/editor.html:132
 msgid "Type of date"
 msgstr "Type de date"
 
-#: views/form/editor.html:132
+#: views/form/editor.html:127
 msgid "Display on posts with these tags"
 msgstr "Afficher sur les articles avec ces étiquettes"
 
-#: views/form/editor.html:130
+#: views/form/editor.html:125
 msgid "Display on posts with these categories"
 msgstr "Afficher sur les articles de ces catégories"
 
 #: views/form/templatesLegacy/settings/field_form.hbs:33
-#: views/form/editor.html:127
+#: views/form/editor.html:122
 msgid "Checkbox"
 msgstr "Case à cocher"
 
 #: views/form/templatesLegacy/settings/field_form.hbs:29
-#: views/form/editor.html:126
+#: views/form/editor.html:121
 msgid "Radio buttons"
 msgstr "Boutons radio"
 
 #: views/form/templatesLegacy/settings/field_form.hbs:25
-#: views/form/editor.html:125
+#: views/form/editor.html:120
 msgid "Text Area"
 msgstr "Zone de texte"
 
 #: views/form/templatesLegacy/settings/field_form.hbs:21
-#: views/form/editor.html:124
+#: views/form/editor.html:119
 msgid "Text Input"
 msgstr "Texte"
 
-#: views/form/editor.html:123
+#: views/form/editor.html:118
 msgid "This field will be deleted for all your subscribers. Are you sure?"
 msgstr "Voulez-vous vraiment supprimer ce champ pour tous vos abonnés ?"
 
-#: views/form/editor.html:120
+#: views/form/editor.html:115
 msgid "Number of lines"
 msgstr "Nombre de lignes"
 
-#: views/form/editor.html:118
+#: views/form/editor.html:113
 msgid "Custom Fields"
 msgstr "Champs personnalisés"
 
-#: views/form/editor.html:117
+#: views/form/editor.html:112
 msgid "Fields"
 msgstr "Champs"
 
-#: views/form/editor.html:115
+#: views/form/editor.html:110
 msgid "Go to Page"
 msgstr "Aller à la page"
 
-#: views/form/editor.html:114
+#: views/form/editor.html:109
 msgid "Show message"
 msgstr "Afficher le message"
 
-#: views/form/editor.html:113
+#: views/form/editor.html:108
 msgid "After submit…"
 msgstr "Après l’envoi…"
 
-#: views/form/editor.html:112
+#: views/form/editor.html:107
 msgid "This form adds the subscribers to these lists"
 msgstr "Ce formulaire ajoute les abonnements à ces listes"
 
-#: views/form/editor.html:108
+#: views/form/editor.html:103
 msgid "You can add this form to a [link]widget area of your theme[/link] (new tab)."
 msgstr "Vous pouvez ajouter ce widget dans une [link]zone de widgets de votre thème[/link] (nouvel onglet)."
 
-#: views/form/editor.html:106
+#: views/form/editor.html:101
 msgid "Show animation on display"
 msgstr "Afficher l’animation à l’affichage"
 
-#: views/form/editor.html:88
+#: views/form/editor.html:84
 msgid "This form placement allows you to add this form at the end of all the pages or posts, below the content."
 msgstr "Cet emplacement de formulaire vous permet d’ajouter ce formulaire à la fin de toutes les pages ou articles, en dessous du contenu."
 
-#: views/form/editor.html:86
+#: views/form/editor.html:83
 msgid "Exit-intent display"
 msgstr "Affichage d’intention de sortie"
 
-#: views/form/editor.html:85
+#: views/form/editor.html:82
 msgid "Show the form immediately if the visitor attempts to leave the site."
 msgstr "Afficher le formulaire immédiatement si le visiteur tente de quitter le site."
 
-#: views/form/editor.html:84
+#: views/form/editor.html:81
 msgid "Display on exit-intent"
 msgstr "Afficher sur l’intention de sortie"
 
-#: views/form/editor.html:83
+#: views/form/editor.html:80
 msgid "Display your form in a pop-up window."
 msgstr "Affichez votre formulaire dans une fenêtre contextuelle."
 
-#: views/form/editor.html:81
+#: views/form/editor.html:79
 msgid "Display your form in a slide–in form on top of your page content."
 msgstr "Afficher votre formulaire dans un formulaire glissant en haut du contenu de votre page."
 
-#: views/form/editor.html:79
+#: views/form/editor.html:78
 msgid "Display your form in a fixed horizontal bar at the top or bottom of posts or pages."
 msgstr "Affiche votre formulaire dans une barre horizontale fixe en haut ou en bas des articles ou des pages."
 
@@ -8529,8 +8246,8 @@ msgstr "Styles"
 msgid "Form"
 msgstr "Formulaire"
 
-#: views/form/editor.html:45 views/segments/translations.html:60
-#: views/subscribers/subscribers.html:116
+#: views/form/editor.html:45 views/segments/translations.html:38
+#: views/subscribers/subscribers.html:87
 msgid "Back"
 msgstr "Retour"
 
@@ -8608,7 +8325,7 @@ msgid "MailPoet is now sending your emails"
 msgstr "MailPoet envoie désormais vos e-mails."
 
 #: views/emails/congratulatoryMssEmail.html:50
-#: views/segments/translations.html:204 views/subscribers/subscribers.html:135
+#: views/segments/translations.html:169 views/subscribers/subscribers.html:106
 msgid "Congrats!"
 msgstr "Félicitations !"
 
@@ -8709,7 +8426,7 @@ msgstr "%d minutes"
 msgid "%d hours"
 msgstr "%d heures"
 
-#: lib/Subscription/Pages.php:473
+#: lib/Subscription/Pages.php:474
 msgid "Link to subscription management page is only available to mailing lists subscribers."
 msgstr "Le lien vers la page de gestion d’abonnement est disponible uniquement pour les abonnés aux mailing listes."
 
@@ -8770,7 +8487,7 @@ msgstr "Besoin de modifier votre adresse e-mail ? Désabonnez-vous en utilisant
 #: views/newsletter/templates/components/save.hbs:22
 #: views/newsletter/templates/components/save.hbs:27
 #: views/newsletter/templates/components/save.hbs:48
-#: views/subscribers/subscribers.html:115
+#: views/subscribers/subscribers.html:86
 #: lib/Subscription/ManageSubscriptionFormRenderer.php:81
 msgid "Save"
 msgstr "Enregistrer"
@@ -8833,25 +8550,25 @@ msgstr "Vous devez attendre %s avant de vous abonner à nouveau."
 msgid "Please leave the first field empty."
 msgstr "Veuillez laisser le premier champ vide."
 
-#: views/segments/translations.html:19 views/subscribers/subscribers.html:58
+#: views/segments/translations.html:11 views/subscribers/subscribers.html:32
 #: lib/Automation/Integrations/MailPoet/Fields/SubscriberFieldsFactory.php:128
 #: lib/Subscribers/SubscriberListingRepository.php:252
 #: lib/Subscription/ManageSubscriptionFormRenderer.php:196
 msgid "Bounced"
 msgstr "Retourné"
 
-#: views/segments/translations.html:18
-#: views/subscribers/importExport/import.html:120
-#: views/subscribers/subscribers.html:57
+#: views/segments/translations.html:10
+#: views/subscribers/importExport/import.html:136
+#: views/subscribers/subscribers.html:31
 #: lib/Automation/Integrations/MailPoet/Fields/SubscriberFieldsFactory.php:124
 #: lib/Subscribers/SubscriberListingRepository.php:247
 #: lib/Subscription/ManageSubscriptionFormRenderer.php:208
 msgid "Inactive"
 msgstr "Inactif"
 
-#: views/segments/translations.html:17
-#: views/subscribers/importExport/import.html:119
-#: views/subscribers/subscribers.html:56
+#: views/segments/translations.html:9
+#: views/subscribers/importExport/import.html:135
+#: views/subscribers/subscribers.html:30
 #: views/subscription/admin_user_status_field.html:23
 #: lib/Automation/Integrations/MailPoet/Fields/SubscriberFieldsFactory.php:120
 #: lib/Subscribers/SubscriberListingRepository.php:242
@@ -8859,15 +8576,15 @@ msgstr "Inactif"
 msgid "Unsubscribed"
 msgstr "Désabonné"
 
-#: views/segments/translations.html:16 views/subscribers/subscribers.html:54
+#: views/segments/translations.html:8 views/subscribers/subscribers.html:28
 #: lib/Automation/Integrations/MailPoet/Fields/SubscriberFieldsFactory.php:116
 #: lib/Subscribers/SubscriberListingRepository.php:237
 msgid "Unconfirmed"
 msgstr "Non confirmé"
 
-#: views/segments/translations.html:15
-#: views/subscribers/importExport/import.html:118
-#: views/subscribers/subscribers.html:55
+#: views/segments/translations.html:7
+#: views/subscribers/importExport/import.html:134
+#: views/subscribers/subscribers.html:29
 #: views/subscription/admin_user_status_field.html:12
 #: lib/Automation/Integrations/MailPoet/Fields/SubscriberFieldsFactory.php:112
 #: lib/Subscribers/SubscriberListingRepository.php:232
@@ -8880,7 +8597,7 @@ msgstr "Abonné"
 msgid "New subscriber to %s"
 msgstr "Nouvel·le abonné·e à %s"
 
-#: views/segments/translations.html:200 views/subscribers/subscribers.html:131
+#: views/segments/translations.html:165 views/subscribers/subscribers.html:102
 #: views/homepage.html:71
 #: lib/Automation/Integrations/MailPoet/Fields/SubscriberFieldsFactory.php:152
 #: lib/Subscribers/ImportExport/PersonalDataExporters/NewsletterClicksExporter.php:28
@@ -8925,8 +8642,8 @@ msgstr "IP confirmé"
 msgid "Subscribed IP"
 msgstr "IP de l'abonné"
 
-#: views/subscribers/subscribers.html:53 views/subscribers/subscribers.html:72
-#: views/forms.html:49 views/help.html:47
+#: views/subscribers/subscribers.html:27 views/subscribers/subscribers.html:46
+#: views/help.html:47
 #: lib/Automation/Integrations/MailPoet/Fields/SubscriberFieldsFactory.php:104
 #: lib/Automation/Integrations/WooCommerce/Fields/OrderFieldsFactory.php:196
 #: lib/Subscribers/ImportExport/PersonalDataExporters/SubscriberExporter.php:75
@@ -8974,6 +8691,9 @@ msgstr "Aperçu du courriel"
 #: views/newsletter/templates/blocks/automatedLatestContentLayout/settings.hbs:215
 #: views/newsletter/templates/blocks/automatedLatestContentLayout/settings.hbs:241
 #: views/newsletter/templates/blocks/automatedLatestContentLayout/settings.hbs:319
+#: views/newsletter/templates/blocks/dynamicProducts/settings.hbs:156
+#: views/newsletter/templates/blocks/dynamicProducts/settings.hbs:251
+#: views/newsletter/templates/blocks/dynamicProducts/settings.hbs:295
 #: views/newsletter/templates/blocks/posts/settingsDisplayOptions.hbs:85
 #: views/newsletter/templates/blocks/posts/settingsDisplayOptions.hbs:169
 #: views/newsletter/templates/blocks/posts/settingsDisplayOptions.hbs:195
@@ -8981,7 +8701,7 @@ msgstr "Aperçu du courriel"
 #: views/newsletter/templates/blocks/products/settingsDisplayOptions.hbs:79
 #: views/newsletter/templates/blocks/products/settingsDisplayOptions.hbs:174
 #: views/newsletter/templates/blocks/products/settingsDisplayOptions.hbs:218
-#: views/subscribers/importExport/import.html:99
+#: views/subscribers/importExport/import.html:115
 #: views/settings_translations.html:56
 #: lib/Subscribers/ImportExport/PersonalDataExporters/NewslettersExporter.php:92
 msgid "No"
@@ -8991,7 +8711,7 @@ msgstr "Non"
 msgid "Opened at"
 msgstr "Ouvert à"
 
-#: views/subscribers/subscribers.html:102
+#: views/subscribers/subscribers.html:76
 #: lib/Subscribers/ImportExport/PersonalDataExporters/NewslettersExporter.php:82
 #: lib/Subscribers/ImportExport/PersonalDataExporters/NewslettersExporter.php:91
 msgid "Opened"
@@ -9024,7 +8744,7 @@ msgstr "Sujet du courriel"
 msgid "Not In Segment"
 msgstr "Pas dans le segment"
 
-#: views/subscribers/importExport/import.html:43
+#: views/subscribers/importExport/import.html:59
 #: lib/Subscribers/ImportExport/ImportExportFactory.php:152
 #: lib/Subscribers/ImportExport/ImportExportFactory.php:153
 msgid "User fields"
@@ -9108,7 +8828,7 @@ msgstr "Aucun abonné valide n’a été trouvé."
 msgid "Missing or invalid import data."
 msgstr "Donnée d’importation non valide ou manquante."
 
-#: views/segments/translations.html:14
+#: views/segments/translations.html:6
 #: lib/Subscribers/ImportExport/Export/Export.php:68
 msgid "List"
 msgstr "Liste"
@@ -9151,7 +8871,7 @@ msgstr "Sélectionner un formulaire MailPoet"
 msgid "View in your browser"
 msgstr "Afficher dans votre navigateur"
 
-#: views/newsletter/editor.html:1292
+#: views/newsletter/editor.html:1369
 #: lib/Config/PopulatorData/Templates/ConfirmInterestBeforeDeactivation.php:163
 #: lib/EmailEditor/Integrations/MailPoet/Templates/Library/Newsletter.php:76
 #: lib/Newsletter/Shortcodes/ShortcodesHelper.php:102
@@ -9190,7 +8910,7 @@ msgid "Current day of the month number"
 msgstr "Le chiffre du jour en cours"
 
 #: views/form/templatesLegacy/settings/field_form.hbs:41
-#: views/form/editor.html:136 lib/Newsletter/Shortcodes/ShortcodesHelper.php:62
+#: views/form/editor.html:131 lib/Newsletter/Shortcodes/ShortcodesHelper.php:62
 msgid "Date"
 msgstr "Date"
 
@@ -9230,7 +8950,7 @@ msgstr "Nom"
 msgid "First Name"
 msgstr "Prénom"
 
-#: views/segments/translations.html:79 views/subscribers/subscribers.html:71
+#: views/segments/translations.html:53 views/subscribers/subscribers.html:45
 #: views/help.html:71
 #: lib/EmailEditor/Integrations/MailPoet/PersonalizationTagManager.php:40
 #: lib/EmailEditor/Integrations/MailPoet/PersonalizationTagManager.php:47
@@ -9244,12 +8964,11 @@ msgstr "Abonné"
 msgid "Not active"
 msgstr "Désactivé"
 
-#: views/forms.html:50
 #: lib/Newsletter/Listing/NewsletterListingRepository.php:160
 msgid "Active"
 msgstr "Activé"
 
-#: views/layout.html:147
+#: views/layout.html:144
 #: lib/Newsletter/Listing/NewsletterListingRepository.php:132
 #: lib/Newsletter/Listing/NewsletterListingRepository.php:147
 #: lib/Newsletter/Sending/ScheduledTaskSubscribersListingRepository.php:53
@@ -9272,7 +8991,7 @@ msgstr "Planifié"
 msgid "Draft"
 msgstr "Brouillon"
 
-#: lib/Newsletter/Editor/PostContentManager.php:150
+#: lib/Newsletter/Editor/PostContentManager.php:159
 msgid "Click here to view media."
 msgstr "Cliquez-ici pour voir le média."
 
@@ -9302,7 +9021,7 @@ msgstr "Clients WooCommerce"
 msgid "This list contains all of your WordPress users."
 msgstr "Cette liste contient tous vos utilisateurs WordPress."
 
-#: views/subscribers/subscribers.html:97 lib/Segments/SegmentsRepository.php:89
+#: views/subscribers/subscribers.html:71 lib/Segments/SegmentsRepository.php:89
 msgid "WordPress Users"
 msgstr "Utilisateurs WordPress"
 
@@ -9313,10 +9032,6 @@ msgstr "Un autre enregistrement existe déjà. Veuillez spécifier un « %1$s 
 #: views/form/templatesLegacy/settings/field_form.hbs:16
 msgid "Please specify a type."
 msgstr "Veuillez spécifier un type."
-
-#: views/layout.html:178 lib/Util/Notices/UnauthorizedEmailNotice.php:80
-msgid "Resume sending"
-msgstr "Reprendre l’envoi"
 
 #: lib/Mailer/Methods/ErrorMappers/MailPoetMapper.php:131
 msgid "Unknown address"
@@ -9435,8 +9150,8 @@ msgstr "Veuillez laisser ce champ vide"
 msgid "Sample page to preview your form"
 msgstr "Page d’exemple pour prévisualiser votre formulaire"
 
-#: views/segments/translations.html:38 views/subscribers/subscribers.html:30
-#: views/forms.html:79 lib/Form/Listing/FormListingRepository.php:36
+#: views/segments/translations.html:29 views/subscribers/subscribers.html:18
+#: lib/Form/Listing/FormListingRepository.php:36
 #: lib/Newsletter/Listing/NewsletterListingRepository.php:174
 #: lib/Segments/SegmentListingRepository.php:99
 #: lib/Subscribers/SubscriberListingRepository.php:257
@@ -9476,51 +9191,51 @@ msgstr "Vous vous êtes bien abonné·e à notre newsletter !"
 msgid "Check your inbox or spam folder to confirm your subscription."
 msgstr "Vérifiez votre boite de réception ou votre répertoire d’indésirables pour confirmer votre abonnement."
 
-#: views/subscribers/importExport/import.html:58 lib/Form/Block/Date.php:121
+#: views/subscribers/importExport/import.html:74 lib/Form/Block/Date.php:121
 msgid "December"
 msgstr "décembre"
 
-#: views/subscribers/importExport/import.html:57 lib/Form/Block/Date.php:121
+#: views/subscribers/importExport/import.html:73 lib/Form/Block/Date.php:121
 msgid "November"
 msgstr "novembre"
 
-#: views/subscribers/importExport/import.html:56 lib/Form/Block/Date.php:121
+#: views/subscribers/importExport/import.html:72 lib/Form/Block/Date.php:121
 msgid "October"
 msgstr "octobre"
 
-#: views/subscribers/importExport/import.html:55 lib/Form/Block/Date.php:120
+#: views/subscribers/importExport/import.html:71 lib/Form/Block/Date.php:120
 msgid "September"
 msgstr "septembre"
 
-#: views/subscribers/importExport/import.html:54 lib/Form/Block/Date.php:120
+#: views/subscribers/importExport/import.html:70 lib/Form/Block/Date.php:120
 msgid "August"
 msgstr "août"
 
-#: views/subscribers/importExport/import.html:53 lib/Form/Block/Date.php:120
+#: views/subscribers/importExport/import.html:69 lib/Form/Block/Date.php:120
 msgid "July"
 msgstr "juillet"
 
-#: views/subscribers/importExport/import.html:52 lib/Form/Block/Date.php:120
+#: views/subscribers/importExport/import.html:68 lib/Form/Block/Date.php:120
 msgid "June"
 msgstr "juin"
 
-#: views/subscribers/importExport/import.html:51 lib/Form/Block/Date.php:120
+#: views/subscribers/importExport/import.html:67 lib/Form/Block/Date.php:120
 msgid "May"
 msgstr "mai"
 
-#: views/subscribers/importExport/import.html:50 lib/Form/Block/Date.php:119
+#: views/subscribers/importExport/import.html:66 lib/Form/Block/Date.php:119
 msgid "April"
 msgstr "avril"
 
-#: views/subscribers/importExport/import.html:49 lib/Form/Block/Date.php:119
+#: views/subscribers/importExport/import.html:65 lib/Form/Block/Date.php:119
 msgid "March"
 msgstr "mars"
 
-#: views/subscribers/importExport/import.html:48 lib/Form/Block/Date.php:119
+#: views/subscribers/importExport/import.html:64 lib/Form/Block/Date.php:119
 msgid "February"
 msgstr "février"
 
-#: views/subscribers/importExport/import.html:47 lib/Form/Block/Date.php:119
+#: views/subscribers/importExport/import.html:63 lib/Form/Block/Date.php:119
 msgid "January"
 msgstr "janvier"
 
@@ -9537,7 +9252,7 @@ msgid "Year, month, day"
 msgstr "Année, mois, jour"
 
 #: views/form/templatesLegacy/blocks/date_years.hbs:5
-#: views/form/editor.html:142 views/subscribers/subscribers.html:109
+#: views/form/editor.html:137 views/subscribers/subscribers.html:83
 #: lib/Form/Block/Date.php:89 lib/Form/Block/Date.php:105
 #: lib/Form/Block/Date.php:182
 #: lib/Newsletter/Shortcodes/ShortcodesHelper.php:84
@@ -9549,7 +9264,7 @@ msgid "Please select a year"
 msgstr "Veuillez sélectionner une année"
 
 #: views/form/templatesLegacy/blocks/date_months.hbs:3
-#: views/form/editor.html:141 views/subscribers/subscribers.html:110
+#: views/form/editor.html:136 views/subscribers/subscribers.html:84
 #: lib/Form/Block/Date.php:80 lib/Form/Block/Date.php:147
 msgid "Month"
 msgstr "Mois"
@@ -9558,8 +9273,8 @@ msgstr "Mois"
 msgid "Please select a month"
 msgstr "Veuillez sélectionner un mois"
 
-#: views/form/templatesLegacy/blocks/date_days.hbs:3 views/form/editor.html:140
-#: views/subscribers/subscribers.html:111 lib/Form/Block/Date.php:71
+#: views/form/templatesLegacy/blocks/date_days.hbs:3 views/form/editor.html:135
+#: views/subscribers/subscribers.html:85 lib/Form/Block/Date.php:71
 #: lib/Form/Block/Date.php:213
 msgid "Day"
 msgstr "Jour"
@@ -9696,7 +9411,7 @@ msgstr "[link1]Enregistrez[/link1] votre copie de l’extension Premium de MailP
 msgid "Your newsletters are awesome! Don't forget to [link]upgrade your MailPoet email plan[/link] by %s to keep sending them to your subscribers."
 msgstr "Vos infolettres sont formidables ! N’oubliez pas de [link]mettre à jour votre formule de courriel MailPoet[/link] par %s pour continuer à les envoyer à vos abonnés."
 
-#: views/layout.html:154 lib/Config/ServicesChecker.php:51
+#: views/layout.html:151 lib/Config/ServicesChecker.php:51
 msgid "Purchase a key"
 msgstr "Acheter une clé"
 
@@ -9704,7 +9419,7 @@ msgstr "Acheter une clé"
 msgid "Your key to send with MailPoet is invalid."
 msgstr "Votre clé pour envoyer avec MailPoet n’est pas valide !"
 
-#: views/layout.html:151 lib/Config/ServicesChecker.php:45
+#: views/layout.html:148 lib/Config/ServicesChecker.php:45
 msgid "All sending is currently paused!"
 msgstr "Tous les envois sont actuellement suspendus !"
 
@@ -10279,9 +9994,9 @@ msgstr "Blog de maquillage"
 msgid "Buy now"
 msgstr "Acheter maintenant"
 
-#: views/newsletter/editor.html:1155 views/newsletter/editor.html:1157
-#: views/newsletter/editor.html:1210 views/newsletter/editor.html:1212
-#: views/newsletter/editor.html:1339 views/newsletter/editor.html:1341
+#: views/newsletter/editor.html:1177 views/newsletter/editor.html:1179
+#: views/newsletter/editor.html:1232 views/newsletter/editor.html:1234
+#: views/newsletter/editor.html:1416 views/newsletter/editor.html:1418
 #: lib/Config/PopulatorData/Templates/KidsClothing.php:1327
 #: lib/Config/PopulatorData/Templates/KidsClothing.php:1330
 #: lib/Config/PopulatorData/Templates/KidsClothing.php:1387
@@ -10291,15 +10006,15 @@ msgstr "Acheter maintenant"
 msgid "Read more"
 msgstr "En savoir plus"
 
-#: views/newsletter/editor.html:1153 views/newsletter/editor.html:1208
-#: views/newsletter/editor.html:1337
+#: views/newsletter/editor.html:1175 views/newsletter/editor.html:1230
+#: views/newsletter/editor.html:1414
 #: lib/Config/PopulatorData/Templates/KidsClothing.php:1285
 #: lib/Config/PopulatorData/Templates/PostNotificationsBlank1Column.php:169
 msgid "Categories:"
 msgstr "Catégories :"
 
-#: views/newsletter/editor.html:1151 views/newsletter/editor.html:1206
-#: views/newsletter/editor.html:1335
+#: views/newsletter/editor.html:1173 views/newsletter/editor.html:1228
+#: views/newsletter/editor.html:1412
 #: lib/Config/PopulatorData/Templates/KidsClothing.php:1282
 #: lib/Config/PopulatorData/Templates/KidsClothing.php:1342
 #: lib/Config/PopulatorData/Templates/KidsClothing.php:1463
@@ -10392,7 +10107,7 @@ msgstr "Fleurs (avec promo)"
 msgid "A note has been added to your order"
 msgstr "Une note a été ajoutée à votre commande"
 
-#: views/newsletter/editor.html:1475
+#: views/newsletter/editor.html:1552
 #: lib/Config/PopulatorData/Templates/Avocado.php:999
 #: lib/Config/PopulatorData/Templates/Birds.php:209
 #: lib/Config/PopulatorData/Templates/Birds.php:1730
@@ -10519,7 +10234,7 @@ msgstr "Magasin de mode"
 msgid "Kids Shop"
 msgstr "Boutique pour enfants"
 
-#: views/newsletter/editor.html:1292
+#: views/newsletter/editor.html:1369
 #: lib/Config/PopulatorData/Templates/Avocado.php:654
 #: lib/Config/PopulatorData/Templates/Avocado.php:863
 #: lib/Config/PopulatorData/Templates/Birds.php:1349
@@ -10782,7 +10497,7 @@ msgstr "Foi"
 #: lib/Config/PopulatorData/Templates/WordPressTheme.php:1266
 #: lib/Config/PopulatorData/Templates/WorldCup.php:725
 #: lib/Config/PopulatorData/Templates/YogaStudio.php:699
-#: lib/Subscription/Pages.php:381 lib/Subscription/Pages.php:478
+#: lib/Subscription/Pages.php:381 lib/Subscription/Pages.php:479
 msgid "Manage your subscription"
 msgstr "Gérer votre abonnement"
 
@@ -10842,7 +10557,7 @@ msgstr "Oiseaux"
 msgid "Avocado"
 msgstr "Avocat"
 
-#: views/newsletter/editor.html:1292
+#: views/newsletter/editor.html:1369
 #: lib/Config/PopulatorData/Templates/AppWelcome.php:319
 #: lib/Config/PopulatorData/Templates/Avocado.php:654
 #: lib/Config/PopulatorData/Templates/Avocado.php:863
@@ -10973,7 +10688,6 @@ msgstr "Avocat"
 #: lib/Config/PopulatorData/Templates/WorldCup.php:725
 #: lib/Config/PopulatorData/Templates/YogaStudio.php:699
 #: lib/EmailEditor/Integrations/MailPoet/Templates/Library/Newsletter.php:76
-#: lib/Newsletter/Shortcodes/ShortcodesHelper.php:94
 msgid "Unsubscribe"
 msgstr "Se désabonner"
 
@@ -11022,35 +10736,23 @@ msgstr "Configuration de WooCommerce"
 msgid "Welcome Wizard"
 msgstr "Assistant de configuration"
 
-#: lib/Config/Menu.php:441 lib/Config/Menu.php:442
-msgid "Help"
-msgstr "Aide"
-
 #: views/settings_translations.html:2 lib/Config/Hooks.php:586
 msgid "Settings"
 msgstr "Réglages"
 
-#: views/segments/translations.html:2 views/subscribers/subscribers.html:73
-#: views/forms.html:65 lib/Config/Menu.php:378 lib/Config/Menu.php:379
+#: views/subscribers/subscribers.html:47 lib/Config/Menu.php:378
 msgid "Lists"
 msgstr "Listes"
 
-#: views/subscribers/importExport/export.html:6
-#: views/subscribers/importExport/export.html:79
-#: views/subscribers/subscribers.html:114 lib/Config/Menu.php:365
-#: lib/Config/Menu.php:366
+#: views/subscribers/importExport/export.html:94 lib/Config/Menu.php:365
 msgid "Export"
 msgstr "Exporter"
 
-#: views/subscribers/importExport/import.html:6
-#: views/subscribers/importExport/import.html:88
-#: views/subscribers/subscribers.html:113 lib/Config/Menu.php:352
-#: lib/Config/Menu.php:353
+#: views/subscribers/importExport/import.html:104 lib/Config/Menu.php:352
 msgid "Import"
 msgstr "Importer"
 
-#: views/subscribers/subscribers.html:15 views/homepage.html:64
-#: lib/Config/Menu.php:327 lib/Config/Menu.php:328
+#: views/homepage.html:64 lib/Config/Menu.php:327 lib/Config/Menu.php:328
 msgid "Subscribers"
 msgstr "Abonnés"
 
@@ -11062,11 +10764,7 @@ msgstr "Sélectionner un modèle de formulaire"
 msgid "Form Editor"
 msgstr "Éditeur de formulaire"
 
-#: views/forms.html:35 lib/Config/Menu.php:269 lib/Config/Menu.php:270
-msgid "Forms"
-msgstr "Formulaires"
-
-#: views/newsletter/editor.html:356 lib/Config/Menu.php:255
+#: views/newsletter/editor.html:368 lib/Config/Menu.php:255
 msgid "Newsletter Editor"
 msgstr "Éditeur d'infolettre"
 
@@ -11145,7 +10843,7 @@ msgstr "Envoyez automatiquement un e-mail en fonction du comportement d'achat de
 msgid "WooCommerce"
 msgstr "WooCommerce"
 
-#: views/segments/translations.html:188
+#: views/segments/translations.html:153
 #: lib/AutomaticEmails/WooCommerce/Events/PurchasedProduct.php:105
 msgid "Search products"
 msgstr "Recherche produits"
@@ -11251,25 +10949,25 @@ msgstr[1] "Les listes avec les IDs %s n’existent pas."
 msgid "At least one segment ID is required."
 msgstr "Au moins un ID de segment est nécessaire."
 
-#: views/form/editor.html:157 views/segments/translations.html:120
-#: views/subscribers/subscribers.html:52 lib/API/MP/v1/CustomFields.php:43
+#: views/form/editor.html:152 views/segments/translations.html:86
+#: views/subscribers/subscribers.html:26 lib/API/MP/v1/CustomFields.php:43
 #: lib/Automation/Integrations/MailPoet/Fields/SubscriberFieldsFactory.php:80
 #: lib/Subscribers/ImportExport/ImportExportFactory.php:62
 #: lib/Subscription/ManageSubscriptionFormRenderer.php:166
 msgid "Last name"
 msgstr "Nom"
 
-#: views/form/editor.html:155 views/segments/translations.html:119
-#: views/subscribers/subscribers.html:51 lib/API/MP/v1/CustomFields.php:35
+#: views/form/editor.html:150 views/segments/translations.html:85
+#: views/subscribers/subscribers.html:25 lib/API/MP/v1/CustomFields.php:35
 #: lib/Automation/Integrations/MailPoet/Fields/SubscriberFieldsFactory.php:72
 #: lib/Subscribers/ImportExport/ImportExportFactory.php:61
 #: lib/Subscription/ManageSubscriptionFormRenderer.php:157
 msgid "First name"
 msgstr "Prénom"
 
-#: views/form/editor.html:164 views/newsletter/editor.html:1080
-#: views/newsletter/editor.html:1081 views/segments/translations.html:80
-#: views/segments/translations.html:121
+#: views/form/editor.html:159 views/newsletter/editor.html:1102
+#: views/newsletter/editor.html:1103 views/segments/translations.html:54
+#: views/segments/translations.html:87
 #: views/subscription/manage_subscription.html:9 views/help.html:70
 #: lib/API/MP/v1/CustomFields.php:27
 #: lib/Automation/Integrations/WordPress/Subjects/UserSubject.php:63

@@ -119,7 +119,7 @@ class __TwigTemplate_414e57f5d39be30b7212208368ba358fb4ae1c2f2d02bf5028ce033882d
         <p class=\"{{#unless previewSendingSuccess}}mailpoet_hidden{{/unless}}\">
           ";
         // line 53
-        yield MailPoet\Util\Helpers::replaceLinkTags($this->extensions['MailPoet\Twig\I18n']->translate("Didn’t receive the test email? Read our [link]quick guide[/link] to sending issues."), "https://kb.mailpoet.com/article/146-my-newsletters-are-not-being-received", ["target" => "_blank", "rel" => "noopener noreferrer"]);
+        yield MailPoet\Util\Helpers::replaceLinkTags($this->extensions['MailPoet\Twig\I18n']->translate("Didn’t receive the test email? Read our [link]quick guide[/link] to sending issues."), "https://kb.mailpoet.com/article/146-the-newsletters-are-not-being-received", ["target" => "_blank", "rel" => "noopener noreferrer"]);
         yield "
         </p>
         <div class=\"{{#unless previewSendingError}}mailpoet_hidden{{/unless}} mailpoet_error\" id=\"mailpoet_preview_sending_error\"></div>

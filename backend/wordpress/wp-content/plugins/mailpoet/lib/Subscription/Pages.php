@@ -437,7 +437,7 @@ class Pages {
   private function getUnsubscribeContent() {
     $content = '';
     if ($this->isPreview() || $this->subscriber !== null) {
-      $content .= '<p>' . __('Accidentally unsubscribed?', 'mailpoet') . ' <strong>';
+      $content .= '<p class="mailpoet_unsubscribed_content">' . __('Accidentally unsubscribed?', 'mailpoet') . ' <strong>';
       $content .= '[mailpoet_manage]';
       $content .= '</strong></p>';
     }
@@ -458,6 +458,7 @@ class Pages {
     }
     $queueId = isset($this->data['queueId']) ? (int)$this->data['queueId'] : null;
     $unsubscribeUrl = $this->subscriptionUrlFactory->getUnsubscribeUrl($this->subscriber, $queueId);
+    $unsubscribeUrl = $unsubscribeUrl . (parse_url($unsubscribeUrl, PHP_URL_QUERY) ? '&' : '?') . 'request_method=POST';
     $templateData = [
       'unsubscribeUrl' => $unsubscribeUrl,
     ];

@@ -2200,7 +2200,7 @@ class __TwigTemplate_aa06caf4713b6d5ac2d6909b4a0a21f60afeea73e802e676faab4d7dcfd
         yield "      ";
         if (($context["is_confirmation_email_template"] ?? null)) {
             // line 1651
-            yield "      hiddenWidgets: ['automatedLatestContentLayout', 'coupon', 'header', 'footer', 'posts', 'products'],
+            yield "      hiddenWidgets: ['automatedLatestContentLayout', 'coupon', 'header', 'footer', 'posts', 'products', 'dynamicProducts'],
       ";
         }
         // line 1653
