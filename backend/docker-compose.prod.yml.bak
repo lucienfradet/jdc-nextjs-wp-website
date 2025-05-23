@@ -1,0 +1,30 @@
+services:
+  nextjs:
+    build:
+      context: ../frontend/
+      dockerfile: ../backend/Dockerfile.prod
+    container_name: jdc-nextjs
+    restart: unless-stopped
+    ports:
+      - "3000:3000"
+    environment:
+      - DATABASE_URL=mysql://${MYSQL_NEXTJS_USER}:${MYSQL_NEXTJS_PASSWORD}@jdc-orders-db:3306/${MYSQL_NEXTJS_DATABASE}
+    depends_on:
+      jdc-orders-db:
+        condition: service_healthy
+      jdc-redis:
+        condition: service_healthy
+    networks:
+      - jdc-network
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:3000/api/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+
+  cron:
+    depends_on:
+      - nextjs
+    environment:
+      - CRON_SECRET_KEY=${CRON_SECRET_KEY}
+      - NEXTJS_URL=http://nextjs:3000

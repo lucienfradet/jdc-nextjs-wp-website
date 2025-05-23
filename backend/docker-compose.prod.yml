@@ -1,14 +1,36 @@
 services:
-  nextjs:
-    build:
-      context: ../frontend/
-      dockerfile: ../backend/Dockerfile.prod
-    container_name: jdc-nextjs
+  traefik:
+    image: traefik:v3.0
+    container_name: jdc-traefik
     restart: unless-stopped
+    command:
+      - "--api.dashboard=false"
+      - "--providers.docker=true"
+      - "--providers.docker.exposedbydefault=false"
+      - "--entrypoints.web.address=:80"
+      - "--log.level=INFO"
+      - "--metrics.prometheus=true"
+      - "--ping=true"
     ports:
-      - "3000:3000"
+      - "3000:80"  # Traefik will listen on 3000 and forward to Next.js instances
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock:ro
+    networks:
+      - jdc-network
+    healthcheck:
+      test: ["CMD", "traefik", "healthcheck", "--ping"]
+      interval: 10s
+      timeout: 5s
+      retries: 3
+
+  # Next.js Instance 1
+  nextjs-1:
+    image: ghcr.io/${GITHUB_USERNAME}/${GITHUB_REPO_NAME}:latest
+    container_name: jdc-nextjs-1
+    restart: unless-stopped
     environment:
       - DATABASE_URL=mysql://${MYSQL_NEXTJS_USER}:${MYSQL_NEXTJS_PASSWORD}@jdc-orders-db:3306/${MYSQL_NEXTJS_DATABASE}
+      - INSTANCE_ID=nextjs-1
     depends_on:
       jdc-orders-db:
         condition: service_healthy
@@ -16,11 +38,109 @@ services:
         condition: service_healthy
     networks:
       - jdc-network
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.nextjs.rule=PathPrefix(`/`)"
+      - "traefik.http.services.nextjs.loadbalancer.server.port=3000"
+      - "traefik.http.services.nextjs.loadbalancer.sticky.cookie=true"
+      - "traefik.http.services.nextjs.loadbalancer.sticky.cookie.name=jdc_instance"
+      - "traefik.http.services.nextjs.loadbalancer.healthcheck.path=/api/health"
+      - "traefik.http.services.nextjs.loadbalancer.healthcheck.interval=30s"
     healthcheck:
       test: ["CMD", "curl", "-f", "http://localhost:3000/api/health"]
       interval: 30s
       timeout: 10s
       retries: 3
+
+  # Next.js Instance 2
+  nextjs-2:
+    image: ghcr.io/${GITHUB_USERNAME}/${GITHUB_REPO_NAME}:latest
+    container_name: jdc-nextjs-2
+    restart: unless-stopped
+    environment:
+      - DATABASE_URL=mysql://${MYSQL_NEXTJS_USER}:${MYSQL_NEXTJS_PASSWORD}@jdc-orders-db:3306/${MYSQL_NEXTJS_DATABASE}
+      - INSTANCE_ID=nextjs-2
+    depends_on:
+      jdc-orders-db:
+        condition: service_healthy
+      jdc-redis:
+        condition: service_healthy
+    networks:
+      - jdc-network
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.nextjs.rule=PathPrefix(`/`)"
+      - "traefik.http.services.nextjs.loadbalancer.server.port=3000"
+      - "traefik.http.services.nextjs.loadbalancer.sticky.cookie=true"
+      - "traefik.http.services.nextjs.loadbalancer.sticky.cookie.name=jdc_instance"
+      - "traefik.http.services.nextjs.loadbalancer.healthcheck.path=/api/health"
+      - "traefik.http.services.nextjs.loadbalancer.healthcheck.interval=30s"
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:3000/api/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+
+  watchtower:
+    image: containrrr/watchtower:latest
+    container_name: jdc-watchtower
+    restart: unless-stopped
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+    environment:
+      - WATCHTOWER_CLEANUP=true
+      - WATCHTOWER_INCLUDE_RESTARTING=true
+      - WATCHTOWER_ROLLING_RESTART=true
+      - WATCHTOWER_TIMEOUT=30s
+      - WATCHTOWER_POLL_INTERVAL=300  # Check every 5 minutes
+      - WATCHTOWER_NOTIFICATIONS=shoutrrr
+      - WATCHTOWER_NOTIFICATION_URL=generic+https://jardindeschefs.ca/ntfy/jdc-server
+      - WATCHTOWER_NOTIFICATION_TEMPLATE={{range .}}{{.Message}}{{println}}{{end}}
+      - WATCHTOWER_MONITOR_ONLY=false
+      - WATCHTOWER_NO_STARTUP_MESSAGE=false
+    command: --interval 300 jdc-nextjs-1 jdc-nextjs-2
+    networks:
+      - jdc-network
+
+  health-monitor:
+    image: alpine:latest
+    container_name: jdc-health-monitor
+    restart: unless-stopped
+    volumes:
+      - ./monitoring/health-check.sh:/health-check.sh
+    environment:
+      - NTFY_URL=https://jardindeschefs.ca/ntfy/jdc-server
+      - CHECK_INTERVAL=60
+    command: sh /health-check.sh
+    networks:
+      - jdc-network
+    depends_on:
+      - traefik
+      - nextjs-1
+      - nextjs-2
+
+  # nextjs:
+  #   build:
+  #     context: ../frontend/
+  #     dockerfile: ../backend/Dockerfile.prod
+  #   container_name: jdc-nextjs
+  #   restart: unless-stopped
+  #   ports:
+  #     - "3000:3000"
+  #   environment:
+  #     - DATABASE_URL=mysql://${MYSQL_NEXTJS_USER}:${MYSQL_NEXTJS_PASSWORD}@jdc-orders-db:3306/${MYSQL_NEXTJS_DATABASE}
+  #   depends_on:
+  #     jdc-orders-db:
+  #       condition: service_healthy
+  #     jdc-redis:
+  #       condition: service_healthy
+  #   networks:
+  #     - jdc-network
+  #   healthcheck:
+  #     test: ["CMD", "curl", "-f", "http://localhost:3000/api/health"]
+  #     interval: 30s
+  #     timeout: 10s
+  #     retries: 3
 
   cron:
     depends_on:
