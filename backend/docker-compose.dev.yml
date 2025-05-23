@@ -1,5 +1,5 @@
 services:
-    nginx:
+  nginx:
     image: nginx:latest
     container_name: jdc-nginx
     restart: always
@@ -20,12 +20,9 @@ services:
 
   cron:
     environment:
-      - CRON_SECRET_KEY=${CRON_SECRET_KEY}
-      - NEXTJS_URL=${NEXTJS_URL_DEV}
-  #
-  # nextjs:
-  #   build:
-  #     dockerfile: ../backend/Dockerfile.dev
-  #   environment:
-  #     - DATABASE_URL=mysql://${MYSQL_NEXTJS_USER}:${MYSQL_NEXTJS_PASSWORD}@localhost:3306/${MYSQL_NEXTJS_DATABASE}
-  #   network_mode: "host"
+    - CRON_SECRET_KEY=${CRON_SECRET_KEY}
+    - NEXTJS_URL=${NEXTJS_URL_DEV}
+
+networks:
+  wp-network:
+  jdc-network:
