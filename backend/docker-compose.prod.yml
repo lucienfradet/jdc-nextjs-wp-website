@@ -121,7 +121,7 @@ services:
     container_name: jdc-health-monitor
     restart: unless-stopped
     volumes:
-      - ./monitoring/health-check.sh:/health-check.sh
+      - ../monitoring/health-check.sh:/health-check.sh
     environment:
       - NTFY_URL=https://jardindeschefs.ca/ntfy/jdc-server
       - CHECK_INTERVAL=60
@@ -129,9 +129,16 @@ services:
     networks:
       - jdc-network
     depends_on:
-      - traefik
-      - nextjs-1
-      - nextjs-2
+      jdc-orders-db:
+        condition: service_healthy
+      jdc-redis:
+        condition: service_healthy
+      traefik:
+        condition: service_healthy
+      nextjs-1:
+        condition: service_started
+      nextjs-2:
+        condition: service_started
 
   # nextjs:
   #   build:

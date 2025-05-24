@@ -1,4 +1,0 @@
-# Run cleanup job every hour
-0 * * * * curl -s -X GET -H "x-api-key: ${CRON_SECRET_KEY}" ${NEXTJS_URL}/api/cron/cleanup-expired-intents >> /proc/1/fd/1 2>&1
-# Empty line at the end is required for cron
-
