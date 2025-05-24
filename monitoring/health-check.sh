@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 
 # Health monitoring script for JDC services
 NTFY_URL="${NTFY_URL:-https://jardindeschefs.ca/ntfy/jdc-server}"
