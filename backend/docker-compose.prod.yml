@@ -23,27 +23,6 @@ services:
       timeout: 5s
       retries: 3
 
-  # Traefik Router Service (configuration only - doesn't serve traffic)
-  traefik-router:
-    image: alpine:latest
-    container_name: jdc-traefik-router
-    restart: unless-stopped
-    networks:
-      - jdc-network
-    labels:
-      - "traefik.enable=true"
-      # Router configuration - defines how requests are routed
-      - "traefik.http.routers.nextjs.rule=PathPrefix(`/`)"
-      - "traefik.http.routers.nextjs.service=nextjs-service"
-      # Service-level configuration - defines load balancer behavior
-      - "traefik.http.services.nextjs-service.loadbalancer.sticky.cookie=true"
-      - "traefik.http.services.nextjs-service.loadbalancer.sticky.cookie.name=jdc_instance"
-      - "traefik.http.services.nextjs-service.loadbalancer.healthcheck.path=/api/health"
-      - "traefik.http.services.nextjs-service.loadbalancer.healthcheck.interval=30s"
-      # NOTE: No server.port defined for nextjs-service = this container won't serve traffic
-    # Just sleep forever - no HTTP server running
-    command: ["sleep", "infinity"]
-
   # Next.js Instance 1
   nextjs-1:
     image: ghcr.io/${GITHUB_USERNAME}/${GITHUB_REPO_NAME}:latest
@@ -61,7 +40,13 @@ services:
       - jdc-network
     labels:
       - "traefik.enable=true"
-      # Only contribute to the nextjs-service backend pool
+      # Service configuration (duplicate in both instances for resilience)
+      - "traefik.http.routers.nextjs.rule=PathPrefix(`/`)"
+      - "traefik.http.routers.nextjs.service=nextjs-service"
+      - "traefik.http.services.nextjs-service.loadbalancer.sticky.cookie=true"
+      - "traefik.http.services.nextjs-service.loadbalancer.sticky.cookie.name=jdc_instance"
+      - "traefik.http.services.nextjs-service.loadbalancer.healthcheck.path=/api/health"
+      - "traefik.http.services.nextjs-service.loadbalancer.healthcheck.interval=30s"
       - "traefik.http.services.nextjs-service.loadbalancer.server.port=3000"
     healthcheck:
       test: ["CMD", "curl", "-f", "http://localhost:3000/api/health"]
@@ -86,7 +71,13 @@ services:
       - jdc-network
     labels:
       - "traefik.enable=true"
-      # Only contribute to the nextjs-service backend pool
+      # Service configuration (duplicate in both instances for resilience)
+      - "traefik.http.routers.nextjs.rule=PathPrefix(`/`)"
+      - "traefik.http.routers.nextjs.service=nextjs-service"
+      - "traefik.http.services.nextjs-service.loadbalancer.sticky.cookie=true"
+      - "traefik.http.services.nextjs-service.loadbalancer.sticky.cookie.name=jdc_instance"
+      - "traefik.http.services.nextjs-service.loadbalancer.healthcheck.path=/api/health"
+      - "traefik.http.services.nextjs-service.loadbalancer.healthcheck.interval=30s"
       - "traefik.http.services.nextjs-service.loadbalancer.server.port=3000"
     healthcheck:
       test: ["CMD", "curl", "-f", "http://localhost:3000/api/health"]
