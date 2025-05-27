@@ -23,7 +23,7 @@ services:
       timeout: 5s
       retries: 3
 
-  # Traefik Router Service (dummy container just for labels)
+  # Traefik Router Service (configuration only - doesn't serve traffic)
   traefik-router:
     image: traefik/whoami:latest
     container_name: jdc-traefik-router
@@ -32,18 +32,17 @@ services:
       - jdc-network
     labels:
       - "traefik.enable=true"
-      # Router configuration - independent of NextJS instances
+      # Router configuration - defines how requests are routed
       - "traefik.http.routers.nextjs.rule=PathPrefix(`/`)"
       - "traefik.http.routers.nextjs.service=nextjs-service"
-      # Service-level configuration
+      # Service-level configuration - defines load balancer behavior
       - "traefik.http.services.nextjs-service.loadbalancer.sticky.cookie=true"
       - "traefik.http.services.nextjs-service.loadbalancer.sticky.cookie.name=jdc_instance"
       - "traefik.http.services.nextjs-service.loadbalancer.healthcheck.path=/api/health"
       - "traefik.http.services.nextjs-service.loadbalancer.healthcheck.interval=30s"
-      # Disable this container from being routed to
-      - "traefik.http.services.nextjs-service.loadbalancer.server.port=80"
-      - "traefik.http.services.router-service.loadbalancer.server.port=80"
-    command: ["--port", "80"]
+      # NOTE: No server.port defined for nextjs-service = this container won't serve traffic
+    # Disable the whoami HTTP server entirely
+    command: ["--disable"]
 
   # Next.js Instance 1
   nextjs-1:
