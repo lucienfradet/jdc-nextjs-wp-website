@@ -117,28 +117,34 @@ services:
       - jdc-network
 
   health-monitor:
-    image: alpine:latest
-    container_name: jdc-health-monitor
-    restart: unless-stopped
-    volumes:
-      - ../monitoring/health-check.sh:/health-check.sh
-    environment:
-      - NTFY_URL=https://jardindeschefs.ca/ntfy/jdc-server
-      - CHECK_INTERVAL=60
-    command: sh /health-check.sh
-    networks:
-      - jdc-network
-    depends_on:
-      jdc-orders-db:
-        condition: service_healthy
-      jdc-redis:
-        condition: service_healthy
-      traefik:
-        condition: service_healthy
-      nextjs-1:
-        condition: service_started
-      nextjs-2:
-        condition: service_started
+      image: alpine:latest
+      container_name: jdc-health-monitor
+      restart: unless-stopped
+      volumes:
+        - ../monitoring/health-check.sh:/health-check.sh
+      environment:
+        - NTFY_URL=https://jardindeschefs.ca/ntfy/jdc-server
+        - CHECK_INTERVAL=60
+      # Install bash and curl, then run the script with bash
+      command: >
+        sh -c "
+          apk add --no-cache bash curl &&
+          chmod +x /health-check.sh &&
+          bash /health-check.sh
+        "
+      networks:
+        - jdc-network
+      depends_on:
+        jdc-orders-db:
+          condition: service_healthy
+        jdc-redis:
+          condition: service_healthy
+        traefik:
+          condition: service_healthy
+        nextjs-1:
+          condition: service_started
+        nextjs-2:
+          condition: service_started
 
   # nextjs:
   #   build:
