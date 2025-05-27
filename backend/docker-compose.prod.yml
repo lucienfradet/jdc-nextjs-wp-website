@@ -49,7 +49,7 @@ services:
       - "traefik.http.services.nextjs-service.loadbalancer.healthcheck.interval=30s"
       - "traefik.http.services.nextjs-service.loadbalancer.server.port=3000"
     healthcheck:
-      test: ["CMD", "curl", "-f", "http://localhost:3000/api/health"]
+      test: ["CMD", "curl", "-f", "http://jdc-nextjs-1:3000/api/health"]
       interval: 30s
       timeout: 10s
       start_period: 15s
@@ -81,7 +81,7 @@ services:
       - "traefik.http.services.nextjs-service.loadbalancer.healthcheck.interval=30s"
       - "traefik.http.services.nextjs-service.loadbalancer.server.port=3000"
     healthcheck:
-      test: ["CMD", "curl", "-f", "http://localhost:3000/api/health"]
+      test: ["CMD", "curl", "-f", "http://jdc-nextjs-2:3000/api/health"]
       interval: 30s
       timeout: 10s
       start_period: 15s
