@@ -52,6 +52,7 @@ services:
       test: ["CMD", "curl", "-f", "http://localhost:3000/api/health"]
       interval: 30s
       timeout: 10s
+      start_period: 15s
       retries: 3
 
   # Next.js Instance 2
@@ -83,6 +84,7 @@ services:
       test: ["CMD", "curl", "-f", "http://localhost:3000/api/health"]
       interval: 30s
       timeout: 10s
+      start_period: 15s
       retries: 3
 
   watchtower:
@@ -102,7 +104,7 @@ services:
       - WATCHTOWER_NOTIFICATION_TEMPLATE={{range .}}{{.Message}}{{println}}{{end}}
       - WATCHTOWER_MONITOR_ONLY=false
       - WATCHTOWER_NO_STARTUP_MESSAGE=false
-    command: --interval 300 jdc-nextjs-1 jdc-nextjs-2
+    command: --interval 300 --rolling-restart jdc-nextjs-1 jdc-nextjs-2
     networks:
       - jdc-network
 
