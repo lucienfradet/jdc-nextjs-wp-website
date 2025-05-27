@@ -25,7 +25,7 @@ services:
 
   # Traefik Router Service (configuration only - doesn't serve traffic)
   traefik-router:
-    image: traefik/whoami:latest
+    image: alpine:latest
     container_name: jdc-traefik-router
     restart: unless-stopped
     networks:
@@ -41,8 +41,8 @@ services:
       - "traefik.http.services.nextjs-service.loadbalancer.healthcheck.path=/api/health"
       - "traefik.http.services.nextjs-service.loadbalancer.healthcheck.interval=30s"
       # NOTE: No server.port defined for nextjs-service = this container won't serve traffic
-    # Disable the whoami HTTP server entirely
-    command: ["--disable"]
+    # Just sleep forever - no HTTP server running
+    command: ["sleep", "infinity"]
 
   # Next.js Instance 1
   nextjs-1:
