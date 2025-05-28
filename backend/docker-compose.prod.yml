@@ -167,9 +167,34 @@ services:
   #     timeout: 10s
   #     retries: 3
 
+  # Cron Service for Next.js cleanup tasks and database backups
   cron:
-    depends_on:
-      - traefik
+    image: alpine:latest
+    container_name: jdc-cron
+    restart: unless-stopped
+    volumes:
+      - ./cron/entrypoint.sh:/entrypoint.sh
+      - ./cron/keys:/keys:ro
+      - ./cron/backups:/backups
     environment:
       - CRON_SECRET_KEY=${CRON_SECRET_KEY}
       - TRAEFIK_URL=http://traefik:80
+      - MYSQL_WORDPRESS_ROOT_PASSWORD=${MYSQL_WORDPRESS_ROOT_PASSWORD}
+      - MYSQL_NEXTJS_ROOT_PASSWORD=${MYSQL_NEXTJS_ROOT_PASSWORD}
+      - MYSQL_NEXTJS_DATABASE=${MYSQL_NEXTJS_DATABASE}
+      - NEXTCLOUD_URL=${NEXTCLOUD_URL}
+      - NEXTCLOUD_USER=${NEXTCLOUD_USER}
+      - NEXTCLOUD_PASSWORD=${NEXTCLOUD_PASSWORD}
+    command: /entrypoint.sh
+    networks:
+      - jdc-network
+      - wp-network
+    depends_on:
+      - db
+      - jdc-orders-db
+      - traefik
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "10m"
+        max-file: "3"

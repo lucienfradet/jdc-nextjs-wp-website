@@ -85,22 +85,6 @@ services:
       timeout: 5s
       retries: 5
 
-  # Cron Service for Next.js cleanup tasks
-  cron:
-    image: alpine:latest
-    container_name: jdc-cron
-    restart: unless-stopped
-    volumes:
-      - ./cron/entrypoint.sh:/entrypoint.sh
-    command: /entrypoint.sh
-    networks:
-      - jdc-network
-    logging:
-      driver: "json-file"
-      options:
-        max-size: "10m"
-        max-file: "3"
-
 networks:
   wp-network:
     driver: bridge
