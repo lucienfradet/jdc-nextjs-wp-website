@@ -169,12 +169,11 @@ services:
 
   # Cron Service for Next.js cleanup tasks and database backups
   cron:
-    build:
-      context: ./cron
-      dockerfile: Dockerfile
+    image: mysql:8.0
     container_name: jdc-cron
     restart: unless-stopped
     volumes:
+      - ./cron/entrypoint.sh:/entrypoint.sh
       - ./cron/keys:/keys:ro
       - ./cron/backups:/backups
     environment:
