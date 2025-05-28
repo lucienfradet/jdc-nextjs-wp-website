@@ -169,7 +169,10 @@ services:
 
   # Cron Service for Next.js cleanup tasks and database backups
   cron:
-    image: mysql:8.0
+    image: alpine:latest
+    build:
+      - context: ./cron
+      - dockerfile: Dockerfile
     container_name: jdc-cron
     restart: unless-stopped
     volumes:

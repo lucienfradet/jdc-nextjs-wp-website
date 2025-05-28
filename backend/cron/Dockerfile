@@ -1,7 +1,7 @@
 # Use Alpine 3.19 for stability  
 FROM alpine:3.19
 
-# Install required packages including MySQL client
+# Install required packages (keep mysql-client for dependencies)
 RUN apk add --no-cache \
     mysql-client \
     curl \
@@ -13,6 +13,12 @@ RUN apk add --no-cache \
     bash \
     tzdata \
     && rm -rf /var/cache/apk/*
+
+# Copy real MySQL client tools from official MySQL image
+COPY --from=mysql:8.0 /usr/bin/mysqldump /usr/bin/mysqldump
+COPY --from=mysql:8.0 /usr/bin/mysql /usr/bin/mysql
+COPY --from=mysql:8.0 /usr/lib/x86_64-linux-gnu/libssl.so.* /usr/lib/
+COPY --from=mysql:8.0 /usr/lib/x86_64-linux-gnu/libcrypto.so.* /usr/lib/
 
 # Create backup directories
 RUN mkdir -p /backups/temp /backups/encrypted
