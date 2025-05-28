@@ -33,8 +33,8 @@ ENCRYPTED_FILE="/backups/encrypted/jdc-wp-db_${TIMESTAMP}.sql.xz.gpg"
 
 echo "Starting WordPress database backup at $(date)"
 
-# Create database dump (disable SSL for internal container communication)
-mysqldump -h jdc-wp-db -u root -p${MYSQL_WORDPRESS_ROOT_PASSWORD} --ssl-mode=DISABLED --single-transaction --routines --triggers jdc_db > "${BACKUP_FILE}"
+# Create database dump using MariaDB client (disable SSL for internal container communication)
+mariadb-dump -h jdc-wp-db -u root -p${MYSQL_WORDPRESS_ROOT_PASSWORD} --skip-ssl --single-transaction --routines --triggers jdc_db > "${BACKUP_FILE}"
 
 # Compress with xz (best compression) - explicitly specify output
 xz -9 -c "${BACKUP_FILE}" > "${COMPRESSED_FILE}"
@@ -69,8 +69,8 @@ ENCRYPTED_FILE="/backups/encrypted/jdc-orders-db_${TIMESTAMP}.sql.xz.gpg"
 
 echo "Starting Orders database backup at $(date)"
 
-# Create database dump (disable SSL for internal container communication)  
-mysqldump -h jdc-orders-db -u root -p${MYSQL_NEXTJS_ROOT_PASSWORD} --ssl-mode=DISABLED --single-transaction --routines --triggers ${MYSQL_NEXTJS_DATABASE} > "${BACKUP_FILE}"
+# Create database dump using MariaDB client (disable SSL for internal container communication)  
+mariadb-dump -h jdc-orders-db -u root -p${MYSQL_NEXTJS_ROOT_PASSWORD} --skip-ssl --single-transaction --routines --triggers ${MYSQL_NEXTJS_DATABASE} > "${BACKUP_FILE}"
 
 # Compress with xz (best compression) - explicitly specify output
 xz -9 -c "${BACKUP_FILE}" > "${COMPRESSED_FILE}"
