@@ -107,20 +107,39 @@ chmod +x /usr/local/bin/backup-wp-db.sh
 chmod +x /usr/local/bin/backup-orders-db.sh  
 chmod +x /usr/local/bin/cleanup-old-backups.sh
 
-# Setup cron jobs
-echo "Setting up cron jobs..."
-cat > /etc/crontabs/root << 'EOL'
-# Run cleanup job every hour
-0 * * * * curl -s -X GET -H "x-api-key: ${CRON_SECRET_KEY}" ${TRAEFIK_URL}/api/cron/cleanup-expired-intents >> /proc/1/fd/1 2>&1
+# Setup cron jobs (Alpine)
+# echo "Setting up cron jobs Alpine..."
+# cat > /etc/crontabs/root << 'EOL'
+# # Run cleanup job every hour
+# 0 * * * * curl -s -X GET -H "x-api-key: ${CRON_SECRET_KEY}" ${TRAEFIK_URL}/api/cron/cleanup-expired-intents >> /proc/1/fd/1 2>&1
+#
+# # Database backups - daily at 2 AM EST (UTC+4)
+# 0 6 * * * /usr/local/bin/backup-wp-db.sh >> /proc/1/fd/1 2>&1
+# 30 6 * * * /usr/local/bin/backup-orders-db.sh >> /proc/1/fd/1 2>&1
+#
+# # Cleanup old backups weekly on Sunday at 3 AM EST
+# 0 7 * * 0 /usr/local/bin/cleanup-old-backups.sh >> /proc/1/fd/1 2>&1
+#
+# EOL
 
-# Database backups - daily at 2 AM EST (UTC+4)
-0 6 * * * /usr/local/bin/backup-wp-db.sh >> /proc/1/fd/1 2>&1
-30 6 * * * /usr/local/bin/backup-orders-db.sh >> /proc/1/fd/1 2>&1
+# Setup cron jobs (Debian)
+echo "Setting up cron jobs Debian..."
+
+# Create cron job file in /etc/cron.d/ (Debian style)
+cat > /etc/cron.d/backup-jobs << 'EOL'
+# Run cleanup job every hour
+0 * * * * root curl -s -X GET -H "x-api-key: ${CRON_SECRET_KEY}" ${TRAEFIK_URL}/api/cron/cleanup-expired-intents >> /proc/1/fd/1 2>&1
+
+# Database backups - daily at 2 AM EST (UTC+4)  
+0 6 * * * root /usr/local/bin/backup-wp-db.sh >> /proc/1/fd/1 2>&1
+30 6 * * * root /usr/local/bin/backup-orders-db.sh >> /proc/1/fd/1 2>&1
 
 # Cleanup old backups weekly on Sunday at 3 AM EST
-0 7 * * 0 /usr/local/bin/cleanup-old-backups.sh >> /proc/1/fd/1 2>&1
-
+0 7 * * 0 root /usr/local/bin/cleanup-old-backups.sh >> /proc/1/fd/1 2>&1
 EOL
+
+# Set proper permissions for the cron file
+chmod 644 /etc/cron.d/backup-jobs
 
 echo "Cron jobs configured"
 
