@@ -49,6 +49,7 @@ services:
     image: mysql:8.0
     container_name: jdc-orders-db
     restart: unless-stopped
+    command: --default-authentication-plugin=mysql_native_password
     environment:
       MYSQL_ROOT_PASSWORD: ${MYSQL_NEXTJS_ROOT_PASSWORD}
       MYSQL_DATABASE: ${MYSQL_NEXTJS_DATABASE}
