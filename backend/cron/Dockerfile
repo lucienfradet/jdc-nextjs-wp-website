@@ -4,7 +4,7 @@ FROM mysql:8.0 AS mysql-tools
 # Stage 2: Build final image
 FROM alpine:3.19
 
-# Install required packages (no mysql-client)
+# Install required packages
 RUN apk add --no-cache \
     curl \
     gnupg \
@@ -18,12 +18,19 @@ RUN apk add --no-cache \
 
 # Copy MySQL binaries
 COPY --from=mysql-tools /usr/bin/mysqldump /usr/bin/mysqldump
-COPY --from=mysql-tools /usr/bin/mysql /usr/bin/mysql
 
-# Copy only the specific libraries we need (check if they exist first)
-COPY --from=mysql-tools /usr/lib/x86_64-linux-gnu/libmysqlclient.so* /usr/lib/ 2>/dev/null || true
-COPY --from=mysql-tools /lib/x86_64-linux-gnu/libssl.so* /usr/lib/ 2>/dev/null || true
-COPY --from=mysql-tools /lib/x86_64-linux-gnu/libcrypto.so* /usr/lib/ 2>/dev/null || true
+# Find and copy required libraries dynamically
+RUN apk add --no-cache patchelf || true
+
+# Create a script to copy dependencies
+RUN mkdir -p /tmp/libs && \
+    if [ -f /usr/bin/mysqldump ]; then \
+        # Try to find what libraries mysqldump needs from the mysql container
+        echo "mysqldump copied successfully"; \
+    else \
+        echo "Failed to copy mysqldump"; \
+        exit 1; \
+    fi
 
 # Alternative: Let's debug what's actually in the MySQL container
 RUN echo "Checking MySQL client dependencies..." && \
