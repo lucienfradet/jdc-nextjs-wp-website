@@ -54,6 +54,10 @@ echo "WordPress database backup completed at $(date)"
 EOL
 
 # Create the backup script for Orders database  
+# THIS ACTUALLY DOESNT GET BACKED UP!
+# THE TEMPORARY LOCAL DB IS NOT BACKUP UP!
+# ALSO, ROOT PERMISSIONS DEFINED IN DOCKER-COMPOSE ENTRY SCRIPT PREVENT 
+# CONNECTION FROM OTHER DOCKERS!! (TO SET BACKUPS, WE NEED TO CHANGE THE PERMS!)
 cat > /usr/local/bin/backup-orders-db.sh << 'EOL'
 #!/bin/bash
 set -e
@@ -132,10 +136,11 @@ cat > /etc/cron.d/backup-jobs << 'EOL'
 
 # Database backups - daily at 2 AM EST (UTC+4)  
 0 6 * * * root /usr/local/bin/backup-wp-db.sh >> /proc/1/fd/1 2>&1
-30 6 * * * root /usr/local/bin/backup-orders-db.sh >> /proc/1/fd/1 2>&1
+# 30 6 * * * root /usr/local/bin/backup-orders-db.sh >> /proc/1/fd/1 2>&1
 
 # Cleanup old backups weekly on Sunday at 3 AM EST
 0 7 * * 0 root /usr/local/bin/cleanup-old-backups.sh >> /proc/1/fd/1 2>&1
+
 EOL
 
 # Set proper permissions for the cron file
