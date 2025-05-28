@@ -21,7 +21,7 @@ services:
     networks:
       - jdc-network
     healthcheck:
-      test: ["CMD", "curl", "-f", "http://localhost:6969/ping"]
+      test: ["CMD", "traefik", "healthcheck", "--ping", "--ping.entrypoint=ping"]
       interval: 10s
       timeout: 5s
       retries: 3
