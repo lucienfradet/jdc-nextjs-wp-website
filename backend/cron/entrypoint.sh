@@ -70,10 +70,9 @@ echo "Starting Orders database backup at $(date)"
 
 # Set password as environment variable (MySQL standard approach)
 export MYSQL_PWD="${MYSQL_NEXTJS_ROOT_PASSWORD}"
-echo "using this password: ${MYSQL_NEXTJS_ROOT_PASSWORD}"
 
 # Create database dump using MySQL client
-mysqldump -h jdc-orders-db -u root -p"$MYSQL_PWD" \
+mysqldump -h jdc-orders-db -u root \
     --single-transaction --routines --triggers \
     ${MYSQL_NEXTJS_DATABASE} > "${BACKUP_FILE}"
 
