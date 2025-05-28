@@ -28,6 +28,9 @@ services:
     image: ghcr.io/${GITHUB_USERNAME}/${GITHUB_REPO_NAME}:latest
     container_name: jdc-nextjs-1
     restart: unless-stopped
+    volumes:
+      - ../frontend/.env:/app/.env:ro
+      - ../frontend/.env.production:/app/.env.production:ro
     environment:
       - DATABASE_URL=mysql://${MYSQL_NEXTJS_USER}:${MYSQL_NEXTJS_PASSWORD}@jdc-orders-db:3306/${MYSQL_NEXTJS_DATABASE}
       - INSTANCE_ID=nextjs-1
@@ -60,6 +63,9 @@ services:
     image: ghcr.io/${GITHUB_USERNAME}/${GITHUB_REPO_NAME}:latest
     container_name: jdc-nextjs-2
     restart: unless-stopped
+    volumes:
+      - ../frontend/.env:/app/.env:ro
+      - ../frontend/.env.production:/app/.env.production:ro
     environment:
       - DATABASE_URL=mysql://${MYSQL_NEXTJS_USER}:${MYSQL_NEXTJS_PASSWORD}@jdc-orders-db:3306/${MYSQL_NEXTJS_DATABASE}
       - INSTANCE_ID=nextjs-2
