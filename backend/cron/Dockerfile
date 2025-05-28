@@ -1,16 +1,18 @@
-# Use MySQL 8.0 as base for reliable MySQL tools
-FROM mysql:8.0
+# Use Alpine 3.19 for stability  
+FROM alpine:3.19
 
-# Install additional packages needed for backup operations
-RUN apt-get update && apt-get install -y \
+# Install required packages including MySQL client
+RUN apk add --no-cache \
+    mysql-client \
     curl \
     gnupg \
     gzip \
     bzip2 \
-    xz-utils \
+    xz \
     cadaver \
-    cron \
-    && rm -rf /var/lib/apt/lists/*
+    bash \
+    tzdata \
+    && rm -rf /var/cache/apk/*
 
 # Create backup directories
 RUN mkdir -p /backups/temp /backups/encrypted

@@ -1,7 +1,7 @@
 #!/bin/bash
 set -e
 
-echo "Starting MySQL-based cron container..."
+echo "Starting Alpine-based cron container..."
 
 # Import the public GPG key for encryption
 echo "Importing GPG public key..."
@@ -30,7 +30,6 @@ echo "Starting WordPress database backup at $(date)"
 # Create database dump using MySQL client
 mysqldump -h jdc-wp-db -u root -p${MYSQL_WORDPRESS_ROOT_PASSWORD} \
     --single-transaction --routines --triggers \
-    --set-gtid-purged=OFF \
     jdc_db > "${BACKUP_FILE}"
 
 # Compress with xz (best compression)
@@ -69,7 +68,6 @@ echo "Starting Orders database backup at $(date)"
 # Create database dump using MySQL client
 mysqldump -h ${MYSQL_NEXTJS_DATABASE} -u root -p${MYSQL_NEXTJS_ROOT_PASSWORD} \
     --single-transaction --routines --triggers \
-    --set-gtid-purged=OFF \
     ${MYSQL_NEXTJS_DATABASE} > "${BACKUP_FILE}"
 
 # Compress with xz (best compression)
@@ -105,22 +103,21 @@ chmod +x /usr/local/bin/cleanup-old-backups.sh
 
 # Setup cron jobs
 echo "Setting up cron jobs..."
-cat > /etc/cron.d/backup-jobs << 'EOL'
+cat > /etc/crontabs/root << 'EOL'
 # Run cleanup job every hour
-0 * * * * root curl -s -X GET -H "x-api-key: ${CRON_SECRET_KEY}" ${TRAEFIK_URL}/api/cron/cleanup-expired-intents
+0 * * * * curl -s -X GET -H "x-api-key: ${CRON_SECRET_KEY}" ${TRAEFIK_URL}/api/cron/cleanup-expired-intents >> /proc/1/fd/1 2>&1
 
 # Database backups - daily at 2 AM EST (UTC+4)
-0 6 * * * root /usr/local/bin/backup-wp-db.sh
-30 6 * * * root /usr/local/bin/backup-orders-db.sh
+0 6 * * * /usr/local/bin/backup-wp-db.sh >> /proc/1/fd/1 2>&1
+30 6 * * * /usr/local/bin/backup-orders-db.sh >> /proc/1/fd/1 2>&1
 
 # Cleanup old backups weekly on Sunday at 3 AM EST
-0 7 * * 0 root /usr/local/bin/cleanup-old-backups.sh
+0 7 * * 0 /usr/local/bin/cleanup-old-backups.sh >> /proc/1/fd/1 2>&1
 
 EOL
 
-# Start cron daemon
-echo "Starting cron daemon..."
-service cron start
+echo "Cron jobs configured"
 
-# Keep container running
-tail -f /var/log/cron.log
+# Start crond in foreground
+echo "Starting crond..."
+crond -f -d 8
