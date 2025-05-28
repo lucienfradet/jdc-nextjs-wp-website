@@ -1,7 +1,10 @@
-# Use Alpine 3.19 for stability  
+# Stage 1: Get MySQL tools
+FROM mysql:8.0 as mysql-tools
+
+# Stage 2: Build final image
 FROM alpine:3.19
 
-# Install required packages (keep mysql-client for dependencies)
+# Install required packages (no mysql-client)
 RUN apk add --no-cache \
     curl \
     gnupg \
@@ -11,13 +14,11 @@ RUN apk add --no-cache \
     cadaver \
     bash \
     tzdata \
-    && rm -rf /var/cache/apk/*
+    libc6-compat
 
-# Copy real MySQL client tools from official MySQL image
-COPY --from=mysql:8.0 /usr/bin/mysqldump /usr/bin/mysqldump
-COPY --from=mysql:8.0 /usr/bin/mysql /usr/bin/mysql
-COPY --from=mysql:8.0 /usr/lib/x86_64-linux-gnu/libssl.so.* /usr/lib/
-COPY --from=mysql:8.0 /usr/lib/x86_64-linux-gnu/libcrypto.so.* /usr/lib/
+# Copy entire MySQL installation
+COPY --from=mysql-tools /usr/bin/mysql* /usr/bin/
+COPY --from=mysql-tools /usr/lib/x86_64-linux-gnu/ /usr/lib/
 
 # Create backup directories
 RUN mkdir -p /backups/temp /backups/encrypted
