@@ -40,7 +40,7 @@ mariadb-dump -h jdc-wp-db -u root -p${MYSQL_WORDPRESS_ROOT_PASSWORD} --skip-ssl 
 xz -9 -c "${BACKUP_FILE}" > "${COMPRESSED_FILE}"
 
 # Encrypt with GPG
-gpg --encrypt -r admin@jardindeschefs.ca --output "${ENCRYPTED_FILE}" "${COMPRESSED_FILE}"
+gpg --batch --yes --trust-model always --encrypt -r admin@jardindeschefs.ca --output "${ENCRYPTED_FILE}" "${COMPRESSED_FILE}"
 
 # Upload to Nextcloud
 echo "Uploading to Nextcloud..."
@@ -76,7 +76,7 @@ mariadb-dump -h jdc-orders-db -u root -p${MYSQL_NEXTJS_ROOT_PASSWORD} --skip-ssl
 xz -9 -c "${BACKUP_FILE}" > "${COMPRESSED_FILE}"
 
 # Encrypt with GPG
-gpg --encrypt -r admin@jardindeschefs.ca --output "${ENCRYPTED_FILE}" "${COMPRESSED_FILE}"
+gpg --batch --yes --trust-model always --encrypt -r admin@jardindeschefs.ca --output "${ENCRYPTED_FILE}" "${COMPRESSED_FILE}"
 
 # Upload to Nextcloud
 echo "Uploading to Nextcloud..."
