@@ -169,7 +169,6 @@ services:
 
   # Cron Service for Next.js cleanup tasks and database backups
   cron:
-    image: alpine:latest
     build:
       - context: ./cron
       - dockerfile: Dockerfile
