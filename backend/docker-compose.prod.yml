@@ -170,8 +170,8 @@ services:
   # Cron Service for Next.js cleanup tasks and database backups
   cron:
     build:
-      - context: ./cron
-      - dockerfile: Dockerfile
+      context: ./cron
+      dockerfile: Dockerfile
     container_name: jdc-cron
     restart: unless-stopped
     volumes:
