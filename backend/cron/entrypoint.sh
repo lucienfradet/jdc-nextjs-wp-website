@@ -143,6 +143,10 @@ chmod 644 /etc/cron.d/backup-jobs
 
 echo "Cron jobs configured"
 
-# Start crond in foreground
-echo "Starting crond..."
-crond -f -d 8
+# Start crond in foreground (Alpine)
+# echo "Starting crond..."
+# crond -f -d 8
+
+# Start cron daemon in foreground (Debian style)
+echo "Starting cron daemon..."
+exec cron -f
