@@ -68,7 +68,7 @@ while true; do
     fi
     
     # Check Traefik
-    if ! check_service "Traefik" "http://traefik:8080/ping" "200"; then
+    if ! check_service "Traefik" "http://traefik:6969/ping" "200"; then
         service_down_count[traefik]=$((service_down_count[traefik] + 1))
         if [ ${service_down_count[traefik]} -eq 3 ]; then
             send_notification "🚨 Traefik Load Balancer Down" "Load balancer is unresponsive!" "urgent"

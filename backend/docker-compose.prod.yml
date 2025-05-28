@@ -15,7 +15,7 @@ services:
       - "--ping.entrypoint=ping"
     ports:
       - "3000:80"  # Traefik will listen on 3000 and forward to Next.js instances
-      - "8080:8080"
+      - "6969:6969"
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock:ro
     networks:
