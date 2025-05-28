@@ -3,7 +3,6 @@ FROM alpine:3.19
 
 # Install required packages (keep mysql-client for dependencies)
 RUN apk add --no-cache \
-    mysql-client \
     curl \
     gnupg \
     gzip \
