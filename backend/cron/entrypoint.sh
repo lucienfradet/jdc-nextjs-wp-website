@@ -28,7 +28,7 @@ ENCRYPTED_FILE="/backups/encrypted/jdc-wp-db_${TIMESTAMP}.sql.xz.gpg"
 echo "Starting WordPress database backup at $(date)"
 
 # Create database dump using MySQL client
-mysqldump -h jdc-wp-db -u root -p${MYSQL_WORDPRESS_ROOT_PASSWORD} \
+mysqldump -h jdc-wp-db -u root -p"${MYSQL_WORDPRESS_ROOT_PASSWORD}" \
     --single-transaction --routines --triggers \
     jdc_db > "${BACKUP_FILE}"
 
@@ -66,7 +66,7 @@ ENCRYPTED_FILE="/backups/encrypted/jdc-orders-db_${TIMESTAMP}.sql.xz.gpg"
 echo "Starting Orders database backup at $(date)"
 
 # Create database dump using MySQL client
-mysqldump -h ${MYSQL_NEXTJS_DATABASE} -u root -p${MYSQL_NEXTJS_ROOT_PASSWORD} \
+mysqldump -h ${MYSQL_NEXTJS_DATABASE} -u root -p"${MYSQL_NEXTJS_ROOT_PASSWORD}" \
     --single-transaction --routines --triggers \
     ${MYSQL_NEXTJS_DATABASE} > "${BACKUP_FILE}"
 
