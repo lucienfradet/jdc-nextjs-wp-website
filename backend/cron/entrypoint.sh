@@ -1,9 +1,7 @@
-#!/bin/sh
+#!/bin/bash
 set -e
 
-# Install required packages
-echo "Installing required packages..."
-apk add --no-cache curl gnupg mysql-client gzip bzip2 xz cadaver
+echo "Starting MySQL-based cron container..."
 
 # Import the public GPG key for encryption
 echo "Importing GPG public key..."
@@ -14,13 +12,9 @@ else
     echo "Warning: GPG public key not found at /keys/jdc-backup-public.key"
 fi
 
-# Create backup directories
-mkdir -p /backups/temp
-mkdir -p /backups/encrypted
-
 # Create the backup script for WordPress database
 cat > /usr/local/bin/backup-wp-db.sh << 'EOL'
-#!/bin/sh
+#!/bin/bash
 set -e
 
 # Set restrictive permissions for all created files
@@ -33,10 +27,13 @@ ENCRYPTED_FILE="/backups/encrypted/jdc-wp-db_${TIMESTAMP}.sql.xz.gpg"
 
 echo "Starting WordPress database backup at $(date)"
 
-# Create database dump using MariaDB client (disable SSL for internal container communication)
-mariadb-dump -h jdc-wp-db -u root -p${MYSQL_WORDPRESS_ROOT_PASSWORD} --skip-ssl --single-transaction --routines --triggers jdc_db > "${BACKUP_FILE}"
+# Create database dump using MySQL client
+mysqldump -h jdc-wp-db -u root -p${MYSQL_WORDPRESS_ROOT_PASSWORD} \
+    --single-transaction --routines --triggers \
+    --set-gtid-purged=OFF \
+    jdc_db > "${BACKUP_FILE}"
 
-# Compress with xz (best compression) - explicitly specify output
+# Compress with xz (best compression)
 xz -9 -c "${BACKUP_FILE}" > "${COMPRESSED_FILE}"
 
 # Encrypt with GPG
@@ -56,7 +53,7 @@ EOL
 
 # Create the backup script for Orders database  
 cat > /usr/local/bin/backup-orders-db.sh << 'EOL'
-#!/bin/sh
+#!/bin/bash
 set -e
 
 # Set restrictive permissions for all created files
@@ -69,10 +66,13 @@ ENCRYPTED_FILE="/backups/encrypted/jdc-orders-db_${TIMESTAMP}.sql.xz.gpg"
 
 echo "Starting Orders database backup at $(date)"
 
-# Create database dump using MariaDB client (disable SSL for internal container communication)  
-mariadb-dump -h ${MYSQL_NEXTJS_DATABASE} -u root -p${MYSQL_NEXTJS_ROOT_PASSWORD} --skip-ssl --single-transaction --routines --triggers ${MYSQL_NEXTJS_DATABASE} > "${BACKUP_FILE}"
+# Create database dump using MySQL client
+mysqldump -h ${MYSQL_NEXTJS_DATABASE} -u root -p${MYSQL_NEXTJS_ROOT_PASSWORD} \
+    --single-transaction --routines --triggers \
+    --set-gtid-purged=OFF \
+    ${MYSQL_NEXTJS_DATABASE} > "${BACKUP_FILE}"
 
-# Compress with xz (best compression) - explicitly specify output
+# Compress with xz (best compression)
 xz -9 -c "${BACKUP_FILE}" > "${COMPRESSED_FILE}"
 
 # Encrypt with GPG
@@ -92,7 +92,7 @@ EOL
 
 # Create cleanup script to remove old local backups
 cat > /usr/local/bin/cleanup-old-backups.sh << 'EOL'
-#!/bin/sh
+#!/bin/bash
 # Remove encrypted backups older than 7 days
 find /backups/encrypted -name "*.gpg" -mtime +7 -delete
 echo "Cleaned up old backup files"
@@ -105,21 +105,22 @@ chmod +x /usr/local/bin/cleanup-old-backups.sh
 
 # Setup cron jobs
 echo "Setting up cron jobs..."
-cat > /etc/crontabs/root << 'EOL'
+cat > /etc/cron.d/backup-jobs << 'EOL'
 # Run cleanup job every hour
-0 * * * * curl -s -X GET -H "x-api-key: ${CRON_SECRET_KEY}" ${TRAEFIK_URL}/api/cron/cleanup-expired-intents >> /proc/1/fd/1 2>&1
+0 * * * * root curl -s -X GET -H "x-api-key: ${CRON_SECRET_KEY}" ${TRAEFIK_URL}/api/cron/cleanup-expired-intents
 
 # Database backups - daily at 2 AM EST (UTC+4)
-0 6 * * * /usr/local/bin/backup-wp-db.sh >> /proc/1/fd/1 2>&1
-30 6 * * * /usr/local/bin/backup-orders-db.sh >> /proc/1/fd/1 2>&1
+0 6 * * * root /usr/local/bin/backup-wp-db.sh
+30 6 * * * root /usr/local/bin/backup-orders-db.sh
 
 # Cleanup old backups weekly on Sunday at 3 AM EST
-0 7 * * 0 /usr/local/bin/cleanup-old-backups.sh >> /proc/1/fd/1 2>&1
+0 7 * * 0 root /usr/local/bin/cleanup-old-backups.sh
 
 EOL
 
-echo "Cron jobs configured"
+# Start cron daemon
+echo "Starting cron daemon..."
+service cron start
 
-# Start crond in foreground
-echo "Starting crond..."
-crond -f -d 8
+# Keep container running
+tail -f /var/log/cron.log
