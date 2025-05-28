@@ -23,6 +23,9 @@ cat > /usr/local/bin/backup-wp-db.sh << 'EOL'
 #!/bin/sh
 set -e
 
+# Set restrictive permissions for all created files
+umask 077
+
 TIMESTAMP=$(date +"%Y%m%d_%H%M%S")
 BACKUP_FILE="/backups/temp/jdc-wp-db_${TIMESTAMP}.sql"
 COMPRESSED_FILE="/backups/temp/jdc-wp-db_${TIMESTAMP}.sql.xz"
@@ -30,11 +33,11 @@ ENCRYPTED_FILE="/backups/encrypted/jdc-wp-db_${TIMESTAMP}.sql.xz.gpg"
 
 echo "Starting WordPress database backup at $(date)"
 
-# Create database dump
-mysqldump -h jdc-wp-db -u root -p${MYSQL_WORDPRESS_ROOT_PASSWORD} jdc_db > "${BACKUP_FILE}"
+# Create database dump (disable SSL for internal container communication)
+mysqldump -h jdc-wp-db -u root -p${MYSQL_WORDPRESS_ROOT_PASSWORD} --ssl-mode=DISABLED --single-transaction --routines --triggers jdc_db > "${BACKUP_FILE}"
 
-# Compress with xz (best compression)
-xz -9 "${BACKUP_FILE}"
+# Compress with xz (best compression) - explicitly specify output
+xz -9 -c "${BACKUP_FILE}" > "${COMPRESSED_FILE}"
 
 # Encrypt with GPG
 gpg --encrypt -r admin@jardindeschefs.ca --output "${ENCRYPTED_FILE}" "${COMPRESSED_FILE}"
@@ -45,8 +48,8 @@ curl -u "${NEXTCLOUD_USER}:${NEXTCLOUD_PASSWORD}" \
      -T "${ENCRYPTED_FILE}" \
      "${NEXTCLOUD_URL}/remote.php/dav/files/lucienfradet/backup/jdc-server/jdc-wp-db/jdc-wp-db_${TIMESTAMP}.sql.xz.gpg"
 
-# Clean up temp files
-rm -f "${COMPRESSED_FILE}" "${ENCRYPTED_FILE}" "${ENCRYPTED_FILE}"
+# Clean up temp files after successful upload
+rm -f "${BACKUP_FILE}" "${COMPRESSED_FILE}" "${ENCRYPTED_FILE}"
 
 echo "WordPress database backup completed at $(date)"
 EOL
@@ -56,6 +59,9 @@ cat > /usr/local/bin/backup-orders-db.sh << 'EOL'
 #!/bin/sh
 set -e
 
+# Set restrictive permissions for all created files
+umask 077
+
 TIMESTAMP=$(date +"%Y%m%d_%H%M%S")
 BACKUP_FILE="/backups/temp/jdc-orders-db_${TIMESTAMP}.sql"
 COMPRESSED_FILE="/backups/temp/jdc-orders-db_${TIMESTAMP}.sql.xz"
@@ -63,11 +69,11 @@ ENCRYPTED_FILE="/backups/encrypted/jdc-orders-db_${TIMESTAMP}.sql.xz.gpg"
 
 echo "Starting Orders database backup at $(date)"
 
-# Create database dump
-mysqldump -h jdc-orders-db -u root -p${MYSQL_NEXTJS_ROOT_PASSWORD} ${MYSQL_NEXTJS_DATABASE} > "${BACKUP_FILE}"
+# Create database dump (disable SSL for internal container communication)  
+mysqldump -h jdc-orders-db -u root -p${MYSQL_NEXTJS_ROOT_PASSWORD} --ssl-mode=DISABLED --single-transaction --routines --triggers ${MYSQL_NEXTJS_DATABASE} > "${BACKUP_FILE}"
 
-# Compress with xz (best compression)
-xz -9 "${BACKUP_FILE}"
+# Compress with xz (best compression) - explicitly specify output
+xz -9 -c "${BACKUP_FILE}" > "${COMPRESSED_FILE}"
 
 # Encrypt with GPG
 gpg --encrypt -r admin@jardindeschefs.ca --output "${ENCRYPTED_FILE}" "${COMPRESSED_FILE}"
@@ -78,8 +84,8 @@ curl -u "${NEXTCLOUD_USER}:${NEXTCLOUD_PASSWORD}" \
      -T "${ENCRYPTED_FILE}" \
      "${NEXTCLOUD_URL}/remote.php/dav/files/lucienfradet/backup/jdc-server/jdc-orders-db/jdc-orders-db_${TIMESTAMP}.sql.xz.gpg"
 
-# Clean up temp files
-rm -f "${COMPRESSED_FILE}"
+# Clean up temp files after successful upload
+rm -f "${BACKUP_FILE}" "${COMPRESSED_FILE}" "${ENCRYPTED_FILE}"
 
 echo "Orders database backup completed at $(date)"
 EOL
