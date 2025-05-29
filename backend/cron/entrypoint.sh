@@ -130,7 +130,7 @@ chmod +x /usr/local/bin/cleanup-old-backups.sh
 echo "Setting up cron jobs Debian..."
 
 # Create cron job file in /etc/cron.d/ (Debian style)
-cat > /etc/cron.d/backup-jobs << 'EOL'
+cat > /etc/cron.d/backup-jobs << EOF
 # Set environment variables for cron jobs
 CRON_SECRET_KEY=${CRON_SECRET_KEY}
 TRAEFIK_URL=${TRAEFIK_URL}
@@ -151,7 +151,7 @@ NEXTCLOUD_PASSWORD=${NEXTCLOUD_PASSWORD}
 # Cleanup old backups weekly on Sunday at 3 AM EST
 0 7 * * 0 root /usr/local/bin/cleanup-old-backups.sh >> /proc/1/fd/1 2>&1
 
-EOL
+EOF
 
 # Set proper permissions for the cron file
 chmod 644 /etc/cron.d/backup-jobs
