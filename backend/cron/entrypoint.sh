@@ -131,6 +131,16 @@ echo "Setting up cron jobs Debian..."
 
 # Create cron job file in /etc/cron.d/ (Debian style)
 cat > /etc/cron.d/backup-jobs << 'EOL'
+# Set environment variables for cron jobs
+CRON_SECRET_KEY=${CRON_SECRET_KEY}
+TRAEFIK_URL=${TRAEFIK_URL}
+MYSQL_WORDPRESS_ROOT_PASSWORD=${MYSQL_WORDPRESS_ROOT_PASSWORD}
+MYSQL_NEXTJS_ROOT_PASSWORD=${MYSQL_NEXTJS_ROOT_PASSWORD}
+MYSQL_NEXTJS_DATABASE=${MYSQL_NEXTJS_DATABASE}
+NEXTCLOUD_URL=${NEXTCLOUD_URL}
+NEXTCLOUD_USER=${NEXTCLOUD_USER}
+NEXTCLOUD_PASSWORD=${NEXTCLOUD_PASSWORD}
+
 # Run cleanup job every hour
 0 * * * * root curl -s -X GET -H "x-api-key: ${CRON_SECRET_KEY}" ${TRAEFIK_URL}/api/cron/cleanup-expired-intents >> /proc/1/fd/1 2>&1
 
