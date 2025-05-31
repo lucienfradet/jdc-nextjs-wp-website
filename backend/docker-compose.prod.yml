@@ -31,12 +31,66 @@ services:
     image: ghcr.io/${GITHUB_USERNAME}/${GITHUB_REPO_NAME}:latest
     container_name: jdc-nextjs-1
     restart: unless-stopped
-    volumes:
-      - ../frontend/.env:/app/.env:ro
-      - ../frontend/.env.production:/app/.env.production:ro
     environment:
       - DATABASE_URL=mysql://${MYSQL_NEXTJS_USER}:${MYSQL_NEXTJS_PASSWORD}@jdc-orders-db:3306/${MYSQL_NEXTJS_DATABASE}
       - INSTANCE_ID=nextjs-1
+
+      # Next env.
+      # WooCommerce keys
+      - WOOCOMMERCE_CONSUMER_KEY=${WOOCOMMERCE_CONSUMER_KEY}
+      - WOOCOMMERCE_CONSUMER_SECRET=${WOOCOMMERCE_CONSUMER_SECRET}
+
+      # Google Maps
+      - NEXT_PUBLIC_GOOGLE_MAPS_API_KEY=${NEXT_PUBLIC_GOOGLE_MAPS_API_KEY}
+
+      # MailPoet API
+      - MAILPOET_API_KEY=${MAILPOET_API_KEY}
+
+      # Cron
+      - CRON_SECRET_KEY=${CRON_SECRET_KEY}
+
+      # Redis
+      - REDIS_PASSWORD=${REDIS_PASSWORD}
+      - REDIS_PORT=${REDIS_PORT}
+
+      # Admin dashboard (Not used)
+      - ADMIN_USERNAME=${ADMIN_USERNAME}
+      - ADMIN_PASSWORD=${ADMIN_PASSWORD}
+      - ADMIN_JWT_SECRET=${ADMIN_JWT_SECRET}
+
+      # CSRF Protection
+      - CSRF_SECRET=${CSRF_SECRET}
+      - WEBHOOK_API_KEY=${WEBHOOK_API_KEY}
+
+      # Google reCAPTCHA v3 keys
+      - NEXT_PUBLIC_RECAPTCHA_SITE_KEY=${NEXT_PUBLIC_RECAPTCHA_SITE_KEY}
+      - RECAPTCHA_SECRET_KEY=${RECAPTCHA_SECRET_KEY}
+
+      # Next .env.production
+      - NEXT_PUBLIC_WORDPRESS_HOSTNAME=${NEXT_PUBLIC_WORDPRESS_HOSTNAME}
+      - NEXT_PUBLIC_WORDPRESS_BASE_URL=${NEXT_PUBLIC_WORDPRESS_BASE_URL}
+      - NEXT_PUBLIC_WORDPRESS_API_URL=${NEXT_PUBLIC_WORDPRESS_API_URL}
+      - NEXT_PUBLIC_WORDPRESS_GRAPHQL_URL=${NEXT_PUBLIC_WORDPRESS_GRAPHQL_URL}
+
+      - NEXT_PUBLIC_SITE_URL=${NEXT_PUBLIC_SITE_URL}
+      - NEXT_PUBLIC_SITE_URL_WWW=${NEXT_PUBLIC_SITE_URL_WWW}
+
+      # 0.0.0.0 for internal docker accessibility without ports exposed (i.e. traefik)
+      - HOST=${HOST}
+      - PORT=${PORT}
+
+      - NEXT_PUBLIC_SSL_IGNORE=${NEXT_PUBLIC_SSL_IGNORE}
+
+      # Stripe keys
+      - NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY=${NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY}
+      - STRIPE_SECRET_KEY=${STRIPE_SECRET_KEY}
+      - STRIPE_WEBHOOK_SECRET=${STRIPE_WEBHOOK_SECRET}
+
+      # local product db
+      - DATABASE_URL=${DATABASE_URL}
+
+      # Redis
+      - REDIS_URL=${REDIS_URL}
     depends_on:
       jdc-orders-db:
         condition: service_healthy
@@ -66,12 +120,66 @@ services:
     image: ghcr.io/${GITHUB_USERNAME}/${GITHUB_REPO_NAME}:latest
     container_name: jdc-nextjs-2
     restart: unless-stopped
-    volumes:
-      - ../frontend/.env:/app/.env:ro
-      - ../frontend/.env.production:/app/.env.production:ro
     environment:
       - DATABASE_URL=mysql://${MYSQL_NEXTJS_USER}:${MYSQL_NEXTJS_PASSWORD}@jdc-orders-db:3306/${MYSQL_NEXTJS_DATABASE}
       - INSTANCE_ID=nextjs-2
+
+      # Next env.
+      # WooCommerce keys
+      - WOOCOMMERCE_CONSUMER_KEY=${WOOCOMMERCE_CONSUMER_KEY}
+      - WOOCOMMERCE_CONSUMER_SECRET=${WOOCOMMERCE_CONSUMER_SECRET}
+
+      # Google Maps
+      - NEXT_PUBLIC_GOOGLE_MAPS_API_KEY=${NEXT_PUBLIC_GOOGLE_MAPS_API_KEY}
+
+      # MailPoet API
+      - MAILPOET_API_KEY=${MAILPOET_API_KEY}
+
+      # Cron
+      - CRON_SECRET_KEY=${CRON_SECRET_KEY}
+
+      # Redis
+      - REDIS_PASSWORD=${REDIS_PASSWORD}
+      - REDIS_PORT=${REDIS_PORT}
+
+      # Admin dashboard (Not used)
+      - ADMIN_USERNAME=${ADMIN_USERNAME}
+      - ADMIN_PASSWORD=${ADMIN_PASSWORD}
+      - ADMIN_JWT_SECRET=${ADMIN_JWT_SECRET}
+
+      # CSRF Protection
+      - CSRF_SECRET=${CSRF_SECRET}
+      - WEBHOOK_API_KEY=${WEBHOOK_API_KEY}
+
+      # Google reCAPTCHA v3 keys
+      - NEXT_PUBLIC_RECAPTCHA_SITE_KEY=${NEXT_PUBLIC_RECAPTCHA_SITE_KEY}
+      - RECAPTCHA_SECRET_KEY=${RECAPTCHA_SECRET_KEY}
+
+      # Next .env.production
+      - NEXT_PUBLIC_WORDPRESS_HOSTNAME=${NEXT_PUBLIC_WORDPRESS_HOSTNAME}
+      - NEXT_PUBLIC_WORDPRESS_BASE_URL=${NEXT_PUBLIC_WORDPRESS_BASE_URL}
+      - NEXT_PUBLIC_WORDPRESS_API_URL=${NEXT_PUBLIC_WORDPRESS_API_URL}
+      - NEXT_PUBLIC_WORDPRESS_GRAPHQL_URL=${NEXT_PUBLIC_WORDPRESS_GRAPHQL_URL}
+
+      - NEXT_PUBLIC_SITE_URL=${NEXT_PUBLIC_SITE_URL}
+      - NEXT_PUBLIC_SITE_URL_WWW=${NEXT_PUBLIC_SITE_URL_WWW}
+
+      # 0.0.0.0 for internal docker accessibility without ports exposed (i.e. traefik)
+      - HOST=${HOST}
+      - PORT=${PORT}
+
+      - NEXT_PUBLIC_SSL_IGNORE=${NEXT_PUBLIC_SSL_IGNORE}
+
+      # Stripe keys
+      - NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY=${NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY}
+      - STRIPE_SECRET_KEY=${STRIPE_SECRET_KEY}
+      - STRIPE_WEBHOOK_SECRET=${STRIPE_WEBHOOK_SECRET}
+
+      # local product db
+      - DATABASE_URL=${DATABASE_URL}
+
+      # Redis
+      - REDIS_URL=${REDIS_URL}
     depends_on:
       jdc-orders-db:
         condition: service_healthy
