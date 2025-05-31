@@ -86,9 +86,6 @@ services:
       - STRIPE_SECRET_KEY=${STRIPE_SECRET_KEY}
       - STRIPE_WEBHOOK_SECRET=${STRIPE_WEBHOOK_SECRET}
 
-      # local product db
-      - DATABASE_URL=${DATABASE_URL}
-
       # Redis
       - REDIS_URL=${REDIS_URL}
     depends_on:
@@ -174,9 +171,6 @@ services:
       - NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY=${NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY}
       - STRIPE_SECRET_KEY=${STRIPE_SECRET_KEY}
       - STRIPE_WEBHOOK_SECRET=${STRIPE_WEBHOOK_SECRET}
-
-      # local product db
-      - DATABASE_URL=${DATABASE_URL}
 
       # Redis
       - REDIS_URL=${REDIS_URL}
