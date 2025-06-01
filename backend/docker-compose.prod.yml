@@ -87,8 +87,8 @@ services:
       
       # Watchtower lifecycle hooks
       - "com.centurylinklabs.watchtower.lifecycle.pre-update=curl -f http://jdc-nextjs-2:3000/api/health || (echo 'Other instance unhealthy, aborting update' && exit 1)"
-      - "com.centurylinklabs.watchtower.lifecycle.post-update=sh -c 'sleep 10 && for i in 1 2 3 4 5; do curl -f http://localhost:3000/api/health && exit 0 || sleep 5; done; exit 1'"
-      - "com.centurylinklabs.watchtower.lifecycle.post-check=curl -f http://localhost:3000/api/health"
+      - "com.centurylinklabs.watchtower.lifecycle.post-update=sh -c 'sleep 10 && for i in 1 2 3 4 5; do curl -f http://jdc-nextjs-1:3000/api/health && exit 0 || sleep 5; done; exit 1'"
+      - "com.centurylinklabs.watchtower.lifecycle.post-check=curl -f http://jdc-nextjs-1:3000/api/health"
     healthcheck:
       test: ["CMD", "curl", "-f", "http://jdc-nextjs-1:3000/api/health"]
       interval: 30s
@@ -157,8 +157,8 @@ services:
       
       # Watchtower lifecycle hooks
       - "com.centurylinklabs.watchtower.lifecycle.pre-update=curl -f http://jdc-nextjs-1:3000/api/health || (echo 'Other instance unhealthy, aborting update' && exit 1)"
-      - "com.centurylinklabs.watchtower.lifecycle.post-update=sh -c 'sleep 10 && for i in 1 2 3 4 5; do curl -f http://localhost:3000/api/health && exit 0 || sleep 5; done; exit 1'"
-      - "com.centurylinklabs.watchtower.lifecycle.post-check=curl -f http://localhost:3000/api/health"
+      - "com.centurylinklabs.watchtower.lifecycle.post-update=sh -c 'sleep 10 && for i in 1 2 3 4 5; do curl -f http://jdc-nextjs-2:3000/api/health && exit 0 || sleep 5; done; exit 1'"
+      - "com.centurylinklabs.watchtower.lifecycle.post-check=curl -f http://jdc-nextjs-2:3000/api/health"
     healthcheck:
       test: ["CMD", "curl", "-f", "http://jdc-nextjs-2:3000/api/health"]
       interval: 30s
