@@ -168,25 +168,27 @@ function display_headless_page() {
             }
         </style>
     </head>
-    <body>
-        <div class="container">
-            <div class="logo-container">
-                <img src="https://jardindeschefs.ca/images/jdc_logo.png" alt="Jardin des Chefs" class="logo-img">
+        <body>
+            <div class="container">
+                <div class="logo-container">
+                    <img src="https://jardindeschefs.ca/images/jdc_logo.png" alt="Jardin des Chefs" class="logo-img">
+                </div>
+
+                <div class="headless-info">
+                    <p>Ce site WordPress fonctionne en mode headless et sert d'API pour d'autres applications.</p>
+                </div>
+
+                <a href="https://jardindeschefs.ca" class="main-button">
+                    Visiter le Site Principal
+                </a>
+
+                <div>
+                    <a href="https://wordpress.jardindeschefs.ca/wp-admin/" class="admin-link">
+                        Accéder à la page d'administrateur
+                    </a>
+                </div>
             </div>
-
-            <div class="headless-info">
-                <p>Ce site WordPress fonctionne en mode headless et sert d'API pour d'autres applications.</p>
-            </div>
-
-            <a href="https://jardindeschefs.ca" class="main-button">
-                Visiter le Site Principal
-            </a>
-
-            <a href="https://wordpress.jardindeschefs.ca/wp-admin/" class="admin-link">
-                Accéder à la page d'administrateur
-            </a>
-        </div>
-    </body>
+        </body>
     </html>
     <?php
 }
