@@ -151,8 +151,11 @@ function display_headless_page() {
                 background: var(--green-transparent);
             }
 
+            .admin-link-wrapper {
+                margin-top: 10px;
+            }
+
             .admin-link {
-                padding-top: 10px;
                 color: var(--green);
             }
 
@@ -182,7 +185,7 @@ function display_headless_page() {
                     Visiter le Site Principal
                 </a>
 
-                <div>
+                <div class="admin-link-wrapper">
                     <a href="https://wordpress.jardindeschefs.ca/wp-admin/" class="admin-link">
                         Accéder à la page d'administrateur
                     </a>
