@@ -14,8 +14,9 @@ services:
       - "--ping=true"
       - "--ping.entrypoint=ping"
     ports:
-      - "3000:80"  # Traefik will listen on 3000 and forward to Next.js instances
-      - "6969:6969"
+      - "127.0.0.1:3000:80"  # Traefik will listen on 3000 and forward to Next.js instances
+      # - "6969:6969"
+      - "127.0.0.1:6969:6969"  # ← Bind metrics to localhost only (Should be for internal access only)
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock:ro
     networks:

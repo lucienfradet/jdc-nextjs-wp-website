@@ -75,14 +75,14 @@ define( 'DB_COLLATE', getenv_docker('WORDPRESS_DB_COLLATE', '') );
  *
  * @since 2.6.0
  */
-define( 'AUTH_KEY',         getenv_docker('WORDPRESS_AUTH_KEY',         '4d06b61d77ecfa0f6231e7dc7d77bc00dc52f9e8') );
-define( 'SECURE_AUTH_KEY',  getenv_docker('WORDPRESS_SECURE_AUTH_KEY',  '1cb052a3323e1e3b739030ee63ce8f870dcfbf2e') );
-define( 'LOGGED_IN_KEY',    getenv_docker('WORDPRESS_LOGGED_IN_KEY',    '679473d534b3880bdfe05ddfc1347a1bad81254e') );
-define( 'NONCE_KEY',        getenv_docker('WORDPRESS_NONCE_KEY',        'db9f88a4e5035c570cb995aa98743bbdc12d5d61') );
-define( 'AUTH_SALT',        getenv_docker('WORDPRESS_AUTH_SALT',        '0a00993658e91ba6a6d887e41e9cc17ada567268') );
-define( 'SECURE_AUTH_SALT', getenv_docker('WORDPRESS_SECURE_AUTH_SALT', '5313ca29abf32ff9de8f9889e76304444570909f') );
-define( 'LOGGED_IN_SALT',   getenv_docker('WORDPRESS_LOGGED_IN_SALT',   '3aacb339225c374873e87696a74b4eb70bdab960') );
-define( 'NONCE_SALT',       getenv_docker('WORDPRESS_NONCE_SALT',       'aa443ef22fd827d547e2fe69244e2587d4670ad3') );
+define( 'AUTH_KEY',         getenv_docker('WORDPRESS_AUTH_KEY',         'UY>vK6jq1EC/M):|9q/T|2pQ^283K%AZ$5teh9*EZ-{ExhWyEd4y*Y9ek#l,+6$f') );
+define( 'SECURE_AUTH_KEY',  getenv_docker('WORDPRESS_SECURE_AUTH_KEY',  '4kMTl>N[ItPB5F!}ml>HU}%R@(82<SDV{:qc#A/&1b;vY=& JlD}@Y|PUR2}9htX') );
+define( 'LOGGED_IN_KEY',    getenv_docker('WORDPRESS_LOGGED_IN_KEY',    'M]yL%T2 O -d]/n82*A>SGQTbgJlf~x!u159;K1ud;-->T(7+=z7q?b__8}p0+Al') );
+define( 'NONCE_KEY',        getenv_docker('WORDPRESS_NONCE_KEY',        'G!g,gr5Sw%+k9.7A<+*?uW|Y 9uBgB$k|)=wSg1tD-Hp(}I(kCU [!/24x~mm8[$') );
+define( 'AUTH_SALT',        getenv_docker('WORDPRESS_AUTH_SALT',        '7?yjOyz.cOnTipw*X#=k^9dtNGppE*<F5>F|o*UCBgPEvc|dFt*As{P5-U`9~<A$') );
+define( 'SECURE_AUTH_SALT', getenv_docker('WORDPRESS_SECURE_AUTH_SALT', 'J(|e6e-ygZZv]MIt-++xaE( H^nH}*F8kl`+rutk!,^yCo4a0-3xInPq+L/+K4oB') );
+define( 'LOGGED_IN_SALT',   getenv_docker('WORDPRESS_LOGGED_IN_SALT',   ']akw@?+q|~`%JSo5E&cyE[srUqh[j *4D6!5rd&x!jn:K>,-n>U.r#yLr0hG0{:Y') );
+define( 'NONCE_SALT',       getenv_docker('WORDPRESS_NONCE_SALT',       'WbJE^B:PKMCl8]ujMz9vO>=N-RvW!t,.(U29IxP+fY}}/(.pD+?_``:5_)e!FNE4') );
 // (See also https://wordpress.stackexchange.com/a/152905/199287)
 
 /**#@-*/
