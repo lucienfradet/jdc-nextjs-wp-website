@@ -23,13 +23,13 @@ services:
       options:
         max-size: "10m"
         max-file: "3" 
-    deploy:
-      resources:
-        limits:
-          memory: 256M
-          cpus: '0.2'
-        reservations:
-          memory: 64M
+    # deploy:
+    #   resources:
+    #     limits:
+    #       memory: 256M
+    #       cpus: '0.2'
+    #     reservations:
+    #       memory: 64M
 
   # WordPress Application
   wordpress:
@@ -60,7 +60,7 @@ services:
       WORDPRESS_CONFIG_EXTRA: |
         define('WP_ALTERNATE_HOST', 'jdc-wp-app');
         define('ALTERNATE_WP_HTTP_HOST', 'jdc-wp-app');
-        define('MAILPOET_SITE_ADDRESS', getenv_docker('WORDPRESS_HOME') ?: 'http://127.0.0.1:8443');
+        define('MAILPOET_SITE_ADDRESS', getenv_docker('WORDPRESS_HOME', 'https://127.0.0.1:8443'));
         define('DISALLOW_FILE_EDIT', true);
         define('DISABLE_WP_CRON', true);
         define('WP_CRON_LOCK_TIMEOUT', 120);
@@ -80,13 +80,13 @@ services:
       options:
         max-size: "10m"
         max-file: "3" 
-    deploy:
-      resources:
-        limits:
-          memory: 256M
-          cpus: '0.2'
-        reservations:
-          memory: 64M
+    # deploy:
+    #   resources:
+    #     limits:
+    #       memory: 256M
+    #       cpus: '0.2'
+    #     reservations:
+    #       memory: 64M
 
   # Orders Database (MySQL 8.0)
   jdc-orders-db:
@@ -116,13 +116,13 @@ services:
       options:
         max-size: "10m"
         max-file: "3" 
-    deploy:
-      resources:
-        limits:
-          memory: 200M
-          cpus: '0.15'
-        reservations:
-          memory: 100M
+    # deploy:
+    #   resources:
+    #     limits:
+    #       memory: 200M
+    #       cpus: '0.15'
+    #     reservations:
+    #       memory: 100M
 
   # Redis Cache
   jdc-redis:
@@ -146,11 +146,11 @@ services:
       options:
         max-size: "10m"
         max-file: "3" 
-    deploy:
-      resources:
-        limits:
-          memory: 128M      # Redis is lightweight
-          cpus: '0.1'
+    # deploy:
+    #   resources:
+    #     limits:
+    #       memory: 128M      # Redis is lightweight
+    #       cpus: '0.1'
 
 networks:
   wp-network:
