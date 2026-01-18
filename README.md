@@ -22,6 +22,19 @@ Documentation pour le site web de la compagnie [jardindeschefs.ca](https://jardi
 - MySQL/Prisma local Database
 - WordPress/WooCommerce
 
+#### Other plugins list:
+- advanced-custom-fields/acf.php
+- insert-headers-and-footers/ihaf.php (POSSIBLY REMOVED)
+- justify-for-paragraph-block/justify-for-paragraph-block.php
+- mailpoet/mailpoet.php
+- mwb-bookings-for-woocommerce/mwb-bookings-for-woocommerce.php
+- re-add-underline-justify/re-add-underline-justify.php
+- say-what/say-what.php (POSSIBLY REMOVED)
+- woocommerce-gateway-stripe/woocommerce-gateway-stripe.php
+- woocommerce/woocommerce.php
+- wp-graphql/wp-graphql.php (POSSIBLY REMOVED)
+- wpgraphql-acf/wpgraphql-acf.php (POSSIBLY REMOVED)
+
 ### Deployment
 
 - Digital Ocean Droplet
@@ -204,6 +217,144 @@ It is being called using `CRON_SECRET_KEY` in the header by the cron container.
 - In order to bake NEXT_PUBLIC variables in the build, the keys need to be
 inside the Dockerfile or GitHub secrets (available in repo settings) for non
 sharable keys
+
+### NTFY Deployment & Authentication
+
+#### Prerequisites
+- ntfy service already added to docker-compose.yml
+- .env file with placeholder tokens
+
+#### Step-by-Step Setup
+
+- 1. Start ntfy Service Only
+```bash
+docker-compose up -d ntfy
+
+# Wait for it to be ready (check health)
+docker ps | grep ntfy
+```
+
+- 2. Create Admin User (Password Protection)
+```bash
+# This will prompt you for a password - choose a strong one!
+docker exec -it jdc-ntfy ntfy user add --role=admin admin
+
+# Example output:
+# password: ******
+# confirm: ******
+# user admin added with role admin
+```
+
+- 3. Generate Access Tokens for Services
+```bash
+# Token for Watchtower
+docker exec -it jdc-ntfy ntfy token add admin watchtower
+
+# Copy the token that starts with: tk_
+# Example: tk_AgQdq7mVBoFD...
+
+# Token for Health Monitor
+docker exec -it jdc-ntfy ntfy token add admin health-monitor
+
+# Copy this token too
+```
+
+- 4. Verify Tokens Were Created
+```bash
+docker exec -it jdc-ntfy ntfy token list
+
+# Should show:
+# user admin
+# - watchtower, token tk_..., expires: never, accessed from N/A
+# - health-monitor, token tk_..., expires: never, accessed from N/A
+```
+
+- 5. Update .env File with Real Tokens
+```bash
+nano .env
+
+# Replace placeholders:
+# NTFY_WATCHTOWER_TOKEN=tk_your_actual_watchtower_token_here
+# NTFY_HEALTHMONITOR_TOKEN=tk_your_actual_health_monitor_token_here
+
+# Save and exit (Ctrl+X, Y, Enter)
+```
+
+- 6. Start Dependent Services
+```bash
+# Reload the full stack to pick up new token values
+docker-compose up -d
+
+# Or start specific services:
+docker-compose up -d watchtower health-monitor
+```
+
+- 7. Test Authentication Works
+```bash
+# Test 1: Unauthenticated request (should FAIL)
+curl -d "Test message" https://jardindeschefs.ca/ntfy/jdc-server
+
+# Expected: {"error":"unauthorized","http":401}
+
+# Test 2: Authenticated request (should SUCCEED)
+curl -H "Authorization: Bearer tk_your_token_here" \
+     -d "Authentication working! 🎉" \
+     https://jardindeschefs.ca/ntfy/jdc-server
+
+# Expected: {"id":"...", "time":..., "event":"message"}
+```
+
+- 8. Test Services Can Send Notifications
+```bash
+# Check watchtower can send notifications
+docker logs jdc-watchtower --tail 20
+
+# Check health-monitor can send notifications
+docker logs jdc-health-monitor --tail 20
+
+# Manually trigger a health-monitor notification
+docker exec jdc-health-monitor pkill -HUP bash
+```
+
+- 9. Subscribe on Your Phone (Optional)
+1. Install ntfy app (iOS/Android)
+2. Add subscription: `https://jardindeschefs.ca/ntfy/jdc-server`
+3. Enter credentials when prompted:
+   - Username: `admin`
+   - Password: (the password you set in step 2)
+4. You'll now receive push notifications!
+
+- Forgot Admin Password
+```bash
+# Remove user and recreate
+docker exec -it jdc-ntfy ntfy user remove admin
+docker exec -it jdc-ntfy ntfy user add --role=admin admin
+```
+
+- Token Format in .env
+```bash
+# Correct:
+NTFY_WATCHTOWER_TOKEN=tk_AbCdEf123456...
+
+# Wrong (don't use quotes):
+NTFY_WATCHTOWER_TOKEN="tk_AbCdEf123456..."
+```
+
+- Token Format in docker-compose
+```yaml
+# Correct:
+- WATCHTOWER_NOTIFICATION_URL=generic+https://jardindeschefs.ca/ntfy/jdc-server?auth=${NTFY_WATCHTOWER_TOKEN}
+
+# Wrong (missing ?auth= parameter):
+- WATCHTOWER_NOTIFICATION_URL=generic+https://jardindeschefs.ca/ntfy/jdc-server
+```
+
+#### Security Notes
+- Tokens never expire by default
+- Keep .env file secured: `chmod 600 .env`
+- Never commit tokens to git: add .env to .gitignore
+- If token is compromised, remove it and generate a new one
+- Default auth mode is deny-all (requires auth for everything)
 
 ## Relases
 Latest production build v1.1 31/05/25

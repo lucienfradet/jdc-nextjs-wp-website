@@ -1,10 +1,12 @@
-/backend/.env
+/backend/.env*
 /backend/db_data/
 
 /backend/wordpress/wp-content/uploads/
 
 /backend/wordpress/wp-content/plugins/*
 !/backend/wordpress/wp-content/plugins/mailpoet-rest-api/  # keep custom ones
+
+/backend/wordpress/wp-content/languages/*
 
 /backend/wordpress/wp-content/themes/*
 !/backend/wordpress/wp-content/themes/bare-bones/     # keep custom ones

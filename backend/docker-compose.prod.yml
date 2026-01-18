@@ -26,6 +26,16 @@ services:
       interval: 10s
       timeout: 5s
       retries: 3
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "10m"
+        max-file: "3" 
+    deploy:
+      resources:
+        limits:
+          memory: 128M
+          cpus: '0.1'
 
   # Next.js Instance 1
   nextjs-1:
@@ -95,6 +105,18 @@ services:
       timeout: 10s
       start_period: 15s
       retries: 3
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "10m"
+        max-file: "3" 
+    deploy:
+      resources:
+        limits:
+          memory: 400M      # Each gets 400MB
+          cpus: '0.4'       # 40% CPU each
+        reservations:
+          memory: 200M
 
   # Next.js Instance 2
   nextjs-2:
@@ -164,6 +186,57 @@ services:
       timeout: 10s
       start_period: 15s
       retries: 3
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "10m"
+        max-file: "3" 
+    deploy:
+      resources:
+        limits:
+          memory: 400M
+          cpus: '0.4'
+        reservations:
+          memory: 200M
+
+  ntfy:
+    image: binwiederhier/ntfy:latest
+    container_name: jdc-ntfy
+    restart: unless-stopped
+    command:
+      - serve
+    environment:
+      - TZ=America/New_York
+      - NTFY_BASE_URL=https://jardindeschefs.ca
+      - NTFY_CACHE_FILE=/var/cache/ntfy/cache.db
+      - NTFY_AUTH_FILE=/var/lib/ntfy/user.db
+      - NTFY_AUTH_DEFAULT_ACCESS=deny-all
+      - NTFY_BEHIND_PROXY=true
+      - NTFY_ENABLE_SIGNUP=false
+      - NTFY_ENABLE_LOGIN=true
+    volumes:
+      - ntfy-cache:/var/cache/ntfy
+      - ntfy-data:/var/lib/ntfy
+    networks:
+      - jdc-network
+    ports:
+      - "127.0.0.1:8081:80"
+    healthcheck:
+      test: ["CMD-SHELL", "wget -q --tries=1 http://localhost:80/v1/health -O - | grep -iq '\"healthy\"'"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 10s
+    deploy:
+      resources:
+        limits:
+          memory: 64M
+          cpus: '0.05'
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "10m"
+        max-file: "3"
 
   watchtower:
     image: containrrr/watchtower:latest
@@ -179,66 +252,69 @@ services:
       - WATCHTOWER_TIMEOUT=30s
       - WATCHTOWER_POLL_INTERVAL=300  # Check every 5 minutes
       - WATCHTOWER_NOTIFICATIONS=shoutrrr
-      - WATCHTOWER_NOTIFICATION_URL=generic+https://jardindeschefs.ca/ntfy/jdc-server
+      - WATCHTOWER_NOTIFICATION_URL=generic+https://jardindeschefs.ca/ntfy/jdc-server?auth=${NTFY_WATCHTOWER_TOKEN}
       - WATCHTOWER_NOTIFICATION_TEMPLATE={{range .}}{{.Message}}{{println}}{{end}}
       - WATCHTOWER_MONITOR_ONLY=false
       - WATCHTOWER_NO_STARTUP_MESSAGE=false
     command: --interval 300 jdc-nextjs-1 jdc-nextjs-2
     networks:
       - jdc-network
+    depends_on:
+      ntfy:
+        condition: service_healthy
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "10m"
+        max-file: "3" 
+    deploy:
+      resources:
+        limits:
+          memory: 64M
+          cpus: '0.05'
 
   health-monitor:
-      image: alpine:latest
-      container_name: jdc-health-monitor
-      restart: unless-stopped
-      volumes:
-        - ../monitoring/health-check.sh:/health-check.sh
-      environment:
-        - NTFY_URL=https://jardindeschefs.ca/ntfy/jdc-server
-        - CHECK_INTERVAL=60
-      # Install bash and curl, then run the script with bash
-      command: >
-        sh -c "
-          apk add --no-cache bash curl &&
-          chmod +x /health-check.sh &&
-          bash /health-check.sh
-        "
-      networks:
-        - jdc-network
-      depends_on:
-        jdc-orders-db:
-          condition: service_healthy
-        jdc-redis:
-          condition: service_healthy
-        traefik:
-          condition: service_healthy
-        nextjs-1:
-          condition: service_started
-        nextjs-2:
-          condition: service_started
-
-  # nextjs:
-  #   build:
-  #     context: ../frontend/
-  #     dockerfile: ../backend/Dockerfile.prod
-  #   container_name: jdc-nextjs
-  #   restart: unless-stopped
-  #   ports:
-  #     - "3000:3000"
-  #   environment:
-  #     - DATABASE_URL=mysql://${MYSQL_NEXTJS_USER}:${MYSQL_NEXTJS_PASSWORD}@jdc-orders-db:3306/${MYSQL_NEXTJS_DATABASE}
-  #   depends_on:
-  #     jdc-orders-db:
-  #       condition: service_healthy
-  #     jdc-redis:
-  #       condition: service_healthy
-  #   networks:
-  #     - jdc-network
-  #   healthcheck:
-  #     test: ["CMD", "curl", "-f", "http://localhost:3000/api/health"]
-  #     interval: 30s
-  #     timeout: 10s
-  #     retries: 3
+    image: alpine:latest
+    container_name: jdc-health-monitor
+    restart: unless-stopped
+    volumes:
+      - ../monitoring/health-check.sh:/health-check.sh
+    environment:
+      - NTFY_URL=https://jardindeschefs.ca/ntfy/jdc-server
+      - NTFY_TOKEN=${NTFY_HEALTHMONITOR_TOKEN}
+      - CHECK_INTERVAL=60
+    # Install bash and curl, then run the script with bash
+    command: >
+      sh -c "
+        apk add --no-cache bash curl &&
+        chmod +x /health-check.sh &&
+        bash /health-check.sh
+      "
+    networks:
+      - jdc-network
+    depends_on:
+      jdc-orders-db:
+        condition: service_healthy
+      jdc-redis:
+        condition: service_healthy
+      traefik:
+        condition: service_healthy
+      nextjs-1:
+        condition: service_started
+      nextjs-2:
+        condition: service_started
+      ntfy:
+        condition: service_healthy
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "10m"
+        max-file: "3" 
+    deploy:
+      resources:
+        limits:
+          memory: 32M
+          cpus: '0.05'
 
   # Cron Service for Next.js cleanup tasks and database backups
   cron:
@@ -273,3 +349,12 @@ services:
       options:
         max-size: "10m"
         max-file: "3"
+    deploy:
+      resources:
+        limits:
+          memory: 64M
+          cpus: '0.05'
+
+volumes:
+  ntfy-cache:
+  ntfy-data:
