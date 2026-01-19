@@ -15,23 +15,11 @@ else
     echo "Warning: GPG public key not found at /keys/jdc-backup-public.key"
 fi
 
-# Create MySQL client configuration file for secure authentication
-# This avoids password warnings and uses modern auth methods
-cat > /root/.my.cnf << 'EOL'
-[client]
-# Use caching_sha2_password (MySQL 8.0+ default)
-default-auth=caching_sha2_password
-# Enable SSL/TLS for secure password transmission
-# ssl_mode=REQUIRED
-EOL
-chmod 600 /root/.my.cnf
-
 # Create the backup script for WordPress database
 cat > /usr/local/bin/backup-wp-db.sh << 'EOL'
 #!/bin/bash
 set -e
 
-# Set restrictive permissions for all created files
 umask 077
 
 TIMESTAMP=$(date +"%Y%m%d_%H%M%S")
@@ -41,31 +29,17 @@ ENCRYPTED_FILE="/backups/encrypted/jdc-wp-db_${TIMESTAMP}.sql.xz.gpg"
 
 echo "Starting WordPress database backup at $(date)"
 
-# Create temporary MySQL config for this backup
-TMP_CNF=$(mktemp)
-cat > "$TMP_CNF" << EOF
-[client]
-host=jdc-wp-db
-user=root
-password=${MYSQL_WORDPRESS_ROOT_PASSWORD}
-default-auth=caching_sha2_password
-# ssl_mode=REQUIRED
+# Simple approach - use environment variable
+export MYSQL_PWD="${MYSQL_WORDPRESS_ROOT_PASSWORD}"
 
-[mysqldump]
-single-transaction=true
-routines=true
-triggers=true
-default-character-set=utf8mb4
-EOF
-chmod 600 "$TMP_CNF"
+mysqldump -h jdc-wp-db -u root \
+    --add-drop-table \
+    --single-transaction \
+    --routines \
+    --triggers \
+    jdc_db > "${BACKUP_FILE}"
 
-# Create database dump using MySQL client with config file
-mysqldump --defaults-extra-file="$TMP_CNF" jdc_db > "${BACKUP_FILE}"
-
-# Clean up config file immediately
-rm -f "$TMP_CNF"
-
-# Compress with xz (best compression)
+# Compress with xz
 xz -9 -c "${BACKUP_FILE}" > "${COMPRESSED_FILE}"
 
 # Encrypt with GPG
@@ -77,7 +51,7 @@ curl -u "${NEXTCLOUD_USER}:${NEXTCLOUD_PASSWORD}" \
      -T "${ENCRYPTED_FILE}" \
      "${NEXTCLOUD_URL}/remote.php/dav/files/${NEXTCLOUD_USER}/jdc-server/jdc-wp-db/jdc-wp-db_${TIMESTAMP}.sql.xz.gpg"
 
-# Clean up temp files after successful upload
+# Clean up
 rm -f "${BACKUP_FILE}" "${COMPRESSED_FILE}"
 
 echo "WordPress database backup completed at $(date)"
