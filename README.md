@@ -271,13 +271,23 @@ docker exec -it jdc-ntfy ntfy token list
 
 - 5. Update .env File with Real Tokens
 ```bash
-nano .env
+vim .env
 
 # Replace placeholders:
 # NTFY_WATCHTOWER_TOKEN=tk_your_actual_watchtower_token_here
 # NTFY_HEALTHMONITOR_TOKEN=tk_your_actual_health_monitor_token_here
 
 # Save and exit (Ctrl+X, Y, Enter)
+```
+
+- 5.1 Update the root cron job!
+```bash
+sudo crontab -e
+
+# Include token in url
+# https://jardindeschefs.ca/ntfy/jdc-server?auth=tk_...
+
+# Save and exit
 ```
 
 - 6. Start Dependent Services

@@ -94,6 +94,8 @@ services:
       WORDPRESS_NONCE_SALT: ${WORDPRESS_NONCE_SALT}
 
       WORDPRESS_CONFIG_EXTRA: |
+        define('WP_HOME', getenv_docker('WORDPRESS_HOME', 'https://wordpress.jardindeschefs.ca'));
+        define('WP_SITEURL', getenv_docker('WORDPRESS_SITEURL', 'https://wordpress.jardindeschefs.ca'));
         define('WP_ALTERNATE_HOST', 'jdc-wp-app');
         define('ALTERNATE_WP_HTTP_HOST', 'jdc-wp-app');
         define('MAILPOET_SITE_ADDRESS', getenv_docker('WORDPRESS_HOME', 'https://127.0.0.1:8443'));
