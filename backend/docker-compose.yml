@@ -18,6 +18,8 @@ services:
       - jdc-orders-data:/var/lib/mysql
       - ./jdc-orders-db/my.cnf:/etc/mysql/conf.d/my.cnf
       - ./jdc-orders-db/init:/docker-entrypoint-initdb.d
+    labels:
+      - "com.centurylinklabs.watchtower.monitor-only=true"
     networks:
       - jdc-network
     healthcheck:
@@ -46,6 +48,8 @@ services:
     #   - "6379:6379"
     volumes:
       - redis_data:/data
+    labels:
+      - "com.centurylinklabs.watchtower.monitor-only=true"
     networks:
       - jdc-network
     restart: unless-stopped

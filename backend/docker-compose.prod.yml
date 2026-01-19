@@ -63,7 +63,6 @@ services:
       - "traefik.http.services.nextjs-service.loadbalancer.server.port=3000"
       
       # Watchtower lifecycle hooks
-      - "com.centurylinklabs.watchtower.enable=true"
       - "com.centurylinklabs.watchtower.lifecycle.pre-update=curl -f http://jdc-nextjs-2:3000/api/health || (echo 'Other instance unhealthy, aborting update' && exit 1)"
       - "com.centurylinklabs.watchtower.lifecycle.post-update=sh -c 'sleep 10 && for i in 1 2 3 4 5; do curl -f http://jdc-nextjs-1:3000/api/health && exit 0 || sleep 5; done; exit 1'"
     healthcheck:
@@ -143,7 +142,6 @@ services:
       - "traefik.http.services.nextjs-service.loadbalancer.server.port=3000"
       
       # Watchtower lifecycle hooks
-      - "com.centurylinklabs.watchtower.enable=true"
       - "com.centurylinklabs.watchtower.lifecycle.pre-update=curl -f http://jdc-nextjs-1:3000/api/health || (echo 'Other instance unhealthy, aborting update' && exit 1)"
       - "com.centurylinklabs.watchtower.lifecycle.post-update=sh -c 'sleep 10 && for i in 1 2 3 4 5; do curl -f http://jdc-nextjs-2:3000/api/health && exit 0 || sleep 5; done; exit 1'"
     healthcheck:
@@ -267,12 +265,11 @@ services:
       - WATCHTOWER_TIMEOUT=30s
       - WATCHTOWER_POLL_INTERVAL=300  # Check every 5 minutes
       - WATCHTOWER_NOTIFICATIONS=shoutrrr
-      - WATCHTOWER_NOTIFICATION_SKIP_TITLE=true  # REQUIRED!
+      - WATCHTOWER_NOTIFICATION_SKIP_TITLE=true
       - WATCHTOWER_NOTIFICATION_URL=generic+https://jardindeschefs.ca/ntfy/jdc-server?@authorization=Bearer+${NTFY_WATCHTOWER_TOKEN}
       - WATCHTOWER_NOTIFICATION_TEMPLATE={{range .}}{{.Message}}{{println}}{{end}}
       - WATCHTOWER_MONITOR_ONLY=false
       - WATCHTOWER_NO_STARTUP_MESSAGE=false
-      - WATCHTOWER_LABEL_ENABLE=true
     command: --interval 300 jdc-nextjs-1 jdc-nextjs-2
     networks:
       - jdc-network
