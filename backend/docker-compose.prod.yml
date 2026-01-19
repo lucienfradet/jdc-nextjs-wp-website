@@ -340,6 +340,7 @@ services:
       - ./cron/entrypoint.sh:/entrypoint.sh
       - ./cron/keys:/keys:ro
       - ./cron/backups:/backups
+      - ./wordpress:/wordpress:ro
     environment:
       - CRON_SECRET_KEY=${CRON_SECRET_KEY}
       - TRAEFIK_URL=http://traefik:80

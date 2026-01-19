@@ -22,7 +22,7 @@ cat > /root/.my.cnf << 'EOL'
 # Use caching_sha2_password (MySQL 8.0+ default)
 default-auth=caching_sha2_password
 # Enable SSL/TLS for secure password transmission
-ssl-mode=REQUIRED
+ssl_mode=REQUIRED
 EOL
 chmod 600 /root/.my.cnf
 
@@ -49,7 +49,7 @@ host=jdc-wp-db
 user=root
 password=${MYSQL_WORDPRESS_ROOT_PASSWORD}
 default-auth=caching_sha2_password
-ssl-mode=REQUIRED
+ssl_mode=REQUIRED
 
 [mysqldump]
 single-transaction=true
