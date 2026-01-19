@@ -3,6 +3,9 @@ set -e
 
 echo "Starting Alpine-based cron container..."
 
+# Create backup directories if they don't exist
+mkdir -p /backups/temp /backups/encrypted
+
 # Import the public GPG key for encryption
 echo "Importing GPG public key..."
 if [ -f /keys/jdc-backup-public.key ]; then

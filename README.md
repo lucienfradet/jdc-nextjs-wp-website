@@ -228,7 +228,7 @@ sharable keys
 
 - 1. Start ntfy Service Only
 ```bash
-docker-compose up -d ntfy
+docker compose up -d ntfy
 
 # Wait for it to be ready (check health)
 docker ps | grep ntfy
@@ -293,10 +293,10 @@ sudo crontab -e
 - 6. Start Dependent Services
 ```bash
 # Reload the full stack to pick up new token values
-docker-compose up -d
+docker compose up -d
 
 # Or start specific services:
-docker-compose up -d watchtower health-monitor
+docker compose up -d watchtower health-monitor
 ```
 
 - 7. Test Authentication Works
@@ -326,13 +326,19 @@ docker logs jdc-health-monitor --tail 20
 docker exec jdc-health-monitor pkill -HUP bash
 ```
 
-- 9. Subscribe on Your Phone (Optional)
-1. Install ntfy app (iOS/Android)
-2. Add subscription: `https://jardindeschefs.ca/ntfy/jdc-server`
-3. Enter credentials when prompted:
-   - Username: `admin`
-   - Password: (the password you set in step 2)
-4. You'll now receive push notifications!
+- 9. Subscribe arch pc (Optional)
+```bash
+yay -S ntfysh-bin
+
+vim ~/.config/ntfy/client.yml
+
+default-host: https://jardindeschefs.ca/ntfy/
+
+subscribe:
+  - topic: jdc-server
+    token: tk_one_of_the_token_or_a_new_one
+    command: 'notify-send -i notifications "$title" "$message" -u normal -t 10000'
+```
 
 - Forgot Admin Password
 ```bash
@@ -354,9 +360,6 @@ NTFY_WATCHTOWER_TOKEN="tk_AbCdEf123456..."
 ```yaml
 # Correct:
 - WATCHTOWER_NOTIFICATION_URL=generic+https://jardindeschefs.ca/ntfy/jdc-server?auth=${NTFY_WATCHTOWER_TOKEN}
-
-# Wrong (missing ?auth= parameter):
-- WATCHTOWER_NOTIFICATION_URL=generic+https://jardindeschefs.ca/ntfy/jdc-server
 ```
 
 #### Security Notes
