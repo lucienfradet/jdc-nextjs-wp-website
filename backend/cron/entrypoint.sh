@@ -129,8 +129,8 @@ NEXTCLOUD_PASSWORD=${NEXTCLOUD_PASSWORD}
 # Database backup - daily at 2 AM EST (UTC+4)  
 0 6 * * * root /usr/local/bin/backup-wp-db.sh >> /proc/1/fd/1 2>&1
 
-# WordPress uploads backup - daily at 2:15 AM EST (UTC+4)
-15 6 * * * root /usr/local/bin/backup-wp-uploads.sh >> /proc/1/fd/1 2>&1
+# WordPress uploads backup - weekly on Sunday at 2:15 AM EST (UTC+4)
+15 6 * * 0 root /usr/local/bin/backup-wp-uploads.sh >> /proc/1/fd/1 2>&1
 
 # Cleanup old backups weekly on Sunday at 3 AM EST
 0 7 * * 0 root /usr/local/bin/cleanup-old-backups.sh >> /proc/1/fd/1 2>&1
