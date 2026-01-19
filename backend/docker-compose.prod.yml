@@ -252,7 +252,7 @@ services:
     oom_score_adj: 800  # Kill first - just notifications
 
   watchtower:
-    image: containrrr/watchtower:latest
+    image: nickfedor/watchtower:latest
     container_name: jdc-watchtower
     restart: unless-stopped
     volumes:
@@ -265,7 +265,8 @@ services:
       - WATCHTOWER_TIMEOUT=30s
       - WATCHTOWER_POLL_INTERVAL=300  # Check every 5 minutes
       - WATCHTOWER_NOTIFICATIONS=shoutrrr
-      - WATCHTOWER_NOTIFICATION_URL=generic+https://jardindeschefs.ca/ntfy/jdc-server?auth=${NTFY_WATCHTOWER_TOKEN}
+      - WATCHTOWER_NOTIFICATION_SKIP_TITLE=true  # REQUIRED!
+      - WATCHTOWER_NOTIFICATION_URL=generic+https://jardindeschefs.ca/ntfy/jdc-server?@authorization=Bearer+${NTFY_WATCHTOWER_TOKEN}
       - WATCHTOWER_NOTIFICATION_TEMPLATE={{range .}}{{.Message}}{{println}}{{end}}
       - WATCHTOWER_MONITOR_ONLY=false
       - WATCHTOWER_NO_STARTUP_MESSAGE=false
