@@ -75,7 +75,7 @@ gpg --batch --yes --trust-model always --encrypt -r admin@jardindeschefs.ca --ou
 echo "Uploading to Nextcloud..."
 curl -u "${NEXTCLOUD_USER}:${NEXTCLOUD_PASSWORD}" \
      -T "${ENCRYPTED_FILE}" \
-     "${NEXTCLOUD_URL}/remote.php/dav/files/lucienfradet/backup/jdc-server/jdc-wp-db/jdc-wp-db_${TIMESTAMP}.sql.xz.gpg"
+     "${NEXTCLOUD_URL}/remote.php/dav/files/${NEXTCLOUD_USER}/jdc-server/jdc-wp-db/jdc-wp-db_${TIMESTAMP}.sql.xz.gpg"
 
 # Clean up temp files after successful upload
 rm -f "${BACKUP_FILE}" "${COMPRESSED_FILE}"
@@ -113,7 +113,7 @@ gpg --batch --yes --trust-model always --encrypt -r admin@jardindeschefs.ca --ou
 echo "Uploading to Nextcloud..."
 curl -u "${NEXTCLOUD_USER}:${NEXTCLOUD_PASSWORD}" \
      -T "${ENCRYPTED_FILE}" \
-     "${NEXTCLOUD_URL}/remote.php/dav/files/lucienfradet/backup/jdc-server/jdc-wp-uploads/jdc-wp-uploads_${TIMESTAMP}.tar.xz.gpg"
+     "${NEXTCLOUD_URL}/remote.php/dav/files/${NEXTCLOUD_USER}/jdc-server/jdc-wp-uploads/jdc-wp-uploads_${TIMESTAMP}.tar.xz.gpg"
 
 # Clean up temp files after successful upload
 rm -f "${BACKUP_FILE}" "${COMPRESSED_FILE}"
