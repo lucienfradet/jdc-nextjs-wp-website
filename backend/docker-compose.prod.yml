@@ -1,41 +1,7 @@
 services:
-  traefik:
-    image: traefik:v3.0
-    container_name: jdc-traefik
-    restart: unless-stopped
-    command:
-      - "--api.dashboard=false"
-      - "--providers.docker=true"
-      - "--providers.docker.exposedbydefault=false"
-      - "--entrypoints.web.address=:80"
-      - "--entrypoints.ping.address=:6969"
-      - "--log.level=INFO"
-      - "--metrics.prometheus=true"
-      - "--ping=true"
-      - "--ping.entrypoint=ping"
-    ports:
-      - "127.0.0.1:3000:80"  # Traefik will listen on 3000 and forward to Next.js instances
-      # - "6969:6969"
-      - "127.0.0.1:6969:6969"  # ← Bind metrics to localhost only (Should be for internal access only)
-    volumes:
-      - /var/run/docker.sock:/var/run/docker.sock:ro
-    networks:
-      - jdc-network
-    healthcheck:
-      test: ["CMD", "wget", "--no-verbose", "--tries=1", "--spider", "http://localhost:6969/ping"]
-      interval: 10s
-      timeout: 5s
-      retries: 3
-    logging:
-      driver: "json-file"
-      options:
-        max-size: "10m"
-        max-file: "3" 
-    # deploy:
-    #   resources:
-    #     limits:
-    #       memory: 128M
-    #       cpus: '0.1'
+  # ============================================
+  # CRITICAL: Payment Processing Path
+  # ============================================
 
   # Next.js Instance 1
   nextjs-1:
@@ -110,13 +76,11 @@ services:
       options:
         max-size: "10m"
         max-file: "3" 
-    # deploy:
-    #   resources:
-    #     limits:
-    #       memory: 400M      # Each gets 400MB
-    #       cpus: '0.4'       # 40% CPU each
-    #     reservations:
-    #       memory: 200M
+    deploy:
+      resources:
+        reservations:
+          memory: 200M  # Needs: Prisma client, Stripe SDK, WooCommerce API calls
+    oom_score_adj: -500  # Protect, but less than DB
 
   # Next.js Instance 2
   nextjs-2:
@@ -191,13 +155,62 @@ services:
       options:
         max-size: "10m"
         max-file: "3" 
-    # deploy:
-    #   resources:
-    #     limits:
-    #       memory: 400M
-    #       cpus: '0.4'
-    #     reservations:
-    #       memory: 200M
+    deploy:
+      resources:
+        reservations:
+          memory: 200M
+    oom_score_adj: -500
+
+
+  wordpress:
+    ports:
+      - "127.0.0.1:8080:80"
+
+  # ============================================
+  # INFRASTRUCTURE: Load Balancing
+  # ============================================
+  
+  traefik:
+    image: traefik:v3.0
+    container_name: jdc-traefik
+    restart: unless-stopped
+    command:
+      - "--api.dashboard=false"
+      - "--providers.docker=true"
+      - "--providers.docker.exposedbydefault=false"
+      - "--entrypoints.web.address=:80"
+      - "--entrypoints.ping.address=:6969"
+      - "--log.level=INFO"
+      - "--metrics.prometheus=true"
+      - "--ping=true"
+      - "--ping.entrypoint=ping"
+    ports:
+      - "127.0.0.1:3000:80"  # Traefik will listen on 3000 and forward to Next.js instances
+      # - "6969:6969"
+      - "127.0.0.1:6969:6969"  # ← Bind metrics to localhost only (Should be for internal access only)
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock:ro
+    networks:
+      - jdc-network
+    healthcheck:
+      test: ["CMD", "wget", "--no-verbose", "--tries=1", "--spider", "http://localhost:6969/ping"]
+      interval: 10s
+      timeout: 5s
+      retries: 3
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "10m"
+        max-file: "3" 
+    deploy:
+      resources:
+        reservations:
+          memory: 48M  # Very lightweight reverse proxy
+    oom_score_adj: -100  # Keep it alive for routing
+
+  # ============================================
+  # UTILITY: Kill these first if needed
+  # ============================================
 
   ntfy:
     image: binwiederhier/ntfy:latest
@@ -232,11 +245,11 @@ services:
       options:
         max-size: "10m"
         max-file: "3"
-    # deploy:
-    #   resources:
-    #     limits:
-    #       memory: 64M
-    #       cpus: '0.05'
+    deploy:
+      resources:
+        reservations:
+          memory: 32M
+    oom_score_adj: 800  # Kill first - just notifications
 
   watchtower:
     image: containrrr/watchtower:latest
@@ -267,11 +280,11 @@ services:
       options:
         max-size: "10m"
         max-file: "3" 
-    # deploy:
-    #   resources:
-    #     limits:
-    #       memory: 64M
-    #       cpus: '0.05'
+    deploy:
+      resources:
+        reservations:
+          memory: 32M
+    oom_score_adj: 900  # Kill second - only needed for updates
 
   health-monitor:
     image: alpine:latest
@@ -310,11 +323,11 @@ services:
       options:
         max-size: "10m"
         max-file: "3" 
-    # deploy:
-    #   resources:
-    #     limits:
-    #       memory: 32M
-    #       cpus: '0.05'
+    deploy:
+      resources:
+        reservations:
+          memory: 24M
+    oom_score_adj: 950  # Kill third
 
   # Cron Service for Next.js cleanup tasks and database backups
   cron:
@@ -349,11 +362,11 @@ services:
       options:
         max-size: "10m"
         max-file: "3"
-    # deploy:
-    #   resources:
-    #     limits:
-    #       memory: 64M
-    #       cpus: '0.05'
+    deploy:
+      resources:
+        reservations:
+          memory: 32M
+    oom_score_adj: 850  # Kill if needed - backups can wait
 
 volumes:
   ntfy-cache:

@@ -1,6 +1,12 @@
 #!/bin/bash
 set -e
 
+# Only run once (check if a marker exists)
+if [ -f /var/lib/mysql/.initialized ]; then
+  echo "Database already initialized, skipping..."
+  exit 0
+fi
+
 # Wait for MySQL to be ready
 echo "Waiting for MySQL to be ready..."
 until mysqladmin ping -h"localhost" -u"root" -p"$MYSQL_ROOT_PASSWORD" --silent; do
@@ -28,10 +34,6 @@ GRANT ALL PRIVILEGES ON \`${MYSQL_DATABASE}\`.* TO '${MYSQL_USER}'@'%';
 
 -- Grant GLOBAL permissions required specifically for Prisma migrations
 GRANT CREATE, DROP, REFERENCES, ALTER, INDEX ON *.* TO '${MYSQL_USER}'@'%';
-
--- Remove privileges that the app doesn't need
-REVOKE SUPER, PROCESS, FILE, RELOAD, SHUTDOWN, REPLICATION CLIENT, REPLICATION SLAVE 
-ON *.* FROM '${MYSQL_USER}'@'%';
 
 -- Apply changes
 FLUSH PRIVILEGES;

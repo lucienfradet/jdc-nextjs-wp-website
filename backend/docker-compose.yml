@@ -1,20 +1,27 @@
 services:
-  # WordPress MySQL Database
-  db:
+  # ============================================
+  # CRITICAL: Payment Processing Path
+  # ============================================
+  
+  # Orders Database (MySQL 8.4)
+  jdc-orders-db:
     image: mysql:8.4
-    container_name: jdc-wp-db
-    restart: always
+    container_name: jdc-orders-db
+    restart: unless-stopped
     environment:
-      MYSQL_DATABASE: jdc_db
-      MYSQL_USER: ${MYSQL_WORDPRESS_USER}
-      MYSQL_PASSWORD: ${MYSQL_WORDPRESS_PASSWORD}
-      MYSQL_ROOT_PASSWORD: ${MYSQL_WORDPRESS_ROOT_PASSWORD}
+      MYSQL_ROOT_PASSWORD: ${MYSQL_NEXTJS_ROOT_PASSWORD}
+      MYSQL_DATABASE: ${MYSQL_NEXTJS_DATABASE}
+      MYSQL_USER: ${MYSQL_NEXTJS_USER}
+      MYSQL_PASSWORD: ${MYSQL_NEXTJS_PASSWORD}
+      TZ: America/New_York
     volumes:
-      - db_data:/var/lib/mysql
+      - jdc-orders-data:/var/lib/mysql
+      - ./jdc-orders-db/my.cnf:/etc/mysql/conf.d/my.cnf
+      - ./jdc-orders-db/init:/docker-entrypoint-initdb.d
     networks:
-      - wp-network
+      - jdc-network
     healthcheck:
-      test: ["CMD", "mysqladmin", "ping", "-h", "localhost", "-u", "root", "-p${MYSQL_WORDPRESS_ROOT_PASSWORD}"]
+      test: ["CMD", "mysqladmin", "ping", "-h", "localhost", "-u", "root", "-p${MYSQL_NEXTJS_ROOT_PASSWORD}"]
       interval: 10s
       timeout: 5s
       retries: 5
@@ -23,13 +30,44 @@ services:
       options:
         max-size: "10m"
         max-file: "3" 
-    # deploy:
-    #   resources:
-    #     limits:
-    #       memory: 256M
-    #       cpus: '0.2'
-    #     reservations:
-    #       memory: 64M
+    deploy:
+      resources:
+        reservations:
+          memory: 200M  # Needs room for: schema, migrations, concurrent order writes
+    mem_swappiness: 0  # Never swap this - disk I/O kills payment UX
+    oom_score_adj: -800  # Protect at all costs
+
+  # Redis Cache
+  jdc-redis:
+    image: redis:7-alpine
+    container_name: jdc-redis
+    command: redis-server --requirepass ${REDIS_PASSWORD}
+    # ports: # NEVER EXPOSE REDIS
+    #   - "6379:6379"
+    volumes:
+      - redis_data:/data
+    networks:
+      - jdc-network
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "redis-cli", "-a", "${REDIS_PASSWORD}", "ping"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "10m"
+        max-file: "3" 
+    deploy:
+      resources:
+        reservations:
+          memory: 64M  # Redis is very lightweight
+    oom_score_adj: -300
+
+  # ============================================
+  # IMPORTANT: WordPress/WooCommerce Backend
+  # ============================================
 
   # WordPress Application
   wordpress:
@@ -38,8 +76,6 @@ services:
     depends_on:
       - db
     restart: unless-stopped
-    ports:
-      - "127.0.0.1:8080:80"
     environment:
       WORDPRESS_DB_HOST: db:3306
       WORDPRESS_DB_USER: ${MYSQL_WORDPRESS_USER}
@@ -80,34 +116,28 @@ services:
       options:
         max-size: "10m"
         max-file: "3" 
-    # deploy:
-    #   resources:
-    #     limits:
-    #       memory: 256M
-    #       cpus: '0.2'
-    #     reservations:
-    #       memory: 64M
+    deploy:
+      resources:
+        reservations:
+          memory: 128M  # WordPress is lightweight when headless
+    oom_score_adj: 0
 
-  # Orders Database (MySQL 8.0)
-  jdc-orders-db:
+  # WordPress MySQL Database
+  db:
     image: mysql:8.4
-    container_name: jdc-orders-db
-    restart: unless-stopped
-    command: --default-authentication-plugin=mysql_native_password
+    container_name: jdc-wp-db
+    restart: always
     environment:
-      MYSQL_ROOT_PASSWORD: ${MYSQL_NEXTJS_ROOT_PASSWORD}
-      MYSQL_DATABASE: ${MYSQL_NEXTJS_DATABASE}
-      MYSQL_USER: ${MYSQL_NEXTJS_USER}
-      MYSQL_PASSWORD: ${MYSQL_NEXTJS_PASSWORD}
-      TZ: America/New_York
+      MYSQL_DATABASE: jdc_db
+      MYSQL_USER: ${MYSQL_WORDPRESS_USER}
+      MYSQL_PASSWORD: ${MYSQL_WORDPRESS_PASSWORD}
+      MYSQL_ROOT_PASSWORD: ${MYSQL_WORDPRESS_ROOT_PASSWORD}
     volumes:
-      - jdc-orders-data:/var/lib/mysql
-      - ./jdc-orders-db/my.cnf:/etc/mysql/conf.d/my.cnf
-      - ./jdc-orders-db/init:/docker-entrypoint-initdb.d
+      - db_data:/var/lib/mysql
     networks:
-      - jdc-network
+      - wp-network
     healthcheck:
-      test: ["CMD", "mysqladmin", "ping", "-h", "localhost", "-u", "root", "-p${MYSQL_NEXTJS_ROOT_PASSWORD}"]
+      test: ["CMD", "mysqladmin", "ping", "-h", "localhost", "-u", "root", "-p${MYSQL_WORDPRESS_ROOT_PASSWORD}"]
       interval: 10s
       timeout: 5s
       retries: 5
@@ -116,41 +146,13 @@ services:
       options:
         max-size: "10m"
         max-file: "3" 
-    # deploy:
-    #   resources:
-    #     limits:
-    #       memory: 200M
-    #       cpus: '0.15'
-    #     reservations:
-    #       memory: 100M
+    deploy:
+      resources:
+        reservations:
+          memory: 128M  # Lighter usage - just API calls, not constant queries
+    mem_swappiness: 10  # Low swappiness for WordPress DB
+    oom_score_adj: -200
 
-  # Redis Cache
-  jdc-redis:
-    image: redis:7-alpine
-    container_name: jdc-redis
-    command: redis-server --requirepass ${REDIS_PASSWORD}
-    # ports: # NEVER EXPOSE REDIS
-    #   - "6379:6379"
-    volumes:
-      - redis_data:/data
-    networks:
-      - jdc-network
-    restart: unless-stopped
-    healthcheck:
-      test: ["CMD", "redis-cli", "-a", "${REDIS_PASSWORD}", "ping"]
-      interval: 10s
-      timeout: 5s
-      retries: 5
-    logging:
-      driver: "json-file"
-      options:
-        max-size: "10m"
-        max-file: "3" 
-    # deploy:
-    #   resources:
-    #     limits:
-    #       memory: 128M      # Redis is lightweight
-    #       cpus: '0.1'
 
 networks:
   wp-network:
