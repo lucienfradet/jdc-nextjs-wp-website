@@ -258,6 +258,8 @@ services:
     restart: unless-stopped
     environment:
       - CONTAINERS=1      # List/inspect/stop/start containers
+      - STOP=1
+      - START=1
       - IMAGES=1          # Pull images
       - POST=1            # Allow POST requests (start/stop/pull)
       - DELETE=1          # Allow DELETE (remove old containers)
