@@ -251,13 +251,41 @@ services:
           memory: 32M
     oom_score_adj: 800  # Kill first - just notifications
 
+  # Trying docker socket proxy to make watchtower more secure
+  docker-socket-proxy:
+    image: tecnativa/docker-socket-proxy
+    container_name: docker-socket-proxy
+    restart: unless-stopped
+    environment:
+      - CONTAINERS=1      # List/inspect/stop/start containers
+      - IMAGES=1          # Pull images
+      - POST=1            # Allow POST requests (start/stop/pull)
+      - DELETE=1          # Allow DELETE (remove old containers)
+      - NETWORKS=0        # Deny network manipulation
+      - VOLUMES=0         # Deny volume manipulation
+      - EXEC=0            # Deny exec into containers (critical!)
+      - BUILD=0           # Deny building images
+      - COMMIT=0          # Deny committing containers
+      - CONFIGS=0         # Deny config access
+      - SECRETS=0         # Deny secrets access
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock:ro
+    networks:
+      - jdc-network
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "5m"
+        max-file: "2"
+
   watchtower:
     image: nickfedor/watchtower:latest
     container_name: jdc-watchtower
     restart: unless-stopped
-    volumes:
-      - /var/run/docker.sock:/var/run/docker.sock
+    # volumes: # this mount is risky and gives watchtower access to all docker actions!
+    #   - /var/run/docker.sock:/var/run/docker.sock
     environment:
+      - DOCKER_HOST=tcp://docker-socket-proxy:2375
       - WATCHTOWER_CLEANUP=true
       - WATCHTOWER_INCLUDE_RESTARTING=true
       - WATCHTOWER_ROLLING_RESTART=true
@@ -274,6 +302,8 @@ services:
     networks:
       - jdc-network
     depends_on:
+      docker-socket-proxy:
+        condition: service_started
       ntfy:
         condition: service_healthy
     logging:

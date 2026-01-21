@@ -550,6 +550,32 @@ At least twice a year, checking the tech stack for updates and pulling new versi
 
 - **MySQL 8.4 LTS** Ends in 3 years (30 Apr 2029)
 
+### npm updates
+1) On your local machine, update the packages:
+bash
+```bash
+cd /path/to/your/frontend
+npm audit fix
+# Update to big releases
+npm install next@latest
+# ...
+npm run build   # Make sure it works!
+```
+
+2. Commit and push:
+```bash
+git add package.json package-lock.json
+git commit -m "Security: update Next.js and fix vulnerabilities"
+git push
+```
+Practical maintenance schedule:
+|Frequency      |Action|
+|---------------|-------|
+|Weekly         |Run npm audit locally, fix critical/high|
+|Monthly        |Run npm outdated, update minor versions|
+|Quarterly      |Review major version updates|
+|Immediately    |Security advisories for your stack (subscribe to Next.js, etc.)|
+
 ### Content Updates
 Content is managed through the WordPress backend:
 
@@ -588,6 +614,8 @@ ValidatedPaymentIntent records, called by the cron container using
 The `/lib/shipping/ShippingCalculator` has a basic implementation that checks
 for province flat rates and uses a default $15 rate. For full implementation,
 discuss requirements with JDC.
+
+### Dependabot!
 
 ## Releases
 
