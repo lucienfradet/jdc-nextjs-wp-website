@@ -360,10 +360,10 @@ services:
         condition: service_healthy
       traefik:
         condition: service_healthy
-      nextjs-1:
-        condition: service_started
-      nextjs-2:
-        condition: service_started
+      # nextjs-1:
+      #   condition: service_started
+      # nextjs-2:
+      #   condition: service_started
       ntfy:
         condition: service_healthy
     logging:
