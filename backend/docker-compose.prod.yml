@@ -3,6 +3,165 @@ services:
   # CRITICAL: Payment Processing Path
   # ============================================
 
+  # Next.js Instance 1
+  nextjs-1:
+    image: ghcr.io/${GITHUB_USERNAME}/${GITHUB_REPO_NAME}:latest
+    container_name: jdc-nextjs-1
+    restart: unless-stopped
+    environment:
+      - DATABASE_URL=mysql://${MYSQL_NEXTJS_USER}:${MYSQL_NEXTJS_PASSWORD}@jdc-orders-db:3306/${MYSQL_NEXTJS_DATABASE}
+      - INSTANCE_ID=nextjs-1
+
+      # Next env.
+      # WooCommerce keys
+      - WOOCOMMERCE_CONSUMER_KEY=${WOOCOMMERCE_CONSUMER_KEY}
+      - WOOCOMMERCE_CONSUMER_SECRET=${WOOCOMMERCE_CONSUMER_SECRET}
+
+      # MailPoet API
+      - MAILPOET_API_KEY=${MAILPOET_API_KEY}
+
+      # Cron
+      - CRON_SECRET_KEY=${CRON_SECRET_KEY}
+
+      # Redis
+      - REDIS_PASSWORD=${REDIS_PASSWORD}
+      - REDIS_PORT=${REDIS_PORT}
+
+      # CSRF Protection
+      - CSRF_SECRET=${CSRF_SECRET}
+      - WEBHOOK_API_KEY=${WEBHOOK_API_KEY}
+
+      # Google reCAPTCHA v3 keys
+      - RECAPTCHA_SECRET_KEY=${RECAPTCHA_SECRET_KEY}
+
+      # 0.0.0.0 for internal docker accessibility without ports exposed (i.e. traefik)
+      - HOST=${HOST}
+      - PORT=${PORT}
+
+      # Stripe keys
+      - STRIPE_SECRET_KEY=${STRIPE_SECRET_KEY}
+      - STRIPE_WEBHOOK_SECRET=${STRIPE_WEBHOOK_SECRET}
+
+      # Redis
+      - REDIS_URL=${REDIS_URL}
+    depends_on:
+      jdc-orders-db:
+        condition: service_healthy
+      jdc-redis:
+        condition: service_healthy
+    networks:
+      - jdc-network
+    labels:
+      - "traefik.enable=true"
+      # Service configuration (duplicate in both instances for resilience)
+      - "traefik.http.routers.nextjs.rule=PathPrefix(`/`)"
+      - "traefik.http.routers.nextjs.service=nextjs-service"
+      - "traefik.http.services.nextjs-service.loadbalancer.sticky.cookie=true"
+      - "traefik.http.services.nextjs-service.loadbalancer.sticky.cookie.name=jdc_instance"
+      - "traefik.http.services.nextjs-service.loadbalancer.healthcheck.path=/api/health"
+      - "traefik.http.services.nextjs-service.loadbalancer.healthcheck.interval=30s"
+      - "traefik.http.services.nextjs-service.loadbalancer.server.port=3000"
+      
+      # Watchtower lifecycle hooks
+      - "com.centurylinklabs.watchtower.lifecycle.pre-update=curl -f http://jdc-nextjs-2:3000/api/health || (echo 'Other instance unhealthy, aborting update' && exit 1)"
+      - "com.centurylinklabs.watchtower.lifecycle.post-update=sh -c 'sleep 10 && for i in 1 2 3 4 5; do curl -f http://jdc-nextjs-1:3000/api/health && exit 0 || sleep 5; done; exit 1'"
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://jdc-nextjs-1:3000/api/health"]
+      interval: 30s
+      timeout: 10s
+      start_period: 15s
+      retries: 3
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "10m"
+        max-file: "3" 
+    deploy:
+      resources:
+        reservations:
+          memory: 200M  # Needs: Prisma client, Stripe SDK, WooCommerce API calls
+    oom_score_adj: -500  # Protect, but less than DB
+
+  # Next.js Instance 2
+  nextjs-2:
+    image: ghcr.io/${GITHUB_USERNAME}/${GITHUB_REPO_NAME}:latest
+    container_name: jdc-nextjs-2
+    restart: unless-stopped
+    environment:
+      - DATABASE_URL=mysql://${MYSQL_NEXTJS_USER}:${MYSQL_NEXTJS_PASSWORD}@jdc-orders-db:3306/${MYSQL_NEXTJS_DATABASE}
+      - INSTANCE_ID=nextjs-2
+
+      # Next env.
+      # WooCommerce keys
+      - WOOCOMMERCE_CONSUMER_KEY=${WOOCOMMERCE_CONSUMER_KEY}
+      - WOOCOMMERCE_CONSUMER_SECRET=${WOOCOMMERCE_CONSUMER_SECRET}
+
+      # MailPoet API
+      - MAILPOET_API_KEY=${MAILPOET_API_KEY}
+
+      # Cron
+      - CRON_SECRET_KEY=${CRON_SECRET_KEY}
+
+      # Redis
+      - REDIS_PASSWORD=${REDIS_PASSWORD}
+      - REDIS_PORT=${REDIS_PORT}
+
+      # CSRF Protection
+      - CSRF_SECRET=${CSRF_SECRET}
+      - WEBHOOK_API_KEY=${WEBHOOK_API_KEY}
+
+      # Google reCAPTCHA v3 keys
+      - RECAPTCHA_SECRET_KEY=${RECAPTCHA_SECRET_KEY}
+
+      # 0.0.0.0 for internal docker accessibility without ports exposed (i.e. traefik)
+      - HOST=${HOST}
+      - PORT=${PORT}
+
+      # Stripe keys
+      - STRIPE_SECRET_KEY=${STRIPE_SECRET_KEY}
+      - STRIPE_WEBHOOK_SECRET=${STRIPE_WEBHOOK_SECRET}
+
+      # Redis
+      - REDIS_URL=${REDIS_URL}
+    depends_on:
+      jdc-orders-db:
+        condition: service_healthy
+      jdc-redis:
+        condition: service_healthy
+    networks:
+      - jdc-network
+    labels:
+      - "traefik.enable=true"
+      # Service configuration (duplicate in both instances for resilience)
+      - "traefik.http.routers.nextjs.rule=PathPrefix(`/`)"
+      - "traefik.http.routers.nextjs.service=nextjs-service"
+      - "traefik.http.services.nextjs-service.loadbalancer.sticky.cookie=true"
+      - "traefik.http.services.nextjs-service.loadbalancer.sticky.cookie.name=jdc_instance"
+      - "traefik.http.services.nextjs-service.loadbalancer.healthcheck.path=/api/health"
+      - "traefik.http.services.nextjs-service.loadbalancer.healthcheck.interval=30s"
+      - "traefik.http.services.nextjs-service.loadbalancer.server.port=3000"
+      
+      # Watchtower lifecycle hooks
+      - "com.centurylinklabs.watchtower.lifecycle.pre-update=curl -f http://jdc-nextjs-1:3000/api/health || (echo 'Other instance unhealthy, aborting update' && exit 1)"
+      - "com.centurylinklabs.watchtower.lifecycle.post-update=sh -c 'sleep 10 && for i in 1 2 3 4 5; do curl -f http://jdc-nextjs-2:3000/api/health && exit 0 || sleep 5; done; exit 1'"
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://jdc-nextjs-2:3000/api/health"]
+      interval: 30s
+      timeout: 10s
+      start_period: 15s
+      retries: 3
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "10m"
+        max-file: "3" 
+    deploy:
+      resources:
+        reservations:
+          memory: 200M
+    oom_score_adj: -500
+
+
   wordpress:
     ports:
       - "127.0.0.1:8080:80"
@@ -93,57 +252,57 @@ services:
     oom_score_adj: 800  # Kill first - just notifications
 
   # Trying docker socket proxy to make watchtower more secure
-  docker-socket-proxy:
-    image: tecnativa/docker-socket-proxy
-    container_name: docker-socket-proxy
-    restart: unless-stopped
-    environment:
-      - LOG_LEVEL=info
-      - CONTAINERS=1
-      - IMAGES=1
-      - NETWORKS=1
-      - ALLOW_START=1
-      - ALLOW_RESTARTS=1
-      - ALLOW_STOP=1
-      - EVENTS=1
-      - PING=1
-      - VERSION=1
-      - VOLUMES=1
-      - POST=1
-      - SERVICES=0
-      - INFO=0
-      - TASKS=0
-      - AUTH=0
-      - SECRETS=0
-      - BUILD=0
-      - COMMIT=0
-      - CONFIGS=0
-      - DISTRIBUTION=0
-      - EXEC=0
-      - GRPC=0
-      - NODES=0
-      - PLUGINS=0
-      - SESSION=0
-      - SWARM=0
-      - SYSTEM=0
-    volumes:
-      - /var/run/docker.sock:/var/run/docker.sock:ro
-    networks:
-      - jdc-network
-    logging:
-      driver: "json-file"
-      options:
-        max-size: "5m"
-        max-file: "2"
+  # docker-socket-proxy:
+  #   image: tecnativa/docker-socket-proxy
+  #   container_name: docker-socket-proxy
+  #   restart: unless-stopped
+  #   environment:
+  #     - LOG_LEVEL=info
+  #     - CONTAINERS=1
+  #     - IMAGES=1
+  #     - NETWORKS=1
+  #     - ALLOW_START=1
+  #     - ALLOW_RESTARTS=1
+  #     - ALLOW_STOP=1
+  #     - EVENTS=1
+  #     - PING=1
+  #     - VERSION=1
+  #     - VOLUMES=1
+  #     - POST=1
+  #     - SERVICES=0
+  #     - INFO=0
+  #     - TASKS=0
+  #     - AUTH=0
+  #     - SECRETS=0
+  #     - BUILD=0
+  #     - COMMIT=0
+  #     - CONFIGS=0
+  #     - DISTRIBUTION=0
+  #     - EXEC=0
+  #     - GRPC=0
+  #     - NODES=0
+  #     - PLUGINS=0
+  #     - SESSION=0
+  #     - SWARM=0
+  #     - SYSTEM=0
+  #   volumes:
+  #     - /var/run/docker.sock:/var/run/docker.sock:ro
+  #   networks:
+  #     - jdc-network
+  #   logging:
+  #     driver: "json-file"
+  #     options:
+  #       max-size: "5m"
+  #       max-file: "2"
 
   watchtower:
     image: nickfedor/watchtower:latest
     container_name: jdc-watchtower
     restart: unless-stopped
-    # volumes: # this mount is risky and gives watchtower access to all docker actions!
-    #   - /var/run/docker.sock:/var/run/docker.sock
+    volumes: # this mount is risky and gives watchtower access to all docker actions!
+      - /var/run/docker.sock:/var/run/docker.sock
     environment:
-      - DOCKER_HOST=tcp://docker-socket-proxy:2375
+      # - DOCKER_HOST=tcp://docker-socket-proxy:2375
       - WATCHTOWER_CLEANUP=true
       - WATCHTOWER_INCLUDE_RESTARTING=true
       - WATCHTOWER_ROLLING_RESTART=true
@@ -160,8 +319,8 @@ services:
     networks:
       - jdc-network
     depends_on:
-      docker-socket-proxy:
-        condition: service_started
+      # docker-socket-proxy:
+      #   condition: service_started
       ntfy:
         condition: service_healthy
     logging:
@@ -201,10 +360,10 @@ services:
         condition: service_healthy
       traefik:
         condition: service_healthy
-      # nextjs-1:
-      #   condition: service_started
-      # nextjs-2:
-      #   condition: service_started
+      nextjs-1:
+        condition: service_started
+      nextjs-2:
+        condition: service_started
       ntfy:
         condition: service_healthy
     logging:
