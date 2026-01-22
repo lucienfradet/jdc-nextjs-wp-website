@@ -319,8 +319,8 @@ services:
     networks:
       - jdc-network
     depends_on:
-      docker-socket-proxy:
-        condition: service_started
+      # docker-socket-proxy:
+      #   condition: service_started
       ntfy:
         condition: service_healthy
     logging:
