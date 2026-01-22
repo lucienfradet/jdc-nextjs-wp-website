@@ -380,6 +380,10 @@ sudo docker compose -f docker-compose.yml -f docker-compose.prod.yml up -d # dep
 inside the Dockerfile or GitHub secrets (available in repo settings) for non
 sharable keys
 
+- **IMPORTANT** Prisma is set to `prisma@6` if I ever upgrade to `v7` I will
+need to change the version in `frontend/Dockerfile` (upgrading to `prisma@7`
+needs full prisma code refactoring!)
+
 ### NTFY Deployment & Authentication
 
 #### Prerequisites
