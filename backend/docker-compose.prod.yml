@@ -174,8 +174,6 @@ services:
     image: traefik:latest
     container_name: jdc-traefik
     restart: unless-stopped
-    labels:
-      - "com.centurylinklabs.watchtower.monitor-only=true"
     command:
       - "--api.dashboard=false"
       - "--providers.docker=true"
@@ -218,8 +216,6 @@ services:
     image: binwiederhier/ntfy:latest
     container_name: jdc-ntfy
     restart: unless-stopped
-    labels:
-      - "com.centurylinklabs.watchtower.monitor-only=true"
     command:
       - serve
     environment:
@@ -256,48 +252,48 @@ services:
     oom_score_adj: 800  # Kill first - just notifications
 
   # Trying docker socket proxy to make watchtower more secure
-  docker-socket-proxy:
-    image: tecnativa/docker-socket-proxy
-    container_name: docker-socket-proxy
-    restart: unless-stopped
-    environment:
-      - LOG_LEVEL=info
-      - CONTAINERS=1
-      - IMAGES=1
-      - NETWORKS=1
-      - ALLOW_START=1
-      - ALLOW_RESTARTS=1
-      - ALLOW_STOP=1
-      - EVENTS=1
-      - PING=1
-      - VERSION=1
-      - VOLUMES=1
-      - POST=1
-      - SERVICES=0
-      - INFO=0
-      - TASKS=0
-      - AUTH=0
-      - SECRETS=0
-      - BUILD=0
-      - COMMIT=0
-      - CONFIGS=0
-      - DISTRIBUTION=0
-      - EXEC=0
-      - GRPC=0
-      - NODES=0
-      - PLUGINS=0
-      - SESSION=0
-      - SWARM=0
-      - SYSTEM=0
-    volumes:
-      - /var/run/docker.sock:/var/run/docker.sock:ro
-    networks:
-      - jdc-network
-    logging:
-      driver: "json-file"
-      options:
-        max-size: "5m"
-        max-file: "2"
+  # docker-socket-proxy:
+  #   image: tecnativa/docker-socket-proxy
+  #   container_name: docker-socket-proxy
+  #   restart: unless-stopped
+  #   environment:
+  #     - LOG_LEVEL=info
+  #     - CONTAINERS=1
+  #     - IMAGES=1
+  #     - NETWORKS=1
+  #     - ALLOW_START=1
+  #     - ALLOW_RESTARTS=1
+  #     - ALLOW_STOP=1
+  #     - EVENTS=1
+  #     - PING=1
+  #     - VERSION=1
+  #     - VOLUMES=1
+  #     - POST=1
+  #     - SERVICES=0
+  #     - INFO=0
+  #     - TASKS=0
+  #     - AUTH=0
+  #     - SECRETS=0
+  #     - BUILD=0
+  #     - COMMIT=0
+  #     - CONFIGS=0
+  #     - DISTRIBUTION=0
+  #     - EXEC=0
+  #     - GRPC=0
+  #     - NODES=0
+  #     - PLUGINS=0
+  #     - SESSION=0
+  #     - SWARM=0
+  #     - SYSTEM=0
+  #   volumes:
+  #     - /var/run/docker.sock:/var/run/docker.sock:ro
+  #   networks:
+  #     - jdc-network
+  #   logging:
+  #     driver: "json-file"
+  #     options:
+  #       max-size: "5m"
+  #       max-file: "2"
 
   watchtower:
     image: nickfedor/watchtower:latest
@@ -306,7 +302,7 @@ services:
     # volumes: # this mount is risky and gives watchtower access to all docker actions!
     #   - /var/run/docker.sock:/var/run/docker.sock
     environment:
-      - DOCKER_HOST=tcp://docker-socket-proxy:2375
+      # - DOCKER_HOST=tcp://docker-socket-proxy:2375
       - WATCHTOWER_CLEANUP=true
       - WATCHTOWER_INCLUDE_RESTARTING=true
       - WATCHTOWER_ROLLING_RESTART=true
@@ -342,8 +338,6 @@ services:
     image: alpine:latest
     container_name: jdc-health-monitor
     restart: unless-stopped
-    labels:
-      - "com.centurylinklabs.watchtower.monitor-only=true"
     volumes:
       - ../monitoring/health-check.sh:/health-check.sh
     environment:
@@ -389,8 +383,6 @@ services:
       context: ./cron
       dockerfile: Dockerfile
     container_name: jdc-cron
-    labels:
-      - "com.centurylinklabs.watchtower.monitor-only=true"
     restart: unless-stopped
     volumes:
       - ./cron/entrypoint.sh:/entrypoint.sh

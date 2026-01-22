@@ -80,8 +80,6 @@ services:
     depends_on:
       - db
     restart: unless-stopped
-    labels:
-      - "com.centurylinklabs.watchtower.monitor-only=true"
     environment:
       WORDPRESS_DB_HOST: db:3306
       WORDPRESS_DB_USER: ${MYSQL_WORDPRESS_USER}
@@ -135,8 +133,6 @@ services:
     image: mysql:8.4
     container_name: jdc-wp-db
     restart: always
-    labels:
-      - "com.centurylinklabs.watchtower.monitor-only=true"
     environment:
       MYSQL_DATABASE: jdc_db
       MYSQL_USER: ${MYSQL_WORDPRESS_USER}
