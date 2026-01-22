@@ -175,7 +175,7 @@ services:
     container_name: jdc-traefik
     restart: unless-stopped
     labels:
-      - "com.centurylinklabs.watchtower.enable=false"
+      - "com.centurylinklabs.watchtower.monitor-only=true"
     command:
       - "--api.dashboard=false"
       - "--providers.docker=true"
@@ -219,7 +219,7 @@ services:
     container_name: jdc-ntfy
     restart: unless-stopped
     labels:
-      - "com.centurylinklabs.watchtower.enable=false"
+      - "com.centurylinklabs.watchtower.monitor-only=true"
     command:
       - serve
     environment:
@@ -343,7 +343,7 @@ services:
     container_name: jdc-health-monitor
     restart: unless-stopped
     labels:
-      - "com.centurylinklabs.watchtower.enable=false"
+      - "com.centurylinklabs.watchtower.monitor-only=true"
     volumes:
       - ../monitoring/health-check.sh:/health-check.sh
     environment:
@@ -390,7 +390,7 @@ services:
       dockerfile: Dockerfile
     container_name: jdc-cron
     labels:
-      - "com.centurylinklabs.watchtower.enable=false"
+      - "com.centurylinklabs.watchtower.monitor-only=true"
     restart: unless-stopped
     volumes:
       - ./cron/entrypoint.sh:/entrypoint.sh
