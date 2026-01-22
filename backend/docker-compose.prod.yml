@@ -299,8 +299,8 @@ services:
     image: nickfedor/watchtower:latest
     container_name: jdc-watchtower
     restart: unless-stopped
-    # volumes: # this mount is risky and gives watchtower access to all docker actions!
-    #   - /var/run/docker.sock:/var/run/docker.sock
+    volumes: # this mount is risky and gives watchtower access to all docker actions!
+      - /var/run/docker.sock:/var/run/docker.sock
     environment:
       # - DOCKER_HOST=tcp://docker-socket-proxy:2375
       - WATCHTOWER_CLEANUP=true
