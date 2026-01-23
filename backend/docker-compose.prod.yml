@@ -310,9 +310,11 @@ services:
       - WATCHTOWER_TIMEOUT=30s
       - WATCHTOWER_POLL_INTERVAL=300  # Check every 5 minutes
       - WATCHTOWER_NOTIFICATIONS=shoutrrr
+      - WATCHTOWER_NOTIFICATION_REPORT=true
       - WATCHTOWER_NOTIFICATION_SKIP_TITLE=true
       - WATCHTOWER_NOTIFICATION_URL=generic+https://jardindeschefs.ca/ntfy/jdc-server?@authorization=Bearer+${NTFY_WATCHTOWER_TOKEN}
-      - WATCHTOWER_NOTIFICATION_TEMPLATE={{range .}}{{.Message}}{{println}}{{end}}
+      # Fuck templates, lets use the good default!
+      # - WATCHTOWER_NOTIFICATION_TEMPLATE={{range .}}{{.Message}}{{println}}{{end}} 
       - WATCHTOWER_MONITOR_ONLY=false
       - WATCHTOWER_NO_STARTUP_MESSAGE=false
     command: --interval 300 jdc-nextjs-1 jdc-nextjs-2
