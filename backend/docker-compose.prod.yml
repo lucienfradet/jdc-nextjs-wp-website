@@ -171,7 +171,8 @@ services:
   # ============================================
   
   traefik:
-    image: traefik:latest
+    image: traefik:3.6
+    # image: traefik:latest
     container_name: jdc-traefik
     restart: unless-stopped
     command:
