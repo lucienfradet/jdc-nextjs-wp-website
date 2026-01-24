@@ -127,6 +127,13 @@ The CI/CD pipeline (`/.github/workflows/build-and-push.yml`) automatically:
 
 Watchtower provides zero-downtime deployments through:
 
+#### **!IMPORTANT**
+Watchtower seems to be in a weird state with rolling restart. It works now but
+may very well break in future updates. In currently works when doing automatic
+update triggers but don't work when running manual `docker exec jdc-watchtower
+/watchtower --run-ounce` as it weirdly checks for all services and requires to
+have ZERO `depends_on` tags...
+
 - **Health Check Validation**: Ensures other instance is healthy before updating
 - **Rolling Restart**: Updates one instance at a time
 - **Lifecycle Hooks**: Pre and post-update health verification
