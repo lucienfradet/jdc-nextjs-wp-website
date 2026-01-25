@@ -36,7 +36,6 @@ services:
       resources:
         reservations:
           memory: 200M  # Needs room for: schema, migrations, concurrent order writes
-    mem_swappiness: 0  # Never swap this - disk I/O kills payment UX
     oom_score_adj: -800  # Protect at all costs
 
   # Redis Cache
@@ -157,7 +156,6 @@ services:
       resources:
         reservations:
           memory: 128M  # Lighter usage - just API calls, not constant queries
-    mem_swappiness: 10  # Low swappiness for WordPress DB
     oom_score_adj: -200
 
 

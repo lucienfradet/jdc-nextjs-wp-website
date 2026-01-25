@@ -44,11 +44,11 @@ services:
 
       # Redis
       - REDIS_URL=${REDIS_URL}
-    depends_on:
-      jdc-orders-db:
-        condition: service_healthy
-      jdc-redis:
-        condition: service_healthy
+    # depends_on:
+    #   jdc-orders-db:
+    #     condition: service_healthy
+    #   jdc-redis:
+    #     condition: service_healthy
     networks:
       - jdc-network
     labels:
@@ -123,11 +123,11 @@ services:
 
       # Redis
       - REDIS_URL=${REDIS_URL}
-    depends_on:
-      jdc-orders-db:
-        condition: service_healthy
-      jdc-redis:
-        condition: service_healthy
+    # depends_on:
+    #   jdc-orders-db:
+    #     condition: service_healthy
+    #   jdc-redis:
+    #     condition: service_healthy
     networks:
       - jdc-network
     labels:
