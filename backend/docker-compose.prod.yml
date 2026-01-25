@@ -11,37 +11,28 @@ services:
     environment:
       - DATABASE_URL=mysql://${MYSQL_NEXTJS_USER}:${MYSQL_NEXTJS_PASSWORD}@jdc-orders-db:3306/${MYSQL_NEXTJS_DATABASE}
       - INSTANCE_ID=nextjs-1
-
       # Next env.
       # WooCommerce keys
       - WOOCOMMERCE_CONSUMER_KEY=${WOOCOMMERCE_CONSUMER_KEY}
       - WOOCOMMERCE_CONSUMER_SECRET=${WOOCOMMERCE_CONSUMER_SECRET}
-
       # MailPoet API
       - MAILPOET_API_KEY=${MAILPOET_API_KEY}
-
       # Cron
       - CRON_SECRET_KEY=${CRON_SECRET_KEY}
-
       # Redis
       - REDIS_PASSWORD=${REDIS_PASSWORD}
       - REDIS_PORT=${REDIS_PORT}
-
       # CSRF Protection
       - CSRF_SECRET=${CSRF_SECRET}
       - WEBHOOK_API_KEY=${WEBHOOK_API_KEY}
-
       # Google reCAPTCHA v3 keys
       - RECAPTCHA_SECRET_KEY=${RECAPTCHA_SECRET_KEY}
-
       # 0.0.0.0 for internal docker accessibility without ports exposed (i.e. traefik)
       - HOST=${HOST}
       - PORT=${PORT}
-
       # Stripe keys
       - STRIPE_SECRET_KEY=${STRIPE_SECRET_KEY}
       - STRIPE_WEBHOOK_SECRET=${STRIPE_WEBHOOK_SECRET}
-
       # Redis
       - REDIS_URL=${REDIS_URL}
     # depends_on:
@@ -63,6 +54,7 @@ services:
       - "traefik.http.services.nextjs-service.loadbalancer.server.port=3000"
       
       # Watchtower lifecycle hooks
+      - "com.centurylinklabs.watchtower.scope=nextjs"
       - "com.centurylinklabs.watchtower.lifecycle.pre-update=curl -f http://jdc-nextjs-2:3000/api/health || (echo 'Other instance unhealthy, aborting update' && exit 1)"
       - "com.centurylinklabs.watchtower.lifecycle.post-update=sh -c 'sleep 10 && for i in 1 2 3 4 5; do curl -f http://jdc-nextjs-1:3000/api/health && exit 0 || sleep 5; done; exit 1'"
     healthcheck:
@@ -90,37 +82,28 @@ services:
     environment:
       - DATABASE_URL=mysql://${MYSQL_NEXTJS_USER}:${MYSQL_NEXTJS_PASSWORD}@jdc-orders-db:3306/${MYSQL_NEXTJS_DATABASE}
       - INSTANCE_ID=nextjs-2
-
       # Next env.
       # WooCommerce keys
       - WOOCOMMERCE_CONSUMER_KEY=${WOOCOMMERCE_CONSUMER_KEY}
       - WOOCOMMERCE_CONSUMER_SECRET=${WOOCOMMERCE_CONSUMER_SECRET}
-
       # MailPoet API
       - MAILPOET_API_KEY=${MAILPOET_API_KEY}
-
       # Cron
       - CRON_SECRET_KEY=${CRON_SECRET_KEY}
-
       # Redis
       - REDIS_PASSWORD=${REDIS_PASSWORD}
       - REDIS_PORT=${REDIS_PORT}
-
       # CSRF Protection
       - CSRF_SECRET=${CSRF_SECRET}
       - WEBHOOK_API_KEY=${WEBHOOK_API_KEY}
-
       # Google reCAPTCHA v3 keys
       - RECAPTCHA_SECRET_KEY=${RECAPTCHA_SECRET_KEY}
-
       # 0.0.0.0 for internal docker accessibility without ports exposed (i.e. traefik)
       - HOST=${HOST}
       - PORT=${PORT}
-
       # Stripe keys
       - STRIPE_SECRET_KEY=${STRIPE_SECRET_KEY}
       - STRIPE_WEBHOOK_SECRET=${STRIPE_WEBHOOK_SECRET}
-
       # Redis
       - REDIS_URL=${REDIS_URL}
     # depends_on:
@@ -142,6 +125,7 @@ services:
       - "traefik.http.services.nextjs-service.loadbalancer.server.port=3000"
       
       # Watchtower lifecycle hooks
+      - "com.centurylinklabs.watchtower.scope=nextjs"
       - "com.centurylinklabs.watchtower.lifecycle.pre-update=curl -f http://jdc-nextjs-1:3000/api/health || (echo 'Other instance unhealthy, aborting update' && exit 1)"
       - "com.centurylinklabs.watchtower.lifecycle.post-update=sh -c 'sleep 10 && for i in 1 2 3 4 5; do curl -f http://jdc-nextjs-2:3000/api/health && exit 0 || sleep 5; done; exit 1'"
     healthcheck:
@@ -175,6 +159,8 @@ services:
     # image: traefik:latest
     container_name: jdc-traefik
     restart: unless-stopped
+    labels:
+      - "com.centurylinklabs.watchtower.scope=infra"
     command:
       - "--api.dashboard=false"
       - "--providers.docker=true"
@@ -217,6 +203,8 @@ services:
     image: binwiederhier/ntfy:latest
     container_name: jdc-ntfy
     restart: unless-stopped
+    labels:
+      - "com.centurylinklabs.watchtower.scope=infra"
     command:
       - serve
     environment:
@@ -318,6 +306,8 @@ services:
       - WATCHTOWER_MONITOR_ONLY=false
       - WATCHTOWER_NO_STARTUP_MESSAGE=false
     # command: --interval 300 jdc-nextjs-1 jdc-nextjs-2
+    labels:
+    - "com.centurylinklabs.watchtower.scope=nextjs"
     command: --interval 300 jdc-nextjs-1 jdc-nextjs-2
     networks:
       - jdc-network
@@ -354,7 +344,9 @@ services:
       - 'WATCHTOWER_NOTIFICATION_TEMPLATE={{- if .Report -}}{{- if or .Report.Updated .Report.Restarted .Report.Failed -}}{{len .Report.Scanned}} Scanned, {{len .Report.Updated}} Updated, {{len .Report.Restarted}} Restarted, {{len .Report.Failed}} Failed{{"\n"}}{{- range .Report.Updated}}- {{.Name}} ({{.ImageName}}): {{.CurrentImageID.ShortID}} → {{.LatestImageID.ShortID}}{{"\n"}}{{- end -}}{{- range .Report.Restarted}}- {{.Name}} ({{.ImageName}}): Restarted{{"\n"}}{{- end -}}{{- range .Report.Failed}}- {{.Name}} ({{.ImageName}}): FAILED - {{.Error}}{{"\n"}}{{- end -}}{{- end -}}{{- end -}}'
       - WATCHTOWER_MONITOR_ONLY=false
       - WATCHTOWER_NO_STARTUP_MESSAGE=false
-    command: --interval 3600 jdc-wp-app jdc-traefik jdc-ntfy jdc-watchtower jdc-watchtower-infra
+    labels:
+    - "com.centurylinklabs.watchtower.scope=infra"
+    command: --interval 3600 jdc-wp-app jdc-traefik jdc-ntfy
     networks:
       - jdc-network
     depends_on:

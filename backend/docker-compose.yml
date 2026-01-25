@@ -109,7 +109,8 @@ services:
         define('WP_ALTERNATE_WP_CRON_DOMAIN', 'jdc-wp-app');
         define('WP_HTTP_BLOCK_EXTERNAL', false);
         define('WP_ACCESSIBLE_HOSTS', '*.wordpress.org,*.w.org,*.wordpress.com,localhost,jdc-wp-app');
-
+    labels:
+      - "com.centurylinklabs.watchtower.scope=infra"
     volumes:
       - ./wordpress/wp-content:/var/www/html/wp-content
       - ./wordpress/upload.ini:/usr/local/etc/php/conf.d/uploads.ini
