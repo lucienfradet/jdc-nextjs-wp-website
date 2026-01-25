@@ -143,6 +143,8 @@ services:
       - db_data:/var/lib/mysql
     networks:
       - wp-network
+    labels:
+      - "com.centurylinklabs.watchtower.monitor-only=true"
     healthcheck:
       test: ["CMD", "mysqladmin", "ping", "-h", "localhost", "-u", "root", "-p${MYSQL_WORDPRESS_ROOT_PASSWORD}"]
       interval: 10s
