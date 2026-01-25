@@ -551,17 +551,99 @@ chmod 600 .env
 
 ## Maintenance and Updates
 
-### Container updates
-At least twice a year, checking the tech stack for updates and pulling new versions
-- Wordpress
-- Traefik
-- Watchtower
-- Redis
-- etc
+### Automated Dependency Updates (Dependabot)
 
-- **MySQL 8.4 LTS** Ends in 3 years (30 Apr 2029)
+The project uses GitHub Dependabot for automated dependency monitoring and updates.
 
-### npm updates
+#### How It Works
+
+1. **Weekly Scans**: Dependabot checks for npm updates every Monday at 9 AM (Montreal time)
+2. **Automatic PRs**: Creates pull requests for available updates
+3. **Auto-Merge**: Minor and patch updates are automatically merged after CI passes
+4. **Manual Review**: Major version updates require manual approval (email notification)
+
+#### Update Flow
+```
+Dependabot detects update
+        ↓
+Creates PR → GitHub Actions builds & tests
+        ↓
+    ┌───┴───┐
+    ↓       ↓
+  Patch/Minor   Major
+    ↓           ↓
+Auto-merge   Comment added, manual review required
+    ↓           ↓
+Watchtower pulls new image automatically
+```
+
+#### Prisma Exception
+
+Prisma is locked to v6.x and excluded from auto-updates. Upgrading to v7 requires code refactoring.
+To update Prisma manually:
+```bash
+npm install prisma@6.x.x @prisma/client@6.x.x
+```
+
+#### Grouped Updates
+To reduce PR spam, updates are grouped:
+- **production-dependencies**: All prod deps (excluding Prisma)
+- **development-dependencies**: Dev deps (types, eslint, prettier)
+
+#### Config Files
+- `/.github/dependabot.yml` - Dependabot schedule and rules
+- `/.github/workflows/dependabot-auto-merge.yml` - Auto-merge workflow
+
+### Container Version Strategy
+
+| Image | Tag | Auto-Update | Manual Update |
+|-------|-----|-------------|---------------|
+| `nextjs` | `latest` | ✅ Watchtower | — |
+| `wordpress` | `6` | ✅ Watchtower | Yearly (major) |
+| `traefik` | `v3.3` | ✅ Watchtower | Yearly (minor bump) |
+| `mysql` | `8.4` | ❌ | Yearly (with backup) |
+| `redis` | `7-alpine` | ❌ | Yearly |
+| `ntfy` | `latest` | ✅ Watchtower | — |
+| `watchtower` | `latest` | ✅ Watchtower | — |
+
+**Strategy:**
+- **Lock to minor version** (e.g., `traefik:v3.3`) → receives patch updates (v3.3.1, v3.3.2) automatically
+- **Databases (MySQL, Redis)** → Never auto-update, manual only with backup first
+- **Yearly review** → Check for EOL versions and bump minor/major as needed
+
+**MySQL 8.4 LTS** support ends April 2029.
+
+### Container Updates (Bi-Annual)
+
+Twice a year, review and update container versions:
+```bash
+# Check for available updates
+# WordPress: https://hub.docker.com/_/wordpress/tags
+# Traefik: https://hub.docker.com/_/traefik/tags
+# Redis: https://hub.docker.com/_/redis/tags
+
+# Update docker-compose files with new tags
+# Then pull and restart
+docker compose -f docker-compose.yml -f docker-compose.prod.yml pull
+docker compose -f docker-compose.yml -f docker-compose.prod.yml up -d
+```
+
+### WordPress Plugin Updates
+
+Plugins are set to auto-update, but verify twice a year:
+1. Log in to WordPress admin
+2. Go to Plugins → Check for pending updates
+3. Verify WooCommerce, MailPoet, and ACF are current
+
+### Content Updates
+
+Content is managed through the WordPress backend:
+1. Log in to the WordPress admin panel
+2. **Update plugins!**
+3. Update pages, products, and settings
+4. The Next.js frontend will fetch the updated content
+
+### local npm updates (if needed)
 1) On your local machine, update the packages:
 bash
 ```bash
@@ -579,13 +661,13 @@ git add package.json package-lock.json
 git commit -m "Security: update Next.js and fix vulnerabilities"
 git push
 ```
+
 Practical maintenance schedule:
 |Frequency      |Action|
 |---------------|-------|
 |Weekly         |Run npm audit locally, fix critical/high|
 |Monthly        |Run npm outdated, update minor versions|
 |Quarterly      |Review major version updates|
-|Immediately    |Security advisories for your stack (subscribe to Next.js, etc.)|
 
 ### Content Updates
 Content is managed through the WordPress backend:
@@ -626,11 +708,9 @@ The `/lib/shipping/ShippingCalculator` has a basic implementation that checks
 for province flat rates and uses a default $15 rate. For full implementation,
 discuss requirements with JDC.
 
-### Dependabot!
-
 ## Releases
 
-**Latest production build**: v1.2 (19/01/26)
+**Latest production build**: v1.3 (22/01/26)
 
 ### Release Process
 
