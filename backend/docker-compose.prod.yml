@@ -314,12 +314,48 @@ services:
       - WATCHTOWER_NOTIFICATION_REPORT=true
       - WATCHTOWER_NOTIFICATION_SKIP_TITLE=true
       - WATCHTOWER_NOTIFICATION_URL=generic+https://jardindeschefs.ca/ntfy/jdc-server?@authorization=Bearer+${NTFY_WATCHTOWER_TOKEN}
-      # Fuck templates, lets use the good default!
       - 'WATCHTOWER_NOTIFICATION_TEMPLATE={{- if .Report -}}{{- if or .Report.Updated .Report.Restarted .Report.Failed -}}{{len .Report.Scanned}} Scanned, {{len .Report.Updated}} Updated, {{len .Report.Restarted}} Restarted, {{len .Report.Failed}} Failed{{"\n"}}{{- range .Report.Updated}}- {{.Name}} ({{.ImageName}}): {{.CurrentImageID.ShortID}} → {{.LatestImageID.ShortID}}{{"\n"}}{{- end -}}{{- range .Report.Restarted}}- {{.Name}} ({{.ImageName}}): Restarted{{"\n"}}{{- end -}}{{- range .Report.Failed}}- {{.Name}} ({{.ImageName}}): FAILED - {{.Error}}{{"\n"}}{{- end -}}{{- end -}}{{- end -}}'
       - WATCHTOWER_MONITOR_ONLY=false
       - WATCHTOWER_NO_STARTUP_MESSAGE=false
     # command: --interval 300 jdc-nextjs-1 jdc-nextjs-2
-    command: --interval 300 jdc-nextjs-1 jdc-nextjs-2 jdc-ntfy jdc-watchtower jdc-wp-app jdc-traefik
+    command: --interval 300 jdc-nextjs-1 jdc-nextjs-2
+    networks:
+      - jdc-network
+    depends_on:
+      # docker-socket-proxy:
+      #   condition: service_started
+      ntfy:
+        condition: service_healthy
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "10m"
+        max-file: "3" 
+    deploy:
+      resources:
+        reservations:
+          memory: 32M
+    oom_score_adj: 900  # Kill second - only needed for updates
+
+  # Watchtower pour les autres (pas de rolling restart)
+  watchtower-infra:
+    image: nickfedor/watchtower:latest
+    container_name: jdc-watchtower-infra
+    restart: unless-stopped
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+    environment:
+      - WATCHTOWER_CLEANUP=true
+      - WATCHTOWER_ROLLING_RESTART=false
+      - WATCHTOWER_POLL_INTERVAL=3600  # Check every hour (less aggressive)
+      - WATCHTOWER_NOTIFICATIONS=shoutrrr
+      - WATCHTOWER_NOTIFICATION_REPORT=true
+      - WATCHTOWER_NOTIFICATION_SKIP_TITLE=true
+      - WATCHTOWER_NOTIFICATION_URL=generic+https://jardindeschefs.ca/ntfy/jdc-server?@authorization=Bearer+${NTFY_WATCHTOWER_TOKEN}
+      - 'WATCHTOWER_NOTIFICATION_TEMPLATE={{- if .Report -}}{{- if or .Report.Updated .Report.Restarted .Report.Failed -}}{{len .Report.Scanned}} Scanned, {{len .Report.Updated}} Updated, {{len .Report.Restarted}} Restarted, {{len .Report.Failed}} Failed{{"\n"}}{{- range .Report.Updated}}- {{.Name}} ({{.ImageName}}): {{.CurrentImageID.ShortID}} → {{.LatestImageID.ShortID}}{{"\n"}}{{- end -}}{{- range .Report.Restarted}}- {{.Name}} ({{.ImageName}}): Restarted{{"\n"}}{{- end -}}{{- range .Report.Failed}}- {{.Name}} ({{.ImageName}}): FAILED - {{.Error}}{{"\n"}}{{- end -}}{{- end -}}{{- end -}}'
+      - WATCHTOWER_MONITOR_ONLY=false
+      - WATCHTOWER_NO_STARTUP_MESSAGE=false
+    command: --interval 3600 jdc-wp-app jdc-traefik jdc-ntfy jdc-watchtower
     networks:
       - jdc-network
     depends_on:
