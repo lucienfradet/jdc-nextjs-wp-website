@@ -40,7 +40,7 @@ services:
         condition: service_healthy
       jdc-redis:
         condition: service_healthy
-      jdc-wp-app:
+      wordpress:
         condition: service_healthy
     networks:
       - jdc-network
@@ -113,7 +113,7 @@ services:
         condition: service_healthy
       jdc-redis:
         condition: service_healthy
-      jdc-wp-app:
+      wordpress:
         condition: service_healthy
     networks:
       - jdc-network
