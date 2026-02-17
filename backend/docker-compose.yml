@@ -77,6 +77,12 @@ services:
     image: wordpress:6 
     # image: wordpress:latest
     container_name: jdc-wp-app
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost/wp-json/wp/v2/"]
+      interval: 15s
+      timeout: 5s
+      retries: 5
+      start_period: 30s
     depends_on:
       - db
     restart: unless-stopped
