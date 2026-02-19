@@ -124,6 +124,7 @@ services:
     entrypoint: ["/cron-setup/entrypoint.sh"]
     networks:
       - wp-network
+      - jdc-network
     logging:
       driver: "json-file"
       options:

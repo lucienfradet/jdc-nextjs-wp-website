@@ -12,6 +12,8 @@ services:
       - DATABASE_URL=mysql://${MYSQL_NEXTJS_USER}:${MYSQL_NEXTJS_PASSWORD}@jdc-orders-db:3306/${MYSQL_NEXTJS_DATABASE}
       - INSTANCE_ID=nextjs-1
       # Next env.
+      # Wordpress
+      - WORDPRESS_INTERNAL_URL=http://jdc-wp-app
       # WooCommerce keys
       - WOOCOMMERCE_CONSUMER_KEY=${WOOCOMMERCE_CONSUMER_KEY}
       - WOOCOMMERCE_CONSUMER_SECRET=${WOOCOMMERCE_CONSUMER_SECRET}
@@ -85,6 +87,8 @@ services:
       - DATABASE_URL=mysql://${MYSQL_NEXTJS_USER}:${MYSQL_NEXTJS_PASSWORD}@jdc-orders-db:3306/${MYSQL_NEXTJS_DATABASE}
       - INSTANCE_ID=nextjs-2
       # Next env.
+      # Wordpress
+      - WORDPRESS_INTERNAL_URL=http://jdc-wp-app
       # WooCommerce keys
       - WOOCOMMERCE_CONSUMER_KEY=${WOOCOMMERCE_CONSUMER_KEY}
       - WOOCOMMERCE_CONSUMER_SECRET=${WOOCOMMERCE_CONSUMER_SECRET}
