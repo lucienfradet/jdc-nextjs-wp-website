@@ -120,6 +120,7 @@ services:
     volumes:
       - ./wordpress/wp-content:/var/www/html/wp-content
       - ./wordpress/upload.ini:/usr/local/etc/php/conf.d/uploads.ini
+      - ./wordpress/zz-mpm.conf:/etc/apache2/conf-enabled/zz-mpm.conf:ro
       - ./wordpress-cron-setup:/cron-setup
     entrypoint: ["/cron-setup/entrypoint.sh"]
     networks:
@@ -134,6 +135,8 @@ services:
       resources:
         reservations:
           memory: 128M  # WordPress is lightweight when headless
+    mem_limit: 768m
+    memswap_limit: 768m
     oom_score_adj: 0
 
   # WordPress MySQL Database
